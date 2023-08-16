@@ -1,0 +1,24 @@
+{
+  "name": "platforms",
+  "private": true,
+  "repository": "unjs/platforms",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs .",
+    "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.6.5"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
+    "@types/node": "^18.17.3",
+    "eslint": "^8.47.0"
+  },
+  "packageManager": "pnpm@8.6.12"
+}
