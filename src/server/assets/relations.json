@@ -1,17 +1,31 @@
 {
-  "edge-routine": {},
-  "workerd": {},
-  "deno": {},
-  "lagon": {},
-  "react-native": {},
+  "edge-routine": {
+    "engine": "v8"
+  },
+  "workerd": {
+    "engine": "v8"
+  },
+  "deno": {
+    "engine": "v8"
+  },
+  "lagon": {
+    "engine": "v8"
+  },
+  "react-native": {
+    "engine": "hermes"
+  },
   "netlify": {
     "base": "deno"
   },
   "electron": {
     "base": "node"
   },
-  "node": {},
-  "bun": {},
+  "node": {
+    "engine": "v8"
+  },
+  "bun": {
+    "engine": "jsc"
+  },
   "edge-light": {
     "base": "workerd"
   }
