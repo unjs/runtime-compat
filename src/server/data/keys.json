@@ -1,0 +1,52 @@
+{
+  "$source": "https://github.com/wintercg/runtime-keys/blob/main/index.bs",
+  "edge-routine": {
+    "description": "The JavaScript/Webassembly runtime that powers Alibaba Cloud edge-routine.",
+    "website": "https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/er-overview"
+  },
+  "workerd": {
+    "description": "The JavaScript / WebAssembly runtime that powers Cloudflare Workers.",
+    "website": "https://workers.cloudflare.com/",
+    "repository": "https://github.com/cloudflare/workerd"
+  },
+  "deno": {
+    "description": "A modern runtime for JavaScript and TypeScript.",
+    "website": "https://deno.com",
+    "repository": "https://github.com/denoland/deno"
+  },
+  "lagon": {
+    "description": "Lagon is an open-source runtime and platform that allows developers to run TypeScript and JavaScript Functions at the Edge.",
+    "website": "https://lagon.app",
+    "repository": "https://github.com/lagonapp/lagon"
+  },
+  "react-native": {
+    "description": "A framework for building native apps using React. This key represents supported React Native JS runtimes on native platforms (excludes react-native-web).",
+    "website": "https://reactnative.dev/",
+    "repository": "https://github.com/facebook/react-native"
+  },
+  "netlify": {
+    "description": "Edge Functions connect the Netlify platform and workflow with an open runtime standard at the network edge.",
+    "website": "https://docs.netlify.com/edge-functions/overview/",
+    "repository": "https://github.com/netlify/edge-functions"
+  },
+  "electron": {
+    "description": "Build cross-platform desktop apps with JavaScript, HTML, and CSS.",
+    "website": "https://www.electronjs.org/",
+    "repository": "https://github.com/electron/electron"
+  },
+  "node": {
+    "description": "Node.js is an open-source, cross-platform JavaScript runtime environment.",
+    "website": "https://nodejs.org",
+    "repository": "https://github.com/nodejs/node"
+  },
+  "bun": {
+    "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.",
+    "website": "https://bun.sh/",
+    "repository": "https://github.com/oven-sh/bun"
+  },
+  "edge-light": {
+    "description": "Developing, testing, and defining the runtime Web APIs for Edge infrastructure.",
+    "website": "https://edge-runtime.vercel.app/",
+    "repository": "https://github.com/vercel/edge-runtime"
+  }
+}
