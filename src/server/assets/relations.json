@@ -1,0 +1,18 @@
+{
+  "edge-routine": {},
+  "workerd": {},
+  "deno": {},
+  "lagon": {},
+  "react-native": {},
+  "netlify": {
+    "base": "deno"
+  },
+  "electron": {
+    "base": "node"
+  },
+  "node": {},
+  "bun": {},
+  "edge-light": {
+    "base": "workerd"
+  }
+}
