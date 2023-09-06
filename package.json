@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "@nuxt/devtools": "latest",
-    "nuxt": "^3.7.0"
+    "nuxt": "^3.7.1"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.1.1",
-    "@types/node": "^18.17.11",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@types/node": "^18.17.14",
     "eslint": "^8.48.0"
   },
-  "packageManager": "pnpm@8.7.0"
+  "packageManager": "pnpm@8.7.4"
 }
