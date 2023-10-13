@@ -1,0 +1,292 @@
+{
+  "fetch": {
+    "name": "Fetch",
+    "description": "Fetch description",
+    "apis": {
+      "fetch": {
+        "name": "fetch()",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/fetch",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "headers": {
+        "name": "Headers",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/Headers",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "request": {
+        "name": "Request",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/Request",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "response": {
+        "name": "Response",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/Response",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      }
+    }
+  },
+  "url": {
+    "name": "URL",
+    "description": "URL description",
+    "apis": {
+      "url": {
+        "name": "URL",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/URL",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": {
+            "partial": true
+          },
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "urlsearchparams": {
+        "name": "URLSearchParams",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": {
+            "partial": true
+          },
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "urlpattern": {
+        "name": "URLPattern",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/URLPattern",
+        "runtimes": {
+          "edge-routine": false,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": false,
+          "netlify": true,
+          "electron": false,
+          "node": false,
+          "bun": false,
+          "edge-light": true
+        }
+      }
+    }
+  },
+  "encoding": {
+    "name": "Encoding",
+    "description": "Encoding description",
+    "apis": {
+      "textencoder": {
+        "name": "TextEncoder",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "textdecoder": {
+        "name": "TextDecoder",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "textencoderstream": {
+        "name": "TextEncoderStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "textdecoderstream": {
+        "name": "TextDecoderStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      }
+    }
+  },
+  "streams": {
+    "name": "Streams",
+    "description": "Streams description",
+    "apis": {
+      "readablestream": {
+        "name": "ReadableStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "writablestream": {
+        "name": "WritableStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/WritableStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "transformstream": {
+        "name": "TransformStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/TransformStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      }
+    }
+  },
+  "compressionstreams": {
+    "name": "Compression Streams",
+    "description": "Compression Streams description",
+    "apis": {
+      "compressionstream": {
+        "name": "CompressionStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "decompressionstream": {
+        "name": "DecompressionStream",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream",
+        "runtimes": {
+          "edge-routine": true,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": true,
+          "netlify": true,
+          "electron": true,
+          "node": true,
+          "bun": true,
+          "edge-light": true
+        }
+      }
+    }
+  }
+}

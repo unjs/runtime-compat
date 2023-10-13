@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="flex flex-col items-center bg-slate-50 border border-slate-200 rounded-md px-4 py-3 gap-1 transition"
+    class="flex flex-col items-center bg-slate-50 border border-slate-200 rounded-md px-4 py-3 gap-1 transition min-w-[124px]"
     :class="{
       'opacity-40 hover:border-slate-300 hover:opacity-50': !selected,
     }"

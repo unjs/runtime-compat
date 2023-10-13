@@ -2,7 +2,7 @@
   "$source": "https://github.com/wintercg/runtime-keys/blob/main/index.bs",
   "edge-routine": {
     "description": "The JavaScript/Webassembly runtime that powers Alibaba Cloud edge-routine.",
-    "website": "https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/er-overview"
+    "testset": "https://www.alibabacloud.com/help/en/cdn/developer-reference/what-is-er"
   },
   "workerd": {
     "description": "The JavaScript / WebAssembly runtime that powers Cloudflare Workers.",

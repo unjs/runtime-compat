@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8 ml-24 mt-24">
+  <div class="flex flex-col gap-8 container mx-auto mt-24 pl-24">
     <div class="flex flex-col gap-2">
       <h2 class="text-6xl text-slate-950 cal-sans">
         Runtimes
@@ -9,14 +9,37 @@
         This list is based on the <ExternalLink href="https://runtime-keys.proposal.wintercg.org/">
           WinterCG Runtime Keys
         </ExternalLink> specification.
-        <button type="button" class="text-blue-600" @click="toggleSelection">
-          {{ noneRuntimesSelected() ? "Unselect" : "Select" }} all.
+        <button
+          type="button"
+          class="text-blue-600"
+          @click="toggleSelection"
+        >
+          {{ noneRuntimesSelected() ? "Select" : "Unselect" }} all.
         </button>
       </p>
     </div>
-    <div class="flex gap-6 overflow-x-scroll scrollbar-none">
-      <RuntimeCard v-for="runtime in runtimes" :key="runtime.name" :name="runtime.name" :website="runtime.website"
-        :repository="runtime.repository" :selected="selectedRuntimes.includes(runtime.name)" />
+    <div class="sticky top-0">
+      <div class="flex gap-6 overflow-x-scroll scrollbar-none bg-white pt-2">
+        <RuntimeCard
+          v-for="runtime in runtimes"
+          :key="runtime.name"
+          :name="runtime.name"
+          :website="runtime.website"
+          :repository="runtime.repository"
+          :selected="selectedRuntimes.includes(runtime.name)"
+        />
+      </div>
+      <div class="h-16 w-full bg-gradient-to-b from-white from-20% to-transparent" />
+    </div>
+    <div class="flex flex-col gap-16">
+      <APICategory
+        v-for="[name, data] in Object.entries(apis ?? {})"
+        :key="name"
+        :name="data.name"
+        :data="data.apis"
+      >
+        {{ data.description }}
+      </APICategory>
     </div>
   </div>
 </template>
@@ -44,4 +67,12 @@ function toggleSelection() {
     selectedRuntimes.value = []
   }
 }
+
+const apis = useState<object>('apis')
+
+await $fetch('/api/runtime-apis', {
+  onResponse: async ({ response }) => {
+    apis.value = response._data ?? {}
+  }
+})
 </script>
