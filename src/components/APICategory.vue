@@ -33,19 +33,19 @@
             v-if="value === true || (value && typeof value === 'object' && 'supported' in value && value.supported === true)"
             class="text-lime-600"
           >
-            <CheckIcon />
+            <IconCheck />
           </span>
           <span
             v-else-if="value === false || (value && typeof value === 'object' && 'unsupported' in value && value.unsupported === true)"
             class="text-orange-600"
           >
-            <CrossIcon />
+            <IconCross />
           </span>
           <span
             v-else-if="value && typeof value === 'object' && 'partial' in value && value.partial === true"
             class="text-orange-400"
           >
-            <WarningIcon />
+            <IconWarning />
           </span>
           <p
             v-if="value && typeof value === 'object' && 'since' in value"

@@ -31,7 +31,7 @@
         target="_blank"
         class="flex items-center gap-1 hover:text-slate-800"
       >
-        <GitHubIcon />
+        <IconGitHub />
       </a>
     </p>
   </button>
