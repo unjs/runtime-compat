@@ -1,7 +1,7 @@
 {
   "fetch": {
     "name": "Fetch",
-    "description": "Fetch description",
+    "description": "The Fetch API provides an interface for fetching resources. It is widely supported across runtimes.",
     "apis": {
       "fetch": {
         "name": "fetch()",
@@ -14,7 +14,10 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
           "bun": true,
           "edge-light": true
         }
@@ -30,7 +33,10 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
           "bun": true,
           "edge-light": true
         }
@@ -46,7 +52,10 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
           "bun": true,
           "edge-light": true
         }
@@ -62,16 +71,37 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
           "bun": true,
           "edge-light": true
+        },
+        "apis": {
+          "responsejson": {
+            "name": "Response.json()",
+            "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static",
+            "runtimes": {
+              "edge-routine": true,
+              "workerd": true,
+              "deno": true,
+              "lagon": true,
+              "react-native": true,
+              "netlify": true,
+              "electron": true,
+              "node": true,
+              "bun": true,
+              "edge-light": true
+            }
+          }
         }
       }
     }
   },
   "url": {
     "name": "URL",
-    "description": "URL description",
+    "description": "The URL API provides utilities for working with URLs, including a more recent URLPattern API.",
     "apis": {
       "url": {
         "name": "URL",
@@ -174,7 +204,10 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
           "bun": true,
           "edge-light": true
         }
@@ -190,7 +223,48 @@
           "react-native": true,
           "netlify": true,
           "electron": true,
-          "node": true,
+          "node": {
+            "supported": true,
+            "since": "v18.0.0"
+          },
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "atob": {
+        "name": "atob()",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/atob",
+        "runtimes": {
+          "edge-routine": false,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": false,
+          "netlify": true,
+          "electron": false,
+          "node": {
+            "supported": true,
+            "since": "v16.0.0"
+          },
+          "bun": true,
+          "edge-light": true
+        }
+      },
+      "btoa": {
+        "name": "btoa()",
+        "mdn": "https://developer.mozilla.org/en-US/docs/Web/API/btoa",
+        "runtimes": {
+          "edge-routine": false,
+          "workerd": true,
+          "deno": true,
+          "lagon": true,
+          "react-native": false,
+          "netlify": true,
+          "electron": false,
+          "node": {
+            "supported": true,
+            "since": "v16.0.0"
+          },
           "bun": true,
           "edge-light": true
         }

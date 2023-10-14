@@ -29,7 +29,7 @@
           :selected="selectedRuntimes.includes(runtime.name)"
         />
       </div>
-      <div class="h-16 w-full bg-gradient-to-b from-white from-20% to-transparent" />
+      <div class="h-16 w-full bg-gradient-to-b from-white to-transparent" />
     </div>
     <div class="flex flex-col gap-16">
       <APICategory

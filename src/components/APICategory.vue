@@ -15,7 +15,7 @@
         class="flex gap-6 p-1 bg-transparent rounded-lg hover:bg-slate-50 transition group"
       >
         <a
-          class="absolute transform translate-x-[-100%] -translate-y-1 text-sm text-slate-900 p-1 bg-slate-50 rounded-lg font-mono hover:underline"
+          class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono hover:underline"
           :href="api.mdn"
           target="_blank"
         >
@@ -26,20 +26,33 @@
           :key="runtime"
           class="border border-transparent min-w-[124px] flex gap-1 items-center justify-center transition"
           :class="{
-            'opacity-10': !selectedRuntimes.includes(runtime),
+            'opacity-20': !selectedRuntimes.includes(runtime),
           }"
         >
           <span
-            class="rounded-full w-4 h-4"
-            :class="{
-              'bg-lime-600': value === true,
-              'bg-orange-600': value === false,
-              'bg-orange-400': value && typeof value === 'object' && 'partial' in value && value.partial === true,
-            }"
-          />
-          <!-- <p class="text-sm text-slate-500 group-hover:text-slate-800 transition"> -->
-          <!--   Since 18.x -->
-          <!-- </p> -->
+            v-if="value === true || (value && typeof value === 'object' && 'supported' in value && value.supported === true)"
+            class="text-lime-600"
+          >
+            <CheckIcon />
+          </span>
+          <span
+            v-else-if="value === false || (value && typeof value === 'object' && 'unsupported' in value && value.unsupported === true)"
+            class="text-orange-600"
+          >
+            <CrossIcon />
+          </span>
+          <span
+            v-else-if="value && typeof value === 'object' && 'partial' in value && value.partial === true"
+            class="text-orange-400"
+          >
+            <WarningIcon />
+          </span>
+          <p
+            v-if="value && typeof value === 'object' && 'since' in value"
+            class="text-sm text-slate-500 group-hover:text-slate-800 transition"
+          >
+            Since {{ value.since }}
+          </p>
         </div>
       </li>
     </ul>
