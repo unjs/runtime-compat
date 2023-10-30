@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
-    "@types/node": "^18.18.7",
+    "@types/node": "^20.8.9",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.52.0",
     "postcss": "^8.4.31",
