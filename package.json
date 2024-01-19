@@ -14,12 +14,12 @@
   "dependencies": {
     "@nuxt/devtools": "latest",
     "cal-sans": "^1.0.1",
-    "nuxt": "^3.9.1"
+    "nuxt": "^3.9.3"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
-    "@types/node": "^20.11.0",
-    "autoprefixer": "^10.4.16",
+    "@types/node": "^20.11.5",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "postcss": "^8.4.33",
     "tailwind-scrollbar": "^3.0.5",
