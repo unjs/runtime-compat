@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-2 relative">
-    <div :id="name" class="relative -top-32" />
-    <a :href="'#' + name">
+    <div :id="name" class="relative -top-44" />
+    <a :href="`#${name}`">
       <h2
         class="text-xl font-mono text-slate-950 before:content-['#'] before:hidden before:absolute before:-left-4 hover:underline hover:before:block">
         {{ name }}
