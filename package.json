@@ -2,28 +2,14 @@
   "private": true,
   "repository": "unjs/runtime-compat",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs .",
-    "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "@nuxt/devtools": "latest",
-    "nuxt": "^3.10.3",
-    "runtime-compat-data": "^0.0.5"
+    "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
     "@types/node": "^20.11.24",
     "automd": "^0.3.6",
-    "autoprefixer": "^10.4.18",
-    "eslint": "^8.57.0",
-    "postcss": "^8.4.35",
-    "tailwind-scrollbar": "^3.1.0",
-    "tailwindcss": "^3.4.1"
+    "eslint": "^8.57.0"
   },
   "packageManager": "pnpm@8.15.4"
 }
