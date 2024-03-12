@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "@nuxt/eslint-config"
+  ],
+  "rules": {
+    "no-eval": "off"
+  }
+}
