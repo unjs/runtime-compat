@@ -1,78 +1,46 @@
 <template>
-  <div class="flex flex-col gap-8 container mx-auto mt-24 pl-24">
-    <div class="flex flex-col gap-2">
-      <h2 class="text-6xl text-slate-950 cal-sans">
-        Runtimes
+  <div class="flex flex-col gap-8 container mx-auto my-24 pl-48">
+    <div class="flex flex-col gap-4">
+      <h2 class="text-6xl text-slate-950">
+        Platforms compatibility
       </h2>
-      <p class="text-md text-slate-600 max-w-lg">
-        Select the runtimes you want to compare against each other.
-        This list is based on the <ExternalLink href="https://runtime-keys.proposal.wintercg.org/">
-          WinterCG Runtime Keys
-        </ExternalLink> specification.
-        <button
-          type="button"
-          class="text-blue-600"
-          @click="toggleSelection"
-        >
-          {{ noneRuntimesSelected() ? "Select" : "Unselect" }} all.
-        </button>
+      <p class="text-md text-slate-600 max-w-4xl">
+        Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
+          href="https://github.com/ascorbic/runtime-compat-data">
+          runtime-compat-data
+        </ExternalLink>, based on MDN's format.
+        Runtimes are displayed with their <ExternalLink href="https://runtime-keys.proposal.wintercg.org/">
+          WinterCG Runtime Key
+        </ExternalLink>.
       </p>
     </div>
-    <div class="sticky top-0">
-      <div class="flex gap-6 overflow-x-scroll scrollbar-none bg-white pt-2">
-        <RuntimeCard
-          v-for="runtime in runtimes"
-          :key="runtime.name"
-          :name="runtime.name"
-          :website="runtime.website"
-          :repository="runtime.repository"
-          :selected="selectedRuntimes.includes(runtime.name)"
-        />
+    <div class="sticky top-0 z-10 pointer-events-none">
+      <div class="flex gap-1 overflow-x-scroll scrollbar-none bg-white pt-2 pointer-events-auto">
+        <RuntimeCard v-for="runtime in runtimes" :key="runtime" :runtime="runtime"
+          :selected="selectedRuntimes.includes(runtime)" />
       </div>
       <div class="h-16 w-full bg-gradient-to-b from-white to-transparent" />
     </div>
-    <div class="flex flex-col gap-16">
-      <APICategory
-        v-for="[name, data] in Object.entries(apis ?? {})"
-        :key="name"
-        :name="data.name"
-        :data="data.apis"
-      >
-        {{ data.description }}
-      </APICategory>
+    <div class="flex flex-col gap-8">
+      <APIRow v-for="[name, data] in Object.entries(runtimeCompatData.api)" :key="name" :name="name" :data="data" />
     </div>
   </div>
+  <footer class="flex items-center gap-8 pb-16 justify-center">
+    <p class="text-md text-slate-600">
+      Powered by <ExternalLink href="https:/unjs.io">
+        UnJS
+      </ExternalLink>
+    </p>
+    <a href="https://github.com/unjs/platforms"
+      class="flex gap-2 text-md text-slate-600 hover:text-slate-900 items-center">
+      <IconGitHub /> GitHub
+    </a>
+  </footer>
 </template>
 
 <script setup lang="ts">
-import 'cal-sans'
-import type { Runtimes } from '~/types/runtime'
+import runtimeCompatData, { RuntimeName } from 'runtime-compat-data';
 
-const runtimes = useState<Runtimes>('runtimes')
-
-await $fetch('/api/runtime-keys', {
-  onResponse: async ({ response }) => {
-    runtimes.value = transformRuntimeKeys(response._data ?? {})
-  }
-})
-
-const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes.value.map(({ name }) => name))
-
-const noneRuntimesSelected = () => selectedRuntimes.value.length === 0
-
-function toggleSelection() {
-  if (noneRuntimesSelected()) {
-    selectedRuntimes.value = runtimes.value.map(({ name }) => name)
-  } else {
-    selectedRuntimes.value = []
-  }
-}
-
-const apis = useState<object>('apis')
-
-await $fetch('/api/runtime-apis', {
-  onResponse: async ({ response }) => {
-    apis.value = response._data ?? {}
-  }
-})
+const runtimes = Object.keys(runtimeCompatData.api.AbortController.__compat?.support ?? {}) as RuntimeName[]
+const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes)
 </script>
