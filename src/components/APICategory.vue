@@ -9,8 +9,14 @@
     </a>
     <ul class="flex flex-col gap-1 overflow-x-scroll scrollbar-none">
       <li v-for="[api, apiData] in Object.entries(data)" :key="api" class="flex gap-1">
-        <a class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono hover:underline"
+        <a class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono flex gap-1 items-center hover:underline"
           :href="apiData.mdn_url ?? apiData.__compat.mdn_url" target="_blank">
+          <span v-if="apiData.status?.experimental ?? apiData.__compat?.status?.experimental" class="text-blue-600">
+            <IconBlend />
+          </span>
+          <span v-if="apiData.status?.deprecated ?? apiData.__compat?.status?.deprecated" class="text-red-600">
+            <IconTrash />
+          </span>
           {{ api === "__compat" ? name : api }}
         </a>
         <div v-for="[runtime, value] in Object.entries(apiData.support ?? apiData.__compat.support) " :key="runtime"
