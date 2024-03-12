@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.10.3
     version: 3.10.3(@types/node@20.11.24)(eslint@8.57.0)(typescript@5.2.2)(vite@4.5.0)
   runtime-compat-data:
-    specifier: ^0.0.4
-    version: 0.0.4
+    specifier: ^0.0.5
+    version: 0.0.5
 
 devDependencies:
   '@nuxt/eslint-config':
@@ -7022,8 +7022,8 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
 
-  /runtime-compat-data@0.0.4:
-    resolution: {integrity: sha512-iOcboW9hxGYC99cPdQnnCQBXvTgFILLPdol3k7bvWJGqu9QxPje5BR7ftz8yGS7rtSG1iAAecI1yh/8j7F+Kxg==}
+  /runtime-compat-data@0.0.5:
+    resolution: {integrity: sha512-4LCLfV2dn+xT0SVbvIkuTHDCyjs7YuoBWCpCjQKEhDDGyuALlGaarIILpOW4hMcEICHBroEUc6RT6HsUrSqO+Q==}
     dev: false
 
   /safe-buffer@5.1.2:
