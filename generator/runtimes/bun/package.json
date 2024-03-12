@@ -1,0 +1,11 @@
+{
+  "name": "bun-runtime",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "bun run.ts > data.json",
+    "version": "bun -v"
+  },
+  "author": "",
+  "license": "MIT"
+}

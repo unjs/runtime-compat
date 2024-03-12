@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "website",
   "repository": "unjs/runtime-compat",
   "scripts": {
     "build": "nuxt build",
@@ -11,9 +12,10 @@
   "dependencies": {
     "@nuxt/devtools": "latest",
     "nuxt": "^3.10.3",
-    "runtime-compat-data": "^0.0.5"
+    "runtime-compat-data": "workspace:^"
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.2.0",
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.35",
     "tailwind-scrollbar": "^3.1.0",

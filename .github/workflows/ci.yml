@@ -18,4 +18,4 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm lint
-      - run: cd apps/website && pnpm build
+      - run: pnpm run --filter website build

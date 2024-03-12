@@ -15,7 +15,7 @@ jobs:
           node-version: "20"
           cache: "pnpm"
       - run: pnpm install
-      - run: cd apps/website && pnpm build --preset github_pages
+      - run: pnpm run --filter website build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

@@ -2,14 +2,22 @@
   "private": true,
   "repository": "unjs/runtime-compat",
   "scripts": {
+    "generate": "pnpm generate:build && pnpm generate:run && pnpm generate:process",
+    "generate:build": "pnpm run --filter \"*-runtime\" build",
+    "generate:process": "node scripts/process-test-results.mjs",
+    "generate:run": "pnpm run --filter \"*-runtime\" start",
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs .",
-    "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix"
+    "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix",
+    "release": "vitest run packages/runtime-compat-data/test && pnpm run --filter runtime-compat-data release",
+    "test": "vitest"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
+    "@mdn/browser-compat-data": "^5.5.14",
     "@types/node": "^20.11.24",
     "automd": "^0.3.6",
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "eslint-config-unjs": "^0.2.1",
+    "prettier": "^3.2.5"
   },
   "packageManager": "pnpm@8.15.4"
 }

@@ -1,0 +1,43 @@
+{
+  "name": "runtime-compat-data",
+  "version": "0.0.5",
+  "description": "JavaScript runtime compatibility data",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unjs/runtime-compat.git",
+    "directory": "packages/runtime-compat-data"
+  },
+  "homepage": "https://github.com/unjs/runtime-compat",
+  "main": "data.json",
+  "type": "commonjs",
+  "scripts": {
+    "release": "changelogen --release && npm publish && git push --follow-tags",
+    "build": "pnpm run -w generate"
+  },
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./require.d.ts",
+        "default": "./data.json"
+      },
+      "import": {
+        "types": "./import.d.mts",
+        "default": "./data.json"
+      }
+    },
+    "./forLegacyNode": {
+      "types": "./import.d.mts",
+      "default": "./legacynode.mjs"
+    }
+  },
+  "types": "require.d.ts",
+  "keywords": [
+    "wintercg",
+    "bcd"
+  ],
+  "author": "Matt Kane <m@mk.gg>",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "vitest": "^1.3.1"
+  }
+}

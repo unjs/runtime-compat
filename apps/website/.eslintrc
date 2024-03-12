@@ -1,6 +1,6 @@
 {
   "extends": [
-    "eslint-config-unjs"
+    "@nuxt/eslint-config"
   ],
   "rules": {
     "no-eval": "off"
