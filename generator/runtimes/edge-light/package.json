@@ -1,0 +1,34 @@
+{
+  "name": "edge-light-runtime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/run.mjs",
+  "scripts": {
+    "build": "unbuild",
+    "start": "node dist/run.mjs > data.json",
+    "version": "pnpm list --depth 0 edge-runtime | tail -n 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "unbuild": "^2.0.0",
+    "typescript": "^5.4.2"
+  },
+  "unbuild": {
+    "entries": [
+      "run.ts"
+    ],
+    "clean": true,
+    "rollup": {
+      "esbuild": {
+        "platform": "node",
+        "target": "esnext"
+      }
+    }
+  },
+  "dependencies": {
+    "edge-runtime": "^2.5.9"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "node-runtime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/run.mjs",
+  "scripts": {
+    "build": "unbuild",
+    "start": "node dist/run.mjs > data.json"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "unbuild": "^2.0.0",
+    "typescript": "^5.4.2"
+  },
+  "unbuild": {
+    "entries": [
+      "run.ts"
+    ],
+    "clean": true,
+    "rollup": {
+      "esbuild": {
+        "platform": "node",
+        "target": "esnext"
+      }
+    }
+  }
+}

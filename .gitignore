@@ -26,3 +26,6 @@ logs
 coverage
 .eslintcache
 .vscode
+
+# Local Netlify folder
+.netlify

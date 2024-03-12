@@ -1,0 +1,74 @@
+name: "Update Runtime Data"
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+  pull_request:
+permissions:
+  pull-requests: write
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: "pnpm"
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+      - name: Download Fastly CLI
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: fastly/cli
+          latest: true
+          fileName: fastly_*_linux_amd64.deb
+      - name: Install Fastly CLI
+        run: sudo dpkg -i fastly_*_linux_amd64.deb && fastly version
+      - run: pnpm install
+      - name: Get browser tests
+        uses: actions/checkout@v4
+        with:
+          repository: openwebdocs/mdn-bcd-collector
+          path: .bcd
+      - name: Generate runtime tests
+        run: |
+          npm install --ignore-scripts
+          npm run build
+        working-directory: .bcd
+      - name: Generate compat data
+        run: |
+          cp .bcd/tests.json vendor/tests.json
+          # Make diffs easier to read
+          pnpm prettier vendor/tests.json -w
+          pnpm generate
+          rm -rf .bcd
+          pnpm test
+      - name: Get runtime versions
+        id: get-versions
+        run: scripts/version.sh >> "$GITHUB_OUTPUT"
+      - name: Create Pull Request
+        # only run when on main branch
+        if: github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: |
+            generator/runtimes/*/data.json
+            packages/runtime-compat-data/data.json
+            vendor/tests.json
+          title: "fix: update runtime compat data"
+          commit-message: "fix: update runtime compat data"
+          body: |
+            Updates the runtime compat data.
+            Runtime versions: ${{ steps.get-versions.outputs.versions }}
+          base: main

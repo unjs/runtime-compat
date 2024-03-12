@@ -1,0 +1,10 @@
+{
+  "name": "deno-runtime",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "deno run --unstable-webgpu -A run.ts > data.json"
+  },
+  "author": "",
+  "license": "MIT"
+}
