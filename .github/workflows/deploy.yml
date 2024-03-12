@@ -15,11 +15,11 @@ jobs:
           node-version: "20"
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm build --preset github_pages
+      - run: cd apps/website && pnpm build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./.output/public
+          path: ./apps/website/.output/public
   deploy:
     needs: build
     permissions:
