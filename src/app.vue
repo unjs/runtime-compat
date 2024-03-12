@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8 container mx-auto my-24 pl-48">
+  <div class="flex flex-col gap-8 container mx-auto my-24 items-center">
     <div class="flex flex-col gap-4">
       <h2 class="text-6xl text-slate-950">
         Platforms compatibility
