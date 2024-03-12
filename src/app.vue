@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col container mx-auto mt-24 pl-48">
+  <div class="flex flex-col gap-8 container mx-auto mt-24 pl-48">
     <div class="flex flex-col gap-4">
       <h2 class="text-6xl text-slate-950">
         Platforms compatibility
       </h2>
-      <p class="text-md text-slate-600 max-w-3xl">
+      <p class="text-md text-slate-600 max-w-4xl">
         Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
           href="https://github.com/ascorbic/runtime-compat-data">
           runtime-compat-data
@@ -16,8 +16,8 @@
     </div>
     <div class="sticky top-0 z-10 pointer-events-none">
       <div class="flex gap-1 overflow-x-scroll scrollbar-none bg-white pt-2 pointer-events-auto">
-        <RuntimeCard v-for="runtime in runtimes" :key="runtime" :name="runtime" :website="runtime.website"
-          :repository="runtime.repository" :selected="selectedRuntimes.includes(runtime)" />
+        <RuntimeCard v-for="runtime in runtimes" :key="runtime" :runtime="runtime"
+          :selected="selectedRuntimes.includes(runtime)" />
       </div>
       <div class="h-16 w-full bg-gradient-to-b from-white to-transparent" />
     </div>
