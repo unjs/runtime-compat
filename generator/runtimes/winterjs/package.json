@@ -7,9 +7,9 @@
   },
   "scripts": {
     "build": "unbuild",
-    "start-server": "wasmer run wasmer/winterjs --net --mapdir dist:dist dist/handler.mjs",
-    "run": "curl -o data.json http://127.0.0.1:8080",
-    "start": "start-server-and-test start-server http://127.0.0.1:8080 run"
+    "start-server": "wasmer run wasmer/winterjs --net --env PORT=7070 --mapdir dist:dist dist/handler.mjs",
+    "run": "curl -o data.json http://127.0.0.1:7070",
+    "start": "start-server-and-test start-server http://127.0.0.1:7070 run"
   },
   "unbuild": {
     "entries": [
