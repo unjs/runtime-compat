@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@nuxt/devtools": "latest",
-    "cal-sans": "^1.0.1",
     "nuxt": "^3.10.3",
     "runtime-compat-data": "^0.0.4"
   },

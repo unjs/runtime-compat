@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col container mx-auto mt-24 pl-48">
     <div class="flex flex-col gap-4">
-      <h2 class="text-6xl text-slate-950 cal-sans">
+      <h2 class="text-6xl text-slate-950">
         Platforms compatibility
       </h2>
       <p class="text-md text-slate-600 max-w-3xl">
@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import 'cal-sans'
 import { CompatData, RuntimeName } from 'runtime-compat-data';
 
 const runtimes = useState<RuntimeName[]>('runtimes')

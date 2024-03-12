@@ -8,9 +8,6 @@ dependencies:
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.0-beta.1(nuxt@3.10.3)(vite@4.5.0)
-  cal-sans:
-    specifier: ^1.0.1
-    version: 1.0.1
   nuxt:
     specifier: ^3.10.3
     version: 3.10.3(@types/node@20.11.24)(eslint@8.57.0)(typescript@5.2.2)(vite@4.5.0)
@@ -3276,10 +3273,6 @@ packages:
       ssri: 10.0.5
       tar: 6.2.0
       unique-filename: 3.0.0
-    dev: false
-
-  /cal-sans@1.0.1:
-    resolution: {integrity: sha512-XwN3/7jez8WmFVcNnNqO2K9lh133KiIcURCyGFnSM+ZmNZ8zIcOTNfr3SpenLAkRceYsq+fQNX/PL4C1rIkEPQ==}
     dev: false
 
   /callsites@3.1.0:
