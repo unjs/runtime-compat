@@ -22,7 +22,7 @@
       <div class="h-16 w-full bg-gradient-to-b from-white to-transparent" />
     </div>
     <div class="flex flex-col gap-8">
-      <APICategory v-for="[name, data] in Object.entries(apis ?? {})" :key="name" :name="name" :data="data" />
+      <APIRow v-for="[name, data] in Object.entries(runtimeCompatData.api)" :key="name" :name="name" :data="data" />
     </div>
   </div>
   <footer class="flex items-center gap-8 pb-16 justify-center">
@@ -39,23 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { CompatData, RuntimeName } from 'runtime-compat-data';
+import runtimeCompatData, { RuntimeName } from 'runtime-compat-data';
 
-const runtimes = useState<RuntimeName[]>('runtimes')
-
-await $fetch('/api/runtime-keys', {
-  onResponse: async ({ response }) => {
-    runtimes.value = response._data
-  }
-})
-
-const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes.value)
-
-const apis = useState<CompatData['api']['__compat']>('apis')
-
-await $fetch('/api/compat-data', {
-  onResponse: async ({ response }) => {
-    apis.value = response._data.api
-  }
-})
+const runtimes = Object.keys(runtimeCompatData.api.AbortController.__compat?.support ?? {}) as RuntimeName[]
+const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes)
 </script>

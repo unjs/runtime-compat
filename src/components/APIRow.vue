@@ -41,6 +41,5 @@
 import { CompatData } from 'runtime-compat-data';
 
 const { name, data } = defineProps<{ name: string, data: CompatData['api'] }>()
-
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
 </script>
