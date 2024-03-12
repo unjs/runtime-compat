@@ -1,15 +1,13 @@
-# unjs/platforms
+# unjs/runtime-compat
 
 <!-- automd:badges color=yellow license -->
 
-[![license](https://flat.badgen.net/github/license/unjs/platforms?color=yellow)](https://github.com/unjs/platforms/blob/main/LICENSE)
+[![license](https://flat.badgen.net/github/license/unjs/runtime-compat?color=yellow)](https://github.com/unjs/runtime-compat/blob/main/LICENSE)
 
 <!-- /automd -->
 
 
-Platforms compatibility across JavaScript runtimes.
-
-APIs compatibility across different JavaScript runtimes. The data is retrieved from runtime-compat-data, based on MDN\'s format. Runtimes are displayed with their WinterCG Runtime Key.
+Display APIs compatibility across different JavaScript runtimes. The data is retrieved from [runtime-compat-data](https://github.com/unjs/runtime-compat-data), based on MDN's format. Runtimes are displayed with their [WinterCG Runtime Key](https://runtime-keys.proposal.wintercg.org).
 
 ## Local development
 
@@ -28,11 +26,11 @@ APIs compatibility across different JavaScript runtimes. The data is retrieved f
 
 <!-- automd:contributors license=MIT -->
 
-Published under the [MIT](https://github.com/unjs/platforms/blob/main/LICENSE) license.
-Made by [community](https://github.com/unjs/platforms/graphs/contributors) 💛
+Published under the [MIT](https://github.com/unjs/runtime-compat/blob/main/LICENSE) license.
+Made by [community](https://github.com/unjs/runtime-compat/graphs/contributors) 💛
 <br><br>
-<a href="https://github.com/unjs/platforms/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=unjs/platforms" />
+<a href="https://github.com/unjs/runtime-compat/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=unjs/runtime-compat" />
 </a>
 
 <!-- /automd -->
