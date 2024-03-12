@@ -1,24 +1,38 @@
 # unjs/platforms
 
-[![License][license-src]][license-href]
+<!-- automd:badges color=yellow license -->
 
-This is a website for tracking platform support for different JS runtimes.
+[![license](https://flat.badgen.net/github/license/unjs/platforms?color=yellow)](https://github.com/unjs/platforms/blob/main/LICENSE)
 
-## Development
+<!-- /automd -->
 
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run dev server using `pnpm dev`
+
+Platforms compatibility across JavaScript runtimes.
+
+APIs compatibility across different JavaScript runtimes. The data is retrieved from runtime-compat-data, based on MDN\'s format. Runtimes are displayed with their WinterCG Runtime Key.
+
+## Local development
+
+<details>
+  <summary>Local development</summary>
+
+  - Clone this repository
+  - Install latest LTS version of [Node.js](https://nodejs.org/en/)
+  - Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
+  - Install dependencies using `pnpm install`
+  - Run dev server using `pnpm dev`
+
+</details>
 
 ## License
 
-Made with 💛
+<!-- automd:contributors license=MIT -->
 
-Published under [MIT License](./LICENSE).
+Published under the [MIT](https://github.com/unjs/platforms/blob/main/LICENSE) license.
+Made by [community](https://github.com/unjs/platforms/graphs/contributors) 💛
+<br><br>
+<a href="https://github.com/unjs/platforms/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=unjs/platforms" />
+</a>
 
-<!-- Badges -->
-
-[license-src]: https://img.shields.io/github/license/unjs/platforms.svg?style=flat&colorA=18181B&colorB=F0DB4F
-[license-href]: https://github.com/unjs/platforms/blob/main/LICENSE
+<!-- /automd -->
