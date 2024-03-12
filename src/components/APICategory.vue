@@ -1,58 +1,30 @@
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-2">
-      <h2 class="text-4xl text-slate-950 cal-sans">
+  <div class="flex flex-col gap-2 relative">
+    <div :id="name" class="relative -top-32" />
+    <a :href="'#' + name">
+      <h2
+        class="text-xl font-mono text-slate-950 before:content-['#'] before:hidden before:absolute before:-left-4 hover:underline hover:before:block">
         {{ name }}
       </h2>
-      <p class="text-md text-slate-600 max-w-lg">
-        <slot />
-      </p>
-    </div>
-    <ul class="flex flex-col overflow-x-scroll scrollbar-none">
-      <li
-        v-for="[category, api] in Object.entries(data)"
-        :key="category"
-        class="flex gap-6 p-1 bg-transparent rounded-lg hover:bg-slate-50 transition group"
-      >
-        <a
-          class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono hover:underline"
-          :href="api.mdn"
-          target="_blank"
-        >
-          {{ api.name }}
+    </a>
+    <ul class="flex flex-col gap-1 overflow-x-scroll scrollbar-none">
+      <li v-for="[api, apiData] in Object.entries(data)" :key="api" class="flex gap-1">
+        <a class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono hover:underline"
+          :href="apiData.mdn_url ?? apiData.__compat.mdn_url" target="_blank">
+          {{ api === "__compat" ? name : api }}
         </a>
-        <div
-          v-for="[runtime, value] in Object.entries(api.runtimes)"
-          :key="runtime"
-          class="border border-transparent min-w-[124px] flex gap-1 items-center justify-center transition"
-          :class="{
-            'opacity-20': !selectedRuntimes.includes(runtime),
-          }"
-        >
-          <span
-            v-if="value === true || (value && typeof value === 'object' && 'supported' in value && value.supported === true)"
-            class="text-lime-600"
-          >
-            <IconCheck />
+        <div v-for="[runtime, value] in Object.entries(apiData.support ?? apiData.__compat.support) " :key="runtime"
+          class="min-w-[124px] flex items-center justify-center" :class="{
+            'opacity-10': !selectedRuntimes.includes(runtime),
+          }">
+          <span class="w-full h-6 flex items-center justify-center rounded" :class="{
+            'bg-lime-100 text-lime-600': value.version_added,
+            'bg-red-100 text-red-600': !value.version_added,
+          }">
+
+            <IconCheck v-if="value.version_added" class="h-4 w-4" />
+            <IconCross v-else class="w-4 h-4" />
           </span>
-          <span
-            v-else-if="value === false || (value && typeof value === 'object' && 'unsupported' in value && value.unsupported === true)"
-            class="text-orange-600"
-          >
-            <IconCross />
-          </span>
-          <span
-            v-else-if="value && typeof value === 'object' && 'partial' in value && value.partial === true"
-            class="text-orange-400"
-          >
-            <IconWarning />
-          </span>
-          <p
-            v-if="value && typeof value === 'object' && 'since' in value"
-            class="text-sm text-slate-500 group-hover:text-slate-800 transition"
-          >
-            Since {{ value.since }}
-          </p>
         </div>
       </li>
     </ul>
@@ -60,16 +32,9 @@
 </template>
 
 <script setup lang="ts">
-const { data } = defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  data: {
-    type: Object,
-    required: true,
-  }
-})
+import { CompatData } from 'runtime-compat-data';
+
+const { name, data } = defineProps<{ name: string, data: CompatData['api'] }>()
 
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
 </script>

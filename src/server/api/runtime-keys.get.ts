@@ -1,7 +1,5 @@
-export default defineEventHandler(async () => {
-  return (await useStorage('assets:server').getItem('keys.json')) as Record<string, {
-    description: string
-    website: string
-    repository: string
-  }>
+import data from "runtime-compat-data"
+
+export default defineEventHandler(() => {
+  return Object.keys(data.api.AbortController.__compat?.support ?? {})
 })
