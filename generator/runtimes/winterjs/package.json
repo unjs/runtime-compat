@@ -1,0 +1,26 @@
+{
+  "name": "winterjs-runtime",
+  "type": "module",
+  "dependencies": {
+    "unbuild": "^2.0.0",
+    "start-server-and-test": "^2.0.3"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "start-server": "wasmer run wasmer/winterjs --net --mapdir dist:dist dist/handler.mjs",
+    "run": "curl -o data.json http://127.0.0.1:8080",
+    "start": "start-server-and-test start-server http://127.0.0.1:8080 run"
+  },
+  "unbuild": {
+    "entries": [
+      "handler.ts"
+    ],
+    "clean": true,
+    "rollup": {
+      "esbuild": {
+        "platform": "neutral",
+        "target": "esnext"
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ export type RuntimeName =
   | "fastly"
   | "netlify"
   | "node"
+  | "winterjs"
   | "workerd";
 
 export type VersionValue = string | boolean | null;
