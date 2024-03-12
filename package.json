@@ -1,6 +1,6 @@
 {
   "private": true,
-  "repository": "unjs/platforms",
+  "repository": "unjs/runtime-compat",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

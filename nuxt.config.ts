@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Platforms compatibility across JavaScript runtimes',
+      title: 'Runtime compatibility across JavaScript runtimes',
       meta: [
         {
           name: 'description',
