@@ -6,6 +6,7 @@ export type RuntimeName =
   | "deno"
   | "edge-light"
   | "fastly"
+  | "llrt"
   | "netlify"
   | "node"
   | "wasmer"
