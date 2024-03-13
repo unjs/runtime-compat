@@ -1,0 +1,28 @@
+name: Deploy PR previews
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+concurrency: preview-${{ github.ref }}
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+      - name: Install and Build
+        if: github.event.action != 'closed'
+        run: |
+          pnpm install
+          pnpm run --filter website build --preset github_pages
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./apps/website/.output/public
