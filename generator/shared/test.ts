@@ -7,7 +7,15 @@ declare global {
   // eslint-disable-next-line no-var
   var bcd: {
     addTest: (ident: string, tests: any, exposure: string[]) => void;
-    go: (callback: (done: TestResult[]) => void) => void;
+    addInstance: (
+      resource: string,
+      code: string,
+      options?: { callback: boolean },
+    ) => void;
+    go: (
+      callback: (done: TestResult[]) => void,
+      resourceCount?: number,
+    ) => void;
   };
 }
 
@@ -23,11 +31,35 @@ export function runTests(
   setup(globalThis);
   // The incoming types are problematic
   const testCases = new Tests({ tests: tests as any, httpOnly: false });
+
+  const resourcesNeeded = new Set<string>();
+
   for (const test of testCases.getTests("javascript.builtins")) {
     globalThis.bcd.addTest(test.ident, test.tests, test.exposure);
   }
   for (const test of testCases.getTests("api", "Window", ignoreApis)) {
     globalThis.bcd.addTest(test.ident, test.tests, test.exposure);
+    for (const resource of test.resources) {
+      resourcesNeeded.add(resource);
+    }
   }
-  return new Promise((resolve) => globalThis.bcd.go(resolve));
+
+  for (const resource of resourcesNeeded) {
+    const instance = testCases.resources[resource];
+    if (instance.type === "instance") {
+      if (
+        instance.dependencies &&
+        !instance.dependencies.every((dep: string) => resourcesNeeded.has(dep))
+      ) {
+        console.log("missing dependencies", instance.dependencies);
+      }
+      globalThis.bcd.addInstance(resource, instance.src, {
+        callback: instance.callback,
+      });
+    }
+  }
+
+  return new Promise((resolve) =>
+    globalThis.bcd.go(resolve, resourcesNeeded.size),
+  );
 }

@@ -1230,25 +1230,7 @@ export default function (global) {
 
       // Load resources
       try {
-        // Load audio and video
-        var i;
-        var resourceMedia = document.querySelectorAll(
-          "#resources audio, #resources video",
-        );
-        for (i = 0; i < resourceMedia.length; i++) {
-          resourceMedia[i].load();
-          resourceMedia[i].onloadeddata = resourceLoaded;
-        }
-
-        // Load images
-        var resourceImages = document.querySelectorAll("#resources img");
-        for (i = 0; i < resourceImages.length; i++) {
-          if (resourceImages[i].complete) {
-            resourceLoaded();
-          } else {
-            resourceImages[i].onload = resourceLoaded;
-          }
-        }
+        // We don't load audio and video
 
         // Load resources
         var instanceKeys = Object.keys(reusableInstances);
