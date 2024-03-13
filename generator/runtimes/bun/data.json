@@ -6250,7 +6250,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRange\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatRangeToParts",
@@ -6258,7 +6258,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRangeToParts\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatToParts",
@@ -6364,7 +6364,7 @@
       "code": "\"Intl\" in self && \"PluralRules\" in Intl && \"selectRange\" in Intl.PluralRules.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.RelativeTimeFormat",
