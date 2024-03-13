@@ -44369,6 +44369,18 @@
     "code": "bcd.testCSSProperty(\"anchor-name\", \"none\")",
     "exposure": ["Window"]
   },
+  "css.properties.anchor-scope": {
+    "code": "bcd.testCSSProperty(\"anchor-scope\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.anchor-scope.none": {
+    "code": "bcd.testCSSProperty(\"anchor-scope\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.anchor-scope.all": {
+    "code": "bcd.testCSSProperty(\"anchor-scope\", \"all\")",
+    "exposure": ["Window"]
+  },
   "css.properties.animation": {
     "code": "bcd.testCSSProperty(\"animation\")",
     "exposure": ["Window"]
@@ -50539,18 +50551,6 @@
   },
   "css.properties.position.fixed": {
     "code": "bcd.testCSSProperty(\"position\", \"fixed\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.position-animation": {
-    "code": "bcd.testCSSProperty(\"position-animation\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.position-animation.normal": {
-    "code": "bcd.testCSSProperty(\"position-animation\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.position-animation.magic": {
-    "code": "bcd.testCSSProperty(\"position-animation\", \"magic\")",
     "exposure": ["Window"]
   },
   "css.properties.position-try": {
