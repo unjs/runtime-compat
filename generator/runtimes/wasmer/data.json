@@ -84373,6 +84373,326 @@
     "result": false
   },
   {
+    "name": "webassembly.api.CompileError",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"CompileError\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Exception",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Exception\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Exception.Exception",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Exception')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.Exception.getArg",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Exception\" in WebAssembly && \"getArg\" in WebAssembly.Exception.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Exception.is",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Exception\" in WebAssembly && \"is\" in WebAssembly.Exception.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Exception.stack",
+    "info": {
+      "code": "(function () {\n  if (!(\"WebAssembly\" in self && \"Exception\" in WebAssembly)) {\n    return { result: false, message: \"WebAssembly.Exception is not defined\" };\n  }\n  var instance = new WebAssembly.Exception(\n    new WebAssembly.Tag({ parameters: [\"i32\", \"i64\"] }),\n    [\"i32\", BigInt(64)],\n    { traceStack: true },\n  );\n  return !!instance && \"stack\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "WebAssembly.Exception is not defined"
+  },
+  {
+    "name": "webassembly.api.Global",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Global\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Global.Global",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Global')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.Global.value",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Global\" in WebAssembly && \"value\" in WebAssembly.Global.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Global.valueOf",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Global\" in WebAssembly && \"valueOf\" in WebAssembly.Global.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Instance",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Instance\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Instance.exports",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Instance\" in WebAssembly && \"exports\" in WebAssembly.Instance.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Instance.Instance",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Instance')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.LinkError",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"LinkError\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Memory",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Memory.buffer",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"buffer\" in WebAssembly.Memory.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Memory.grow",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"grow\" in WebAssembly.Memory.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Memory.Memory",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Memory')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.Module",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Module\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Module.customSections_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Module\" in WebAssembly && \"customSections\" in WebAssembly.Module",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Module.exports_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Module\" in WebAssembly && \"exports\" in WebAssembly.Module",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Module.imports_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Module\" in WebAssembly && \"imports\" in WebAssembly.Module",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Module.Module",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Module')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.RuntimeError",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"RuntimeError\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table.get",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly && \"get\" in WebAssembly.Table.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table.grow",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly && \"grow\" in WebAssembly.Table.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table.length",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly && \"length\" in WebAssembly.Table.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table.set",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly && \"set\" in WebAssembly.Table.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Table.Table",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Table')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.Tag",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Tag\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.Tag.Tag",
+    "info": {
+      "code": "bcd.testConstructor('WebAssembly.Tag')",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "threw ReferenceError: WebAssembly is not defined"
+  },
+  {
+    "name": "webassembly.api.Tag.type",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"Tag\" in WebAssembly && \"type\" in WebAssembly.Tag.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api",
+    "info": {
+      "code": "\"WebAssembly\" in self",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.compile_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"compile\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.compileStreaming_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"compileStreaming\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.instantiate_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"instantiate\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.instantiateStreaming_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"instantiateStreaming\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "webassembly.api.validate_static",
+    "info": {
+      "code": "\"WebAssembly\" in self && \"validate\" in WebAssembly",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
     "name": "api.CryptoKey",
     "info": {
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
