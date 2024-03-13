@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-2 relative">
-    <div :id="name" class="relative -top-44" />
+    <div :id="name" class="relative -top-48" />
     <a :href="`#${name}`">
       <h2
         class="text-xl font-mono text-slate-950 before:content-['#'] before:hidden before:absolute before:-left-4 hover:underline hover:before:block">
@@ -17,10 +17,11 @@
           <span v-if="apiData.status?.deprecated ?? apiData.__compat?.status?.deprecated" class="text-red-600">
             <IconTrash />
           </span>
-          <span v-html="api === '__compat' ? `<code>${name}</code>` : apiData.__compat?.description ?? `<code>${api}</code>`" />
+          <span
+            v-html="api === '__compat' ? `<code>${name}</code>` : apiData.__compat?.description ?? `<code>${api}</code>`" />
         </a>
         <div v-for="[runtime, value] in Object.entries(apiData.support ?? apiData.__compat.support) " :key="runtime"
-          class="min-w-[124px] flex items-center justify-center" :class="{
+          class="w-[124px] flex items-center justify-center" :class="{
             'opacity-10': !selectedRuntimes.includes(runtime),
           }">
           <span class="w-full h-6 flex items-center justify-center rounded" :class="{
@@ -38,8 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CompatData } from 'runtime-compat-data';
+import type { CompatStatement, Identifier } from 'runtime-compat-data';
 
-const { name, data } = defineProps<{ name: string, data: CompatData['api'] }>()
+const { name, data } = defineProps<{ name: string, data: Identifier | CompatStatement }>()
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
 </script>
