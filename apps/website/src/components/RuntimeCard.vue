@@ -8,6 +8,9 @@
     <p class="text-md text-slate-900 whitespace-nowrap mt-4">
       {{ runtimeInformation.name }}
     </p>
+    <p v-if="coverage" class="text-xs text-slate-500">
+      {{ coverage }}% coverage
+    </p>
     <p class="text-sm text-slate-500 transition flex gap-2" @click.stop>
       <a v-if="runtimeInformation.github" :href="runtimeInformation.github" target="_blank"
         class="flex items-center gap-1 hover:text-slate-800">
@@ -22,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-const { runtime } = defineProps<{ runtime: string, selected: boolean }>()
+const { runtime } = defineProps<{ runtime: string, selected: boolean, coverage?: number }>()
 
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
 

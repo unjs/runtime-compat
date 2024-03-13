@@ -33,7 +33,6 @@ const helloWorld :Workerd.Worker = (
   compatibilityDate = "2023-02-28",
   compatibilityFlags = ["nodejs_compat", "experimental"],
   bindings = [
-    (name = "unsafe", unsafeEval = void ),
-    (name = "DEBUG", fromEnvironment = "DEBUG")
+    (name = "unsafe", unsafeEval = void )
   ]
 );

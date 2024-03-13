@@ -18,9 +18,6 @@
       "handler.ts"
     ],
     "clean": true,
-    "externals": [
-      "fastly:env"
-    ],
     "rollup": {
       "esbuild": {
         "platform": "neutral",

@@ -19,8 +19,7 @@ export interface TestConfig {
 export function runTests(
   tests: TestConfig,
   ignoreApis?: Array<string>,
-  debug = false
-): Promise<Array<string>> {
+): Promise<Array<TestResult>> {
   setup(globalThis);
   // The incoming types are problematic
   const testCases = new Tests({ tests: tests as any, httpOnly: false });
@@ -30,17 +29,5 @@ export function runTests(
   for (const test of testCases.getTests("api", "Window", ignoreApis)) {
     globalThis.bcd.addTest(test.ident, test.tests, test.exposure);
   }
-  return new Promise((resolve) =>
-    globalThis.bcd.go((done) => {
-      const passing: Array<string> = [];
-      for (const { result, name, message } of done) {
-        if (result) {
-          passing.push(name);
-        } else if (debug && message) {
-          console.error(`${name} failed: ${message}`);
-        }
-      }
-      resolve(passing);
-    })
-  );
+  return new Promise((resolve) => globalThis.bcd.go(resolve));
 }
