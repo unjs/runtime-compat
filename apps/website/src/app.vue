@@ -6,8 +6,8 @@
       </h2>
       <p class="text-md text-slate-600 max-w-4xl">
         Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
-          href="https://github.com/unjs/runtime-compat-data">
-          runtime-compat-data
+          href="https://github.com/unjs/runtime-compat/">
+          unjs/runtime-compat
         </ExternalLink>, based on MDN's format.
         Runtimes are displayed with their <ExternalLink href="https://runtime-keys.proposal.wintercg.org">
           WinterCG Runtime Key
@@ -15,9 +15,8 @@
       </p>
       <label class="flex items-center gap-2">
         <input type="checkbox" class="rounded" v-model="winterCGOnly" />
-        <span class="text-md text-slate-600">Filter by WinterCG APIs ({{ computedData.winterCGCount }}/{{
-          computedData.totalCount
-        }})</span>
+        <span class="text-md text-slate-600">
+          Filter by WinterCG APIs ({{ computedData.winterCGCount }}/{{ computedData.totalCount }})</span>
       </label>
     </div>
     <div class="sticky top-0 z-10 pointer-events-none">
