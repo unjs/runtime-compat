@@ -1,5 +1,6 @@
 {
   "name": "edge-light-runtime",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "dist/run.mjs",

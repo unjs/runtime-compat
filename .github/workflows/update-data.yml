@@ -35,6 +35,17 @@ jobs:
           fileName: fastly_*_linux_amd64.deb
       - name: Install Fastly CLI
         run: sudo dpkg -i fastly_*_linux_amd64.deb && fastly version
+      - name: Download LLRT
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: awslabs/llrt
+          latest: true
+          fileName: llrt-linux-x64.zip 
+          out-file-path: downloads
+          extract: true
+      - name: Setup $PATH
+        run: |
+          echo "$GITHUB_WORKSPACE/downloads" >> $GITHUB_PATH
       - run: pnpm install
       - name: Get browser tests
         uses: actions/checkout@v4

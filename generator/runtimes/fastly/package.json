@@ -1,5 +1,6 @@
 {
   "name": "fastly-runtime",
+  "private": true,
   "type": "module",
   "dependencies": {
     "@fastly/js-compute": "^3.9.1",
