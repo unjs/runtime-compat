@@ -4,6 +4,20 @@ import data from "@mdn/browser-compat-data" assert { type: "json" };
 import { deepCreate, get } from "./traverse-utils.mjs";
 const runtimeDir = new URL("../generator/runtimes", import.meta.url);
 
+/**
+ * @param {Array<import("../vendor/types").TestResult>} results
+ * @returns {Array<string>}
+ */
+function getSupportedApis(results) {
+  const passes = [];
+  for (const test of results) {
+    if (test.result) {
+      passes.push(test.name);
+    }
+  }
+  return passes;
+}
+
 const keys = await readdir(runtimeDir);
 /** @type {Record<string, Set<string>>} */
 const support = {};
@@ -11,7 +25,7 @@ for (const key of keys) {
   const data = await import(`../generator/runtimes/${key}/data.json`, {
     assert: { type: "json" },
   });
-  support[key] = new Set(data.default);
+  support[key] = new Set(getSupportedApis(data.default));
 }
 const union = new Set(
   Object.values(support)
