@@ -1,4 +1,5 @@
 /* eslint-disable yield-star-spacing */
+import { readdir } from "node:fs/promises";
 import { expect, it, describe } from "vitest";
 import data from ".." assert { type: "json" };
 
@@ -28,20 +29,17 @@ const skipKeys = new Set([
 ]);
 
 describe("runtime-compat-data", () => {
-  it("generates valid data", () => {
+  it("generates valid data", async () => {
+    const keys = await readdir(
+      new URL("../../../generator/runtimes", import.meta.url),
+    );
+
     for (const [path, value] of walk(data)) {
       const key = path.join(".");
       if (path.at(-1) === "__compat") {
-        expect(Object.keys(value.support ?? {}), `${key}.support`).toEqual([
-          "bun",
-          "deno",
-          "edge-light",
-          "fastly",
-          "netlify",
-          "node",
-          "wasmer",
-          "workerd",
-        ]);
+        expect(Object.keys(value.support ?? {}), `${key}.support`).toEqual(
+          keys,
+        );
       } else if (!skipKeys.has(key)) {
         expect("__compat" in value, key).toBeTruthy();
       }

@@ -1,12 +1,12 @@
 {
-  "name": "node-runtime",
+  "name": "llrt-runtime",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "dist/run.mjs",
   "scripts": {
     "build": "unbuild",
-    "start": "node dist/run.mjs > data.json"
+    "start": "llrt dist/run.mjs > data.json"
   },
   "type": "module",
   "keywords": [],
