@@ -16051,51 +16051,6 @@
     "result": true
   },
   {
-    "name": "api.CryptoKey",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.algorithm",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"algorithm\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.extractable",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"extractable\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.type",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"type\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.usages",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
     "name": "api.CSPViolationReportBody",
     "info": {
       "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
@@ -16972,7 +16927,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSConditionRule.conditionText",
@@ -16981,7 +16936,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSContainerRule",
@@ -17014,7 +16969,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.additiveSymbols",
@@ -17023,7 +16978,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.fallback",
@@ -17032,7 +16987,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.name",
@@ -17041,7 +16996,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.negative",
@@ -17050,7 +17005,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.pad",
@@ -17059,7 +17014,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.prefix",
@@ -17068,7 +17023,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.range",
@@ -17077,7 +17032,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.speakAs",
@@ -17086,7 +17041,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.suffix",
@@ -17095,7 +17050,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.symbols",
@@ -17104,7 +17059,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSCounterStyleRule.system",
@@ -17113,7 +17068,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFaceRule",
@@ -17122,7 +17077,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFaceRule.style",
@@ -17131,7 +17086,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesMap",
@@ -17236,7 +17191,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.annotation",
@@ -17245,7 +17200,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.characterVariant",
@@ -17254,7 +17209,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.fontFamily",
@@ -17263,7 +17218,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.historicalForms",
@@ -17272,7 +17227,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.ornaments",
@@ -17281,7 +17236,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.styleset",
@@ -17290,7 +17245,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.stylistic",
@@ -17299,7 +17254,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontFeatureValuesRule.swash",
@@ -17308,7 +17263,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSFontPaletteValuesRule",
@@ -17357,7 +17312,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSGroupingRule.cssRules",
@@ -17366,7 +17321,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSGroupingRule.deleteRule",
@@ -17375,7 +17330,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSGroupingRule.insertRule",
@@ -17384,7 +17339,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSHSL",
@@ -17499,7 +17454,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSImportRule.href",
@@ -17508,7 +17463,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSImportRule.layerName",
@@ -17517,7 +17472,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSImportRule.media",
@@ -17526,7 +17481,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSImportRule.styleSheet",
@@ -17535,7 +17490,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSImportRule.supportsText",
@@ -17544,7 +17499,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframeRule",
@@ -17553,7 +17508,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframeRule.keyText",
@@ -17562,7 +17517,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframeRule.style",
@@ -17571,7 +17526,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule",
@@ -17580,7 +17535,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.appendRule",
@@ -17589,7 +17544,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.cssRules",
@@ -17598,7 +17553,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.deleteRule",
@@ -17607,7 +17562,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.findRule",
@@ -17616,7 +17571,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.length",
@@ -17625,7 +17580,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeyframesRule.name",
@@ -17634,7 +17589,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSKeywordValue",
@@ -18054,7 +18009,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSMediaRule.media",
@@ -18063,7 +18018,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSNamespaceRule",
@@ -18072,7 +18027,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSNamespaceRule.namespaceURI",
@@ -18081,7 +18036,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSNamespaceRule.prefix",
@@ -18090,7 +18045,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSNumericArray",
@@ -18349,7 +18304,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSPageRule.selectorText",
@@ -18358,7 +18313,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSPageRule.style",
@@ -18367,7 +18322,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSParserAtRule",
@@ -18969,7 +18924,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRule.cssText",
@@ -18978,7 +18933,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRule.parentRule",
@@ -18987,7 +18942,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRule.parentStyleSheet",
@@ -18996,7 +18951,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRule.type",
@@ -19005,7 +18960,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRuleList",
@@ -19014,7 +18969,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRuleList.item",
@@ -19023,7 +18978,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSRuleList.length",
@@ -19032,7 +18987,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSScale",
@@ -19341,7 +19296,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.cssRules",
@@ -19350,7 +19305,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.deleteRule",
@@ -19359,7 +19314,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.insertRule",
@@ -19368,7 +19323,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.selectorText",
@@ -19377,7 +19332,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.style",
@@ -19386,7 +19341,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleRule.styleMap",
@@ -19395,7 +19350,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet",
@@ -19404,7 +19359,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.addRule",
@@ -19413,7 +19368,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.cssRules",
@@ -19422,7 +19377,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.CSSStyleSheet",
@@ -19440,7 +19395,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.insertRule",
@@ -19449,7 +19404,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.insertRule.index_parameter_optional",
@@ -19458,7 +19413,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.ownerRule",
@@ -19467,7 +19422,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.removeRule",
@@ -19476,7 +19431,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.replace",
@@ -19485,7 +19440,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.replaceSync",
@@ -19494,7 +19449,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleSheet.rules",
@@ -19503,7 +19458,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSStyleValue",
@@ -19544,7 +19499,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.CSSTransformComponent",
@@ -42123,7 +42078,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.appendMedium",
@@ -42132,7 +42087,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.deleteMedium",
@@ -42141,7 +42096,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.item",
@@ -42150,7 +42105,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.length",
@@ -42159,7 +42114,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.mediaText",
@@ -42168,7 +42123,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.MediaList.toString",
@@ -62193,7 +62148,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.disabled",
@@ -62202,7 +62157,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.href",
@@ -62211,7 +62166,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.media",
@@ -62220,7 +62175,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.ownerNode",
@@ -62229,7 +62184,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.parentStyleSheet",
@@ -62238,7 +62193,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.title",
@@ -62247,7 +62202,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheet.type",
@@ -62256,7 +62211,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw TypeError: reusableInstances.createStyleSheet is not a function"
+    "message": "threw ReferenceError: document is not defined"
   },
   {
     "name": "api.StyleSheetList",
@@ -81844,6 +81799,46 @@
       "exposure": "Window"
     },
     "result": false
+  },
+  {
+    "name": "api.CryptoKey",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.algorithm",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"algorithm\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.extractable",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"extractable\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.type",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"type\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.usages",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
   },
   {
     "name": "api.WritableStreamDefaultController",
