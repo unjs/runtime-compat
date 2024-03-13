@@ -7,7 +7,7 @@
       </h2>
       <p class="text-md text-slate-600 md:max-w-[80%]">
         Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
-          href="https://github.com/unjs/runtime-compat-data">
+          href="https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data">
           runtime-compat-data
         </ExternalLink>, based on MDN's format.
         Runtimes are displayed with their <ExternalLink href="https://runtime-keys.proposal.wintercg.org">
