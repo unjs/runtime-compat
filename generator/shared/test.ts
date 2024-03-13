@@ -34,10 +34,13 @@ export function runTests(
 
   const resourcesNeeded = new Set<string>();
 
-  for (const test of testCases.getTests("javascript.builtins")) {
-    globalThis.bcd.addTest(test.ident, test.tests, test.exposure);
-  }
-  for (const test of testCases.getTests("api", "Window", ignoreApis)) {
+  const allTests = [
+    ...testCases.getTests("javascript.builtins"),
+    ...testCases.getTests("api", "Window", ignoreApis),
+    ...testCases.getTests("webassembly", "Window"),
+  ];
+
+  for (const test of allTests) {
     globalThis.bcd.addTest(test.ident, test.tests, test.exposure);
     for (const resource of test.resources) {
       resourcesNeeded.add(resource);

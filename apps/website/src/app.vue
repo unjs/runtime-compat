@@ -66,8 +66,7 @@ const computedData = computed(() => {
   const winterCGCoverage: Record<string, number> = Object.fromEntries(runtimes.map(runtime => [runtime, 0]))
   let winterCGCount = 0;
   let totalCount = 0;
-
-  for (const [api, apiData] of Object.entries(runtimeCompatData.api)) {
+  for (const [api, apiData] of Object.entries({ ...runtimeCompatData.api, WebAssembly: runtimeCompatData.webassembly.api })) {
     const isWinterCGApi = winterCGAPIs.includes(api)
 
     if (!winterCGOnly.value || isWinterCGApi) {

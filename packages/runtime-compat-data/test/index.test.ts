@@ -19,6 +19,7 @@ function* walk(obj: any, path: string[] = []): Generator<[string[], any]> {
 const skipKeys = new Set([
   "api",
   "javascript",
+  "webassembly",
   "javascript.builtins",
   "api.ReadableStream",
   "api.WebSocket",

@@ -142,4 +142,7 @@ export interface CompatData {
    * Contains data for [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) built-in Objects, statement, operators, and other ECMAScript language features.
    */
   javascript: Identifier;
+
+  webassembly: Identifier;
+
 }

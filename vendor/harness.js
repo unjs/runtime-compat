@@ -853,7 +853,6 @@ export default function (global) {
       if (completedTests == tests.length) {
         callback(results);
       } else if (completedTests > tests.length) {
-        console.log({ completedTests, len: tests.length });
         consoleWarn(
           "Warning! More tests were completed than there should have been; did a test run twice?",
         );
