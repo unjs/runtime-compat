@@ -26,6 +26,7 @@ The tests can be run locally, but the actual data generation process is run nigh
 - Install latest LTS version of [Node.js](https://nodejs.org/en/)
 - Install [Bun](https://bun.sh/)
 - Install [Fastly CLI](https://www.fastly.com/documentation/reference/tools/cli/)
+- Install [Wasmer](https://wasmer.io/)
 - Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
 - Install dependencies using `pnpm install`
 - Generate the data using `pnpm run generate`

@@ -102,6 +102,15 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.4.2)
 
+  generator/runtimes/wasmer:
+    dependencies:
+      start-server-and-test:
+        specifier: ^2.0.3
+        version: 2.0.3
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.4.2)
+
   generator/runtimes/workerd:
     devDependencies:
       '@cloudflare/workers-types':

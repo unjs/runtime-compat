@@ -16,7 +16,7 @@ for (const key of keys) {
 const union = new Set(
   Object.values(support)
     .flatMap((set) => [...set])
-    .sort()
+    .sort(),
 );
 
 const compat = {};
@@ -33,13 +33,25 @@ for (const feature of union) {
           {
             version_added: support[key].has(feature),
           },
-        ])
+        ]),
       ),
     };
   }
 }
 
+const runtimeTypes = keys.map((key) => `  | "${key}"`).join("\n");
+
+await writeFile(
+  new URL("../packages/runtime-compat-data/runtimes.d.ts", import.meta.url),
+  /* ts */ `/**
+ * The WinterCG runtime key
+ */
+export type RuntimeName =
+${runtimeTypes};
+`,
+);
+
 await writeFile(
   new URL("../packages/runtime-compat-data/data.json", import.meta.url),
-  JSON.stringify(compat)
+  JSON.stringify(compat),
 );
