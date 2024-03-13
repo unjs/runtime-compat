@@ -56,6 +56,8 @@ function getRuntimeInformation(name: string): RuntimeInformation {
       return { name: 'Node.js', github: 'https://github.com/nodejs/node', website: 'https://nodejs.org' }
     case 'edge-light':
       return { name: 'edge-light', github: 'https://github.com/vercel/edge-runtime', website: 'https://vercel.com/docs/functions/runtimes/edge-runtime' };
+    case 'wasmer':
+      return { name: 'wasmer', github: 'https://github.com/wasmerio/winterjs', website: 'https://wasmer.io' };
     case 'workerd':
       return { name: 'workerd', github: 'https://github.com/cloudflare/workerd', website: 'https://developers.cloudflare.com/workers' }
     default:
