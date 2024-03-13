@@ -84,6 +84,15 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.4.2)
 
+  generator/runtimes/llrt:
+    devDependencies:
+      typescript:
+        specifier: ^5.4.2
+        version: 5.4.2
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.4.2)
+
   generator/runtimes/netlify:
     devDependencies:
       netlify-cli:
