@@ -4,5 +4,5 @@ import tests from "../../../vendor/tests.json" assert { type: "json" };
 const runtime = new EdgeRuntime();
 globalThis.eval = runtime.evaluate.bind(runtime);
 
-const data = await runTests(tests, undefined, Boolean(process.env.DEBUG));
+const data = await runTests(tests);
 console.log(JSON.stringify(data, undefined, 2));

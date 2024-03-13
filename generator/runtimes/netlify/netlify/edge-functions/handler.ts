@@ -5,11 +5,7 @@ export default async function handler(request: Request) {
   if (request.method === "HEAD") {
     return new Response(undefined, { status: 200 });
   }
-  const data = await runTests(
-    tests,
-    [...gpu, ...storage, ...alerts],
-    Boolean(Netlify.env.get("DEBUG"))
-  );
+  const data = await runTests(tests, [...gpu, ...storage, ...alerts]);
   return new Response(JSON.stringify(data, undefined, 2));
 }
 
