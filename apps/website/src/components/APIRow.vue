@@ -9,7 +9,7 @@
     </a>
     <ul class="flex flex-col gap-1 overflow-x-scroll scrollbar-none">
       <li v-for="[api, apiData] in Object.entries(data)" :key="api" class="flex gap-1">
-        <a class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition font-mono flex gap-1 items-center hover:underline"
+        <a class="absolute transform translate-x-[calc(-100%-20px)] text-sm text-slate-600 group-hover:text-slate-900 transition flex gap-1 items-center hover:underline"
           :href="apiData.mdn_url ?? apiData.__compat.mdn_url" target="_blank">
           <span v-if="apiData.status?.experimental ?? apiData.__compat?.status?.experimental" class="text-blue-600">
             <IconBlend />
@@ -17,7 +17,7 @@
           <span v-if="apiData.status?.deprecated ?? apiData.__compat?.status?.deprecated" class="text-red-600">
             <IconTrash />
           </span>
-          {{ api === "__compat" ? name : api }}
+          <span v-html="api === '__compat' ? `<code>${name}</code>` : apiData.__compat?.description ?? `<code>${api}</code>`" />
         </a>
         <div v-for="[runtime, value] in Object.entries(apiData.support ?? apiData.__compat.support) " :key="runtime"
           class="min-w-[124px] flex items-center justify-center" :class="{
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { CompatData } from 'runtime-compat-data';
+import type { CompatData } from 'runtime-compat-data';
 
 const { name, data } = defineProps<{ name: string, data: CompatData['api'] }>()
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
