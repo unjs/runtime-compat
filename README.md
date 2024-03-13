@@ -6,7 +6,10 @@
 
 <!-- /automd -->
 
-Display APIs compatibility across different JavaScript runtimes. The data is automatically generated, based on MDN [`browser-compat-data`](https://github.com/mdn/browser-compat-data) format using the runtime tests from [`mdn-bcd-collector`](https://github.com/openwebdocs/mdn-bcd-collector). Runtimes are displayed with their [WinterCG Runtime Key](https://runtime-keys.proposal.wintercg.org).
+Display APIs compatibility across different JavaScript runtimes. The data is automatically generated, based on MDN [`browser-compat-data`](https://github.com/mdn/browser-compat-data) format using the runtime tests from [`mdn-bcd-collector`](https://github.com/openwebdocs/mdn-bcd-collector).
+
+> [!WARNING]
+> The current data is not 100% accurate and is auto generated. Please [open an issue](https://github.com/unjs/runtime-compat/issues) if you have spotted any inconsistencies.
 
 ## About the data
 

@@ -10,15 +10,17 @@
           href="https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data">
           runtime-compat-data
         </ExternalLink>, based on MDN's format.
-        Runtimes are displayed with their <ExternalLink href="https://runtime-keys.proposal.wintercg.org">
-          WinterCG Runtime Key
-        </ExternalLink>.
+      </p>
+      <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+        <strong>Note:</strong> The current data is not 100% accurate and is auto generated.
+        Please <ExternalLink href="https://github.com/unjs/runtime-compat/issues">open an issue</ExternalLink> if you
+        have spotted any inconsistencies.
       </p>
       <label class="flex items-center gap-2">
         <input type="checkbox" class="rounded" v-model="winterCGOnly" />
         <span class="text-md text-slate-600">Filter by WinterCG APIs ({{ computedData.winterCGCount }}/{{
-          computedData.totalCount
-        }})</span>
+        computedData.totalCount
+      }})</span>
       </label>
     </div>
     <div class="sticky top-0 z-10 pointer-events-none max-w-full">
@@ -50,6 +52,7 @@
 <script setup lang="ts">
 import runtimeCompatData, { type CompatStatement, type Identifier, type RuntimeName } from 'runtime-compat-data';
 import { changeScroll } from './lib'
+import ExternalLink from './components/ExternalLink.vue';
 
 const runtimes = Object.keys(runtimeCompatData.api.AbortController.__compat?.support ?? {}) as RuntimeName[]
 const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes)
