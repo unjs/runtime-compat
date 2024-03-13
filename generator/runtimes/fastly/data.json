@@ -84766,7 +84766,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoie\u0002"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.locked",

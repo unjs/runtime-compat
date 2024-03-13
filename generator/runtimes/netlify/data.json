@@ -82180,7 +82180,8 @@
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: Timed out"
   },
   {
     "name": "api.CryptoKey.algorithm",
@@ -82188,7 +82189,8 @@
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"algorithm\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: Timed out"
   },
   {
     "name": "api.CryptoKey.extractable",
@@ -82196,7 +82198,8 @@
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"extractable\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: Timed out"
   },
   {
     "name": "api.CryptoKey.type",
@@ -82204,7 +82207,8 @@
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"type\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: Timed out"
   },
   {
     "name": "api.CryptoKey.usages",
@@ -82212,6 +82216,7 @@
       "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: Timed out"
   }
 ]
