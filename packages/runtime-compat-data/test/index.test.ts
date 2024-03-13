@@ -39,7 +39,7 @@ describe("runtime-compat-data", () => {
           "fastly",
           "netlify",
           "node",
-          "winterjs",
+          "wasmer",
           "workerd",
         ]);
       } else if (!skipKeys.has(key)) {

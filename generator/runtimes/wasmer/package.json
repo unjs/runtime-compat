@@ -1,5 +1,5 @@
 {
-  "name": "winterjs-runtime",
+  "name": "wasmer-runtime",
   "type": "module",
   "dependencies": {
     "unbuild": "^2.0.0",

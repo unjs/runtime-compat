@@ -22,7 +22,7 @@ Currently this tracks the following JavaScript runtimes (shown with their [Winte
 - Fastly [JS Compute Runtime](https://github.com/fastly/js-compute-runtime) (`fastly`)
 - Netlify [Edge Functions](https://docs.netlify.com/edge-functions/overview/) (`netlify`)
 - [Node.js](https://nodejs.org/) (`node`)
-- Wasmer [WinterJS]https://github.com/wasmerio/winterjs) (`winterjs`)
+- Wasmer [WinterJS]https://github.com/wasmerio/winterjs) (`wasmer`)
 - Cloudflare [workerd](https://github.com/cloudflare/workerd) (`workerd`)
 
 ## Usage

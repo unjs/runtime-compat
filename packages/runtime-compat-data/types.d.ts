@@ -1,15 +1,4 @@
-/**
- * The WinterCG runtime key
- */
-export type RuntimeName =
-  | "bun"
-  | "deno"
-  | "edge-light"
-  | "fastly"
-  | "netlify"
-  | "node"
-  | "winterjs"
-  | "workerd";
+export { RuntimeName } from "./runtimes";
 
 export type VersionValue = string | boolean | null;
 export type Identifier = { [key: string]: Identifier } & {
