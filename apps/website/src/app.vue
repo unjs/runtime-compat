@@ -1,10 +1,11 @@
 <template>
-  <div class="flex flex-col gap-8 container mx-auto my-24 items-center">
-    <div class="flex flex-col gap-4" :style="`width: ${runtimes.length * 124 + ((runtimes.length - 1) * 4)}px`">
-      <h2 class="text-6xl text-slate-950">
+  <div class="flex flex-col gap-8 container mx-auto my-24 items-center px-4">
+    <div class="flex flex-col gap-4 max-w-full"
+      :style="`width: ${runtimes.length * 124 + ((runtimes.length - 1) * 4)}px`">
+      <h2 class="text-6xl text-slate-900">
         Runtime compatibility
       </h2>
-      <p class="text-md text-slate-600 max-w-4xl">
+      <p class="text-md text-slate-600 md:max-w-[80%]">
         Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
           href="https://github.com/unjs/runtime-compat-data">
           runtime-compat-data
@@ -20,15 +21,16 @@
         }})</span>
       </label>
     </div>
-    <div class="sticky top-0 z-10 pointer-events-none">
-      <div class="flex gap-1 overflow-x-scroll scrollbar-none bg-white pt-2 pointer-events-auto">
+    <div class="sticky top-0 z-10 pointer-events-none max-w-full">
+      <div class="flex gap-1 overflow-x-scroll scrollbar-none bg-white pt-2 pointer-events-auto linked-scroll"
+        @scroll="changeScroll">
         <RuntimeCard v-for="runtime in runtimes" :key="runtime" :runtime="runtime"
           :selected="selectedRuntimes.includes(runtime)"
           :coverage="winterCGOnly ? Math.round(computedData.winterCGCoverage[runtime] / computedData.winterCGCount * 100) : undefined" />
       </div>
       <div class="h-16 w-full bg-gradient-to-b from-white to-transparent" />
     </div>
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-8 max-w-full">
       <APIRow v-for="[name, data] in Object.entries(computedData.data)" :key="name" :name="name" :data="data" />
     </div>
   </div>
@@ -47,6 +49,7 @@
 
 <script setup lang="ts">
 import runtimeCompatData, { type CompatStatement, type Identifier, type RuntimeName } from 'runtime-compat-data';
+import { changeScroll } from './lib'
 
 const runtimes = Object.keys(runtimeCompatData.api.AbortController.__compat?.support ?? {}) as RuntimeName[]
 const selectedRuntimes = useState<string[]>('selectedRuntimes', () => runtimes)
