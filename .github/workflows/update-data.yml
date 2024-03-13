@@ -42,10 +42,15 @@ jobs:
           latest: true
           fileName: llrt-linux-x64.zip 
           out-file-path: downloads
-          extract: true
-      - name: Setup $PATH
+          # Manually unzip because this seems to corrupt the binary
+          extract: false
+
+      - name: Setup LLRT
         run: |
-          echo "$GITHUB_WORKSPACE/downloads" >> $GITHUB_PATH
+          export DOWNLOADS="$GITHUB_WORKSPACE/downloads"
+          unzip $DOWNLOADS/llrt-linux-x64.zip -d $DOWNLOADS
+          sudo chmod +x $DOWNLOADS/*
+          echo "$DOWNLOADS" >> $GITHUB_PATH
       - run: pnpm install
       - name: Get browser tests
         uses: actions/checkout@v4

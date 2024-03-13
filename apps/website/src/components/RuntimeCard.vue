@@ -48,6 +48,8 @@ function getRuntimeInformation(name: string): RuntimeInformation {
       return { name: 'Deno', github: 'https://github.com/denoland/deno', website: 'https://deno.com' };
     case 'fastly':
       return { name: 'fastly', github: 'https://github.com/fastly/js-compute-runtime', website: 'https://www.fastly.com/products/compute' };
+    case 'llrt':
+      return { name: 'LLRT', github: 'https://github.com/awslabs/llrt' };
     case 'netlify':
       return { name: 'netlify', website: 'https://docs.netlify.com/edge-functions/overview' };
     case 'node':
