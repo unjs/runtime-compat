@@ -44,23 +44,27 @@ interface RuntimeInformation {
 }
 
 function getRuntimeInformation(name: string): RuntimeInformation {
+  // Name "serverless" runtimes standardly as "<company> Edge" regardless of
+  // official product name (instead of "... JS Compute", "... Edge Functions", etc)
+  // to reduce length and simplify names.
+
   switch (name) {
     case 'bun':
       return { name: 'Bun', github: 'https://github.com/oven-sh/bun', website: 'https://bun.sh' };
     case 'deno':
       return { name: 'Deno', github: 'https://github.com/denoland/deno', website: 'https://deno.com' };
     case 'fastly':
-      return { name: 'fastly', github: 'https://github.com/fastly/js-compute-runtime', website: 'https://www.fastly.com/products/compute' };
+      return { name: 'Fastly Edge', github: 'https://github.com/fastly/js-compute-runtime', website: 'https://www.fastly.com/products/compute' };
     case 'llrt':
       return { name: 'LLRT', github: 'https://github.com/awslabs/llrt' };
     case 'netlify':
-      return { name: 'netlify', website: 'https://docs.netlify.com/edge-functions/overview' };
+      return { name: 'Netlify Edge', website: 'https://docs.netlify.com/edge-functions/overview' };
     case 'node':
       return { name: 'Node.js', github: 'https://github.com/nodejs/node', website: 'https://nodejs.org' }
     case 'edge-light':
-      return { name: 'edge-light', github: 'https://github.com/vercel/edge-runtime', website: 'https://vercel.com/docs/functions/runtimes/edge-runtime' };
+      return { name: 'Vercel Edge', github: 'https://github.com/vercel/edge-runtime', website: 'https://vercel.com/docs/functions/runtimes/edge-runtime' };
     case 'wasmer':
-      return { name: 'wasmer', github: 'https://github.com/wasmerio/winterjs', website: 'https://wasmer.io' };
+      return { name: 'WinterJS', github: 'https://github.com/wasmerio/winterjs', website: 'https://wasmer.io' };
     case 'workerd':
       return { name: 'workerd', github: 'https://github.com/cloudflare/workerd', website: 'https://developers.cloudflare.com/workers' }
     default:
