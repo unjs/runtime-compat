@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8 container mx-auto my-24 items-center px-4">
+  <div class="flex flex-col gap-8 container max-w-[60vw] mx-auto my-24 items-center px-4">
     <div class="flex flex-col gap-4 max-w-full"
       :style="`width: ${runtimes.length * 124 + ((runtimes.length - 1) * 4)}px`">
       <h2 class="text-6xl text-slate-900">
@@ -19,8 +19,8 @@
       <label class="flex items-center gap-2">
         <input type="checkbox" class="rounded" v-model="winterCGOnly" />
         <span class="text-md text-slate-600">Filter by WinterCG APIs ({{ computedData.winterCGCount }}/{{
-        computedData.totalCount
-      }})</span>
+          computedData.totalCount
+        }})</span>
       </label>
     </div>
     <div class="sticky top-0 z-10 pointer-events-none max-w-full">
