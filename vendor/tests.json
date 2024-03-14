@@ -15292,6 +15292,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLElement.writingSuggestions": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLEmbedElement": {
     "code": "(function () {\n  var instance = document.createElement(\"embed\");\n  return bcd.testObjectName(instance, \"HTMLEmbedElement\");\n})();\n",
     "exposure": ["Window"]
@@ -22213,10 +22217,6 @@
   },
   "api.Navigator.getInstalledRelatedApps": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.Navigator.getUserMedia": {
-    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Navigator.getVRDisplays": {
