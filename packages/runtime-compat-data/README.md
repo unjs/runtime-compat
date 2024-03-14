@@ -88,7 +88,7 @@ const { default: data } = await import(
 
 ## Data format
 
-The data follows the same format as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data), but only includes the `javascript`. `webassembly` and `api` keys. Instead of the browser keys in MDN's data, this project uses the runtime keys from the [WinterCG runtime key proposal](https://runtime-keys.proposal.wintercg.org/) where available. The data doesn't currently track versions where the feature was added, and just includes a boolean for whether the feature is supported in the current runtime.
+The data follows the same format as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data), but only includes the `javascript`, `webassembly` and `api` keys. Instead of the browser keys in MDN's data, this project uses the runtime keys from the [WinterCG runtime key proposal](https://runtime-keys.proposal.wintercg.org/) where available. The data doesn't currently track versions where the feature was added, and just includes a boolean for whether the feature is supported in the current runtime.
 
 Example data:
 
