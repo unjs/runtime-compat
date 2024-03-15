@@ -52,6 +52,8 @@ jobs:
           unzip $DOWNLOADS/llrt-linux-x64.zip -d $DOWNLOADS
           sudo chmod +x $DOWNLOADS/*
           echo "$DOWNLOADS" >> $GITHUB_PATH
+      - name: Install WinterJS
+        run: cargo install --git https://github.com/wasmerio/winterjs winterjs
       - run: pnpm install
       - name: Get browser tests
         uses: actions/checkout@v4
