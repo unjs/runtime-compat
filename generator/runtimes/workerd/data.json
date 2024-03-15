@@ -34613,15 +34613,6 @@
     "message": "threw ReferenceError: document is not defined"
   },
   {
-    "name": "api.HTMLElement.writingSuggestions",
-    "info": {
-      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
-  },
-  {
     "name": "api.HTMLEmbedElement",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"embed\");\n  return bcd.testObjectName(instance, \"HTMLEmbedElement\");\n})();\n",
@@ -48327,6 +48318,14 @@
     "result": false
   },
   {
+    "name": "api.Navigator.getUserMedia",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
     "name": "api.Navigator.getVRDisplays",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getVRDisplays\" in instance;\n})();\n",
@@ -55614,7 +55613,7 @@
   {
     "name": "api.Request",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55622,7 +55621,7 @@
   {
     "name": "api.Request.arrayBuffer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55630,7 +55629,7 @@
   {
     "name": "api.Request.blob",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"blob\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"blob\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55638,7 +55637,7 @@
   {
     "name": "api.Request.body",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"body\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"body\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55646,7 +55645,7 @@
   {
     "name": "api.Request.bodyUsed",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55654,7 +55653,7 @@
   {
     "name": "api.Request.cache",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"cache\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55662,7 +55661,7 @@
   {
     "name": "api.Request.cache.only-if-cached",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  instance = new Request(\"/favicon/favicon.ico\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  instance = new Request(\"http://example.com/favicon/favicon.ico\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -55671,7 +55670,7 @@
   {
     "name": "api.Request.clone",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"clone\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"clone\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55679,7 +55678,7 @@
   {
     "name": "api.Request.credentials",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55687,7 +55686,7 @@
   {
     "name": "api.Request.credentials.default_same-origin",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return instance.credentials === \"same-origin\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return instance.credentials === \"same-origin\";\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55695,7 +55694,7 @@
   {
     "name": "api.Request.destination",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"destination\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"destination\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55703,7 +55702,7 @@
   {
     "name": "api.Request.duplex",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55711,7 +55710,7 @@
   {
     "name": "api.Request.formData",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"formData\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"formData\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55719,7 +55718,7 @@
   {
     "name": "api.Request.headers",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"headers\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"headers\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55727,7 +55726,7 @@
   {
     "name": "api.Request.integrity",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55735,7 +55734,7 @@
   {
     "name": "api.Request.isHistoryNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55743,7 +55742,7 @@
   {
     "name": "api.Request.isReloadNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55751,7 +55750,7 @@
   {
     "name": "api.Request.json",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"json\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"json\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55759,7 +55758,7 @@
   {
     "name": "api.Request.keepalive",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55767,7 +55766,7 @@
   {
     "name": "api.Request.method",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"method\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"method\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55775,7 +55774,7 @@
   {
     "name": "api.Request.mode",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"mode\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"mode\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55783,7 +55782,7 @@
   {
     "name": "api.Request.redirect",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55791,7 +55790,7 @@
   {
     "name": "api.Request.referrer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55799,7 +55798,7 @@
   {
     "name": "api.Request.referrerPolicy",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55816,7 +55815,7 @@
   {
     "name": "api.Request.Request.init_priority_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  function construct(options) {\n    new Request(\"\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55824,7 +55823,7 @@
   {
     "name": "api.Request.Request.init_referrer_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  function construct(options) {\n    new Request(\"\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -55833,7 +55832,7 @@
   {
     "name": "api.Request.signal",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"signal\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"signal\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55841,7 +55840,7 @@
   {
     "name": "api.Request.targetAddressSpace",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -55849,7 +55848,7 @@
   {
     "name": "api.Request.text",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"text\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"text\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -55857,7 +55856,7 @@
   {
     "name": "api.Request.url",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"url\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"url\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -72157,11 +72156,10 @@
   {
     "name": "api.URL",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return \"URL\" in self;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return \"URL\" in self;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.canParse_static",
@@ -72182,83 +72180,74 @@
   {
     "name": "api.URL.hash",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.host",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.hostname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.href",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.origin",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.password",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.pathname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.port",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.protocol",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.revokeObjectURL_static",
@@ -72271,20 +72260,18 @@
   {
     "name": "api.URL.search",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.searchParams",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.toJSON",
@@ -72314,11 +72301,10 @@
   {
     "name": "api.URL.username",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URLPattern",

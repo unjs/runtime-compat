@@ -1,0 +1,53 @@
+From 82ad7bc04f3d9aabbc4f7beb83c8ed28dac34cfe Mon Sep 17 00:00:00 2001
+From: ascorbic <ascorbic@gmail.com>
+Date: Fri, 15 Mar 2024 21:28:35 +0000
+Subject: [PATCH] Allow URL tests to run in non-browser runtimes
+
+---
+ custom/tests.yaml | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/custom/tests.yaml b/custom/tests.yaml
+index 947cbd6c..31ac9ee0 100644
+--- a/custom/tests.yaml
++++ b/custom/tests.yaml
+@@ -4005,23 +4005,23 @@ api:
+       if (!('Request' in self)) {
+         return {result: false, message: 'Request is not defined'};
+       }
+-      var instance = new Request('');
++      var instance = new Request('http://example.com');
+     Request:
+       __additional:
+         init_priority_parameter: |-
+           function construct(options) {
+-            new Request('', options);
++            new Request('http://example.com', options);
+           }
+           return bcd.testOptionParam(construct, null, 'priority', 'auto');
+         init_referrer_parameter: |-
+           function construct(options) {
+-            new Request('', options);
++            new Request('http://example.com', options);
+           }
+           return bcd.testOptionParam(construct, null, 'referrer', 'no-referrer');
+     cache:
+       __additional:
+         only-if-cached: |-
+-          instance = new Request('/favicon/favicon.ico', {mode: "same-origin", cache: "only-if-cached"});
++          instance = new Request('http://example.com/favicon/favicon.ico', {mode: "same-origin", cache: "only-if-cached"});
+           return instance.cache === "only-if-cached";
+     credentials:
+       __additional:
+@@ -5284,9 +5284,9 @@ api:
+     __base: |-
+       var instance;
+       try {
+-        instance = new URL(location.href)
++        instance = new URL('http://example.com')
+       } catch(e) {
+-        instance = new webkitURL(location.href)
++        instance = new webkitURL('http://example.com')
+       };
+     __test: return 'URL' in self;
+   URLPattern:
