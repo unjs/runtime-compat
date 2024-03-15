@@ -1949,7 +1949,7 @@
       "code": "\"String\" in self && \"isWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.String.lastIndexOf",
@@ -2117,7 +2117,7 @@
       "code": "\"String\" in self && \"toWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.String.trim",
@@ -2438,7 +2438,7 @@
       "code": "(function () {\n  if (!(\"RegExp\" in self)) {\n    return { result: false, message: \"RegExp is not defined\" };\n  }\n  var instance = new RegExp(\"foo\", \"g\");\n  return !!instance && \"unicodeSets\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.RegExp.exec",
@@ -2839,7 +2839,7 @@
       "code": "\"Array\" in self && \"toReversed\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Array.toSorted",
@@ -2847,7 +2847,7 @@
       "code": "\"Array\" in self && \"toSorted\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Array.toSpliced",
@@ -2855,7 +2855,7 @@
       "code": "\"Array\" in self && \"toSpliced\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Array.toString",
@@ -2887,7 +2887,7 @@
       "code": "\"Array\" in self && \"with\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Array.@@iterator",
@@ -3232,7 +3232,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toReversed\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.TypedArray.toSorted",
@@ -3240,7 +3240,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toSorted\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.TypedArray.toString",
@@ -3264,7 +3264,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"with\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.TypedArray.@@iterator",
@@ -4216,7 +4216,7 @@
       "code": "\"ArrayBuffer\" in self && \"maxByteLength\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resizable",
@@ -4224,7 +4224,7 @@
       "code": "\"ArrayBuffer\" in self && \"resizable\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resize",
@@ -4232,7 +4232,7 @@
       "code": "\"ArrayBuffer\" in self && \"resize\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.ArrayBuffer.slice",
@@ -4313,7 +4313,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"growable\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.maxByteLength",
@@ -4321,7 +4321,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"maxByteLength\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.grow",
@@ -4329,7 +4329,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"grow\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.slice",
@@ -6208,7 +6208,8 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { signDisplay: \"negative\" });\n  var options = instance.resolvedOptions();\n  return options.signDisplay === \"negative\";\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": null,
+    "message": "threw Error: RangeError: Value negative out of range for Intl.NumberFormat options property signDisplay"
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_style_parameter",
@@ -6261,7 +6262,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { useGrouping: \"always\" });\n  var options = instance.resolvedOptions();\n  return options.useGrouping === \"always\";\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.supportedLocalesOf",
@@ -6285,7 +6286,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRange\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatRangeToParts",
@@ -6293,7 +6294,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRangeToParts\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatToParts",
@@ -6403,7 +6404,7 @@
       "code": "\"Intl\" in self && \"PluralRules\" in Intl && \"selectRange\" in Intl.PluralRules.prototype",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "javascript.builtins.Intl.RelativeTimeFormat",
@@ -26894,7 +26895,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new Event(\"type\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"Event\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"initEvent\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "api.Event.isTrusted",
@@ -34791,15 +34792,6 @@
     "name": "api.HTMLElement.virtualKeyboardPolicy",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw Error: ReferenceError: document is not defined"
-  },
-  {
-    "name": "api.HTMLElement.writingSuggestions",
-    "info": {
-      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48573,6 +48565,15 @@
     "message": "threw Error: ReferenceError: navigator is not defined"
   },
   {
+    "name": "api.Navigator.getUserMedia",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: navigator is not defined"
+  },
+  {
     "name": "api.Navigator.getVRDisplays",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getVRDisplays\" in instance;\n})();\n",
@@ -52344,7 +52345,7 @@
       "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"onresourcetimingbufferfull\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "api.Performance.setResourceTimingBufferSize",
@@ -55530,7 +55531,7 @@
       "code": "\"ReadableStream\" in self && \"from\" in ReadableStream",
       "exposure": "Window"
     },
-    "result": true
+    "result": false
   },
   {
     "name": "api.ReadableStream.ReadableStream",
@@ -55899,218 +55900,194 @@
   {
     "name": "api.Request",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.arrayBuffer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.blob",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"blob\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"blob\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.body",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"body\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"body\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.bodyUsed",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.cache",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"cache\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.cache.only-if-cached",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  instance = new Request(\"/favicon/favicon.ico\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  instance = new Request(\"http://example.com/favicon/favicon.ico\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.clone",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"clone\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"clone\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.credentials",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.credentials.default_same-origin",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return instance.credentials === \"same-origin\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return instance.credentials === \"same-origin\";\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.destination",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"destination\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"destination\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.duplex",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.formData",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"formData\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"formData\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.headers",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"headers\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"headers\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.integrity",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.isHistoryNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.isReloadNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.json",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"json\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"json\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.keepalive",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.method",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"method\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"method\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.mode",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"mode\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"mode\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.redirect",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.referrer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.referrerPolicy",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.Request",
@@ -56124,56 +56101,52 @@
   {
     "name": "api.Request.Request.init_priority_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  function construct(options) {\n    new Request(\"\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "message": "threw Error: ReferenceError: bcd is not defined"
   },
   {
     "name": "api.Request.Request.init_referrer_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  function construct(options) {\n    new Request(\"\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "message": "threw Error: ReferenceError: bcd is not defined"
   },
   {
     "name": "api.Request.signal",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"signal\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"signal\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.targetAddressSpace",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": false
   },
   {
     "name": "api.Request.text",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"text\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"text\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.Request.url",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"\");\n  return !!instance && \"url\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"url\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: TypeError: Failed to parse URL from "
+    "result": true
   },
   {
     "name": "api.ResizeObserver",
@@ -72546,11 +72519,10 @@
   {
     "name": "api.URL",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return \"URL\" in self;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return \"URL\" in self;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.canParse_static",
@@ -72571,83 +72543,74 @@
   {
     "name": "api.URL.hash",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.host",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.hostname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.href",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.origin",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.password",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.pathname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.port",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.protocol",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.revokeObjectURL_static",
@@ -72660,20 +72623,18 @@
   {
     "name": "api.URL.search",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.searchParams",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URL.toJSON",
@@ -72703,11 +72664,10 @@
   {
     "name": "api.URL.username",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(location.href);\n  } catch (e) {\n    instance = new webkitURL(location.href);\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: ReferenceError: webkitURL is not defined"
+    "result": true
   },
   {
     "name": "api.URLPattern",
