@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8 container max-w-[60vw] mx-auto my-24 items-center px-4">
+  <div class="flex flex-col gap-8 container md:max-w-[60vw] mx-auto my-24 items-center px-4">
     <div class="flex flex-col gap-4 max-w-full"
       :style="`width: ${runtimes.length * 124 + ((runtimes.length - 1) * 4)}px`">
       <h2 class="text-6xl text-slate-900">
