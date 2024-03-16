@@ -65,6 +65,7 @@ jobs:
           npm run build
         working-directory: .bcd
       - name: Generate compat data
+        timeout-minutes: 10
         run: |
           cp .bcd/tests.json vendor/tests.json
           # Make diffs easier to read
