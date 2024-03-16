@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "Display APIs compatibility across different JavaScript runtimes. The data is retrieved from runtime-compat-data, based on MDN's format. Runtimes are displayed with their WinterCG Runtime Key.",
+            "Display APIs compatibility across different JavaScript runtimes. The data is retrieved from runtime-compat-data, based on MDN's format.",
         },
       ],
     },
