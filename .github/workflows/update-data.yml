@@ -60,7 +60,6 @@ jobs:
           path: .bcd
       - name: Generate runtime tests
         run: |
-          git apply ../vendor/*.patch
           npm install --ignore-scripts
           npm run build
         working-directory: .bcd
