@@ -30,7 +30,7 @@ const helloWorld :Workerd.Worker = (
   modules = [
     (name = "worker", esModule = embed "dist/handler.mjs")
   ],
-  compatibilityDate = "2023-02-28",
+  compatibilityDate = "2024-03-01",
   compatibilityFlags = ["nodejs_compat", "experimental"],
   bindings = [
     (name = "unsafe", unsafeEval = void )
