@@ -25714,15 +25714,6 @@
     "message": "threw ReferenceError: document is not defined"
   },
   {
-    "name": "api.Element.requestFullscreen.options_navigationUI_parameter",
-    "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"requestFullscreen\",\n    \"navigationUI\",\n    false,\n  );\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
-  },
-  {
     "name": "api.Element.requestFullscreen.returns_promise",
     "info": {
       "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.requestFullscreen)) {\n    return {\n      result: false,\n      message: \"instance.requestFullscreen is not defined\",\n    };\n  }\n  var value = instance.requestFullscreen();\n  return \"then\" in value;\n})();\n",
@@ -32331,6 +32322,14 @@
     "result": true
   },
   {
+    "name": "api.Headers.lexicographical_sorting",
+    "info": {
+      "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
     "name": "api.HID",
     "info": {
       "code": "\"HID\" in self",
@@ -34784,6 +34783,15 @@
     "name": "api.HTMLElement.virtualKeyboardPolicy",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: document is not defined"
+  },
+  {
+    "name": "api.HTMLElement.writingSuggestions",
+    "info": {
+      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48375,6 +48383,24 @@
     "message": "threw ReferenceError: navigator is not defined"
   },
   {
+    "name": "api.Navigator.canShare.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.canShare.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
     "name": "api.Navigator.clearAppBadge",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"clearAppBadge\" in instance;\n})();\n",
@@ -48522,15 +48548,6 @@
     "name": "api.Navigator.getInstalledRelatedApps",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: navigator is not defined"
-  },
-  {
-    "name": "api.Navigator.getUserMedia",
-    "info": {
-      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48909,6 +48926,24 @@
     "name": "api.Navigator.share",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"share\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -64759,6 +64794,15 @@
     "result": false
   },
   {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw TypeError: instance.generateKey is not a function"
+  },
+  {
     "name": "api.SubtleCrypto.digest",
     "info": {
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"digest\" in instance;\n})();\n",
@@ -74463,6 +74507,14 @@
     "name": "api.ViewTransition.skipTransition",
     "info": {
       "code": "\"ViewTransition\" in self && \"skipTransition\" in ViewTransition.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "api.ViewTransition.typeList",
+    "info": {
+      "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
       "exposure": "Window"
     },
     "result": false
@@ -84739,7 +84791,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoÊ|"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoõ=. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.@@asyncIterator",
@@ -84748,7 +84800,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico.sh"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico?. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.cancel",
@@ -84757,7 +84809,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico®?. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.getReader",
@@ -84766,7 +84818,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoetu"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.locked",
@@ -84775,7 +84827,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icourn"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.pipeThrough",
@@ -84784,7 +84836,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoalu"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.pipeTo",
@@ -84793,7 +84845,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico\u0018\u001c"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.tee",
@@ -84802,7 +84854,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico\n  "
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStream.values",
@@ -84811,7 +84863,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icounc"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.Response.Response.accept_readablestream",
@@ -84820,7 +84872,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico\u0010. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico¬1. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStreamDefaultReader",
@@ -84829,7 +84881,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoame"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStreamDefaultReader.cancel",
@@ -84838,7 +84890,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icontl"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStreamDefaultReader.closed",
@@ -84847,7 +84899,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icocom"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStreamDefaultReader.read",
@@ -84856,7 +84908,7 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icostr. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   },
   {
     "name": "api.ReadableStreamDefaultReader.releaseLock",
@@ -84865,6 +84917,6 @@
       "exposure": "Window"
     },
     "result": null,
-    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.icoerF"
+    "message": "threw Error: No backend specified for request with url http://127.0.0.1:7676/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
   }
 ]

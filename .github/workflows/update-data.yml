@@ -22,6 +22,7 @@ jobs:
           node-version: lts/*
           cache: "pnpm"
       - uses: wasmerio/setup-wasmer@v3.1
+      - run: wasmer run wasmer/winterjs -- -V
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
