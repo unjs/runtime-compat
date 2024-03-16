@@ -10,7 +10,9 @@
 <!-- [![bundle][bundle-src]][bundle-href] -->
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
-This project provides machine-readable data on support for Web APIs and JavaScript features across non-browser JavaScript runtimes. The data format is the same as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data/), and it uses the runtime tests from [`mdn-bcd-collector`](https://github.com/openwebdocs/mdn-bcd-collector/). It includes most runtimes that are members of the [WinterCG](https://wintercg.org/) project, and can be used to track the goal of improving web-interoperability across different runtimes.
+This project provides machine-readable, auto-generated data on support for Web APIs and JavaScript features across non-browser JavaScript runtimes.
+
+The data powers https://runtime-compat.unjs.io/ and is published in the same format is the same as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data/). It is generated using the runtime tests from [`mdn-bcd-collector`](https://github.com/openwebdocs/mdn-bcd-collector/). It includes most runtimes that are members of the [WinterCG](https://wintercg.org/) project.
 
 ## Supported runtimes
 
@@ -86,7 +88,7 @@ const { default: data } = await import(
 
 ## Data format
 
-The data follows the same format as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data), but only includes the `javascript` and `api` keys. Instead of the browser keys in MDN's data, this project uses the runtime keys from the [WinterCG runtime key proposal](https://runtime-keys.proposal.wintercg.org/). The data doesn't currently track versions where the feature was added, and just includes a boolean for whether the feature is supported in the current runtime.
+The data follows the same format as MDN's [`browser-compat-data`](https://github.com/mdn/browser-compat-data), but only includes the `javascript`, `webassembly` and `api` keys. Instead of the browser keys in MDN's data, this project uses the runtime keys from the [WinterCG runtime key proposal](https://runtime-keys.proposal.wintercg.org/) where available. The data doesn't currently track versions where the feature was added, and just includes a boolean for whether the feature is supported in the current runtime.
 
 Example data:
 
