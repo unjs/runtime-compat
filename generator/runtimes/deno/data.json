@@ -25556,15 +25556,6 @@
     "message": "threw ReferenceError: document is not defined"
   },
   {
-    "name": "api.Element.requestFullscreen.options_navigationUI_parameter",
-    "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"requestFullscreen\",\n    \"navigationUI\",\n    false,\n  );\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
-  },
-  {
     "name": "api.Element.requestFullscreen.returns_promise",
     "info": {
       "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.requestFullscreen)) {\n    return {\n      result: false,\n      message: \"instance.requestFullscreen is not defined\",\n    };\n  }\n  var value = instance.requestFullscreen();\n  return \"then\" in value;\n})();\n",
@@ -30059,6 +30050,14 @@
     "result": true
   },
   {
+    "name": "api.Headers.lexicographical_sorting",
+    "info": {
+      "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
     "name": "api.HID",
     "info": {
       "code": "\"HID\" in self",
@@ -32512,6 +32511,15 @@
     "name": "api.HTMLElement.virtualKeyboardPolicy",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: document is not defined"
+  },
+  {
+    "name": "api.HTMLElement.writingSuggestions",
+    "info": {
+      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -46056,6 +46064,24 @@
     "result": false
   },
   {
+    "name": "api.Navigator.canShare.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "testOptionParam: instance.canShare is undefined"
+  },
+  {
+    "name": "api.Navigator.canShare.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "testOptionParam: instance.canShare is undefined"
+  },
+  {
     "name": "api.Navigator.clearAppBadge",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"clearAppBadge\" in instance;\n})();\n",
@@ -46187,14 +46213,6 @@
     "name": "api.Navigator.getInstalledRelatedApps",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false
-  },
-  {
-    "name": "api.Navigator.getUserMedia",
-    "info": {
-      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -46534,6 +46552,24 @@
       "exposure": "Window"
     },
     "result": false
+  },
+  {
+    "name": "api.Navigator.share.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "testOptionParam: instance.canShare is undefined"
+  },
+  {
+    "name": "api.Navigator.share.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false,
+    "message": "testOptionParam: instance.canShare is undefined"
   },
   {
     "name": "api.Navigator.storage",
@@ -71965,6 +72001,14 @@
     "result": false
   },
   {
+    "name": "api.ViewTransition.typeList",
+    "info": {
+      "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
     "name": "api.ViewTransition.updateCallbackDone",
     "info": {
       "code": "\"ViewTransition\" in self && \"updateCallbackDone\" in ViewTransition.prototype",
@@ -82274,5 +82318,13 @@
     },
     "result": null,
     "message": "threw TypeError: Invalid URL: '/favicon/favicon.ico'"
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
   }
 ]

@@ -1949,7 +1949,7 @@
       "code": "\"String\" in self && \"isWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.String.lastIndexOf",
@@ -2117,7 +2117,7 @@
       "code": "\"String\" in self && \"toWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.String.trim",
@@ -2438,7 +2438,7 @@
       "code": "(function () {\n  if (!(\"RegExp\" in self)) {\n    return { result: false, message: \"RegExp is not defined\" };\n  }\n  var instance = new RegExp(\"foo\", \"g\");\n  return !!instance && \"unicodeSets\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.RegExp.exec",
@@ -2839,7 +2839,7 @@
       "code": "\"Array\" in self && \"toReversed\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toSorted",
@@ -2847,7 +2847,7 @@
       "code": "\"Array\" in self && \"toSorted\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toSpliced",
@@ -2855,7 +2855,7 @@
       "code": "\"Array\" in self && \"toSpliced\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toString",
@@ -2887,7 +2887,7 @@
       "code": "\"Array\" in self && \"with\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.@@iterator",
@@ -3232,7 +3232,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toReversed\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.toSorted",
@@ -3240,7 +3240,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toSorted\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.toString",
@@ -3264,7 +3264,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"with\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.@@iterator",
@@ -4183,7 +4183,7 @@
       "code": "(function () {\n  function construct(options) {\n    new ArrayBuffer(8, options);\n  }\n  return bcd.testOptionParam(construct, null, \"maxByteLength\", 16);\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.@@species",
@@ -4215,7 +4215,7 @@
       "code": "\"ArrayBuffer\" in self && \"maxByteLength\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resizable",
@@ -4223,7 +4223,7 @@
       "code": "\"ArrayBuffer\" in self && \"resizable\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resize",
@@ -4231,7 +4231,7 @@
       "code": "\"ArrayBuffer\" in self && \"resize\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.slice",
@@ -4312,7 +4312,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"growable\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.maxByteLength",
@@ -4320,7 +4320,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"maxByteLength\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.grow",
@@ -4328,7 +4328,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"grow\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.slice",
@@ -4707,7 +4707,7 @@
       "exposure": "Window"
     },
     "result": true,
-    "message": "threw TypeError: WeakRef: target must be an object"
+    "message": "threw TypeError: WeakRef: invalid target"
   },
   {
     "name": "javascript.builtins.WeakRef.deref",
@@ -6144,7 +6144,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"roundingIncrement\", 200);\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_roundingMode_parameter",
@@ -6152,7 +6152,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"roundingMode\", \"floor\");\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_roundingPriority_parameter",
@@ -6160,7 +6160,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"roundingPriority\",\n    \"lessPrecision\",\n  );\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_signDisplay_parameter",
@@ -6176,8 +6176,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { signDisplay: \"negative\" });\n  var options = instance.resolvedOptions();\n  return options.signDisplay === \"negative\";\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw RangeError: Value negative out of range for Intl.NumberFormat options property signDisplay"
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_style_parameter",
@@ -6194,7 +6193,8 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"trailingZeroDisplay\",\n    \"currency\",\n  );\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": null,
+    "message": "threw RangeError: Value currency out of range for Intl.NumberFormat options property trailingZeroDisplay"
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_unit_parameter",
@@ -6226,7 +6226,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { useGrouping: \"always\" });\n  var options = instance.resolvedOptions();\n  return options.useGrouping === \"always\";\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.supportedLocalesOf",
@@ -6250,7 +6250,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRange\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatRangeToParts",
@@ -6258,7 +6258,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRangeToParts\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatToParts",
@@ -6323,7 +6323,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"PluralRules\" in Intl)) {\n    return { result: false, message: \"Intl.PluralRules is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.PluralRules(\"en\", options);\n  }\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"roundingPriority\",\n    \"lessPrecision\",\n  );\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.PluralRules.PluralRules.options_parameter.options_trailingZeroDisplay_parameter",
@@ -6363,7 +6363,7 @@
       "code": "\"Intl\" in self && \"PluralRules\" in Intl && \"selectRange\" in Intl.PluralRules.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.RelativeTimeFormat",
@@ -16071,8 +16071,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto;\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.Crypto.getRandomValues",
@@ -16080,8 +16079,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto;\n  return !!instance && \"getRandomValues\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.Crypto.randomUUID",
@@ -16089,8 +16087,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto;\n  return !!instance && \"randomUUID\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.Crypto.subtle",
@@ -16098,53 +16095,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto;\n  return !!instance && \"subtle\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
-  },
-  {
-    "name": "api.CryptoKey",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.algorithm",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"algorithm\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.extractable",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"extractable\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.type",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"type\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
-  },
-  {
-    "name": "api.CryptoKey.usages",
-    "info": {
-      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "Promise variable is falsy"
+    "result": true
   },
   {
     "name": "api.CSPViolationReportBody",
@@ -20039,8 +19990,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new CustomEvent(\"custom\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CustomEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
+    "result": true
   },
   {
     "name": "api.CustomEvent.CustomEvent",
@@ -20048,8 +19998,8 @@
       "code": "bcd.testConstructor('CustomEvent')",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "threw ReferenceError: CustomEvent is not defined"
+    "result": true,
+    "message": "threw TypeError [ERR_MISSING_ARGS]: The \"type\" argument must be specified"
   },
   {
     "name": "api.CustomEvent.detail",
@@ -20057,8 +20007,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new CustomEvent(\"custom\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CustomEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"detail\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
+    "result": true
   },
   {
     "name": "api.CustomEvent.initCustomEvent",
@@ -20066,8 +20015,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new CustomEvent(\"custom\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CustomEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"initCustomEvent\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
+    "result": false
   },
   {
     "name": "api.CustomStateSet",
@@ -25662,15 +25610,6 @@
     "message": "threw ReferenceError: document is not defined"
   },
   {
-    "name": "api.Element.requestFullscreen.options_navigationUI_parameter",
-    "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"requestFullscreen\",\n    \"navigationUI\",\n    false,\n  );\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: document is not defined"
-  },
-  {
     "name": "api.Element.requestFullscreen.returns_promise",
     "info": {
       "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.requestFullscreen)) {\n    return {\n      result: false,\n      message: \"instance.requestFullscreen is not defined\",\n    };\n  }\n  var value = instance.requestFullscreen();\n  return \"then\" in value;\n})();\n",
@@ -26796,7 +26735,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new Event(\"type\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"Event\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"initEvent\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.Event.isTrusted",
@@ -27600,7 +27539,7 @@
       "code": "\"File\" in self",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.File.File",
@@ -27608,8 +27547,8 @@
       "code": "bcd.testConstructor('File')",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "threw ReferenceError: File is not defined"
+    "result": true,
+    "message": "threw TypeError [ERR_MISSING_ARGS]: The \"fileBits\" and \"fileName\" arguments must be specified"
   },
   {
     "name": "api.File.lastModified",
@@ -27617,7 +27556,7 @@
       "code": "\"File\" in self && \"lastModified\" in File.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.File.lastModifiedDate",
@@ -27633,7 +27572,7 @@
       "code": "\"File\" in self && \"name\" in File.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.File.webkitRelativePath",
@@ -32233,6 +32172,14 @@
     "result": true
   },
   {
+    "name": "api.Headers.lexicographical_sorting",
+    "info": {
+      "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
     "name": "api.HID",
     "info": {
       "code": "\"HID\" in self",
@@ -34686,6 +34633,15 @@
     "name": "api.HTMLElement.virtualKeyboardPolicy",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: document is not defined"
+  },
+  {
+    "name": "api.HTMLElement.writingSuggestions",
+    "info": {
+      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48275,6 +48231,24 @@
     "message": "threw ReferenceError: navigator is not defined"
   },
   {
+    "name": "api.Navigator.canShare.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.canShare.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
     "name": "api.Navigator.clearAppBadge",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"clearAppBadge\" in instance;\n})();\n",
@@ -48422,15 +48396,6 @@
     "name": "api.Navigator.getInstalledRelatedApps",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: navigator is not defined"
-  },
-  {
-    "name": "api.Navigator.getUserMedia",
-    "info": {
-      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48809,6 +48774,24 @@
     "name": "api.Navigator.share",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"share\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -52200,7 +52183,7 @@
       "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"onresourcetimingbufferfull\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.Performance.setResourceTimingBufferSize",
@@ -52544,8 +52527,8 @@
       "code": "bcd.testConstructor('PerformanceMark')",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "threw ReferenceError: PerformanceMark is not defined"
+    "result": true,
+    "message": "threw TypeError [ERR_MISSING_ARGS]: The \"name\" argument must be specified"
   },
   {
     "name": "api.PerformanceMeasure",
@@ -52553,7 +52536,7 @@
       "code": "\"PerformanceMeasure\" in self",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceMeasure.detail",
@@ -52561,7 +52544,7 @@
       "code": "\"PerformanceMeasure\" in self && \"detail\" in PerformanceMeasure.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceNavigation",
@@ -52721,7 +52704,7 @@
       "code": "\"PerformanceObserver\" in self",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserver.disconnect",
@@ -52729,7 +52712,7 @@
       "code": "\"PerformanceObserver\" in self && \"disconnect\" in PerformanceObserver.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserver.observe",
@@ -52737,7 +52720,7 @@
       "code": "\"PerformanceObserver\" in self && \"observe\" in PerformanceObserver.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserver.PerformanceObserver",
@@ -52745,8 +52728,8 @@
       "code": "bcd.testConstructor('PerformanceObserver')",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "threw ReferenceError: PerformanceObserver is not defined"
+    "result": null,
+    "message": "threw TypeError [ERR_INVALID_ARG_TYPE]: The \"callback\" argument must be of type function. Received undefined"
   },
   {
     "name": "api.PerformanceObserver.supportedEntryTypes_static",
@@ -52754,7 +52737,7 @@
       "code": "\"PerformanceObserver\" in self && \"supportedEntryTypes\" in PerformanceObserver",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserver.takeRecords",
@@ -52762,16 +52745,7 @@
       "code": "\"PerformanceObserver\" in self && \"takeRecords\" in PerformanceObserver.prototype",
       "exposure": "Window"
     },
-    "result": false
-  },
-  {
-    "name": "api.PerformanceObserver.PerformanceObserver.droppedEntriesCount",
-    "info": {
-      "code": "(function () {\n  // Using the \"completed\" variable ensures the callback isn't run multiple times\n  var completed = false;\n\n  function perfObserver(entries, observer, droppedEntriesCount) {\n    if (!completed) {\n      success(typeof droppedEntriesCount != \"undefined\");\n      completed = true;\n    }\n  }\n\n  var observer = new PerformanceObserver(perfObserver);\n  observer.observe({ type: \"resource\", buffered: true });\n\n  bcd.addCleanup(function () {\n    observer.disconnect();\n  });\n\n  return \"callback\";\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw ReferenceError: PerformanceObserver is not defined"
+    "result": true
   },
   {
     "name": "api.PerformanceObserverEntryList",
@@ -52779,7 +52753,7 @@
       "code": "\"PerformanceObserverEntryList\" in self",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserverEntryList.getEntries",
@@ -52787,7 +52761,7 @@
       "code": "\"PerformanceObserverEntryList\" in self && \"getEntries\" in PerformanceObserverEntryList.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserverEntryList.getEntriesByName",
@@ -52795,7 +52769,7 @@
       "code": "\"PerformanceObserverEntryList\" in self && \"getEntriesByName\" in PerformanceObserverEntryList.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceObserverEntryList.getEntriesByType",
@@ -52803,7 +52777,7 @@
       "code": "\"PerformanceObserverEntryList\" in self && \"getEntriesByType\" in PerformanceObserverEntryList.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformancePaintTiming",
@@ -52995,7 +52969,7 @@
       "code": "\"PerformanceResourceTiming\" in self && \"toJSON\" in PerformanceResourceTiming.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.PerformanceResourceTiming.transferSize",
@@ -55386,7 +55360,7 @@
       "code": "\"ReadableStream\" in self && \"from\" in ReadableStream",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.ReadableStream.ReadableStream",
@@ -64595,8 +64569,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.decrypt",
@@ -64604,8 +64577,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"decrypt\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.deriveBits",
@@ -64613,8 +64585,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"deriveBits\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.deriveKey",
@@ -64622,8 +64593,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"deriveKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.digest",
@@ -64631,8 +64601,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"digest\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.encrypt",
@@ -64640,8 +64609,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"encrypt\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.exportKey",
@@ -64649,8 +64617,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"exportKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.generateKey",
@@ -64658,8 +64625,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"generateKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.importKey",
@@ -64667,8 +64633,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"importKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.sign",
@@ -64676,8 +64641,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"sign\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.unwrapKey",
@@ -64685,8 +64649,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"unwrapKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.verify",
@@ -64694,8 +64657,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"verify\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SubtleCrypto.wrapKey",
@@ -64703,8 +64665,7 @@
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"wrapKey\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false,
-    "message": "crypto is not defined"
+    "result": true
   },
   {
     "name": "api.SVGAElement",
@@ -72500,8 +72461,8 @@
       "code": "bcd.testConstructor('URL')",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw TypeError [ERR_INVALID_URL]: Invalid URL"
+    "result": true,
+    "message": "threw TypeError [ERR_MISSING_ARGS]: The \"url\" argument must be specified"
   },
   {
     "name": "api.URL.username",
@@ -74339,6 +74300,14 @@
     "name": "api.ViewTransition.skipTransition",
     "info": {
       "code": "\"ViewTransition\" in self && \"skipTransition\" in ViewTransition.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "api.ViewTransition.typeList",
+    "info": {
+      "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
       "exposure": "Window"
     },
     "result": false
@@ -84166,7 +84135,7 @@
       "code": "\"crypto\" in self",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.fetch",
@@ -84584,6 +84553,46 @@
     "result": true
   },
   {
+    "name": "api.CryptoKey",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.algorithm",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"algorithm\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.extractable",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"extractable\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.type",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"type\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.CryptoKey.usages",
+    "info": {
+      "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
     "name": "api.WritableStreamDefaultController",
     "info": {
       "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
@@ -84741,5 +84750,21 @@
     },
     "result": null,
     "message": "threw TypeError: Failed to parse URL from /favicon/favicon.ico"
+  },
+  {
+    "name": "api.PerformanceObserver.PerformanceObserver.droppedEntriesCount",
+    "info": {
+      "code": "(function () {\n  // Using the \"completed\" variable ensures the callback isn't run multiple times\n  var completed = false;\n\n  function perfObserver(entries, observer, droppedEntriesCount) {\n    if (!completed) {\n      success(typeof droppedEntriesCount != \"undefined\");\n      completed = true;\n    }\n  }\n\n  var observer = new PerformanceObserver(perfObserver);\n  observer.observe({ type: \"resource\", buffered: true });\n\n  bcd.addCleanup(function () {\n    observer.disconnect();\n  });\n\n  return \"callback\";\n})();\n",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
   }
 ]

@@ -1949,7 +1949,7 @@
       "code": "\"String\" in self && \"isWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.String.lastIndexOf",
@@ -2117,7 +2117,7 @@
       "code": "\"String\" in self && \"toWellFormed\" in String.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.String.trim",
@@ -2438,7 +2438,7 @@
       "code": "(function () {\n  if (!(\"RegExp\" in self)) {\n    return { result: false, message: \"RegExp is not defined\" };\n  }\n  var instance = new RegExp(\"foo\", \"g\");\n  return !!instance && \"unicodeSets\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.RegExp.exec",
@@ -2839,7 +2839,7 @@
       "code": "\"Array\" in self && \"toReversed\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toSorted",
@@ -2847,7 +2847,7 @@
       "code": "\"Array\" in self && \"toSorted\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toSpliced",
@@ -2855,7 +2855,7 @@
       "code": "\"Array\" in self && \"toSpliced\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.toString",
@@ -2887,7 +2887,7 @@
       "code": "\"Array\" in self && \"with\" in Array.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Array.@@iterator",
@@ -3232,7 +3232,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toReversed\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.toSorted",
@@ -3240,7 +3240,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"toSorted\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.toString",
@@ -3264,7 +3264,7 @@
       "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  return !!instance && \"with\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.TypedArray.@@iterator",
@@ -4216,7 +4216,7 @@
       "code": "\"ArrayBuffer\" in self && \"maxByteLength\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resizable",
@@ -4224,7 +4224,7 @@
       "code": "\"ArrayBuffer\" in self && \"resizable\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.resize",
@@ -4232,7 +4232,7 @@
       "code": "\"ArrayBuffer\" in self && \"resize\" in ArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.ArrayBuffer.slice",
@@ -4313,7 +4313,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"growable\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.maxByteLength",
@@ -4321,7 +4321,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"maxByteLength\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.grow",
@@ -4329,7 +4329,7 @@
       "code": "\"SharedArrayBuffer\" in self && \"grow\" in SharedArrayBuffer.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.SharedArrayBuffer.slice",
@@ -6208,8 +6208,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { signDisplay: \"negative\" });\n  var options = instance.resolvedOptions();\n  return options.signDisplay === \"negative\";\n})();\n",
       "exposure": "Window"
     },
-    "result": null,
-    "message": "threw Error: RangeError: Value negative out of range for Intl.NumberFormat options property signDisplay"
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_style_parameter",
@@ -6262,7 +6261,7 @@
       "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  var instance = Intl.NumberFormat(\"en\", { useGrouping: \"always\" });\n  var options = instance.resolvedOptions();\n  return options.useGrouping === \"always\";\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.supportedLocalesOf",
@@ -6286,7 +6285,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRange\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatRangeToParts",
@@ -6294,7 +6293,7 @@
       "code": "\"Intl\" in self && \"NumberFormat\" in Intl && \"formatRangeToParts\" in Intl.NumberFormat.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.NumberFormat.formatToParts",
@@ -6404,7 +6403,7 @@
       "code": "\"Intl\" in self && \"PluralRules\" in Intl && \"selectRange\" in Intl.PluralRules.prototype",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "javascript.builtins.Intl.RelativeTimeFormat",
@@ -25761,15 +25760,6 @@
     "message": "threw Error: ReferenceError: document is not defined"
   },
   {
-    "name": "api.Element.requestFullscreen.options_navigationUI_parameter",
-    "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"requestFullscreen\",\n    \"navigationUI\",\n    false,\n  );\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw Error: ReferenceError: document is not defined"
-  },
-  {
     "name": "api.Element.requestFullscreen.returns_promise",
     "info": {
       "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.requestFullscreen)) {\n    return {\n      result: false,\n      message: \"instance.requestFullscreen is not defined\",\n    };\n  }\n  var value = instance.requestFullscreen();\n  return \"then\" in value;\n})();\n",
@@ -26895,7 +26885,7 @@
       "code": "(function () {\n  var instance;\n  try {\n    instance = new Event(\"type\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"Event\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"initEvent\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.Event.isTrusted",
@@ -32339,6 +32329,14 @@
     "result": true
   },
   {
+    "name": "api.Headers.lexicographical_sorting",
+    "info": {
+      "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
     "name": "api.HID",
     "info": {
       "code": "\"HID\" in self",
@@ -34792,6 +34790,15 @@
     "name": "api.HTMLElement.virtualKeyboardPolicy",
     "info": {
       "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"virtualKeyboardPolicy\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: document is not defined"
+  },
+  {
+    "name": "api.HTMLElement.writingSuggestions",
+    "info": {
+      "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"writingSuggestions\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48412,6 +48419,24 @@
     "message": "threw Error: ReferenceError: navigator is not defined"
   },
   {
+    "name": "api.Navigator.canShare.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.canShare.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator;\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: navigator is not defined"
+  },
+  {
     "name": "api.Navigator.clearAppBadge",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"clearAppBadge\" in instance;\n})();\n",
@@ -48559,15 +48584,6 @@
     "name": "api.Navigator.getInstalledRelatedApps",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
-      "exposure": "Window"
-    },
-    "result": null,
-    "message": "threw Error: ReferenceError: navigator is not defined"
-  },
-  {
-    "name": "api.Navigator.getUserMedia",
-    "info": {
-      "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -48946,6 +48962,24 @@
     "name": "api.Navigator.share",
     "info": {
       "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"share\" in instance;\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_files_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"files\", [\n    new File([\"foo bar\"], \"foo.txt\"),\n  ]);\n})();\n",
+      "exposure": "Window"
+    },
+    "result": null,
+    "message": "threw Error: ReferenceError: navigator is not defined"
+  },
+  {
+    "name": "api.Navigator.share.data_text_parameter",
+    "info": {
+      "code": "(function () {\n  var instance = navigator; // If `canShare` supports the parameter, `share` does\n  return bcd.testOptionParam(instance, \"canShare\", \"text\", \"foo bar\");\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -52345,7 +52379,7 @@
       "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"onresourcetimingbufferfull\" in instance;\n})();\n",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.Performance.setResourceTimingBufferSize",
@@ -55531,7 +55565,7 @@
       "code": "\"ReadableStream\" in self && \"from\" in ReadableStream",
       "exposure": "Window"
     },
-    "result": false
+    "result": true
   },
   {
     "name": "api.ReadableStream.ReadableStream",
@@ -74490,6 +74524,14 @@
     "result": false
   },
   {
+    "name": "api.ViewTransition.typeList",
+    "info": {
+      "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
+      "exposure": "Window"
+    },
+    "result": false
+  },
+  {
     "name": "api.ViewTransition.updateCallbackDone",
     "info": {
       "code": "\"ViewTransition\" in self && \"updateCallbackDone\" in ViewTransition.prototype",
@@ -85264,5 +85306,13 @@
     },
     "result": null,
     "message": "threw Error: TypeError: Failed to parse URL from /favicon/favicon.ico"
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
   }
 ]
