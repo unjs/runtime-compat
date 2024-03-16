@@ -71,6 +71,8 @@ jobs:
           pnpm generate
           rm -rf .bcd
           pnpm test
+        env:
+          WAIT_ON_TIMEOUT: 30000
       - name: Get runtime versions
         id: get-versions
         run: scripts/version.sh >> "$GITHUB_OUTPUT"
