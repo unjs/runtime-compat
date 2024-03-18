@@ -27,16 +27,22 @@ The tests can be run locally, but the actual data generation process is run on G
 
 ## Running tests locally
 
+### Install + Prepare
+
 - Clone this repository
 - Install latest LTS version of [Node.js](https://nodejs.org/en/)
 - Install [Bun](https://bun.sh/)
 - Install [Fastly CLI](https://www.fastly.com/documentation/reference/tools/cli/)
 - Install [Wasmer](https://wasmer.io/)
+- Download [LLRT](https://github.com/awslabs/llrt/releases) and place executable in `PATH`
 - Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
 - Install dependencies using `pnpm install`
-- Generate the data using `pnpm run generate`
 
-If you want to run the tests for an individual runtime, run `pnpm start` in the `src/runtimes/<runtime>` directory.
+### Generate the data
+
+To generate data for all runtimes, run `pnpm run generate` in the project source.
+
+To generate data for an individual runtime, navigate to `generator/runtimes/<runtime>` and run `pnpm start`.
 
 ## Limitations
 
