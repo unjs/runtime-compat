@@ -22,6 +22,7 @@ Currently this tracks the following JavaScript runtimes (shown with their [Winte
 - [Deno](https://deno.land/) (`deno`)
 - Vercel [Edge Runtime](https://edge-runtime.vercel.app/) (`edge-light`)
 - Fastly [JS Compute Runtime](https://github.com/fastly/js-compute-runtime) (`fastly`)
+- Amazon Web Services [LLRT](https://github.com/awslabs/llrt) (`llrt`)
 - Netlify [Edge Functions](https://docs.netlify.com/edge-functions/overview/) (`netlify`)
 - [Node.js](https://nodejs.org/) (`node`)
 - Wasmer [WinterJS]https://github.com/wasmerio/winterjs) (`wasmer`)
@@ -110,6 +111,7 @@ Example data:
           "deno": { "version_added": true },
           "edge-light": { "version_added": true },
           "fastly": { "version_added": false },
+          "llrt": { "version_added": false },
           "netlify": { "version_added": true },
           "node": { "version_added": false },
           "workerd": { "version_added": true }
