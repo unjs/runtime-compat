@@ -12,7 +12,7 @@ export function changeScroll(event: Event) {
   clearTimeout(activeScrollerTimeout);
   activeScrollerTimeout = setTimeout(() => {
     activeScroller = undefined
-  }, 100);
+  }, 250);
 
   const scroll = (event.target as HTMLElement).scrollLeft
 
