@@ -15925,15 +15925,6 @@
     "result": false
   },
   {
-    "name": "api.CredentialsContainer.create.publicKey_option",
-    "info": {
-      "code": "(function () {\n  var instance = navigator.credentials;\n  return bcd.testOptionParam(\n    instance,\n    \"create\",\n    \"publicKey\",\n    reusableInstances.cryptoKey,\n  );\n})();\n",
-      "exposure": "Window"
-    },
-    "result": false,
-    "message": "testOptionParam: instance is falsy"
-  },
-  {
     "name": "api.CredentialsContainer.get",
     "info": {
       "code": "(function () {\n  var instance = navigator.credentials;\n  return !!instance && \"get\" in instance;\n})();\n",
@@ -53109,7 +53100,7 @@
   {
     "name": "api.ReadableStream",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53118,7 +53109,7 @@
   {
     "name": "api.ReadableStream.@@asyncIterator",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53127,7 +53118,7 @@
   {
     "name": "api.ReadableStream.cancel",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53144,7 +53135,7 @@
   {
     "name": "api.ReadableStream.getReader",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53153,7 +53144,7 @@
   {
     "name": "api.ReadableStream.locked",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53162,7 +53153,7 @@
   {
     "name": "api.ReadableStream.pipeThrough",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53171,7 +53162,7 @@
   {
     "name": "api.ReadableStream.pipeTo",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53189,7 +53180,7 @@
   {
     "name": "api.ReadableStream.tee",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53198,7 +53189,7 @@
   {
     "name": "api.ReadableStream.values",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53328,7 +53319,7 @@
   {
     "name": "api.ReadableStreamDefaultReader",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53337,7 +53328,7 @@
   {
     "name": "api.ReadableStreamDefaultReader.cancel",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53346,7 +53337,7 @@
   {
     "name": "api.ReadableStreamDefaultReader.closed",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53355,7 +53346,7 @@
   {
     "name": "api.ReadableStreamDefaultReader.read",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53373,7 +53364,7 @@
   {
     "name": "api.ReadableStreamDefaultReader.releaseLock",
     "info": {
-      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -53607,7 +53598,7 @@
   {
     "name": "api.Request",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53615,7 +53606,7 @@
   {
     "name": "api.Request.arrayBuffer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"arrayBuffer\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53623,7 +53614,7 @@
   {
     "name": "api.Request.blob",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"blob\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"blob\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53631,7 +53622,7 @@
   {
     "name": "api.Request.body",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"body\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"body\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53639,7 +53630,7 @@
   {
     "name": "api.Request.bodyUsed",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53647,7 +53638,7 @@
   {
     "name": "api.Request.cache",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53655,7 +53646,7 @@
   {
     "name": "api.Request.cache.only-if-cached",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  instance = new Request(\"http://example.com/favicon/favicon.ico\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  instance = new Request(\"https://example.com\", {\n    mode: \"same-origin\",\n    cache: \"only-if-cached\",\n  });\n  return instance.cache === \"only-if-cached\";\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53663,7 +53654,7 @@
   {
     "name": "api.Request.clone",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"clone\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"clone\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53671,7 +53662,7 @@
   {
     "name": "api.Request.credentials",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"credentials\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53679,7 +53670,7 @@
   {
     "name": "api.Request.credentials.default_same-origin",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return instance.credentials === \"same-origin\";\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return instance.credentials === \"same-origin\";\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53687,7 +53678,7 @@
   {
     "name": "api.Request.destination",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"destination\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"destination\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53695,7 +53686,7 @@
   {
     "name": "api.Request.duplex",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"duplex\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53703,7 +53694,7 @@
   {
     "name": "api.Request.formData",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"formData\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"formData\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53711,7 +53702,7 @@
   {
     "name": "api.Request.headers",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"headers\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"headers\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53719,7 +53710,7 @@
   {
     "name": "api.Request.integrity",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"integrity\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53727,7 +53718,7 @@
   {
     "name": "api.Request.isHistoryNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"isHistoryNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53735,7 +53726,7 @@
   {
     "name": "api.Request.isReloadNavigation",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"isReloadNavigation\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53743,7 +53734,7 @@
   {
     "name": "api.Request.json",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"json\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"json\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53751,7 +53742,7 @@
   {
     "name": "api.Request.keepalive",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"keepalive\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53759,7 +53750,7 @@
   {
     "name": "api.Request.method",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"method\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"method\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53767,7 +53758,7 @@
   {
     "name": "api.Request.mode",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"mode\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"mode\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53775,7 +53766,7 @@
   {
     "name": "api.Request.redirect",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"redirect\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53783,7 +53774,7 @@
   {
     "name": "api.Request.referrer",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"referrer\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53791,7 +53782,7 @@
   {
     "name": "api.Request.referrerPolicy",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"referrerPolicy\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53808,7 +53799,7 @@
   {
     "name": "api.Request.Request.init_priority_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  function construct(options) {\n    new Request(\"https://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"priority\", \"auto\");\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53816,7 +53807,7 @@
   {
     "name": "api.Request.Request.init_referrer_parameter",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  function construct(options) {\n    new Request(\"http://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  function construct(options) {\n    new Request(\"https://example.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"referrer\", \"no-referrer\");\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53824,7 +53815,7 @@
   {
     "name": "api.Request.signal",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"signal\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"signal\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53832,7 +53823,7 @@
   {
     "name": "api.Request.targetAddressSpace",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"targetAddressSpace\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": false
@@ -53840,7 +53831,7 @@
   {
     "name": "api.Request.text",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"text\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"text\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -53848,7 +53839,7 @@
   {
     "name": "api.Request.url",
     "info": {
-      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"http://example.com\");\n  return !!instance && \"url\" in instance;\n})();\n",
+      "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"url\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -54103,7 +54094,7 @@
   {
     "name": "api.Response.Response.accept_readablestream",
     "info": {
-      "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var rsPromise = fetch(\"/favicon/favicon.ico\").then(function (response) {\n    return response.body;\n  });\n  if (!rsPromise) {\n    return { result: false, message: \"rsPromise is falsy\" };\n  }\n  return rsPromise.then(function (readableStream) {\n    try {\n      new Response(readableStream);\n      return true;\n    } catch (e) {\n      return { result: false, message: e.message };\n    }\n  });\n})();\n",
+      "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var rsPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!rsPromise) {\n    return { result: false, message: \"rsPromise is falsy\" };\n  }\n  return rsPromise.then(function (readableStream) {\n    try {\n      new Response(readableStream);\n      return true;\n    } catch (e) {\n      return { result: false, message: e.message };\n    }\n  });\n})();\n",
       "exposure": "Window"
     },
     "result": null,
@@ -70109,7 +70100,7 @@
   {
     "name": "api.URL",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return \"URL\" in self;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return \"URL\" in self;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70133,7 +70124,7 @@
   {
     "name": "api.URL.hash",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"hash\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70141,7 +70132,7 @@
   {
     "name": "api.URL.host",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"host\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70149,7 +70140,7 @@
   {
     "name": "api.URL.hostname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"hostname\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70157,7 +70148,7 @@
   {
     "name": "api.URL.href",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"href\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70165,7 +70156,7 @@
   {
     "name": "api.URL.origin",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"origin\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70173,7 +70164,7 @@
   {
     "name": "api.URL.password",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70181,7 +70172,7 @@
   {
     "name": "api.URL.pathname",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"pathname\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70189,7 +70180,7 @@
   {
     "name": "api.URL.port",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"port\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70197,7 +70188,7 @@
   {
     "name": "api.URL.protocol",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"protocol\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70213,7 +70204,7 @@
   {
     "name": "api.URL.search",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"search\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70221,7 +70212,7 @@
   {
     "name": "api.URL.searchParams",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"searchParams\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -70254,7 +70245,7 @@
   {
     "name": "api.URL.username",
     "info": {
-      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"http://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"http://example.com\");\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
+      "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"username\" in instance;\n})();\n",
       "exposure": "Window"
     },
     "result": true
@@ -82179,6 +82170,30 @@
     "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
     "info": {
       "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+      "exposure": "Window"
+    },
+    "result": true
+  },
+  {
+    "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_pbkdf2",
+    "info": {
+      "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"PBKDF2\",\n          salt: \"foobar\",\n          iterations: 100000,\n          hash: \"SHA-256\",\n        },\n        false,\n        [\"deriveBits\", \"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
       "exposure": "Window"
     },
     "result": true
