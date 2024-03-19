@@ -39,7 +39,7 @@
   </div>
   <footer class="flex items-center gap-8 pb-16 justify-center bg-white dark:bg-black">
     <p class="text-md text-slate-600 dark:text-slate-300">
-      Powered by <ExternalLink href="https:/unjs.io">
+      Powered by <ExternalLink href="https://unjs.io">
         UnJS
       </ExternalLink>
     </p>
