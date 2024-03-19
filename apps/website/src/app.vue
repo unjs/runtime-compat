@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col gap-8 container md:max-w-[60vw] mx-auto my-24 items-center px-4">
+  <div class="flex flex-col gap-8 my-24 items-center px-4">
     <div class="flex flex-col gap-4 max-w-full"
       :style="`width: ${runtimes.length * 124 + ((runtimes.length - 1) * 4)}px`">
       <h2 class="text-6xl text-slate-900">
         Runtime compatibility
       </h2>
-      <p class="text-md text-slate-600 md:max-w-[80%]">
+      <p class="text-md text-slate-600">
         Display APIs compatibility across different JavaScript runtimes. The data is retrieved from <ExternalLink
           href="https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data">
           runtime-compat-data
