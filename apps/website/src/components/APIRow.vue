@@ -3,13 +3,13 @@
     <div :id="name" class="relative -top-48" />
     <a :href="`#${name}`">
       <h2
-        class="text-xl font-mono text-slate-950 before:content-['#'] before:hidden before:absolute before:-left-4 hover:underline hover:before:block">
+        class="text-xl font-mono text-slate-950 dark:text-white before:content-['#'] before:hidden before:absolute before:-left-4 hover:underline hover:before:block">
         {{ name }}
       </h2>
     </a>
     <ul class="flex flex-col gap-1 overflow-x-scroll scrollbar-none linked-scroll" @scroll.passive="changeScroll">
       <li v-for="[api, apiData] in Object.entries(data)" :key="api" class="flex gap-1">
-        <a class="absolute transform translate-y-0.5 translate-x-1 xl:translate-x-[calc(-100%-8px)] text-sm text-slate-600 group-hover:text-slate-900 transition flex gap-1 items-center hover:underline"
+        <a class="absolute transform translate-y-0.5 translate-x-1 xl:translate-x-[calc(-100%-8px)] text-sm text-slate-600 dark:text-slate-200 group-hover:text-slate-900 transition flex gap-1 items-center hover:underline"
           :href="apiData.mdn_url ?? apiData.__compat.mdn_url" target="_blank">
           <span v-if="apiData.status?.experimental ?? apiData.__compat?.status?.experimental" class="text-blue-600">
             <IconBlend />
@@ -25,8 +25,8 @@
             'opacity-10': !selectedRuntimes.includes(runtime),
           }">
           <span class="w-full h-6 flex items-center justify-center rounded" :class="{
-            'bg-lime-100 text-lime-600': value.version_added,
-            'bg-red-100 text-red-600': !value.version_added,
+            'bg-lime-100 text-lime-600 dark:bg-lime-950 dark:text-lime-300': value.version_added,
+            'bg-red-100 text-red-600 dark:bg-red-950 dark:text-red-300': !value.version_added,
           }">
             <IconCheck v-if="value.version_added" class="h-4 w-4 hidden xl:inline" />
             <IconCross v-else class="w-4 h-4 hidden xl:inline" />
