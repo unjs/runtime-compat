@@ -9,7 +9,7 @@
     </a>
     <ul class="flex flex-col gap-1 overflow-x-scroll scrollbar-none linked-scroll" @scroll.passive="changeScroll">
       <li v-for="[api, apiData] in Object.entries(data)" :key="api" class="flex gap-1">
-        <a class="absolute transform translate-y-0.5 translate-x-1 xl:translate-x-[calc(-100%-8px)] text-sm text-slate-600 group-hover:text-slate-900 transition flex gap-1 items-center hover:underline"
+        <a class="absolute transform xl:translate-x-[calc(-100%-8px)] p-1 text-sm text-slate-600 group-hover:text-slate-900 transition flex gap-1 items-center hover:underline bg-gradient-to-r from-[#ffffff77] via-[#ffffff77] via-90% to-transparent"
           :href="apiData.mdn_url ?? apiData.__compat.mdn_url" target="_blank">
           <span v-if="apiData.status?.experimental ?? apiData.__compat?.status?.experimental" class="text-blue-600">
             <IconBlend />
@@ -28,8 +28,8 @@
             'bg-lime-100 text-lime-600': value.version_added,
             'bg-red-100 text-red-600': !value.version_added,
           }">
-            <IconCheck v-if="value.version_added" class="h-4 w-4 hidden xl:inline" />
-            <IconCross v-else class="w-4 h-4 hidden xl:inline" />
+            <IconCheck v-if="value.version_added" class="h-4 w-4" />
+            <IconCross v-else class="w-4 h-4" />
           </span>
         </div>
       </li>
