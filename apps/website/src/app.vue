@@ -25,7 +25,7 @@
     </div>
     <div class="sticky top-0 z-10 pointer-events-none max-w-full">
       <div class="flex gap-1 overflow-x-scroll scrollbar-none bg-white pt-2 pointer-events-auto linked-scroll"
-        @scroll="changeScroll">
+        @scroll.passive="changeScroll">
         <RuntimeCard v-for="runtime in runtimes" :key="runtime" :runtime="runtime"
           :selected="selectedRuntimes.includes(runtime)"
           :coverage="winterCGOnly ? Math.round(computedData.winterCGCoverage[runtime] / computedData.winterCGCount * 100) : undefined" />

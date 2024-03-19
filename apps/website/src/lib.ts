@@ -1,6 +1,17 @@
 let linkedScrolls: NodeListOf<Element>
+let activeScroller: Element;
+let activeScrollerTimeout;
 
 export function changeScroll(event: Event) {
+  // Prevents scrolling jitter from the other elements' scroll events being triggered
+  //
+  if (activeScroller && activeScroller !== event.target) {
+    return;
+  }
+  activeScroller = event.target;
+  clearTimeout(activeScrollerTimeout);
+  activeScrollerTimeout = setTimeout(() => activeScroller = null, 100);
+
   const scroll = (event.target as HTMLElement).scrollLeft
 
   if (!linkedScrolls) {
