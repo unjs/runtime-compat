@@ -17,6 +17,10 @@ export default {
       theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
   },
+  mounted() {
+    document.body.dataset.theme = this.theme;
+    document.getElementsByTagName('html')[0].style.colorScheme = this.theme;
+  },
   methods: {
     switchTheme() {
       if (this.theme === 'dark') {
@@ -25,6 +29,7 @@ export default {
         this.theme = 'dark';
       }
       document.body.dataset.theme = this.theme;
+      document.getElementsByTagName('html')[0].style.colorScheme = this.theme;
     }
   }
 }
