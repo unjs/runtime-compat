@@ -17,6 +17,7 @@ type Endpoints = Record<string, string[]>;
  */
 class Tests {
   tests: TestsType;
+  version: string;
   resources: Resources;
   endpoints: Endpoints;
   httpOnly: boolean;
@@ -37,6 +38,7 @@ class Tests {
         obj[key] = options.tests[key];
         return obj;
       }, {});
+    this.version = options.tests.__version;
     this.resources = options.tests.__resources;
     this.endpoints = this.buildEndpoints();
     this.httpOnly = options.httpOnly;
