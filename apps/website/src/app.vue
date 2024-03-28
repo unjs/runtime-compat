@@ -29,7 +29,8 @@
         @scroll.passive="changeScroll">
         <RuntimeCard v-for="runtime in runtimes" :key="runtime" :runtime="runtime"
           :selected="selectedRuntimes.includes(runtime)"
-          :coverage="winterCGOnly ? Math.round(computedData.winterCGCoverage[runtime] / computedData.winterCGCount * 100) : undefined" />
+          :coverage="winterCGOnly ? Math.round(computedData.winterCGCoverage[runtime] / computedData.winterCGCount * 100) : undefined"
+          :version="runtimeCompatData.__version[runtime]" />
       </div>
       <div class="h-16 w-full bg-gradient-to-b from-white to-transparent dark:from-black" />
     </div>

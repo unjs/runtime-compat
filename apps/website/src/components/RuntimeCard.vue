@@ -8,6 +8,9 @@
     <p class="text-md text-slate-900 dark:text-white whitespace-nowrap mt-4">
       {{ runtimeInformation.name }}
     </p>
+    <p class="text-xs text-slate-500">
+      v{{ version }}
+    </p>
     <p v-if="coverage" class="text-xs text-slate-500">
       {{ coverage }}% coverage
     </p>
@@ -25,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-const { runtime } = defineProps<{ runtime: string, selected: boolean, coverage?: number }>()
+const { runtime } = defineProps<{ runtime: string, selected: boolean, coverage?: number, version?: string }>()
 
 const selectedRuntimes = useState<string[]>('selectedRuntimes')
 

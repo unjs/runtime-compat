@@ -77,7 +77,7 @@ jobs:
           WAIT_ON_TIMEOUT: 30000
       - name: Get runtime versions
         id: get-versions
-        run: scripts/version.sh >> "$GITHUB_OUTPUT"
+        run: node scripts/version.mjs >> "$GITHUB_OUTPUT"
       - name: Create Pull Request
         # only run when on main branch
         if: github.ref == 'refs/heads/main'

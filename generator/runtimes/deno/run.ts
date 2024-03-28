@@ -1,6 +1,11 @@
-import { runTests } from "../../shared/test.ts";
+import { runTests, formatResults } from "../../shared/test.ts";
 import tests from "../../../vendor/tests.json" assert { type: "json" };
 import { gpu } from "../../shared/features.ts";
 
-const data = await runTests(tests, gpu);
+const results = await runTests(tests, gpu);
+const data = formatResults(
+  results,
+  { name: "bun", version: Deno.version.deno },
+  tests.__version,
+);
 console.log(JSON.stringify(data, undefined, 2));
