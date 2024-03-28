@@ -29,7 +29,7 @@ class Tests {
    * @param options.httpOnly - Indicates if the HTTP-only flag is enabled.
    */
   constructor(options: {
-    tests: TestsType & {__version: string; __resources: Resources};
+    tests: TestsType & { __version: string; __resources: Resources };
     httpOnly: any;
   }) {
     this.tests = Object.keys(options.tests)
