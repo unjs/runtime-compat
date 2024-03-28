@@ -10,7 +10,7 @@ const data = formatResults(
   results,
   {
     name: "edge-light",
-    version: packageJson.dependencies["edge-runtime"].replace(/^(\^|\~)/, '')
+    version: packageJson.dependencies["edge-runtime"].replace(/^(\^|~)/, '')
   },
   tests.__version,
 );

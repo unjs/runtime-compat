@@ -16,7 +16,7 @@ async function handleRequest(event: FetchEvent) {
     results,
     {
       name: "fastly",
-      version: packageJson.dependencies["@fastly/js-compute"].replace(/^(\^|\~)/, '')
+      version: packageJson.dependencies["@fastly/js-compute"].replace(/^(\^|~)/, '')
     },
     tests.__version,
   );

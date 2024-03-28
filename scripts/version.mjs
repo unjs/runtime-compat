@@ -7,7 +7,7 @@ const runtimes = await readdir(runtimeDir);
 console.log("Runtime Versions:");
 
 for (const runtime of runtimes) {
-  const {default: data} = await import(`../generator/runtimes/${runtime}/data.json`, {
+  const { default: data } = await import(`../generator/runtimes/${runtime}/data.json`, {
     assert: { type: "json" },
   });
   console.log(` - ${runtime}: ${data.userAgent.split('/')[1]}`);

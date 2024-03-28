@@ -9,8 +9,8 @@ interface Env {
   };
 }
 
-const rawVersion = packageJson.devDependencies["workerd"].split(".")[1];
-const formattedVersion = `${rawVersion.substr(0, 4)}-${rawVersion.substr(4, 2)}-${rawVersion.substr(6, 2)}`;
+const rawVersion = packageJson.devDependencies.workerd.split(".")[1];
+const formattedVersion = `${rawVersion.slice(0, 4)}-${rawVersion.slice(4, 6)}-${rawVersion.slice(6, 8)}`;
 
 export default {
   async fetch(req: WorkerRequest, env: Env) {
