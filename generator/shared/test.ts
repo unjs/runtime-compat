@@ -1,5 +1,5 @@
 import Tests from "../../vendor/tests.ts";
-import type { Test, TestResult } from "../../vendor/types.ts";
+import type { Test, TestResult, Report } from "../../vendor/types.ts";
 // @ts-ignore
 import setup from "../../vendor/harness.js";
 
@@ -65,4 +65,19 @@ export function runTests(
   return new Promise((resolve) =>
     globalThis.bcd.go(resolve, resourcesNeeded.size),
   );
+}
+
+export function formatResults(
+  results: Array<TestResult>,
+  runtime: {name: string; version: string;},
+  collectorVersion: string,
+): Report {
+  return {
+    __version: collectorVersion,
+    results: {
+      ".": results
+    },
+    extensions: [],
+    userAgent: `!! ${runtime.name}/${runtime.version}`
+  }
 }
