@@ -44,6 +44,10 @@ To generate data for all runtimes, run `pnpm run generate` in the project source
 
 To generate data for an individual runtime, navigate to `generator/runtimes/<runtime>` and run `pnpm start`.
 
+### View the website
+
+To view the website, run `pnpm run website`, then navigate to `localhost:3000`.
+
 ## Limitations
 
 The actual tests are designed to run in browsers, so there may be inconsistencies. For the same reason, they also do not test for any WinterCG-specific features.

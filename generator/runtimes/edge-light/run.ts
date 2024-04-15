@@ -5,4 +5,5 @@ const runtime = new EdgeRuntime();
 globalThis.eval = runtime.evaluate.bind(runtime);
 
 const data = await runTests(tests);
+console.log("RUNTIME_DATA_START");
 console.log(JSON.stringify(data, undefined, 2));
