@@ -5,7 +5,7 @@ import { gpu } from "../../shared/features.ts";
 const results = await runTests(tests, gpu);
 const data = formatResults(
   results,
-  { name: "bun", version: Deno.version.deno },
+  { name: "deno", version: Deno.version.deno },
   tests.__version,
 );
 console.log(JSON.stringify(data, undefined, 2));
