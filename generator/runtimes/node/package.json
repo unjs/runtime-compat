@@ -6,7 +6,7 @@
   "main": "dist/run.mjs",
   "scripts": {
     "build": "unbuild",
-    "start": "node dist/run.mjs > data.json"
+    "start": "node dist/run.mjs | ../../../scripts/strip-delimiters.sh > data.json"
   },
   "type": "module",
   "keywords": [],

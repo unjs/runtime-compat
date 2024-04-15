@@ -8,5 +8,6 @@ runTests(tests).then((results) => {
     { name: "llrt", version: process.version },
     tests.__version,
   );
+  console.log("RUNTIME_DATA_START");
   console.log(JSON.stringify(data, undefined, 2));
 });

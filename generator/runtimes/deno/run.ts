@@ -8,4 +8,5 @@ const data = formatResults(
   { name: "deno", version: Deno.version.deno },
   tests.__version,
 );
+console.log("RUNTIME_DATA_START");
 console.log(JSON.stringify(data, undefined, 2));

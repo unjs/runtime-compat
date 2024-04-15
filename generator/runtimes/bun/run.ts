@@ -7,4 +7,5 @@ const data = formatResults(
   { name: "bun", version: Bun.version },
   tests.__version,
 );
+console.log("RUNTIME_DATA_START");
 console.log(JSON.stringify(data, undefined, 2));
