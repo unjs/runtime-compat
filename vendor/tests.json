@@ -1,4 +1,5 @@
 {
+  "__version": "10.10.4-17-ga08ca39",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -27,6 +28,11 @@
     "cryptoKey": {
       "type": "instance",
       "src": "if (!('crypto' in self) || !crypto) {\n  return null;\n};\nvar subtle = crypto.subtle || crypto.webkitSubtle;\nif (!subtle) {\n  return null;\n};\nreturn subtle.generateKey({\n  name: 'RSA-OAEP',\n  modulusLength: 4096,\n  publicExponent: new Uint8Array([1, 0, 1]),\n  hash: { name: 'SHA-256' }\n}, true, ['encrypt', 'decrypt']).then(function(pair) {\n  return pair.publicKey;\n});"
+    },
+    "cspViolationReportBody": {
+      "type": "instance",
+      "callback": true,
+      "src": "// Note: the Content-Security-Policy header is already configured on this website\nif (!('ReportingObserver' in self)) {\n  return {result: false, message: 'ReportingObserver is not defined'};\n}\n\nvar timeout = setTimeout(function() {\n  callback(false);\n}, 3000);\n\n// Create the observer\nvar observer = new ReportingObserver(\n  function(reports, observer) {\n    var instance = reports.length && reports[0].body;\n    clearTimeout(timeout);\n    console.log(instance);\n    callback(instance);\n    el.remove();\n    observer.disconnect();\n  },\n  {\n    types: [\"csp-violation\"],\n    buffered: true,\n  }\n);\n\n// Start observing\nobserver.observe();\n\n// Load some \"script\" from bad-domain.awful\nvar el = document.createElement('script');\nel.src = \"//bad-domain.awful/dummy-script.js\";\ntry {\n  document.getElementById('resources').append(el);\n} catch(e) {\n  // We expect a CSP error here\n}"
     },
     "mediaStream": {
       "type": "instance",
@@ -4938,56 +4944,69 @@
     "resources": ["cryptoKey", "cryptoKey"]
   },
   "api.CSPViolationReportBody": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.blockedURL": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"blockedURL\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"blockedURL\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.columnNumber": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"columnNumber\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.disposition": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"disposition\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"disposition\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.documentURL": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"documentURL\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"documentURL\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.effectiveDirective": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"effectiveDirective\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"effectiveDirective\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.lineNumber": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"lineNumber\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.originalPolicy": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"originalPolicy\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"originalPolicy\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.referrer": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"referrer\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"referrer\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.sample": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"sample\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sample\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.sourceFile": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"sourceFile\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.statusCode": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"statusCode\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"statusCode\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSPViolationReportBody.toJSON": {
-    "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"toJSON\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"toJSON\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSS": { "code": "\"CSS\" in self", "exposure": ["Window"] },
   "api.CSS.animationWorklet_static": {
@@ -27553,6 +27572,22 @@
     "code": "(function () {\n  var instance = new RTCIceCandidate({\n    candidate:\n      \"candidate:4234997325 1 udp 2043278322 192.168.0.56 44323 typ host\",\n    sdpMid: \"\",\n  });\n  return !!instance && \"usernameFragment\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.RTCIceCandidatePairEvent": {
+    "code": "\"RTCIceCandidatePairEvent\" in self",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePairEvent.local": {
+    "code": "\"RTCIceCandidatePairEvent\" in self && \"local\" in RTCIceCandidatePairEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePairEvent.remote": {
+    "code": "\"RTCIceCandidatePairEvent\" in self && \"remote\" in RTCIceCandidatePairEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePairEvent.RTCIceCandidatePairEvent": {
+    "code": "bcd.testConstructor('RTCIceCandidatePairEvent')",
+    "exposure": ["Window"]
+  },
   "api.RTCIceTransport": {
     "code": "\"RTCIceTransport\" in self",
     "exposure": ["Window"]
@@ -27605,6 +27640,18 @@
     "code": "\"RTCIceTransport\" in self && \"onicecandidate\" in RTCIceTransport.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCIceTransport.icecandidatepairadd_event": {
+    "code": "\"RTCIceTransport\" in self && \"onicecandidatepairadd\" in RTCIceTransport.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceTransport.icecandidatepairnominate_event": {
+    "code": "\"RTCIceTransport\" in self && \"onicecandidatepairnominate\" in RTCIceTransport.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceTransport.icecandidatepairremove_event": {
+    "code": "\"RTCIceTransport\" in self && \"onicecandidatepairremove\" in RTCIceTransport.prototype",
+    "exposure": ["Window"]
+  },
   "api.RTCIceTransport.selectedcandidatepairchange_event": {
     "code": "\"RTCIceTransport\" in self && \"onselectedcandidatepairchange\" in RTCIceTransport.prototype",
     "exposure": ["Window"]
@@ -27613,12 +27660,20 @@
     "code": "\"RTCIceTransport\" in self && \"onstatechange\" in RTCIceTransport.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCIceTransport.removeCandidatePair": {
+    "code": "\"RTCIceTransport\" in self && \"removeCandidatePair\" in RTCIceTransport.prototype",
+    "exposure": ["Window"]
+  },
   "api.RTCIceTransport.role": {
     "code": "\"RTCIceTransport\" in self && \"role\" in RTCIceTransport.prototype",
     "exposure": ["Window"]
   },
   "api.RTCIceTransport.RTCIceTransport": {
     "code": "bcd.testConstructor('RTCIceTransport')",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceTransport.selectCandidatePair": {
+    "code": "\"RTCIceTransport\" in self && \"selectCandidatePair\" in RTCIceTransport.prototype",
     "exposure": ["Window"]
   },
   "api.RTCIceTransport.start": {
@@ -27997,6 +28052,10 @@
     "code": "\"RTCRtpReceiver\" in self && \"createEncodedStreams\" in RTCRtpReceiver.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCRtpReceiver.disableHardwareDecoding_static": {
+    "code": "\"RTCRtpReceiver\" in self && \"disableHardwareDecoding\" in RTCRtpReceiver",
+    "exposure": ["Window"]
+  },
   "api.RTCRtpReceiver.getCapabilities_static": {
     "code": "\"RTCRtpReceiver\" in self && \"getCapabilities\" in RTCRtpReceiver",
     "exposure": ["Window"]
@@ -28015,6 +28074,10 @@
   },
   "api.RTCRtpReceiver.getSynchronizationSources": {
     "code": "\"RTCRtpReceiver\" in self && \"getSynchronizationSources\" in RTCRtpReceiver.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCRtpReceiver.jitterBufferTarget": {
+    "code": "\"RTCRtpReceiver\" in self && \"jitterBufferTarget\" in RTCRtpReceiver.prototype",
     "exposure": ["Window"]
   },
   "api.RTCRtpReceiver.rtcpTransport": {
@@ -28077,6 +28140,10 @@
     "code": "\"RTCRtpSender\" in self && \"createEncodedStreams\" in RTCRtpSender.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCRtpSender.disableHardwareEncoding_static": {
+    "code": "\"RTCRtpSender\" in self && \"disableHardwareEncoding\" in RTCRtpSender",
+    "exposure": ["Window"]
+  },
   "api.RTCRtpSender.dtmf": {
     "code": "\"RTCRtpSender\" in self && \"dtmf\" in RTCRtpSender.prototype",
     "exposure": ["Window"]
@@ -28137,6 +28204,14 @@
     "code": "\"RTCRtpTransceiver\" in self && \"direction\" in RTCRtpTransceiver.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCRtpTransceiver.getHeaderExtensionsToNegotiate": {
+    "code": "\"RTCRtpTransceiver\" in self && \"getHeaderExtensionsToNegotiate\" in RTCRtpTransceiver.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCRtpTransceiver.getNegotiatedHeaderExtensions": {
+    "code": "\"RTCRtpTransceiver\" in self && \"getNegotiatedHeaderExtensions\" in RTCRtpTransceiver.prototype",
+    "exposure": ["Window"]
+  },
   "api.RTCRtpTransceiver.mid": {
     "code": "\"RTCRtpTransceiver\" in self && \"mid\" in RTCRtpTransceiver.prototype",
     "exposure": ["Window"]
@@ -28145,12 +28220,20 @@
     "code": "\"RTCRtpTransceiver\" in self && \"receiver\" in RTCRtpTransceiver.prototype",
     "exposure": ["Window"]
   },
+  "api.RTCRtpTransceiver.rtpHeaderEncryptionNegotiated": {
+    "code": "\"RTCRtpTransceiver\" in self && \"rtpHeaderEncryptionNegotiated\" in RTCRtpTransceiver.prototype",
+    "exposure": ["Window"]
+  },
   "api.RTCRtpTransceiver.sender": {
     "code": "\"RTCRtpTransceiver\" in self && \"sender\" in RTCRtpTransceiver.prototype",
     "exposure": ["Window"]
   },
   "api.RTCRtpTransceiver.setCodecPreferences": {
     "code": "\"RTCRtpTransceiver\" in self && \"setCodecPreferences\" in RTCRtpTransceiver.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCRtpTransceiver.setHeaderExtensionsToNegotiate": {
+    "code": "\"RTCRtpTransceiver\" in self && \"setHeaderExtensionsToNegotiate\" in RTCRtpTransceiver.prototype",
     "exposure": ["Window"]
   },
   "api.RTCRtpTransceiver.stop": {
@@ -40707,6 +40790,46 @@
     "code": "bcd.testConstructor('WebSocket')",
     "exposure": ["Window", "Worker"]
   },
+  "api.WebSocketError": {
+    "code": "\"WebSocketError\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketError.closeCode": {
+    "code": "\"WebSocketError\" in self && \"closeCode\" in WebSocketError.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketError.reason": {
+    "code": "\"WebSocketError\" in self && \"reason\" in WebSocketError.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketError.WebSocketError": {
+    "code": "bcd.testConstructor('WebSocketError')",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream": {
+    "code": "\"WebSocketStream\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream.close": {
+    "code": "\"WebSocketStream\" in self && \"close\" in WebSocketStream.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream.closed": {
+    "code": "\"WebSocketStream\" in self && \"closed\" in WebSocketStream.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream.opened": {
+    "code": "\"WebSocketStream\" in self && \"opened\" in WebSocketStream.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream.url": {
+    "code": "\"WebSocketStream\" in self && \"url\" in WebSocketStream.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.WebSocketStream.WebSocketStream": {
+    "code": "bcd.testConstructor('WebSocketStream')",
+    "exposure": ["Window", "Worker"]
+  },
   "api.WebTransport": {
     "code": "\"WebTransport\" in self",
     "exposure": ["Window", "Worker"]
@@ -44386,10 +44509,6 @@
   },
   "css.properties.alt": {
     "code": "bcd.testCSSProperty(\"alt\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.anchor-default": {
-    "code": "bcd.testCSSProperty(\"anchor-default\")",
     "exposure": ["Window"]
   },
   "css.properties.anchor-name": {
@@ -50584,6 +50703,10 @@
     "code": "bcd.testCSSProperty(\"position\", \"fixed\")",
     "exposure": ["Window"]
   },
+  "css.properties.position-anchor": {
+    "code": "bcd.testCSSProperty(\"position-anchor\")",
+    "exposure": ["Window"]
+  },
   "css.properties.position-try": {
     "code": "bcd.testCSSProperty(\"position-try\")",
     "exposure": ["Window"]
@@ -53814,6 +53937,10 @@
   },
   "css.selectors.active-view-transition": {
     "code": "(function () {\n  return bcd.testCSSSelector(\":root:active-view-transition(*)\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "css.selectors.active-view-transition-type": {
+    "code": "bcd.testCSSSelector(\":active-view-transition-type()\")",
     "exposure": ["Window"]
   },
   "css.selectors.view-transition": {

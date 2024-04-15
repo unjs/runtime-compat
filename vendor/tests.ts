@@ -8,7 +8,7 @@
 
 // import didYouMean from "didyoumean";
 
-import type { Exposure, Resources, Test } from "./types.js";
+import type { Exposure, Resources, Tests as TestsType } from "./types.js";
 
 type Endpoints = Record<string, string[]>;
 
@@ -16,7 +16,8 @@ type Endpoints = Record<string, string[]>;
  * Represents a collection of tests.
  */
 class Tests {
-  tests: Record<string, any>;
+  tests: TestsType;
+  version: string;
   resources: Resources;
   endpoints: Endpoints;
   httpOnly: boolean;
@@ -28,12 +29,17 @@ class Tests {
    * @param options.httpOnly - Indicates if the HTTP-only flag is enabled.
    */
   constructor(options: {
-    tests: Record<string, Test> & { __resources: Resources };
-    httpOnly: boolean;
+    tests: TestsType & { __version: string; __resources: Resources };
+    httpOnly: any;
   }) {
-    const { __resources, ...tests } = options.tests;
-    this.tests = tests;
-    this.resources = __resources;
+    this.tests = Object.keys(options.tests)
+      .filter((key) => !key.startsWith("__"))
+      .reduce((obj, key) => {
+        obj[key] = options.tests[key];
+        return obj;
+      }, {});
+    this.version = options.tests.__version;
+    this.resources = options.tests.__resources;
     this.endpoints = this.buildEndpoints();
     this.httpOnly = options.httpOnly;
   }
