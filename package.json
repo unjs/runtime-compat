@@ -9,7 +9,8 @@
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs .",
     "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix",
     "release": "vitest run packages/runtime-compat-data/test && pnpm run --filter runtime-compat-data release",
-    "test": "vitest"
+    "test": "vitest",
+    "website": "pnpm run --filter \"website\" dev"
   },
   "devDependencies": {
     "@mdn/browser-compat-data": "^5.5.21",

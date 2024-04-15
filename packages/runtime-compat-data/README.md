@@ -95,6 +95,18 @@ Example data:
 
 ```json
 {
+  "__version": {
+    "__package": "0.0.5",
+    "bun": "1.0.32",
+    "deno": "1.41.2",
+    "edge-light": "2.5.9",
+    "fastly": "3.11.0",
+    "llrt": "0.1.11-beta",
+    "netlify": "17.20.1",
+    "node": "20.11.1",
+    "wasmer": "0.4.4",
+    "workerd": "2024-03-12"
+  },
   "api": {
     "URLPattern": {
       "__compat": {
@@ -134,6 +146,8 @@ For example, the `TextEncoder` key has this structure:
     - `__compat` (shows compatibility for the `encodeInto` method)
   - `encode`
     - `__compat` (shows compatibility for the `encode` method)
+
+The data also includes a `__version` key, which includes the version numbers for all runtimes, as well as the package itself.
 
 <!-- automd:contributors license=CC0 -->
 
