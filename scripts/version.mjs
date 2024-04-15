@@ -13,3 +13,4 @@ for (const runtime of runtimes) {
   console.log(` - ${runtime}: ${data.userAgent.split('/')[1]}`);
 }
 
+console.log("EOF");
