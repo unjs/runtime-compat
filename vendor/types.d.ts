@@ -12,6 +12,13 @@ import { BrowserName, SupportStatement } from "@mdn/browser-compat-data/types";
 
 export type InternalSupportStatement = SupportStatement | "mirror";
 
+export type Exposure =
+  | "Window"
+  | "Worker"
+  | "SharedWorker"
+  | "ServiceWorker"
+  | "WebAssembly";
+
 export type Resource =
   | {
       type: "instance";
@@ -37,7 +44,7 @@ export type Resources = Record<string, Resource>;
 
 export interface Test {
   code: string;
-  exposure: Array<string>;
+  exposure: Exposure[];
   resources?: (keyof Resources)[];
 }
 
