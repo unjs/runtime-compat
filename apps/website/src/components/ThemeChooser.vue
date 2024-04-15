@@ -14,7 +14,7 @@ import Moon from "./icon/Moon.vue";
 export default {
   data() {
     return {
-      theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      theme: window?.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
   },
   mounted() {
