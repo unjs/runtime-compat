@@ -12,12 +12,12 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@mdn/browser-compat-data": "^5.5.16",
-    "@types/node": "^20.11.30",
-    "automd": "^0.3.6",
+    "@mdn/browser-compat-data": "^5.5.21",
+    "@types/node": "^20.12.7",
+    "automd": "^0.3.7",
     "eslint": "^8.57.0",
     "eslint-config-unjs": "^0.2.1",
     "prettier": "^3.2.5"
   },
-  "packageManager": "pnpm@8.15.5"
+  "packageManager": "pnpm@8.15.7"
 }

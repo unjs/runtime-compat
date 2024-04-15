@@ -30,7 +30,7 @@ jobs:
         with:
           deno-version: vx.x.x
       - name: Download Fastly CLI
-        uses: robinraju/release-downloader@v1.9
+        uses: robinraju/release-downloader@v1.10
         with:
           repository: fastly/cli
           latest: true
@@ -38,7 +38,7 @@ jobs:
       - name: Install Fastly CLI
         run: sudo dpkg -i fastly_*_linux_amd64.deb && fastly version
       - name: Download LLRT
-        uses: robinraju/release-downloader@v1.9
+        uses: robinraju/release-downloader@v1.10
         with:
           repository: awslabs/llrt
           latest: true
