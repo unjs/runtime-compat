@@ -2,7 +2,7 @@
 
 <!-- automd:badges color=yellow license -->
 
-[![license](https://flat.badgen.net/github/license/unjs/runtime-compat?color=yellow)](https://github.com/unjs/runtime-compat/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/unjs/runtime-compat?color=yellow)](https://github.com/unjs/runtime-compat/blob/main/LICENSE)
 
 <!-- /automd -->
 
