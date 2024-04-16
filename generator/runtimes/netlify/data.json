@@ -1,4 +1,5 @@
 {
+  "__version": "10.10.4-dev",
   "results": {
     ".": [
       {
@@ -14713,6 +14714,38 @@
         "message": "threw ReferenceError: ChannelSplitterNode is not defined"
       },
       {
+        "name": "api.ChapterInformation",
+        "info": {
+          "code": "\"ChapterInformation\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ChapterInformation.artwork",
+        "info": {
+          "code": "\"ChapterInformation\" in self && \"artwork\" in ChapterInformation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ChapterInformation.startTime",
+        "info": {
+          "code": "\"ChapterInformation\" in self && \"startTime\" in ChapterInformation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ChapterInformation.title",
+        "info": {
+          "code": "\"ChapterInformation\" in self && \"title\" in ChapterInformation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CharacterBoundsUpdateEvent",
         "info": {
           "code": "\"CharacterBoundsUpdateEvent\" in self",
@@ -15257,6 +15290,30 @@
           "exposure": "Window"
         },
         "result": true
+      },
+      {
+        "name": "api.console.dir_static.options_colors_parameter",
+        "info": {
+          "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"colors\", true);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.console.dir_static.options_depth_parameter",
+        "info": {
+          "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"depth\", 1);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.console.dir_static.options_showHidden_parameter",
+        "info": {
+          "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"showHidden\", true);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.console.dirxml_static",
@@ -16046,119 +16103,106 @@
       {
         "name": "api.CSPViolationReportBody",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.blockedURL",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"blockedURL\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"blockedURL\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.columnNumber",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"columnNumber\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.disposition",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"disposition\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"disposition\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.documentURL",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"documentURL\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"documentURL\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.effectiveDirective",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"effectiveDirective\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"effectiveDirective\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.lineNumber",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"lineNumber\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.originalPolicy",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"originalPolicy\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"originalPolicy\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.referrer",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"referrer\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"referrer\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.sample",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"sample\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sample\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.sourceFile",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"sourceFile\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.statusCode",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"statusCode\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"statusCode\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSPViolationReportBody.toJSON",
         "info": {
-          "code": "(function () {\n  // Note: the Content-Security-Policy header is already configured on this website\n  if (!(\"ReportingObserver\" in self)) {\n    return { result: false, message: \"ReportingObserver is not defined\" };\n  }\n\n  // Create the observer\n  var observer = new ReportingObserver(\n    function (reports, observer) {\n      var instance = reports.length && reports[0].body;\n      callback(instance);\n      el.remove();\n      observer.disconnect();\n    },\n    {\n      types: [\"csp-violation\"],\n      buffered: true,\n    },\n  );\n\n  // Start observing\n  observer.observe();\n\n  // Load some \"script\" from bad-domain.awful\n  var el = document.createElement(\"script\");\n  el.src = \"//bad-domain.awful/dummy-script.js\";\n  try {\n    document.getElementById(\"resources\").append(el);\n  } catch (e) {\n    // We expect a CSP error here\n  }\n  function callback(instance) {\n    try {\n      success(!!instance && \"toJSON\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"toJSON\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ReportingObserver is not defined"
+        "result": false
       },
       {
         "name": "api.CSS",
@@ -17062,6 +17106,246 @@
         },
         "result": null,
         "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.ascent-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"ascent-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.ascentOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"ascentOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.descent-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"descent-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.descentOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"descentOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-display",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-display\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-family",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-family\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-feature-settings",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-feature-settings\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-language-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-language-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-named-instance",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-named-instance\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-stretch",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-stretch\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-style",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-style\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-variation-settings",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-variation-settings\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-weight",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-weight\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.font-width",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-width\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontDisplay",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontDisplay\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontFamily",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontFamily\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontFeatureSettings",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontFeatureSettings\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontLanguageOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontLanguageOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontNamedInstance",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontNamedInstance\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontStretch",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontStretch\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontStyle",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontStyle\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontVariationSettings",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontVariationSettings\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontWeight",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontWeight\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.fontWidth",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontWidth\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.line-gap-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"line-gap-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.lineGapOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"lineGapOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.src",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"src\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.unicode-range",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"unicode-range\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.unicodeRange",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"unicodeRange\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.CSSFontFaceRule",
@@ -18291,6 +18575,110 @@
         "result": false
       },
       {
+        "name": "api.CSSPageDescriptors",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.bleed",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"bleed\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.margin",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"margin\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.margin-bottom",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"margin-bottom\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.margin-left",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"margin-left\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.margin-right",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"margin-right\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.margin-top",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"margin-top\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.marginBottom",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"marginBottom\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.marginLeft",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"marginLeft\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.marginRight",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"marginRight\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.marginTop",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"marginTop\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.marks",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"marks\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.size",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"size\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSPageRule",
         "info": {
           "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\"@page {margin: 1cm;}\");\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
@@ -18567,6 +18955,574 @@
         "name": "api.CSSPerspective.length",
         "info": {
           "code": "\"CSSPerspective\" in self && \"length\" in CSSPerspective.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.align-self",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"align-self\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.alignSelf",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"alignSelf\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.block-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"block-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.blockSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"blockSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.bottom",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"bottom\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.height",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"height\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inline-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inline-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inlineSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inlineSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-area",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-area\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-block",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-block-end",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block-end\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-block-start",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block-start\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-inline",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-inline-end",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-end\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.inset-inline-start",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-start\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetArea",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetArea\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetBlock",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlock\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetBlockEnd",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlockEnd\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetBlockStart",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlockStart\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetInline",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetInline\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetInlineEnd",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetInlineEnd\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.insetInlineStart",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"insetInlineStart\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.justify-self",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"justify-self\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.justifySelf",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"justifySelf\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.left",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"left\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-block",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-block-end",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block-end\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-block-start",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block-start\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-bottom",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-bottom\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-inline",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-inline-end",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline-end\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-inline-start",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline-start\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-left",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-left\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-right",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-right\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.margin-top",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"margin-top\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginBlock",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlock\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginBlockEnd",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlockEnd\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginBlockStart",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlockStart\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginBottom",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginBottom\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginInline",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginInline\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginInlineEnd",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginInlineEnd\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginInlineStart",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginInlineStart\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginLeft",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginLeft\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginRight",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginRight\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.marginTop",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"marginTop\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.max-block-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"max-block-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.max-height",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"max-height\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.max-inline-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"max-inline-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.max-width",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"max-width\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.maxBlockSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"maxBlockSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.maxHeight",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"maxHeight\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.maxInlineSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"maxInlineSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.maxWidth",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"maxWidth\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.min-block-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"min-block-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.min-height",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"min-height\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.min-inline-size",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"min-inline-size\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.min-width",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"min-width\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.minBlockSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"minBlockSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.minHeight",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"minHeight\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.minInlineSize",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"minInlineSize\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.minWidth",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"minWidth\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.place-self",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"place-self\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.placeSelf",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"placeSelf\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.position-anchor",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"position-anchor\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.positionAnchor",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"positionAnchor\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.right",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"right\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.top",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"top\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.width",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"width\" in CSSPositionTryDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -19157,15 +20113,6 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
-        "name": "api.CSSStyleDeclaration.cssFloat",
-        "info": {
-          "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssFloat\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
-      },
-      {
         "name": "api.CSSStyleDeclaration.cssText",
         "info": {
           "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssText\" in instance;\n})();\n",
@@ -19281,6 +20228,22 @@
         },
         "result": null,
         "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.CSSStyleProperties",
+        "info": {
+          "code": "\"CSSStyleProperties\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSStyleProperties.cssFloat",
+        "info": {
+          "code": "\"CSSStyleProperties\" in self && \"cssFloat\" in CSSStyleProperties.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.CSSStyleRule",
@@ -19860,9 +20823,9 @@
         "result": false
       },
       {
-        "name": "api.CSSViewTransitionRule.typeList",
+        "name": "api.CSSViewTransitionRule.types",
         "info": {
-          "code": "\"CSSViewTransitionRule\" in self && \"typeList\" in CSSViewTransitionRule.prototype",
+          "code": "\"CSSViewTransitionRule\" in self && \"types\" in CSSViewTransitionRule.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -25036,6 +25999,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Element.currentCSSZoom",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"currentCSSZoom\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Element.elementTiming",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"elementTiming\" in instance;\n})();\n",
@@ -25183,6 +26155,15 @@
         "name": "api.Element.getElementsByTagNameNS.all_elements_selector",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.getElementsByTagNameNS)) {\n    return {\n      result: false,\n      message: \"instance.getElementsByTagNameNS is not defined\",\n    };\n  }\n  instance.append(document.createElement(\"p\"));\n  return (\n    instance.getElementsByTagNameNS(\"http://www.w3.org/1999/xhtml\", \"*\")\n      .length > 0\n  );\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.getHTML",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"getHTML\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -25813,15 +26794,6 @@
         "name": "api.Element.setCapture",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"setCapture\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
-      },
-      {
-        "name": "api.Element.setHTML",
-        "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"setHTML\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -30043,7 +31015,7 @@
         "result": true
       },
       {
-        "name": "api.Headers.lexicographical_sorting",
+        "name": "api.Headers.iterate_lexicographically",
         "info": {
           "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
           "exposure": "Window"
@@ -38146,6 +39118,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLTemplateElement.shadowRootSerializable",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"template\");\n  return !!instance && \"shadowRootSerializable\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLTextAreaElement",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return bcd.testObjectName(instance, \"HTMLTextAreaElement\");\n})();\n",
@@ -42167,6 +43148,14 @@
         "result": false
       },
       {
+        "name": "api.MediaMetadata.chapterInfo",
+        "info": {
+          "code": "\"MediaMetadata\" in self && \"chapterInfo\" in MediaMetadata.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MediaMetadata.MediaMetadata",
         "info": {
           "code": "bcd.testConstructor('MediaMetadata')",
@@ -44247,6 +45236,14 @@
         "name": "api.MLGraphBuilder.gather",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"gather\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.gelu",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"gelu\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46725,9 +47722,49 @@
         "result": false
       },
       {
+        "name": "api.NavigatorManagedData.getAnnotatedAssetId",
+        "info": {
+          "code": "\"NavigatorManagedData\" in self && \"getAnnotatedAssetId\" in NavigatorManagedData.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorManagedData.getAnnotatedLocation",
+        "info": {
+          "code": "\"NavigatorManagedData\" in self && \"getAnnotatedLocation\" in NavigatorManagedData.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorManagedData.getDirectoryId",
+        "info": {
+          "code": "\"NavigatorManagedData\" in self && \"getDirectoryId\" in NavigatorManagedData.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorManagedData.getHostname",
+        "info": {
+          "code": "\"NavigatorManagedData\" in self && \"getHostname\" in NavigatorManagedData.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.NavigatorManagedData.getManagedConfiguration",
         "info": {
           "code": "\"NavigatorManagedData\" in self && \"getManagedConfiguration\" in NavigatorManagedData.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorManagedData.getSerialNumber",
+        "info": {
+          "code": "\"NavigatorManagedData\" in self && \"getSerialNumber\" in NavigatorManagedData.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -54921,6 +55958,39 @@
         "message": "threw ReferenceError: RTCIceCandidate is not defined"
       },
       {
+        "name": "api.RTCIceCandidatePairEvent",
+        "info": {
+          "code": "\"RTCIceCandidatePairEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceCandidatePairEvent.local",
+        "info": {
+          "code": "\"RTCIceCandidatePairEvent\" in self && \"local\" in RTCIceCandidatePairEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceCandidatePairEvent.remote",
+        "info": {
+          "code": "\"RTCIceCandidatePairEvent\" in self && \"remote\" in RTCIceCandidatePairEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceCandidatePairEvent.RTCIceCandidatePairEvent",
+        "info": {
+          "code": "bcd.testConstructor('RTCIceCandidatePairEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: RTCIceCandidatePairEvent is not defined"
+      },
+      {
         "name": "api.RTCIceTransport",
         "info": {
           "code": "\"RTCIceTransport\" in self",
@@ -55025,6 +56095,30 @@
         "result": false
       },
       {
+        "name": "api.RTCIceTransport.icecandidatepairadd_event",
+        "info": {
+          "code": "\"RTCIceTransport\" in self && \"onicecandidatepairadd\" in RTCIceTransport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceTransport.icecandidatepairnominate_event",
+        "info": {
+          "code": "\"RTCIceTransport\" in self && \"onicecandidatepairnominate\" in RTCIceTransport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceTransport.icecandidatepairremove_event",
+        "info": {
+          "code": "\"RTCIceTransport\" in self && \"onicecandidatepairremove\" in RTCIceTransport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.RTCIceTransport.selectedcandidatepairchange_event",
         "info": {
           "code": "\"RTCIceTransport\" in self && \"onselectedcandidatepairchange\" in RTCIceTransport.prototype",
@@ -55036,6 +56130,14 @@
         "name": "api.RTCIceTransport.statechange_event",
         "info": {
           "code": "\"RTCIceTransport\" in self && \"onstatechange\" in RTCIceTransport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCIceTransport.removeCandidatePair",
+        "info": {
+          "code": "\"RTCIceTransport\" in self && \"removeCandidatePair\" in RTCIceTransport.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -55056,6 +56158,14 @@
         },
         "result": false,
         "message": "threw ReferenceError: RTCIceTransport is not defined"
+      },
+      {
+        "name": "api.RTCIceTransport.selectCandidatePair",
+        "info": {
+          "code": "\"RTCIceTransport\" in self && \"selectCandidatePair\" in RTCIceTransport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.RTCIceTransport.start",
@@ -55852,6 +56962,14 @@
         "result": false
       },
       {
+        "name": "api.RTCRtpReceiver.disableHardwareDecoding_static",
+        "info": {
+          "code": "\"RTCRtpReceiver\" in self && \"disableHardwareDecoding\" in RTCRtpReceiver",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.RTCRtpReceiver.getCapabilities_static",
         "info": {
           "code": "\"RTCRtpReceiver\" in self && \"getCapabilities\" in RTCRtpReceiver",
@@ -55887,6 +57005,14 @@
         "name": "api.RTCRtpReceiver.getSynchronizationSources",
         "info": {
           "code": "\"RTCRtpReceiver\" in self && \"getSynchronizationSources\" in RTCRtpReceiver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCRtpReceiver.jitterBufferTarget",
+        "info": {
+          "code": "\"RTCRtpReceiver\" in self && \"jitterBufferTarget\" in RTCRtpReceiver.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -55952,6 +57078,14 @@
         "name": "api.RTCRtpSender.createEncodedStreams",
         "info": {
           "code": "\"RTCRtpSender\" in self && \"createEncodedStreams\" in RTCRtpSender.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCRtpSender.disableHardwareEncoding_static",
+        "info": {
+          "code": "\"RTCRtpSender\" in self && \"disableHardwareEncoding\" in RTCRtpSender",
           "exposure": "Window"
         },
         "result": false
@@ -56077,6 +57211,22 @@
         "result": false
       },
       {
+        "name": "api.RTCRtpTransceiver.getHeaderExtensionsToNegotiate",
+        "info": {
+          "code": "\"RTCRtpTransceiver\" in self && \"getHeaderExtensionsToNegotiate\" in RTCRtpTransceiver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCRtpTransceiver.getNegotiatedHeaderExtensions",
+        "info": {
+          "code": "\"RTCRtpTransceiver\" in self && \"getNegotiatedHeaderExtensions\" in RTCRtpTransceiver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.RTCRtpTransceiver.mid",
         "info": {
           "code": "\"RTCRtpTransceiver\" in self && \"mid\" in RTCRtpTransceiver.prototype",
@@ -56093,6 +57243,14 @@
         "result": false
       },
       {
+        "name": "api.RTCRtpTransceiver.rtpHeaderEncryptionNegotiated",
+        "info": {
+          "code": "\"RTCRtpTransceiver\" in self && \"rtpHeaderEncryptionNegotiated\" in RTCRtpTransceiver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.RTCRtpTransceiver.sender",
         "info": {
           "code": "\"RTCRtpTransceiver\" in self && \"sender\" in RTCRtpTransceiver.prototype",
@@ -56104,6 +57262,14 @@
         "name": "api.RTCRtpTransceiver.setCodecPreferences",
         "info": {
           "code": "\"RTCRtpTransceiver\" in self && \"setCodecPreferences\" in RTCRtpTransceiver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.RTCRtpTransceiver.setHeaderExtensionsToNegotiate",
+        "info": {
+          "code": "\"RTCRtpTransceiver\" in self && \"setHeaderExtensionsToNegotiate\" in RTCRtpTransceiver.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -58831,55 +59997,6 @@
         "result": false
       },
       {
-        "name": "api.Sanitizer",
-        "info": {
-          "code": "\"Sanitizer\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Sanitizer.getConfiguration",
-        "info": {
-          "code": "\"Sanitizer\" in self && \"getConfiguration\" in Sanitizer.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Sanitizer.getDefaultConfiguration_static",
-        "info": {
-          "code": "\"Sanitizer\" in self && \"getDefaultConfiguration\" in Sanitizer",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Sanitizer.sanitize",
-        "info": {
-          "code": "\"Sanitizer\" in self && \"sanitize\" in Sanitizer.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Sanitizer.sanitizeFor",
-        "info": {
-          "code": "\"Sanitizer\" in self && \"sanitizeFor\" in Sanitizer.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Sanitizer.Sanitizer",
-        "info": {
-          "code": "bcd.testConstructor('Sanitizer')",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "threw ReferenceError: Sanitizer is not defined"
-      },
-      {
         "name": "api.Scheduler",
         "info": {
           "code": "\"Scheduler\" in self",
@@ -60461,6 +61578,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.ShadowRoot.getHTML",
+        "info": {
+          "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"getHTML\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.ShadowRoot.getSelection",
         "info": {
           "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"getSelection\" in instance;\n})();\n",
@@ -60518,6 +61644,15 @@
         "name": "api.ShadowRoot.pointerLockElement",
         "info": {
           "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"pointerLockElement\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.ShadowRoot.serializable",
+        "info": {
+          "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"serializable\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -60640,22 +61775,6 @@
         "result": false
       },
       {
-        "name": "api.SnapEvent.invokedProgrammatically",
-        "info": {
-          "code": "\"SnapEvent\" in self && \"invokedProgrammatically\" in SnapEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapEvent.smoothlyScrolled",
-        "info": {
-          "code": "\"SnapEvent\" in self && \"smoothlyScrolled\" in SnapEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.SnapEvent.SnapEvent",
         "info": {
           "code": "bcd.testConstructor('SnapEvent')",
@@ -60665,73 +61784,17 @@
         "message": "threw ReferenceError: SnapEvent is not defined"
       },
       {
-        "name": "api.SnapEvent.snappedTargets",
+        "name": "api.SnapEvent.snapTargetBlock",
         "info": {
-          "code": "\"SnapEvent\" in self && \"snappedTargets\" in SnapEvent.prototype",
+          "code": "\"SnapEvent\" in self && \"snapTargetBlock\" in SnapEvent.prototype",
           "exposure": "Window"
         },
         "result": false
       },
       {
-        "name": "api.SnapEvent.snapTargets",
+        "name": "api.SnapEvent.snapTargetInline",
         "info": {
-          "code": "\"SnapEvent\" in self && \"snapTargets\" in SnapEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapEvent.target",
-        "info": {
-          "code": "\"SnapEvent\" in self && \"target\" in SnapEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetArray",
-        "info": {
-          "code": "\"SnapTargetArray\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetArray.item",
-        "info": {
-          "code": "\"SnapTargetArray\" in self && \"item\" in SnapTargetArray.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetArray.length",
-        "info": {
-          "code": "\"SnapTargetArray\" in self && \"length\" in SnapTargetArray.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetList",
-        "info": {
-          "code": "\"SnapTargetList\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetList.x",
-        "info": {
-          "code": "\"SnapTargetList\" in self && \"x\" in SnapTargetList.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SnapTargetList.y",
-        "info": {
-          "code": "\"SnapTargetList\" in self && \"y\" in SnapTargetList.prototype",
+          "code": "\"SnapEvent\" in self && \"snapTargetInline\" in SnapEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -70164,6 +71227,14 @@
         "result": true
       },
       {
+        "name": "api.URL.parse_static",
+        "info": {
+          "code": "\"URL\" in self && \"parse\" in URL",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.URL.password",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
@@ -72073,9 +73144,9 @@
         "result": false
       },
       {
-        "name": "api.ViewTransition.typeList",
+        "name": "api.ViewTransition.types",
         "info": {
-          "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
+          "code": "\"ViewTransition\" in self && \"types\" in ViewTransition.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -72084,6 +73155,94 @@
         "name": "api.ViewTransition.updateCallbackDone",
         "info": {
           "code": "\"ViewTransition\" in self && \"updateCallbackDone\" in ViewTransition.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.@@iterator",
+        "info": {
+          "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"ViewTransitionTypeSet\" in self && !!(ViewTransitionTypeSet.prototype[Symbol.iterator])",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.add",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"add\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.clear",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"clear\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.delete",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"delete\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.entries",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"entries\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.forEach",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"forEach\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.has",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"has\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.keys",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"keys\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.size",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"size\" in ViewTransitionTypeSet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransitionTypeSet.values",
+        "info": {
+          "code": "\"ViewTransitionTypeSet\" in self && \"values\" in ViewTransitionTypeSet.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -76753,6 +77912,88 @@
         },
         "result": true,
         "message": "threw TypeError: Failed to construct 'WebSocket': 1 argument required, but only 0 present."
+      },
+      {
+        "name": "api.WebSocketError",
+        "info": {
+          "code": "\"WebSocketError\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketError.closeCode",
+        "info": {
+          "code": "\"WebSocketError\" in self && \"closeCode\" in WebSocketError.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketError.reason",
+        "info": {
+          "code": "\"WebSocketError\" in self && \"reason\" in WebSocketError.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketError.WebSocketError",
+        "info": {
+          "code": "bcd.testConstructor('WebSocketError')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: WebSocketError is not defined"
+      },
+      {
+        "name": "api.WebSocketStream",
+        "info": {
+          "code": "\"WebSocketStream\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketStream.close",
+        "info": {
+          "code": "\"WebSocketStream\" in self && \"close\" in WebSocketStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketStream.closed",
+        "info": {
+          "code": "\"WebSocketStream\" in self && \"closed\" in WebSocketStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketStream.opened",
+        "info": {
+          "code": "\"WebSocketStream\" in self && \"opened\" in WebSocketStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketStream.url",
+        "info": {
+          "code": "\"WebSocketStream\" in self && \"url\" in WebSocketStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WebSocketStream.WebSocketStream",
+        "info": {
+          "code": "bcd.testConstructor('WebSocketStream')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: WebSocketStream is not defined"
       },
       {
         "name": "api.WebTransport",
@@ -81974,6 +83215,22 @@
         "message": "threw TypeError: WebAssembly.Memory(): Argument 0 must be a memory descriptor"
       },
       {
+        "name": "webassembly.api.Memory.toFixedLengthBuffer",
+        "info": {
+          "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"toFixedLengthBuffer\" in WebAssembly.Memory.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "webassembly.api.Memory.toResizableBuffer",
+        "info": {
+          "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"toResizableBuffer\" in WebAssembly.Memory.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "webassembly.api.Module",
         "info": {
           "code": "\"WebAssembly\" in self && \"Module\" in WebAssembly",
@@ -82145,6 +83402,62 @@
         "result": true
       },
       {
+        "name": "api.WritableStreamDefaultController",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.WritableStreamDefaultController.error",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"error\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.WritableStreamDefaultController.signal",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"signal\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_pbkdf2",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"PBKDF2\",\n          salt: \"foobar\",\n          iterations: 100000,\n          hash: \"SHA-256\",\n        },\n        false,\n        [\"deriveBits\", \"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.CryptoKey",
         "info": {
           "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
@@ -82183,65 +83496,9 @@
           "exposure": "Window"
         },
         "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController.error",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"error\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController.signal",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      },\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"signal\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256,\n        },\n        true,\n        [\"encrypt\", \"decrypt\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_pbkdf2",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"PBKDF2\",\n          salt: \"foobar\",\n          iterations: 100000,\n          hash: \"SHA-256\",\n        },\n        false,\n        [\"deriveBits\", \"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
       }
     ]
   },
   "extensions": [],
-  "userAgent": "!! netlify/17.19.3"
+  "userAgent": "!! netlify/17.22.1"
 }
