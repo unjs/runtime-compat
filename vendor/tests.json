@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.4-17-ga08ca39",
+  "__version": "10.10.4-dev",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -3575,6 +3575,22 @@
     "exposure": ["Window"],
     "resources": ["audioContext"]
   },
+  "api.ChapterInformation": {
+    "code": "\"ChapterInformation\" in self",
+    "exposure": ["Window"]
+  },
+  "api.ChapterInformation.artwork": {
+    "code": "\"ChapterInformation\" in self && \"artwork\" in ChapterInformation.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ChapterInformation.startTime": {
+    "code": "\"ChapterInformation\" in self && \"startTime\" in ChapterInformation.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ChapterInformation.title": {
+    "code": "\"ChapterInformation\" in self && \"title\" in ChapterInformation.prototype",
+    "exposure": ["Window"]
+  },
   "api.CharacterBoundsUpdateEvent": {
     "code": "\"CharacterBoundsUpdateEvent\" in self",
     "exposure": ["Window"]
@@ -4136,6 +4152,69 @@
   },
   "api.console.dir_static": {
     "code": "\"console\" in self && \"dir\" in console",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
+  "api.console.dir_static.options_colors_parameter": {
+    "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"colors\", true);\n})();\n",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
+  "api.console.dir_static.options_depth_parameter": {
+    "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"depth\", 1);\n})();\n",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
+  "api.console.dir_static.options_showHidden_parameter": {
+    "code": "(function () {\n  function dir(options) {\n    console.dir({ a: \"b\" }, options);\n  }\n  return bcd.testOptionParam(dir, null, \"showHidden\", true);\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -5468,6 +5547,126 @@
     "exposure": ["Window"],
     "resources": ["createStyleSheet", "createStyleSheet"]
   },
+  "api.CSSFontFaceDescriptors": {
+    "code": "\"CSSFontFaceDescriptors\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.ascent-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"ascent-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.ascentOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"ascentOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.descent-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"descent-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.descentOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"descentOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-display": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-display\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-family": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-family\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-feature-settings": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-feature-settings\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-language-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-language-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-named-instance": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-named-instance\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-stretch": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-stretch\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-style": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-style\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-variation-settings": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-variation-settings\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-weight": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-weight\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.font-width": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-width\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontDisplay": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontDisplay\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontFamily": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontFamily\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontFeatureSettings": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontFeatureSettings\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontLanguageOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontLanguageOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontNamedInstance": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontNamedInstance\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontStretch": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontStretch\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontStyle": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontStyle\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontVariationSettings": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontVariationSettings\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontWeight": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontWeight\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.fontWidth": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontWidth\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.line-gap-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"line-gap-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.lineGapOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"lineGapOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.src": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"src\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.unicode-range": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"unicode-range\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.unicodeRange": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"unicodeRange\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSFontFaceRule": {
     "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-face {font-family: somefont; src: url(somefont.ttf);}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
     "exposure": ["Window"],
@@ -6117,6 +6316,58 @@
     "code": "\"CSSOKLCH\" in self && \"l\" in CSSOKLCH.prototype",
     "exposure": ["Window", "Worker", "PaintWorklet", "LayoutWorklet"]
   },
+  "api.CSSPageDescriptors": {
+    "code": "\"CSSPageDescriptors\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.bleed": {
+    "code": "\"CSSPageDescriptors\" in self && \"bleed\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.margin": {
+    "code": "\"CSSPageDescriptors\" in self && \"margin\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.margin-bottom": {
+    "code": "\"CSSPageDescriptors\" in self && \"margin-bottom\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.margin-left": {
+    "code": "\"CSSPageDescriptors\" in self && \"margin-left\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.margin-right": {
+    "code": "\"CSSPageDescriptors\" in self && \"margin-right\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.margin-top": {
+    "code": "\"CSSPageDescriptors\" in self && \"margin-top\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.marginBottom": {
+    "code": "\"CSSPageDescriptors\" in self && \"marginBottom\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.marginLeft": {
+    "code": "\"CSSPageDescriptors\" in self && \"marginLeft\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.marginRight": {
+    "code": "\"CSSPageDescriptors\" in self && \"marginRight\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.marginTop": {
+    "code": "\"CSSPageDescriptors\" in self && \"marginTop\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.marks": {
+    "code": "\"CSSPageDescriptors\" in self && \"marks\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.size": {
+    "code": "\"CSSPageDescriptors\" in self && \"size\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSPageRule": {
     "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\"@page {margin: 1cm;}\");\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
     "exposure": ["Window"],
@@ -6255,6 +6506,290 @@
   "api.CSSPerspective.length": {
     "code": "\"CSSPerspective\" in self && \"length\" in CSSPerspective.prototype",
     "exposure": ["Window", "Worker", "PaintWorklet", "LayoutWorklet"]
+  },
+  "api.CSSPositionTryDescriptors": {
+    "code": "\"CSSPositionTryDescriptors\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.align-self": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"align-self\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.alignSelf": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"alignSelf\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.block-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"block-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.blockSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"blockSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.bottom": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"bottom\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.height": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"height\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inline-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inline-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inlineSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inlineSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-area": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-area\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-block": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-block-end": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block-end\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-block-start": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block-start\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-inline": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-inline-end": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-end\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.inset-inline-start": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-start\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetArea": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetArea\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetBlock": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlock\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetBlockEnd": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlockEnd\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetBlockStart": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetBlockStart\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetInline": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetInline\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetInlineEnd": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetInlineEnd\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.insetInlineStart": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"insetInlineStart\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.justify-self": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"justify-self\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.justifySelf": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"justifySelf\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.left": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"left\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-block": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-block-end": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block-end\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-block-start": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-block-start\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-bottom": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-bottom\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-inline": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-inline-end": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline-end\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-inline-start": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-inline-start\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-left": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-left\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-right": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-right\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.margin-top": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"margin-top\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginBlock": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlock\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginBlockEnd": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlockEnd\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginBlockStart": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginBlockStart\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginBottom": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginBottom\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginInline": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginInline\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginInlineEnd": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginInlineEnd\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginInlineStart": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginInlineStart\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginLeft": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginLeft\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginRight": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginRight\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.marginTop": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"marginTop\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.max-block-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"max-block-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.max-height": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"max-height\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.max-inline-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"max-inline-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.max-width": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"max-width\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.maxBlockSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"maxBlockSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.maxHeight": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"maxHeight\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.maxInlineSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"maxInlineSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.maxWidth": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"maxWidth\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.min-block-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"min-block-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.min-height": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"min-height\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.min-inline-size": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"min-inline-size\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.min-width": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"min-width\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.minBlockSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"minBlockSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.minHeight": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"minHeight\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.minInlineSize": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"minInlineSize\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.minWidth": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"minWidth\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.place-self": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"place-self\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.placeSelf": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"placeSelf\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.position-anchor": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"position-anchor\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.positionAnchor": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"positionAnchor\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.right": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"right\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.top": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"top\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.width": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"width\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
   },
   "api.CSSPositionTryRule": {
     "code": "\"CSSPositionTryRule\" in self",
@@ -6586,10 +7121,6 @@
     "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"iterator\" in Symbol &&\n    !!instance[Symbol.iterator]\n  );\n})();\n",
     "exposure": ["Window"]
   },
-  "api.CSSStyleDeclaration.cssFloat": {
-    "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssFloat\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
   "api.CSSStyleDeclaration.cssText": {
     "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssText\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -6640,6 +7171,14 @@
   },
   "api.CSSStyleDeclaration.values": {
     "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"values\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.CSSStyleProperties": {
+    "code": "\"CSSStyleProperties\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSStyleProperties.cssFloat": {
+    "code": "\"CSSStyleProperties\" in self && \"cssFloat\" in CSSStyleProperties.prototype",
     "exposure": ["Window"]
   },
   "api.CSSStyleRule": {
@@ -6994,8 +7533,8 @@
     "code": "\"CSSViewTransitionRule\" in self && \"navigation\" in CSSViewTransitionRule.prototype",
     "exposure": ["Window"]
   },
-  "api.CSSViewTransitionRule.typeList": {
-    "code": "\"CSSViewTransitionRule\" in self && \"typeList\" in CSSViewTransitionRule.prototype",
+  "api.CSSViewTransitionRule.types": {
+    "code": "\"CSSViewTransitionRule\" in self && \"types\" in CSSViewTransitionRule.prototype",
     "exposure": ["Window"]
   },
   "api.CustomElementRegistry": {
@@ -9706,6 +10245,10 @@
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"convertRectFromNode\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Element.currentCSSZoom": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"currentCSSZoom\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Element.elementTiming": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"elementTiming\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -9772,6 +10315,10 @@
   },
   "api.Element.getElementsByTagNameNS.all_elements_selector": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  if (!(instance && instance.getElementsByTagNameNS)) {\n    return {\n      result: false,\n      message: \"instance.getElementsByTagNameNS is not defined\",\n    };\n  }\n  instance.append(document.createElement(\"p\"));\n  return (\n    instance.getElementsByTagNameNS(\"http://www.w3.org/1999/xhtml\", \"*\")\n      .length > 0\n  );\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.getHTML": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"getHTML\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.getRegionFlowRanges": {
@@ -10052,10 +10599,6 @@
   },
   "api.Element.setCapture": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"setCapture\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.Element.setHTML": {
-    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"setHTML\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.setHTMLUnsafe": {
@@ -14160,7 +14703,7 @@
     "code": "\"Headers\" in self && \"values\" in Headers.prototype",
     "exposure": ["Window", "Worker"]
   },
-  "api.Headers.lexicographical_sorting": {
+  "api.Headers.iterate_lexicographically": {
     "code": "(function () {\n  if (!(\"Headers\" in self)) {\n    return { result: false, message: \"Headers is not defined\" };\n  }\n  var h = new Headers({ \"X-Framework\": \"web2py\", \"Content-Type\": \"text/xml\" });\n  var entry = h.entries().next().value;\n  // If the headers are sorted, the first entry should be 'Content-Type'\n  return entry[0].toLowerCase() === \"content-type\";\n})();\n",
     "exposure": ["Window", "Worker"]
   },
@@ -17814,6 +18357,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"template\");\n  return !!instance && \"shadowRootMode\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLTemplateElement.shadowRootSerializable": {
+    "code": "(function () {\n  var instance = document.createElement(\"template\");\n  return !!instance && \"shadowRootSerializable\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLTextAreaElement": {
     "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return bcd.testObjectName(instance, \"HTMLTextAreaElement\");\n})();\n",
     "exposure": ["Window"]
@@ -20034,6 +20581,10 @@
     "code": "\"MediaMetadata\" in self && \"artwork\" in MediaMetadata.prototype",
     "exposure": ["Window"]
   },
+  "api.MediaMetadata.chapterInfo": {
+    "code": "\"MediaMetadata\" in self && \"chapterInfo\" in MediaMetadata.prototype",
+    "exposure": ["Window"]
+  },
   "api.MediaMetadata.MediaMetadata": {
     "code": "bcd.testConstructor('MediaMetadata')",
     "exposure": ["Window"]
@@ -20756,6 +21307,48 @@
       "RTCIdentityProvider"
     ]
   },
+  "webassembly.api.Memory.toFixedLengthBuffer": {
+    "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"toFixedLengthBuffer\" in WebAssembly.Memory.prototype",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
+  "webassembly.api.Memory.toResizableBuffer": {
+    "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly && \"toResizableBuffer\" in WebAssembly.Memory.prototype",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
   "api.MerchantValidationEvent": {
     "code": "(function () {\n  if (!(\"MerchantValidationEvent\" in self)) {\n    return { result: false, message: \"MerchantValidationEvent is not defined\" };\n  }\n  var instance = new MerchantValidationEvent(\"merchantvalidation\");\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
@@ -21189,6 +21782,10 @@
   },
   "api.MLGraphBuilder.gather": {
     "code": "\"MLGraphBuilder\" in self && \"gather\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.gelu": {
+    "code": "\"MLGraphBuilder\" in self && \"gelu\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.gemm": {
@@ -22497,8 +23094,28 @@
     "code": "\"NavigatorManagedData\" in self",
     "exposure": ["Window"]
   },
+  "api.NavigatorManagedData.getAnnotatedAssetId": {
+    "code": "\"NavigatorManagedData\" in self && \"getAnnotatedAssetId\" in NavigatorManagedData.prototype",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorManagedData.getAnnotatedLocation": {
+    "code": "\"NavigatorManagedData\" in self && \"getAnnotatedLocation\" in NavigatorManagedData.prototype",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorManagedData.getDirectoryId": {
+    "code": "\"NavigatorManagedData\" in self && \"getDirectoryId\" in NavigatorManagedData.prototype",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorManagedData.getHostname": {
+    "code": "\"NavigatorManagedData\" in self && \"getHostname\" in NavigatorManagedData.prototype",
+    "exposure": ["Window"]
+  },
   "api.NavigatorManagedData.getManagedConfiguration": {
     "code": "\"NavigatorManagedData\" in self && \"getManagedConfiguration\" in NavigatorManagedData.prototype",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorManagedData.getSerialNumber": {
+    "code": "\"NavigatorManagedData\" in self && \"getSerialNumber\" in NavigatorManagedData.prototype",
     "exposure": ["Window"]
   },
   "api.NavigatorManagedData.managedconfigurationchange_event": {
@@ -29822,27 +30439,6 @@
       "RTCIdentityProvider"
     ]
   },
-  "api.Sanitizer": { "code": "\"Sanitizer\" in self", "exposure": ["Window"] },
-  "api.Sanitizer.getConfiguration": {
-    "code": "\"Sanitizer\" in self && \"getConfiguration\" in Sanitizer.prototype",
-    "exposure": ["Window"]
-  },
-  "api.Sanitizer.getDefaultConfiguration_static": {
-    "code": "\"Sanitizer\" in self && \"getDefaultConfiguration\" in Sanitizer",
-    "exposure": ["Window"]
-  },
-  "api.Sanitizer.sanitize": {
-    "code": "\"Sanitizer\" in self && \"sanitize\" in Sanitizer.prototype",
-    "exposure": ["Window"]
-  },
-  "api.Sanitizer.sanitizeFor": {
-    "code": "\"Sanitizer\" in self && \"sanitizeFor\" in Sanitizer.prototype",
-    "exposure": ["Window"]
-  },
-  "api.Sanitizer.Sanitizer": {
-    "code": "bcd.testConstructor('Sanitizer')",
-    "exposure": ["Window"]
-  },
   "api.Scheduler": {
     "code": "\"Scheduler\" in self",
     "exposure": ["Window", "Worker"]
@@ -30710,6 +31306,10 @@
     "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"getAnimations\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.ShadowRoot.getHTML": {
+    "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"getHTML\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.ShadowRoot.getSelection": {
     "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"getSelection\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -30736,6 +31336,10 @@
   },
   "api.ShadowRoot.pointerLockElement": {
     "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"pointerLockElement\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.ShadowRoot.serializable": {
+    "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"serializable\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ShadowRoot.setHTMLUnsafe": {
@@ -30839,52 +31443,16 @@
     "exposure": ["SharedWorker"]
   },
   "api.SnapEvent": { "code": "\"SnapEvent\" in self", "exposure": ["Window"] },
-  "api.SnapEvent.invokedProgrammatically": {
-    "code": "\"SnapEvent\" in self && \"invokedProgrammatically\" in SnapEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapEvent.smoothlyScrolled": {
-    "code": "\"SnapEvent\" in self && \"smoothlyScrolled\" in SnapEvent.prototype",
-    "exposure": ["Window"]
-  },
   "api.SnapEvent.SnapEvent": {
     "code": "bcd.testConstructor('SnapEvent')",
     "exposure": ["Window"]
   },
-  "api.SnapEvent.snappedTargets": {
-    "code": "\"SnapEvent\" in self && \"snappedTargets\" in SnapEvent.prototype",
+  "api.SnapEvent.snapTargetBlock": {
+    "code": "\"SnapEvent\" in self && \"snapTargetBlock\" in SnapEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.SnapEvent.snapTargets": {
-    "code": "\"SnapEvent\" in self && \"snapTargets\" in SnapEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapEvent.target": {
-    "code": "\"SnapEvent\" in self && \"target\" in SnapEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetArray": {
-    "code": "\"SnapTargetArray\" in self",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetArray.item": {
-    "code": "\"SnapTargetArray\" in self && \"item\" in SnapTargetArray.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetArray.length": {
-    "code": "\"SnapTargetArray\" in self && \"length\" in SnapTargetArray.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetList": {
-    "code": "\"SnapTargetList\" in self",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetList.x": {
-    "code": "\"SnapTargetList\" in self && \"x\" in SnapTargetList.prototype",
-    "exposure": ["Window"]
-  },
-  "api.SnapTargetList.y": {
-    "code": "\"SnapTargetList\" in self && \"y\" in SnapTargetList.prototype",
+  "api.SnapEvent.snapTargetInline": {
+    "code": "\"SnapEvent\" in self && \"snapTargetInline\" in SnapEvent.prototype",
     "exposure": ["Window"]
   },
   "api.SourceBuffer": {
@@ -36302,6 +36870,27 @@
       "RTCIdentityProvider"
     ]
   },
+  "api.URL.parse_static": {
+    "code": "\"URL\" in self && \"parse\" in URL",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
   "api.URL.password": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = new URL(\"https://example.com\");\n  } catch (e) {\n    instance = new webkitURL(\"https://example.com\");\n  }\n  return !!instance && \"password\" in instance;\n})();\n",
     "exposure": [
@@ -37811,12 +38400,56 @@
     "code": "\"ViewTransition\" in self && \"skipTransition\" in ViewTransition.prototype",
     "exposure": ["Window"]
   },
-  "api.ViewTransition.typeList": {
-    "code": "\"ViewTransition\" in self && \"typeList\" in ViewTransition.prototype",
+  "api.ViewTransition.types": {
+    "code": "\"ViewTransition\" in self && \"types\" in ViewTransition.prototype",
     "exposure": ["Window"]
   },
   "api.ViewTransition.updateCallbackDone": {
     "code": "\"ViewTransition\" in self && \"updateCallbackDone\" in ViewTransition.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet": {
+    "code": "\"ViewTransitionTypeSet\" in self",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.@@iterator": {
+    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"ViewTransitionTypeSet\" in self && !!(ViewTransitionTypeSet.prototype[Symbol.iterator])",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.add": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"add\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.clear": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"clear\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.delete": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"delete\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.entries": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"entries\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.forEach": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"forEach\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.has": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"has\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.keys": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"keys\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.size": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"size\" in ViewTransitionTypeSet.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ViewTransitionTypeSet.values": {
+    "code": "\"ViewTransitionTypeSet\" in self && \"values\" in ViewTransitionTypeSet.prototype",
     "exposure": ["Window"]
   },
   "api.VirtualKeyboard": {
@@ -50759,6 +51392,26 @@
     "code": "bcd.testCSSProperty(\"position-try-order\", \"most-inline-size\")",
     "exposure": ["Window"]
   },
+  "css.properties.position-visibility": {
+    "code": "bcd.testCSSProperty(\"position-visibility\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-visibility.always": {
+    "code": "bcd.testCSSProperty(\"position-visibility\", \"always\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-visibility.anchors-valid": {
+    "code": "bcd.testCSSProperty(\"position-visibility\", \"anchors-valid\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-visibility.anchors-visible": {
+    "code": "bcd.testCSSProperty(\"position-visibility\", \"anchors-visible\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-visibility.no-overflow": {
+    "code": "bcd.testCSSProperty(\"position-visibility\", \"no-overflow\")",
+    "exposure": ["Window"]
+  },
   "css.properties.print-color-adjust": {
     "code": "bcd.testCSSProperty(\"print-color-adjust\")",
     "exposure": ["Window"]
@@ -52623,8 +53276,8 @@
     "code": "bcd.testCSSProperty(\"text-spacing-trim\", \"normal\")",
     "exposure": ["Window"]
   },
-  "css.properties.text-spacing-trim.trim-auto": {
-    "code": "bcd.testCSSProperty(\"text-spacing-trim\", \"trim-auto\")",
+  "css.properties.text-spacing-trim.trim-both": {
+    "code": "bcd.testCSSProperty(\"text-spacing-trim\", \"trim-both\")",
     "exposure": ["Window"]
   },
   "css.properties.text-spacing-trim.space-first": {
