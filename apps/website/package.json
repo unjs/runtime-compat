@@ -15,7 +15,7 @@
     "runtime-compat-data": "workspace:^"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.3.8",
+    "@nuxt/eslint-config": "^0.3.10",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwind-scrollbar": "^3.1.0",
