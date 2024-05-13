@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.4-dev",
+  "__version": "10.10.6-dev",
   "results": {
     ".": [
       {
@@ -2949,15 +2949,6 @@
         "result": true
       },
       {
-        "name": "javascript.builtins.TypedArray.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  var instance = new Int8Array(2);\n  try {\n    Int8Array();\n    return false;\n  } catch (e) {\n    return { result: true, message: e.message };\n  }\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "Constructor Int8Array requires 'new'"
-      },
-      {
         "name": "javascript.builtins.TypedArray.prototype",
         "info": {
           "code": "\"TypedArray\" in self && \"prototype\" in TypedArray",
@@ -3303,15 +3294,6 @@
         "message": "Constructor passed with no errors"
       },
       {
-        "name": "javascript.builtins.Int8Array.Int8Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Int8Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Int8Array requires 'new'"
-      },
-      {
         "name": "javascript.builtins.Int8Array.Int8Array.constructor_without_parameters",
         "info": {
           "code": "(function () {\n  if (!(\"Int8Array\" in self)) {\n    return { result: false, message: \"Int8Array is not defined\" };\n  }\n  try {\n    new Int8Array();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
@@ -3343,15 +3325,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Uint8Array.Uint8Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Uint8Array\" in self)) {\n    return { result: false, message: \"Uint8Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Uint8Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Uint8Array requires 'new'"
       },
       {
         "name": "javascript.builtins.Uint8Array.Uint8Array.constructor_without_parameters",
@@ -3387,15 +3360,6 @@
         "message": "Constructor passed with no errors"
       },
       {
-        "name": "javascript.builtins.Uint8ClampedArray.Uint8ClampedArray.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Uint8ClampedArray\" in self)) {\n    return { result: false, message: \"Uint8ClampedArray is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Uint8ClampedArray\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Uint8ClampedArray requires 'new'"
-      },
-      {
         "name": "javascript.builtins.Uint8ClampedArray.Uint8ClampedArray.constructor_without_parameters",
         "info": {
           "code": "(function () {\n  if (!(\"Uint8ClampedArray\" in self)) {\n    return { result: false, message: \"Uint8ClampedArray is not defined\" };\n  }\n  try {\n    new Uint8ClampedArray();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
@@ -3427,15 +3391,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Int16Array.Int16Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Int16Array\" in self)) {\n    return { result: false, message: \"Int16Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Int16Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Int16Array requires 'new'"
       },
       {
         "name": "javascript.builtins.Int16Array.Int16Array.constructor_without_parameters",
@@ -3471,15 +3426,6 @@
         "message": "Constructor passed with no errors"
       },
       {
-        "name": "javascript.builtins.Uint16Array.Uint16Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Uint16Array\" in self)) {\n    return { result: false, message: \"Uint16Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Uint16Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Uint16Array requires 'new'"
-      },
-      {
         "name": "javascript.builtins.Uint16Array.Uint16Array.constructor_without_parameters",
         "info": {
           "code": "(function () {\n  if (!(\"Uint16Array\" in self)) {\n    return { result: false, message: \"Uint16Array is not defined\" };\n  }\n  try {\n    new Uint16Array();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
@@ -3513,15 +3459,6 @@
         "message": "Constructor passed with no errors"
       },
       {
-        "name": "javascript.builtins.Int32Array.Int32Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Int32Array\" in self)) {\n    return { result: false, message: \"Int32Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Int32Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Int32Array requires 'new'"
-      },
-      {
         "name": "javascript.builtins.Int32Array.Int32Array.constructor_without_parameters",
         "info": {
           "code": "(function () {\n  if (!(\"Int32Array\" in self)) {\n    return { result: false, message: \"Int32Array is not defined\" };\n  }\n  try {\n    new Int32Array();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
@@ -3553,15 +3490,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Uint32Array.Uint32Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Uint32Array\" in self)) {\n    return { result: false, message: \"Uint32Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Uint32Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Uint32Array requires 'new'"
       },
       {
         "name": "javascript.builtins.Uint32Array.Uint32Array.constructor_without_parameters",
@@ -3631,15 +3559,6 @@
         "message": "Constructor passed with no errors"
       },
       {
-        "name": "javascript.builtins.Float32Array.Float32Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Float32Array\" in self)) {\n    return { result: false, message: \"Float32Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Float32Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Float32Array requires 'new'"
-      },
-      {
         "name": "javascript.builtins.Float32Array.Float32Array.constructor_without_parameters",
         "info": {
           "code": "(function () {\n  if (!(\"Float32Array\" in self)) {\n    return { result: false, message: \"Float32Array is not defined\" };\n  }\n  try {\n    new Float32Array();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
@@ -3671,15 +3590,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Float64Array.Float64Array.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Float64Array\" in self)) {\n    return { result: false, message: \"Float64Array is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Float64Array\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Float64Array requires 'new'"
       },
       {
         "name": "javascript.builtins.Float64Array.Float64Array.constructor_without_parameters",
@@ -3721,15 +3631,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Map.Map.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Map\" in self)) {\n    return { result: false, message: \"Map is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Map\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Map requires 'new'"
       },
       {
         "name": "javascript.builtins.Map.@@species",
@@ -3867,15 +3768,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.Set.Set.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"Set\" in self)) {\n    return { result: false, message: \"Set is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"Set\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor Set requires 'new'"
       },
       {
         "name": "javascript.builtins.Set.@@species",
@@ -4047,6 +3939,14 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.WeakMap.symbol_as_keys",
+        "info": {
+          "code": "(function () {\n  try {\n    new WeakMap().set(Symbol(), null);\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "javascript.builtins.WeakMap.WeakMap",
         "info": {
           "code": "(function () {\n  if (!(\"WeakMap\" in self)) {\n    return { result: false, message: \"WeakMap is not defined\" };\n  }\n  return bcd.testConstructor(\"WeakMap\", false);\n})();\n",
@@ -4054,15 +3954,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.WeakMap.WeakMap.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"WeakMap\" in self)) {\n    return { result: false, message: \"WeakMap is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"WeakMap\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor WeakMap requires 'new'"
       },
       {
         "name": "javascript.builtins.WeakMap.delete",
@@ -4122,6 +4013,14 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.WeakSet.symbol_as_keys",
+        "info": {
+          "code": "(function () {\n  try {\n    new WeakSet().add(Symbol());\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "javascript.builtins.WeakSet.WeakSet",
         "info": {
           "code": "(function () {\n  if (!(\"WeakSet\" in self)) {\n    return { result: false, message: \"WeakSet is not defined\" };\n  }\n  return bcd.testConstructor(\"WeakSet\", false);\n})();\n",
@@ -4170,15 +4069,6 @@
         },
         "result": true,
         "message": "Constructor passed with no errors"
-      },
-      {
-        "name": "javascript.builtins.ArrayBuffer.ArrayBuffer.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"ArrayBuffer\" in self)) {\n    return { result: false, message: \"ArrayBuffer is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"ArrayBuffer\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor ArrayBuffer requires 'new'"
       },
       {
         "name": "javascript.builtins.ArrayBuffer.ArrayBuffer.maxByteLength_option",
@@ -4357,15 +4247,6 @@
         },
         "result": true,
         "message": "threw TypeError: First argument to DataView constructor must be an ArrayBuffer"
-      },
-      {
-        "name": "javascript.builtins.DataView.DataView.new_required",
-        "info": {
-          "code": "(function () {\n  if (!(\"DataView\" in self)) {\n    return { result: false, message: \"DataView is not defined\" };\n  }\n  return bcd.testConstructorNewRequired(\"DataView\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "TypeError: Constructor DataView requires 'new'"
       },
       {
         "name": "javascript.builtins.DataView.DataView.sharedarraybuffer_support",
@@ -4704,6 +4585,15 @@
         "result": false
       },
       {
+        "name": "javascript.builtins.WeakRef.symbol_as_target",
+        "info": {
+          "code": "(function () {\n  try {\n    new WeakRef(Symbol());\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "WeakRef is not defined"
+      },
+      {
         "name": "javascript.builtins.WeakRef.WeakRef",
         "info": {
           "code": "(function () {\n  if (!(\"WeakRef\" in self)) {\n    return { result: false, message: \"WeakRef is not defined\" };\n  }\n  return bcd.testConstructor(\"WeakRef\", false);\n})();\n",
@@ -4727,6 +4617,15 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "javascript.builtins.FinalizationRegistry.symbol_as_target",
+        "info": {
+          "code": "(function () {\n  try {\n    new FinalizationRegistry(() => {}).register(Symbol());\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "FinalizationRegistry is not defined"
       },
       {
         "name": "javascript.builtins.FinalizationRegistry.FinalizationRegistry",
@@ -13596,7 +13495,7 @@
           "code": "bcd.testConstructor('ByteLengthQueuingStrategy')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'ByteLengthQueuingStrategy': constructor parameter 1 is not of type 'QueuingStrategyInit'."
       },
       {
@@ -13999,7 +13898,7 @@
       {
         "name": "api.CanvasRenderingContext2D.drawImage.SVGImageElement_source_image",
         "info": {
-          "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  var image = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!image) {\n    return { result: false, message: \"image is falsy\" };\n  }\n  try {\n    instance.drawImage(image, 0, 0);\n    return true;\n  } catch (e) {\n    if (e.name === \"TypeError\") {\n      // A TypeError is thrown for lack of support\n      return { result: false, message: e.message };\n    }\n    throw e;\n  }\n})();\n",
+          "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  var image = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!image) {\n    return { result: false, message: \"image is falsy\" };\n  }\n  try {\n    instance.drawImage(image, 0, 0);\n    return true;\n  } catch (e) {\n    if (e.name === \"TypeError\") {\n      // A TypeError is thrown for lack of support\n      return { result: false, message: e.message };\n    }\n    throw e;\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -15049,7 +14948,7 @@
           "code": "bcd.testConstructor('CloseEvent')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'CloseEvent': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -15209,7 +15108,7 @@
           "code": "bcd.testConstructor('CompressionStream')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'CompressionStream': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -15909,7 +15808,7 @@
           "code": "bcd.testConstructor('CountQueuingStrategy')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'CountQueuingStrategy': constructor parameter 1 is not of type 'QueuingStrategyInit'."
       },
       {
@@ -18340,6 +18239,22 @@
         },
         "result": null,
         "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.CSSNestRule",
+        "info": {
+          "code": "\"CSSNestRule\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSNestRule.style",
+        "info": {
+          "code": "\"CSSNestRule\" in self && \"style\" in CSSNestRule.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.CSSNumericArray",
@@ -20924,7 +20839,7 @@
           "code": "bcd.testConstructor('CustomEvent')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'CustomEvent': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -21295,7 +21210,7 @@
           "code": "bcd.testConstructor('DecompressionStream')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'DecompressionStream': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -21436,6 +21351,31 @@
         },
         "result": null,
         "message": "Testing DeprecationReportBody is not yet implemented"
+      },
+      {
+        "name": "api.DeviceChangeEvent",
+        "info": {
+          "code": "\"DeviceChangeEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.DeviceChangeEvent.DeviceChangeEvent",
+        "info": {
+          "code": "bcd.testConstructor('DeviceChangeEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: DeviceChangeEvent is not defined"
+      },
+      {
+        "name": "api.DeviceChangeEvent.devices",
+        "info": {
+          "code": "\"DeviceChangeEvent\" in self && \"devices\" in DeviceChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.DeviceLightEvent",
@@ -27644,7 +27584,7 @@
           "code": "bcd.testConstructor('Event')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'Event': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -28485,7 +28425,7 @@
           "code": "bcd.testConstructor('File')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'File': constructor parameter 2 is not of type 'string'."
       },
       {
@@ -30566,6 +30506,14 @@
         "message": "geo is falsy"
       },
       {
+        "name": "api.GeolocationCoordinates.toJSON",
+        "info": {
+          "code": "\"GeolocationCoordinates\" in self && \"toJSON\" in GeolocationCoordinates.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.GeolocationPosition",
         "info": {
           "code": "(function () {\n  var geo = navigator.geolocation;\n  if (!geo) {\n    return { result: false, message: \"geo is falsy\" };\n  }\n  geo.getCurrentPosition(\n    function (pos) {\n      callback(pos);\n    },\n    function (err) {\n      fail(err.message);\n    },\n    {\n      timeout: 5000,\n    },\n  );\n  function callback(instance) {\n    try {\n      success(!!instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
@@ -30591,6 +30539,14 @@
         },
         "result": false,
         "message": "geo is falsy"
+      },
+      {
+        "name": "api.GeolocationPosition.toJSON",
+        "info": {
+          "code": "\"GeolocationPosition\" in self && \"toJSON\" in GeolocationPosition.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.GeolocationPositionError",
@@ -46559,7 +46515,7 @@
           "code": "bcd.testConstructor('MessageEvent')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'MessageEvent': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -51421,14 +51377,6 @@
         "result": false
       },
       {
-        "name": "api.OffscreenCanvasRenderingContext2D.commit",
-        "info": {
-          "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"commit\" in OffscreenCanvasRenderingContext2D.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.OffscreenCanvasRenderingContext2D.createConicGradient",
         "info": {
           "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"createConicGradient\" in OffscreenCanvasRenderingContext2D.prototype",
@@ -55398,6 +55346,14 @@
         "result": false
       },
       {
+        "name": "api.PressureObserver.knownSources_static",
+        "info": {
+          "code": "\"PressureObserver\" in self && \"knownSources\" in PressureObserver",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.PressureObserver.observe",
         "info": {
           "code": "\"PressureObserver\" in self && \"observe\" in PressureObserver.prototype",
@@ -55413,14 +55369,6 @@
         },
         "result": false,
         "message": "threw ReferenceError: PressureObserver is not defined"
-      },
-      {
-        "name": "api.PressureObserver.supportedSources_static",
-        "info": {
-          "code": "\"PressureObserver\" in self && \"supportedSources\" in PressureObserver",
-          "exposure": "Window"
-        },
-        "result": false
       },
       {
         "name": "api.PressureObserver.takeRecords",
@@ -56355,7 +56303,7 @@
           "code": "bcd.testConstructor('ReadableStreamBYOBReader')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'ReadableStreamBYOBReader': constructor parameter 1 is not of type 'ReadableStream'."
       },
       {
@@ -56444,7 +56392,7 @@
           "code": "bcd.testConstructor('ReadableStreamDefaultReader')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'ReadableStreamDefaultReader': constructor parameter 1 is not of type 'ReadableStream'."
       },
       {
@@ -56871,7 +56819,7 @@
           "code": "bcd.testConstructor('Request')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'Request': constructor parameter 1 is not of type 'Request or string'."
       },
       {
@@ -57681,6 +57629,15 @@
         "result": false
       },
       {
+        "name": "api.RTCEncodedAudioFrame.RTCEncodedAudioFrame",
+        "info": {
+          "code": "bcd.testConstructor('RTCEncodedAudioFrame')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: RTCEncodedAudioFrame is not defined"
+      },
+      {
         "name": "api.RTCEncodedAudioFrame.timestamp",
         "info": {
           "code": "\"RTCEncodedAudioFrame\" in self && \"timestamp\" in RTCEncodedAudioFrame.prototype",
@@ -57711,6 +57668,15 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.RTCEncodedVideoFrame.RTCEncodedVideoFrame",
+        "info": {
+          "code": "bcd.testConstructor('RTCEncodedVideoFrame')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: RTCEncodedVideoFrame is not defined"
       },
       {
         "name": "api.RTCEncodedVideoFrame.timestamp",
@@ -62028,6 +61994,39 @@
         "result": false
       },
       {
+        "name": "api.Sanitizer",
+        "info": {
+          "code": "\"Sanitizer\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.get",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.getUnsafe",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"getUnsafe\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.Sanitizer",
+        "info": {
+          "code": "bcd.testConstructor('Sanitizer')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: Sanitizer is not defined"
+      },
+      {
         "name": "api.Scheduler",
         "info": {
           "code": "\"Scheduler\" in self",
@@ -63779,6 +63778,22 @@
         "name": "api.SharedStorageWorklet",
         "info": {
           "code": "\"SharedStorageWorklet\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageWorklet.run",
+        "info": {
+          "code": "\"SharedStorageWorklet\" in self && \"run\" in SharedStorageWorklet.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageWorklet.selectURL",
+        "info": {
+          "code": "\"SharedStorageWorklet\" in self && \"selectURL\" in SharedStorageWorklet.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -66190,7 +66205,7 @@
       {
         "name": "api.SVGAnimatedTransformList",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -66199,7 +66214,7 @@
       {
         "name": "api.SVGAnimatedTransformList.animVal",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance && \"animVal\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance && \"animVal\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -66208,7 +66223,7 @@
       {
         "name": "api.SVGAnimatedTransformList.baseVal",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance && \"baseVal\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.transform;\n  return !!instance && \"baseVal\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68818,7 +68833,7 @@
       {
         "name": "api.SVGGraphicsElement",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return bcd.testObjectName(instance, \"SVGImageElement\");\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn bcd.testObjectName(instance, 'SVGImageElement');\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68827,7 +68842,7 @@
       {
         "name": "api.SVGGraphicsElement.getBBox",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"getBBox\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"getBBox\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68836,7 +68851,7 @@
       {
         "name": "api.SVGGraphicsElement.getCTM",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"getCTM\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"getCTM\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68845,7 +68860,7 @@
       {
         "name": "api.SVGGraphicsElement.getScreenCTM",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"getScreenCTM\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"getScreenCTM\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68854,7 +68869,7 @@
       {
         "name": "api.SVGGraphicsElement.requiredExtensions",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"requiredExtensions\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"requiredExtensions\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68863,7 +68878,7 @@
       {
         "name": "api.SVGGraphicsElement.systemLanguage",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"systemLanguage\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"systemLanguage\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68872,7 +68887,7 @@
       {
         "name": "api.SVGGraphicsElement.transform",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"transform\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"transform\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68890,7 +68905,7 @@
       {
         "name": "api.SVGImageElement",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return bcd.testObjectName(instance, \"SVGImageElement\");\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn bcd.testObjectName(instance, 'SVGImageElement');\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68899,7 +68914,7 @@
       {
         "name": "api.SVGImageElement.crossOrigin",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"crossOrigin\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"crossOrigin\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68908,7 +68923,7 @@
       {
         "name": "api.SVGImageElement.decode",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"decode\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"decode\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68917,7 +68932,7 @@
       {
         "name": "api.SVGImageElement.decoding",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"decoding\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"decoding\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68926,7 +68941,7 @@
       {
         "name": "api.SVGImageElement.height",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"height\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"height\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68935,7 +68950,7 @@
       {
         "name": "api.SVGImageElement.href",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"href\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"href\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68944,7 +68959,7 @@
       {
         "name": "api.SVGImageElement.preserveAspectRatio",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"preserveAspectRatio\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"preserveAspectRatio\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68953,7 +68968,7 @@
       {
         "name": "api.SVGImageElement.width",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"width\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"width\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68962,7 +68977,7 @@
       {
         "name": "api.SVGImageElement.x",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"x\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"x\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68971,7 +68986,7 @@
       {
         "name": "api.SVGImageElement.y",
         "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  return !!instance && \"y\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"image\",\n  );\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain testsreturn !!instance && \"y\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70302,7 +70317,7 @@
       {
         "name": "api.SVGStringList",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70311,7 +70326,7 @@
       {
         "name": "api.SVGStringList.appendItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"appendItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"appendItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70320,7 +70335,7 @@
       {
         "name": "api.SVGStringList.clear",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"clear\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"clear\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70329,7 +70344,7 @@
       {
         "name": "api.SVGStringList.getItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"getItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"getItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70338,7 +70353,7 @@
       {
         "name": "api.SVGStringList.initialize",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"initialize\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"initialize\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70347,7 +70362,7 @@
       {
         "name": "api.SVGStringList.insertItemBefore",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"insertItemBefore\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"insertItemBefore\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70356,7 +70371,7 @@
       {
         "name": "api.SVGStringList.length",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"length\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"length\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70365,7 +70380,7 @@
       {
         "name": "api.SVGStringList.numberOfItems",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"numberOfItems\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"numberOfItems\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70374,7 +70389,7 @@
       {
         "name": "api.SVGStringList.removeItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"removeItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"removeItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -70383,7 +70398,7 @@
       {
         "name": "api.SVGStringList.replaceItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"replaceItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var instance = el.systemLanguage;\n  return !!instance && \"replaceItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71103,7 +71118,7 @@
       {
         "name": "api.SVGTransformList",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71112,7 +71127,7 @@
       {
         "name": "api.SVGTransformList.appendItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"appendItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"appendItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71121,7 +71136,7 @@
       {
         "name": "api.SVGTransformList.clear",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"clear\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"clear\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71130,7 +71145,7 @@
       {
         "name": "api.SVGTransformList.consolidate",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"consolidate\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"consolidate\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71139,7 +71154,7 @@
       {
         "name": "api.SVGTransformList.createSVGTransformFromMatrix",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"createSVGTransformFromMatrix\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"createSVGTransformFromMatrix\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71148,7 +71163,7 @@
       {
         "name": "api.SVGTransformList.getItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"getItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"getItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71157,7 +71172,7 @@
       {
         "name": "api.SVGTransformList.initialize",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"initialize\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"initialize\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71166,7 +71181,7 @@
       {
         "name": "api.SVGTransformList.insertItemBefore",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"insertItemBefore\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"insertItemBefore\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71175,7 +71190,7 @@
       {
         "name": "api.SVGTransformList.length",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"length\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"length\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71184,7 +71199,7 @@
       {
         "name": "api.SVGTransformList.numberOfItems",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"numberOfItems\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"numberOfItems\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71193,7 +71208,7 @@
       {
         "name": "api.SVGTransformList.removeItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"removeItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"removeItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71202,7 +71217,7 @@
       {
         "name": "api.SVGTransformList.replaceItem",
         "info": {
-          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"replaceItem\" in instance;\n})();\n",
+          "code": "(function () {\n  var el = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!el) {\n    return { result: false, message: \"el is falsy\" };\n  }\n  var list = el.transform;\n  if (!list) {\n    return { result: false, message: \"list is falsy\" };\n  }\n  var instance = list.baseVal;\n  return !!instance && \"replaceItem\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -71664,7 +71679,7 @@
           "code": "\"TextDecoderStream\" in self && \"encoding\" in TextDecoderStream.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.TextDecoderStream.fatal",
@@ -71672,7 +71687,7 @@
           "code": "\"TextDecoderStream\" in self && \"fatal\" in TextDecoderStream.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.TextDecoderStream.ignoreBOM",
@@ -71680,7 +71695,7 @@
           "code": "\"TextDecoderStream\" in self && \"ignoreBOM\" in TextDecoderStream.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.TextDecoderStream.readable",
@@ -71787,7 +71802,7 @@
           "code": "\"TextEncoderStream\" in self && \"encoding\" in TextEncoderStream.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.TextEncoderStream.readable",
@@ -73391,7 +73406,7 @@
           "code": "bcd.testConstructor('URL')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'URL': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -78540,6 +78555,14 @@
         "result": false
       },
       {
+        "name": "api.WebGLObject.label",
+        "info": {
+          "code": "\"WebGLObject\" in self && \"label\" in WebGLObject.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.WebGLProgram",
         "info": {
           "code": "\"WebGLProgram\" in self",
@@ -79989,7 +80012,7 @@
           "code": "bcd.testConstructor('WebSocket')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'WebSocket': constructor parameter 1 is not of type 'string'."
       },
       {
@@ -81835,6 +81858,14 @@
         "result": false
       },
       {
+        "name": "api.WindowSharedStorage.createWorklet",
+        "info": {
+          "code": "\"WindowSharedStorage\" in self && \"createWorklet\" in WindowSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.WindowSharedStorage.run",
         "info": {
           "code": "\"WindowSharedStorage\" in self && \"run\" in WindowSharedStorage.prototype",
@@ -82069,7 +82100,7 @@
           "code": "bcd.testConstructor('WritableStreamDefaultWriter')",
           "exposure": "Window"
         },
-        "result": null,
+        "result": true,
         "message": "threw TypeError: Failed to construct 'WritableStreamDefaultWriter': constructor parameter 1 is not of type 'WritableStream'."
       },
       {
@@ -83286,6 +83317,14 @@
         "name": "api.XRInputSource.profiles",
         "info": {
           "code": "\"XRInputSource\" in self && \"profiles\" in XRInputSource.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRInputSource.skipRendering",
+        "info": {
+          "code": "\"XRInputSource\" in self && \"skipRendering\" in XRInputSource.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -85199,7 +85238,7 @@
       {
         "name": "api.createImageBitmap.svgimageelement_as_source_image",
         "info": {
-          "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  var svgimg = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  if (!svgimg) {\n    return { result: false, message: \"svgimg is falsy\" };\n  }\n  try {\n    createImageBitmap(svgimg);\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
+          "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  var svgimg = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!svgimg) {\n    return { result: false, message: \"svgimg is falsy\" };\n  }\n  var bitmap = createImageBitmap(svgimg);\n  return bitmap\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -85757,33 +85796,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.cancel",
+        "name": "api.ReadableStream.pipeTo",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.tee",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85797,41 +85812,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.read",
+        "name": "api.ReadableStream.pipeThrough",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.pipeTo",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.getReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.@@asyncIterator",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.values",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85845,6 +85828,30 @@
         "result": true
       },
       {
+        "name": "api.ReadableStreamDefaultReader.read",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.getReader",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.ReadableStreamDefaultReader.releaseLock",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
@@ -85853,9 +85860,41 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeThrough",
+        "name": "api.ReadableStream.@@asyncIterator",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.tee",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.values",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85916,5 +85955,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! workerd/2024-04-05"
+  "userAgent": "!! workerd/2024-04-23"
 }
