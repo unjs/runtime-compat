@@ -304,6 +304,7 @@ export default function (global) {
           "type must not be undefined",
           "must be callable",
           "Failed to construct", // Used by workerd
+          "Error calling function with",
         ])
       ) {
         // If it failed to construct and it's not illegal or just needs
