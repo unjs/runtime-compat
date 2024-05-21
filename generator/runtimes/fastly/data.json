@@ -28570,6 +28570,15 @@
         "result": false
       },
       {
+        "name": "api.FencedFrameConfig.FencedFrameConfig",
+        "info": {
+          "code": "bcd.testConstructor('FencedFrameConfig')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: FencedFrameConfig is not defined"
+      },
+      {
         "name": "api.FencedFrameConfig.setSharedStorageContext",
         "info": {
           "code": "\"FencedFrameConfig\" in self && \"setSharedStorageContext\" in FencedFrameConfig.prototype",
@@ -56946,6 +56955,14 @@
         "result": true
       },
       {
+        "name": "api.Request.bytes",
+        "info": {
+          "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Request.cache",
         "info": {
           "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
@@ -57327,6 +57344,14 @@
           "exposure": "Window"
         },
         "result": true
+      },
+      {
+        "name": "api.Response.bytes",
+        "info": {
+          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.Response.clone",
