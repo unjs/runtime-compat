@@ -12307,6 +12307,10 @@
     "code": "\"FencedFrameConfig\" in self && \"contentWidth\" in FencedFrameConfig.prototype",
     "exposure": ["Window"]
   },
+  "api.FencedFrameConfig.FencedFrameConfig": {
+    "code": "bcd.testConstructor('FencedFrameConfig')",
+    "exposure": ["Window"]
+  },
   "api.FencedFrameConfig.setSharedStorageContext": {
     "code": "\"FencedFrameConfig\" in self && \"setSharedStorageContext\" in FencedFrameConfig.prototype",
     "exposure": ["Window"]
@@ -27607,6 +27611,10 @@
     "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.Request.bytes": {
+    "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.Request.cache": {
     "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"cache\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -27793,6 +27801,10 @@
   },
   "api.Response.bodyUsed": {
     "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance && \"bodyUsed\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Response.bytes": {
+    "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.Response.clone": {
