@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.6-dev",
+  "__version": "10.10.7-dev",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -60538,6 +60538,10 @@
     "code": "\"Math\" in self && \"trunc\" in Math",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Math.f16round": {
+    "code": "\"Math\" in self && \"f16round\" in Math",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Date": {
     "code": "\"Date\" in self",
     "exposure": ["Window"]
@@ -62038,6 +62042,14 @@
     "code": "\"DataView\" in self && \"setUint32\" in DataView.prototype",
     "exposure": ["Window"]
   },
+  "javascript.builtins.DataView.getFloat16": {
+    "code": "\"DataView\" in self && \"getFloat16\" in DataView.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DataView.setFloat16": {
+    "code": "\"DataView\" in self && \"setFloat16\" in DataView.prototype",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Atomics": {
     "code": "\"Atomics\" in self",
     "exposure": ["Window"]
@@ -62476,6 +62488,14 @@
   },
   "javascript.builtins.unescape": {
     "code": "\"unescape\" in self",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Float16Error": {
+    "code": "\"Float16Error\" in self",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Float16Error.Float16Error": {
+    "code": "(function () {\n  if (!(\"Float16Error\" in self)) {\n    return { result: false, message: \"Float16Error is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Error\", false);\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.InternalError": {
