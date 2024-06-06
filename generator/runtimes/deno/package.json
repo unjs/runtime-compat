@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "deno run --unstable-webgpu -A run.ts | ../../../scripts/strip-delimiters.sh > data.json"
+    "start": "deno run --unstable-webgpu --location https://mdn-bcd-collector.gooborg.com -A run.ts | ../../../scripts/strip-delimiters.sh > data.json"
   },
   "author": "",
   "license": "MIT"
