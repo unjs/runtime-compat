@@ -23460,7 +23460,7 @@
       {
         "name": "api.DOMException",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -23468,10 +23468,10 @@
       {
         "name": "api.DOMException.code",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.DOMException.DOMException",
@@ -23485,7 +23485,7 @@
       {
         "name": "api.DOMException.message",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -23493,7 +23493,7 @@
       {
         "name": "api.DOMException.name",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -25780,7 +25780,7 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
-        "name": "api.Element.attachShadow.init_clonable_parameter",
+        "name": "api.Element.attachShadow.options_clonable_parameter",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"clonable\", true, {\n    mode: \"open\",\n  });\n})();\n",
           "exposure": "Window"
@@ -25789,7 +25789,7 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
-        "name": "api.Element.attachShadow.init_delegatesFocus_parameter",
+        "name": "api.Element.attachShadow.options_delegatesFocus_parameter",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"delegatesFocus\", true, {\n    mode: \"open\",\n  });\n})();\n",
           "exposure": "Window"
@@ -27779,8 +27779,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.close",
@@ -27788,8 +27787,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.EventSource",
@@ -27797,8 +27795,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.EventSource.options_withCredentials_parameter",
@@ -27806,8 +27803,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  function construct(options) {\n    new EventSource(\"https://mdn-bcd-collector.gooborg.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"withCredentials\", true);\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.error_event",
@@ -27815,8 +27811,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.message_event",
@@ -27824,8 +27819,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onmessage\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.open_event",
@@ -27833,8 +27827,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onopen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.readyState",
@@ -27842,8 +27835,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"readyState\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.url",
@@ -27851,8 +27843,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"url\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventSource.withCredentials",
@@ -27860,8 +27851,7 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"withCredentials\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": true
       },
       {
         "name": "api.EventTarget",
@@ -42075,7 +42065,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.ancestorOrigins",
@@ -42083,7 +42073,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"ancestorOrigins\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.assign",
@@ -42091,7 +42081,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"assign\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.hash",
@@ -42099,7 +42089,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"hash\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.host",
@@ -42107,7 +42097,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"host\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.hostname",
@@ -42115,7 +42105,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"hostname\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.href",
@@ -42123,7 +42113,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"href\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.origin",
@@ -42131,7 +42121,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"origin\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.pathname",
@@ -42139,7 +42129,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"pathname\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.port",
@@ -42147,7 +42137,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"port\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.protocol",
@@ -42155,7 +42145,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"protocol\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.reload",
@@ -42163,7 +42153,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"reload\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.replace",
@@ -42171,7 +42161,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"replace\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.search",
@@ -42179,7 +42169,7 @@
           "code": "(function () {\n  var instance = location;\n  return !!instance && \"search\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Location.toString",
@@ -42187,8 +42177,7 @@
           "code": "(function () {\n  var instance = location;\n  if (!(\"toString\" in instance)) {\n    return { result: false, message: \"toString is not defined\" };\n  }\n  return instance.toString() == instance.href;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot use 'in' operator to search for 'toString' in undefined"
+        "result": true
       },
       {
         "name": "api.Lock",
@@ -77801,8 +77790,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.binaryType",
@@ -77810,8 +77798,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"binaryType\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.bufferedAmount",
@@ -77819,8 +77806,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"bufferedAmount\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.close",
@@ -77828,8 +77814,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.extensions",
@@ -77837,8 +77822,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"extensions\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.close_event",
@@ -77846,8 +77830,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onclose\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.error_event",
@@ -77855,8 +77838,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.message_event",
@@ -77864,8 +77846,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onmessage\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.open_event",
@@ -77873,8 +77854,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onopen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.protocol",
@@ -77882,8 +77862,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"protocol\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.readyState",
@@ -77891,8 +77870,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"readyState\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.send",
@@ -77900,8 +77878,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"send\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.url",
@@ -77909,8 +77886,7 @@
           "code": "(function () {\n  var constructor = self.WebSocket || self.MozWebSocket;\n  if (!constructor) {\n    return { result: false, message: \"(Moz)WebSocket is not defined or falsy\" };\n  }\n  var instance = new constructor(\"wss://\" + location.hostname);\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"url\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: Cannot read properties of undefined (reading 'hostname')"
+        "result": true
       },
       {
         "name": "api.WebSocket.WebSocket",
@@ -83546,14 +83522,6 @@
         "result": true
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
@@ -83570,25 +83538,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.cancel",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.closed",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -83602,9 +83554,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeTo",
+        "name": "api.ReadableStreamDefaultReader",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -83618,9 +83570,17 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.@@asyncIterator",
+        "name": "api.ReadableStream.values",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.tee",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -83629,14 +83589,6 @@
         "name": "api.ReadableStream.locked",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -83658,6 +83610,38 @@
         "result": true
       },
       {
+        "name": "api.ReadableStreamDefaultReader.closed",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.@@asyncIterator",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.pipeTo",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.ReadableStreamDefaultReader.read",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
@@ -83674,17 +83658,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.values",
+        "name": "api.ReadableStream.cancel",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.tee",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -83692,5 +83668,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! deno/1.44.0"
+  "userAgent": "!! deno/1.44.1"
 }

@@ -23622,7 +23622,7 @@
       {
         "name": "api.DOMException",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -23630,10 +23630,10 @@
       {
         "name": "api.DOMException.code",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.DOMException.DOMException",
@@ -23647,7 +23647,7 @@
       {
         "name": "api.DOMException.message",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -23655,7 +23655,7 @@
       {
         "name": "api.DOMException.name",
         "info": {
-          "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -25942,7 +25942,7 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
-        "name": "api.Element.attachShadow.init_clonable_parameter",
+        "name": "api.Element.attachShadow.options_clonable_parameter",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"clonable\", true, {\n    mode: \"open\",\n  });\n})();\n",
           "exposure": "Window"
@@ -25951,7 +25951,7 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
-        "name": "api.Element.attachShadow.init_delegatesFocus_parameter",
+        "name": "api.Element.attachShadow.options_delegatesFocus_parameter",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"delegatesFocus\", true, {\n    mode: \"open\",\n  });\n})();\n",
           "exposure": "Window"
