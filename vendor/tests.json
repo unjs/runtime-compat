@@ -9001,7 +9001,7 @@
     "exposure": ["Window"]
   },
   "api.DOMException": {
-    "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance;\n})();\n",
+    "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance;\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -9022,7 +9022,7 @@
     ]
   },
   "api.DOMException.code": {
-    "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
+    "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -9064,7 +9064,7 @@
     ]
   },
   "api.DOMException.message": {
-    "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
+    "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"message\" in instance;\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -9085,7 +9085,7 @@
     ]
   },
   "api.DOMException.name": {
-    "code": "(function () {\n  var instance;\n  try {\n    document.createElement(\"1\");\n  } catch (e) {\n    instance = e;\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
+    "code": "(function () {\n  var instance;\n  if (\"DOMException\" in self) {\n    instance = new DOMException();\n  } else if (\"document\" in self) {\n    try {\n      document.createElement(\"1\");\n    } catch (e) {\n      instance = e;\n    }\n  } else {\n    return {\n      result: false,\n      message: \"DOMException and document are both undefined\",\n    };\n  }\n  return !!instance && \"name\" in instance;\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -10177,11 +10177,11 @@
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"attachShadow\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
-  "api.Element.attachShadow.init_clonable_parameter": {
+  "api.Element.attachShadow.options_clonable_parameter": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"clonable\", true, {\n    mode: \"open\",\n  });\n})();\n",
     "exposure": ["Window"]
   },
-  "api.Element.attachShadow.init_delegatesFocus_parameter": {
+  "api.Element.attachShadow.options_delegatesFocus_parameter": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"delegatesFocus\", true, {\n    mode: \"open\",\n  });\n})();\n",
     "exposure": ["Window"]
   },
