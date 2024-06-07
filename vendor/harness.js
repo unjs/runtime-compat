@@ -304,6 +304,8 @@ export default function (global) {
           "type must not be undefined",
           "must be callable",
           "Failed to construct", // Used by workerd
+          "with 0 argument(s) while", // Used by WinterJS
+          "can't convert undefined to object", // Used by WinterJS
         ])
       ) {
         // If it failed to construct and it's not illegal or just needs

@@ -25,7 +25,7 @@ Currently this tracks the following JavaScript runtimes (shown with their [Winte
 - Amazon Web Services [LLRT](https://github.com/awslabs/llrt) (`llrt`)
 - Netlify [Edge Functions](https://docs.netlify.com/edge-functions/overview/) (`netlify`)
 - [Node.js](https://nodejs.org/) (`node`)
-- Wasmer [WinterJS]https://github.com/wasmerio/winterjs) (`wasmer`)
+- Wasmer [WinterJS]https://github.com/wasmerio/winterjs) (`winterjs`)
 - Cloudflare [workerd](https://github.com/cloudflare/workerd) (`workerd`)
 
 ## Usage
@@ -104,7 +104,7 @@ Example data:
     "llrt": "0.1.11-beta",
     "netlify": "17.20.1",
     "node": "20.11.1",
-    "wasmer": "0.4.4",
+    "winterjs": "1.2.0",
     "workerd": "2024-03-12"
   },
   "api": {

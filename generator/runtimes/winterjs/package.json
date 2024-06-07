@@ -1,0 +1,24 @@
+{
+  "name": "winterjs-runtime",
+  "type": "module",
+  "dependencies": {
+    "unbuild": "^2.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "start": "wasmer run wasmer/winterjs --net --env RUST_LOG=silent --mapdir dist:dist -- exec dist/run.mjs | ../../../scripts/strip-delimiters.sh > data.json",
+    "version": "wasmer run wasmer/winterjs -- -V"
+  },
+  "unbuild": {
+    "entries": [
+      "run.ts"
+    ],
+    "clean": true,
+    "rollup": {
+      "esbuild": {
+        "platform": "neutral",
+        "target": "esnext"
+      }
+    }
+  }
+}
