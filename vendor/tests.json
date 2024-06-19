@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.7-dev",
+  "__version": "10.10.8-dev",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -2160,6 +2160,10 @@
   },
   "api.Blob.Blob": {
     "code": "bcd.testConstructor('Blob')",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Blob.bytes": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = new Blob();\n  } catch (e) {\n    instance = new BlobBuilder();\n  }\n  return !!instance && \"bytes\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.Blob.size": {
@@ -4921,6 +4925,10 @@
   },
   "api.Credential.type": {
     "code": "\"Credential\" in self && \"type\" in Credential.prototype",
+    "exposure": ["Window"]
+  },
+  "api.Credential.willRequestConditionalCreation_static": {
+    "code": "\"Credential\" in self && \"willRequestConditionalCreation\" in Credential",
     "exposure": ["Window"]
   },
   "api.CredentialsContainer": {
@@ -8590,6 +8598,10 @@
   },
   "api.Document.hasStorageAccess": {
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"hasStorageAccess\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.hasUnpartitionedCookieAccess": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"hasUnpartitionedCookieAccess\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Document.head": {
@@ -13678,16 +13690,16 @@
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"features\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.GPUAdapter.info": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"info\" in instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.GPUAdapter.isFallbackAdapter": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"isFallbackAdapter\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUAdapter.limits": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"limits\" in instance;\n  });\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.GPUAdapter.requestAdapterInfo": {
-    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"requestAdapterInfo\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUAdapter.requestDevice": {
@@ -18761,16 +18773,8 @@
     "code": "(function () {\n  var idb =\n    self.indexedDB ||\n    self.mozIndexedDB ||\n    self.webkitIndexedDB ||\n    self.msIndexedDB;\n  if (!idb) {\n    return { result: false, message: \"idb is falsy\" };\n  }\n  var req = idb.open(\"collector\");\n  if (!req) {\n    return { result: false, message: \"req is falsy\" };\n  }\n  req.onsuccess = function () {\n    callback(req.result);\n  };\n  req.onerror = function (event) {\n    fail(event.message);\n  };\n  function callback(instance) {\n    try {\n      success(!!instance && \"objectStoreNames\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
     "exposure": ["Window", "Worker"]
   },
-  "api.IDBDatabase.abort_event": {
-    "code": "(function () {\n  var idb =\n    self.indexedDB ||\n    self.mozIndexedDB ||\n    self.webkitIndexedDB ||\n    self.msIndexedDB;\n  if (!idb) {\n    return { result: false, message: \"idb is falsy\" };\n  }\n  var req = idb.open(\"collector\");\n  if (!req) {\n    return { result: false, message: \"req is falsy\" };\n  }\n  req.onsuccess = function () {\n    callback(req.result);\n  };\n  req.onerror = function (event) {\n    fail(event.message);\n  };\n  function callback(instance) {\n    try {\n      success(!!instance && \"onabort\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
   "api.IDBDatabase.close_event": {
     "code": "(function () {\n  var idb =\n    self.indexedDB ||\n    self.mozIndexedDB ||\n    self.webkitIndexedDB ||\n    self.msIndexedDB;\n  if (!idb) {\n    return { result: false, message: \"idb is falsy\" };\n  }\n  var req = idb.open(\"collector\");\n  if (!req) {\n    return { result: false, message: \"req is falsy\" };\n  }\n  req.onsuccess = function () {\n    callback(req.result);\n  };\n  req.onerror = function (event) {\n    fail(event.message);\n  };\n  function callback(instance) {\n    try {\n      success(!!instance && \"onclose\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.IDBDatabase.error_event": {
-    "code": "(function () {\n  var idb =\n    self.indexedDB ||\n    self.mozIndexedDB ||\n    self.webkitIndexedDB ||\n    self.msIndexedDB;\n  if (!idb) {\n    return { result: false, message: \"idb is falsy\" };\n  }\n  var req = idb.open(\"collector\");\n  if (!req) {\n    return { result: false, message: \"req is falsy\" };\n  }\n  req.onsuccess = function () {\n    callback(req.result);\n  };\n  req.onerror = function (event) {\n    fail(event.message);\n  };\n  function callback(instance) {\n    try {\n      success(!!instance && \"onerror\" in instance);\n    } catch (e) {\n      fail(e);\n    }\n  }\n  return \"callback\";\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.IDBDatabase.versionchange_event": {
@@ -20875,6 +20879,10 @@
     "code": "(function () {\n  var instance = navigator.mediaSession;\n  return !!instance && \"setPositionState\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.MediaSession.setScreenshareActive": {
+    "code": "(function () {\n  var instance = navigator.mediaSession;\n  return !!instance && \"setScreenshareActive\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.MediaSource": {
     "code": "(function () {\n  if (!(\"MediaSource\" in self)) {\n    return { result: false, message: \"MediaSource is not defined\" };\n  }\n  var instance = new MediaSource();\n  return !!instance;\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -21166,11 +21174,6 @@
   },
   "api.MediaStreamTrack.mute_event": {
     "code": "(function () {\n  if (!reusableInstances.mediaStream) {\n    return { result: false, message: \"Media stream is not available\" };\n  }\n  var instance = reusableInstances.mediaStream.getAudioTracks()[0];\n  return !!instance && \"onmute\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["mediaStream", "audioContext", "mediaStream", "audioContext"]
-  },
-  "api.MediaStreamTrack.overconstrained_event": {
-    "code": "(function () {\n  if (!reusableInstances.mediaStream) {\n    return { result: false, message: \"Media stream is not available\" };\n  }\n  var instance = reusableInstances.mediaStream.getAudioTracks()[0];\n  return !!instance && \"onoverconstrained\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["mediaStream", "audioContext", "mediaStream", "audioContext"]
   },
@@ -21888,6 +21891,10 @@
     "code": "\"MLGraphBuilder\" in self && \"log\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLGraphBuilder.logicalNot": {
+    "code": "\"MLGraphBuilder\" in self && \"logicalNot\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraphBuilder.lstm": {
     "code": "\"MLGraphBuilder\" in self && \"lstm\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
@@ -21922,10 +21929,6 @@
   },
   "api.MLGraphBuilder.neg": {
     "code": "\"MLGraphBuilder\" in self && \"neg\" in MLGraphBuilder.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.MLGraphBuilder.not": {
-    "code": "\"MLGraphBuilder\" in self && \"not\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.pad": {
@@ -22762,6 +22765,10 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"activeVRDisplays\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.adAuctionComponents": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"adAuctionComponents\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.appCodeName": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"appCodeName\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -22788,6 +22795,10 @@
   },
   "api.Navigator.buildID": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"buildID\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Navigator.canLoadAdAuctionFencedFrame": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"canLoadAdAuctionFencedFrame\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Navigator.canShare": {
@@ -22836,6 +22847,14 @@
   },
   "api.Navigator.deprecatedReplaceInURN": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"deprecatedReplaceInURN\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Navigator.deprecatedRunAdAuctionEnforcesKAnonymity": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"deprecatedRunAdAuctionEnforcesKAnonymity\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Navigator.deprecatedURNtoURL": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"deprecatedURNtoURL\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Navigator.deviceMemory": {
@@ -26476,6 +26495,10 @@
     "code": "\"PushMessageData\" in self && \"blob\" in PushMessageData.prototype",
     "exposure": ["ServiceWorker"]
   },
+  "api.PushMessageData.bytes": {
+    "code": "\"PushMessageData\" in self && \"bytes\" in PushMessageData.prototype",
+    "exposure": ["ServiceWorker"]
+  },
   "api.PushMessageData.json": {
     "code": "\"PushMessageData\" in self && \"json\" in PushMessageData.prototype",
     "exposure": ["ServiceWorker"]
@@ -28231,6 +28254,18 @@
   },
   "api.RTCIceCandidate.usernameFragment": {
     "code": "(function () {\n  var instance = new RTCIceCandidate({\n    candidate:\n      \"candidate:4234997325 1 udp 2043278322 192.168.0.56 44323 typ host\",\n    sdpMid: \"\",\n  });\n  return !!instance && \"usernameFragment\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePair": {
+    "code": "\"RTCIceCandidatePair\" in self",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePair.local": {
+    "code": "\"RTCIceCandidatePair\" in self && \"local\" in RTCIceCandidatePair.prototype",
+    "exposure": ["Window"]
+  },
+  "api.RTCIceCandidatePair.remote": {
+    "code": "\"RTCIceCandidatePair\" in self && \"remote\" in RTCIceCandidatePair.prototype",
     "exposure": ["Window"]
   },
   "api.RTCIceCandidatePairEvent": {
@@ -30507,6 +30542,10 @@
     "code": "\"Scheduler\" in self && \"postTask\" in Scheduler.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.Scheduler.yield": {
+    "code": "\"Scheduler\" in self && \"yield\" in Scheduler.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.Scheduling": {
     "code": "\"Scheduling\" in self",
     "exposure": ["Window"]
@@ -31386,10 +31425,6 @@
     "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"mode\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
-  "api.ShadowRoot.slotchange_event": {
-    "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"onslotchange\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
   "api.ShadowRoot.pictureInPictureElement": {
     "code": "(function () {\n  var el = document.createElement(\"div\");\n  if (!el.attachShadow) {\n    return { result: false, message: \"Element.attachShadow is not defined\" };\n  }\n  el.attachShadow({ mode: \"open\" });\n  var instance = el.shadowRoot;\n  return !!instance && \"pictureInPictureElement\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -32068,6 +32103,54 @@
   },
   "api.Storage.setItem": {
     "code": "\"Storage\" in self && \"setItem\" in Storage.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle": {
+    "code": "\"StorageAccessHandle\" in self",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.BroadcastChannel": {
+    "code": "\"StorageAccessHandle\" in self && \"BroadcastChannel\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.caches": {
+    "code": "\"StorageAccessHandle\" in self && \"caches\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.createObjectURL": {
+    "code": "\"StorageAccessHandle\" in self && \"createObjectURL\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.estimate": {
+    "code": "\"StorageAccessHandle\" in self && \"estimate\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.getDirectory": {
+    "code": "\"StorageAccessHandle\" in self && \"getDirectory\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.indexedDB": {
+    "code": "\"StorageAccessHandle\" in self && \"indexedDB\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.localStorage": {
+    "code": "\"StorageAccessHandle\" in self && \"localStorage\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.locks": {
+    "code": "\"StorageAccessHandle\" in self && \"locks\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.revokeObjectURL": {
+    "code": "\"StorageAccessHandle\" in self && \"revokeObjectURL\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.sessionStorage": {
+    "code": "\"StorageAccessHandle\" in self && \"sessionStorage\" in StorageAccessHandle.prototype",
+    "exposure": ["Window"]
+  },
+  "api.StorageAccessHandle.SharedWorker": {
+    "code": "\"StorageAccessHandle\" in self && \"SharedWorker\" in StorageAccessHandle.prototype",
     "exposure": ["Window"]
   },
   "api.StorageBucket": {
@@ -43287,34 +43370,6 @@
     "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance;\n})();\n",
     "exposure": ["Window", "SharedWorker", "Worker"]
   },
-  "api.XMLHttpRequestEventTarget.abort_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onabort\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.error_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onerror\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.load_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onload\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.loadend_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadend\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.loadstart_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.progress_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onprogress\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
-  "api.XMLHttpRequestEventTarget.timeout_event": {
-    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"ontimeout\" in instance;\n})();\n",
-    "exposure": ["Window", "SharedWorker", "Worker"]
-  },
   "api.XMLHttpRequestUpload": {
     "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance;\n})();\n",
     "exposure": ["Window", "SharedWorker", "Worker"]
@@ -44484,8 +44539,16 @@
     "code": "\"XRWebGLDepthInformation\" in self",
     "exposure": ["Window"]
   },
+  "api.XRWebGLDepthInformation.imageIndex": {
+    "code": "\"XRWebGLDepthInformation\" in self && \"imageIndex\" in XRWebGLDepthInformation.prototype",
+    "exposure": ["Window"]
+  },
   "api.XRWebGLDepthInformation.texture": {
     "code": "\"XRWebGLDepthInformation\" in self && \"texture\" in XRWebGLDepthInformation.prototype",
+    "exposure": ["Window"]
+  },
+  "api.XRWebGLDepthInformation.textureType": {
+    "code": "\"XRWebGLDepthInformation\" in self && \"textureType\" in XRWebGLDepthInformation.prototype",
     "exposure": ["Window"]
   },
   "api.XRWebGLLayer": {
@@ -44822,10 +44885,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-cursor-visibility\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-hyphenate-character": {
-    "code": "bcd.testCSSProperty(\"-webkit-hyphenate-character\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-hyphenate-limit-after": {
     "code": "bcd.testCSSProperty(\"-webkit-hyphenate-limit-after\")",
     "exposure": ["Window"]
@@ -44852,10 +44911,6 @@
   },
   "css.properties.-webkit-line-clamp": {
     "code": "bcd.testCSSProperty(\"-webkit-line-clamp\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-line-clamp.none": {
-    "code": "bcd.testCSSProperty(\"-webkit-line-clamp\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.-webkit-line-grid": {
@@ -47054,10 +47109,6 @@
     "code": "bcd.testCSSProperty(\"contain\")",
     "exposure": ["Window"]
   },
-  "css.properties.contain.inline-size": {
-    "code": "bcd.testCSSProperty(\"contain\", \"inline-size\")",
-    "exposure": ["Window"]
-  },
   "css.properties.contain.none": {
     "code": "bcd.testCSSProperty(\"contain\", \"none\")",
     "exposure": ["Window"]
@@ -47072,6 +47123,10 @@
   },
   "css.properties.contain.size": {
     "code": "bcd.testCSSProperty(\"contain\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.contain.inline-size": {
+    "code": "bcd.testCSSProperty(\"contain\", \"inline-size\")",
     "exposure": ["Window"]
   },
   "css.properties.contain.layout": {
@@ -47236,18 +47291,6 @@
   },
   "css.properties.continue.discard": {
     "code": "bcd.testCSSProperty(\"continue\", \"discard\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.continue.overflow": {
-    "code": "bcd.testCSSProperty(\"continue\", \"overflow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.continue.paginate": {
-    "code": "bcd.testCSSProperty(\"continue\", \"paginate\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.continue.fragments": {
-    "code": "bcd.testCSSProperty(\"continue\", \"fragments\")",
     "exposure": ["Window"]
   },
   "css.properties.copy-into": {
@@ -51466,10 +51509,6 @@
     "code": "bcd.testCSSProperty(\"position-try-options\", \"flip-start\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options.inset-area": {
-    "code": "bcd.testCSSProperty(\"position-try-options\", \"inset-area()\")",
-    "exposure": ["Window"]
-  },
   "css.properties.position-try-order": {
     "code": "bcd.testCSSProperty(\"position-try-order\")",
     "exposure": ["Window"]
@@ -51546,32 +51585,32 @@
     "code": "bcd.testCSSProperty(\"r\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\")",
+  "css.properties.reading-flow": {
+    "code": "bcd.testCSSProperty(\"reading-flow\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.normal": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"normal\")",
+  "css.properties.reading-flow.normal": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"normal\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.flex-visual": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"flex-visual\")",
+  "css.properties.reading-flow.flex-visual": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"flex-visual\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.flex-flow": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"flex-flow\")",
+  "css.properties.reading-flow.flex-flow": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"flex-flow\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.grid-rows": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"grid-rows\")",
+  "css.properties.reading-flow.grid-rows": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"grid-rows\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.grid-columns": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"grid-columns\")",
+  "css.properties.reading-flow.grid-columns": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"grid-columns\")",
     "exposure": ["Window"]
   },
-  "css.properties.reading-order-items.grid-order": {
-    "code": "bcd.testCSSProperty(\"reading-order-items\", \"grid-order\")",
+  "css.properties.reading-flow.grid-order": {
+    "code": "bcd.testCSSProperty(\"reading-flow\", \"grid-order\")",
     "exposure": ["Window"]
   },
   "css.properties.region-fragment": {
@@ -53426,6 +53465,10 @@
     "code": "bcd.testCSSProperty(\"text-transform\", \"full-size-kana\")",
     "exposure": ["Window"]
   },
+  "css.properties.text-transform.math-auto": {
+    "code": "bcd.testCSSProperty(\"text-transform\", \"math-auto\")",
+    "exposure": ["Window"]
+  },
   "css.properties.text-underline": {
     "code": "bcd.testCSSProperty(\"text-underline\")",
     "exposure": ["Window"]
@@ -54618,10 +54661,6 @@
     "code": "bcd.testCSSSelector(\"&\")",
     "exposure": ["Window"]
   },
-  "css.selectors.nth-fragment": {
-    "code": "bcd.testCSSSelector(\"::nth-fragment()\")",
-    "exposure": ["Window"]
-  },
   "css.selectors.backdrop": {
     "code": "bcd.testCSSSelector(\"::backdrop\")",
     "exposure": ["Window"]
@@ -54652,6 +54691,10 @@
   },
   "css.selectors.file-selector-button": {
     "code": "bcd.testCSSSelector(\"::file-selector-button\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.details-content": {
+    "code": "bcd.testCSSSelector(\"::details-content\")",
     "exposure": ["Window"]
   },
   "css.selectors.host": {
@@ -55338,10 +55381,6 @@
     "code": "bcd.testCSSProperty(\"color\", \"hsl(150, 30%, 60%)\")",
     "exposure": ["Window"]
   },
-  "css.types.color.hsla": {
-    "code": "bcd.testCSSProperty(\"color\", \"hsla(150, 30%, 60%, 0.5)\")",
-    "exposure": ["Window"]
-  },
   "css.types.color.hwb": {
     "code": "bcd.testCSSProperty(\"color\", \"hwb(12, 50%, 0%)\")",
     "exposure": ["Window"]
@@ -55376,10 +55415,6 @@
   },
   "css.types.color.rgb_hexadecimal_notation": {
     "code": "bcd.testCSSProperty(\"color\", \"#fff\")",
-    "exposure": ["Window"]
-  },
-  "css.types.color.rgba": {
-    "code": "bcd.testCSSProperty(\"color\", \"rgba(255, 255, 255, 0.5)\")",
     "exposure": ["Window"]
   },
   "css.types.color.system-color": {
@@ -56330,10 +56365,6 @@
     "code": "(function() {\n  var instance = document.createElement('form');\n  return !!instance && 'action' in instance;\n})()",
     "exposure": ["Window"]
   },
-  "html.elements.form.autocapitalize": {
-    "code": "(function() {\n  var instance = document.createElement('form');\n  return !!instance && 'autocapitalize' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "html.elements.form.autocomplete": {
     "code": "(function() {\n  var instance = document.createElement('form');\n  return !!instance && 'autocomplete' in instance;\n})()",
     "exposure": ["Window"]
@@ -56570,10 +56601,6 @@
     "code": "(function() {\n  var instance = document.createElement('html');\n  return !!instance && 'namespaceURI' in instance;\n})()",
     "exposure": ["Window"]
   },
-  "html.elements.html.manifest": {
-    "code": "(function() {\n  var instance = document.createElement('html');\n  return !!instance && 'manifest' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "html.elements.html.version": {
     "code": "(function() {\n  var instance = document.createElement('html');\n  return !!instance && 'version' in instance;\n})()",
     "exposure": ["Window"]
@@ -56720,10 +56747,6 @@
   },
   "html.elements.img.name": {
     "code": "(function() {\n  var instance = document.createElement('img');\n  return !!instance && 'name' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.img.onerror": {
-    "code": "(function() {\n  var instance = document.createElement('img');\n  return !!instance && 'onerror' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.img.sizes": {
@@ -57064,10 +57087,6 @@
   },
   "html.elements.link.target": {
     "code": "(function() {\n  var instance = document.createElement('link');\n  return !!instance && 'target' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.link.title": {
-    "code": "(function() {\n  var instance = document.createElement('link');\n  return !!instance && 'title' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.link.type": {
@@ -57474,10 +57493,6 @@
     "code": "(function() {\n  var instance = document.createElement('script');\n  return !!instance && 'src' in instance;\n})()",
     "exposure": ["Window"]
   },
-  "html.elements.script.text": {
-    "code": "(function() {\n  var instance = document.createElement('script');\n  return !!instance && 'text' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "html.elements.script.type": {
     "code": "(function() {\n  var instance = document.createElement('script');\n  return !!instance && 'type' in instance;\n})()",
     "exposure": ["Window"]
@@ -57588,10 +57603,6 @@
   },
   "html.elements.style.media": {
     "code": "(function() {\n  var instance = document.createElement('style');\n  return !!instance && 'media' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.style.title": {
-    "code": "(function() {\n  var instance = document.createElement('style');\n  return !!instance && 'title' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.style.type": {
@@ -59711,131 +59722,131 @@
     "exposure": ["Window"]
   },
   "mathml.elements.annotation": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.annotation-xml": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.maction": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.math": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.menclose": {
-    "code": "(function () {\n  // Just check whether <mrow> is supported because discussion on this is\n  // still open (https://github.com/mathml-refresh/mathml/issues/105\n  // and it would have to behave at least like an mrow, even if it becomes\n  // an unknown element at the end.\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // Just check whether <mrow> is supported because discussion on this is\n  // still open (https://github.com/mathml-refresh/mathml/issues/105\n  // and it would have to behave at least like an mrow, even if it becomes\n  // an unknown element at the end.\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.merror": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mfenced": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mfrac": {
-    "code": "(function () {\n  // Use tall enough fraction to avoid side effect of min num/denum shifts.\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mfrac><mspace height='50px' depth='50px'></mspace><mspace height='50px' depth='50px'></mspace></mfrac><mfrac><mspace height='60px' depth='60px'></mspace><mspace height='60px' depth='60px'></mspace></mfrac>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  var mfrac = mathEl.getElementsByTagName(\"mfrac\");\n  // height/depth will add 40px per MathML, 20px if mfrac does not stack its children and none if mspace is not supported.\n  var has_mfrac =\n    mfrac[1].getBoundingClientRect().height -\n      mfrac[0].getBoundingClientRect().height >\n    30;\n  return has_mfrac;\n})();\n",
+    "code": "(function () {\n  // Use tall enough fraction to avoid side effect of min num/denum shifts.\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mfrac><mspace height='50px' depth='50px'></mspace><mspace height='50px' depth='50px'></mspace></mfrac><mfrac><mspace height='60px' depth='60px'></mspace><mspace height='60px' depth='60px'></mspace></mfrac>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  var mfrac = mathEl.getElementsByTagName(\"mfrac\");\n  // height/depth will add 40px per MathML, 20px if mfrac does not stack its children and none if mspace is not supported.\n  var has_mfrac =\n    mfrac[1].getBoundingClientRect().height -\n      mfrac[0].getBoundingClientRect().height >\n    30;\n  return has_mfrac;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mi": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mmultiscripts": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mn": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mo": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mover": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mpadded": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mphantom": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mprescripts": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mroot": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mrow style='font-size: 20px !important'><mtext>A</mtext></mrow><msqrt style='font-size: 20px !important'><mtext>A</mtext></msqrt>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The radical symbol will make msqrt wider than mrow, if the former is supported.\n  var has_msqrt =\n    mathEl.lastElementChild.getBoundingClientRect().width -\n      mathEl.firstElementChild.getBoundingClientRect().width >\n    5;\n  return has_msqrt;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mrow style='font-size: 20px !important'><mtext>A</mtext></mrow><msqrt style='font-size: 20px !important'><mtext>A</mtext></msqrt>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The radical symbol will make msqrt wider than mrow, if the former is supported.\n  var has_msqrt =\n    mathEl.lastElementChild.getBoundingClientRect().width -\n      mathEl.firstElementChild.getBoundingClientRect().width >\n    5;\n  return has_msqrt;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mrow": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.ms": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mspace": {
-    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.msqrt": {
-    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mrow style='font-size: 20px !important'><mtext>A</mtext></mrow><msqrt style='font-size: 20px !important'><mtext>A</mtext></msqrt>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The radical symbol will make msqrt wider than mrow, if the former is supported.\n  var has_msqrt =\n    mathEl.lastElementChild.getBoundingClientRect().width -\n      mathEl.firstElementChild.getBoundingClientRect().width >\n    5;\n  return has_msqrt;\n})();\n",
+    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<mrow style='font-size: 20px !important'><mtext>A</mtext></mrow><msqrt style='font-size: 20px !important'><mtext>A</mtext></msqrt>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The radical symbol will make msqrt wider than mrow, if the former is supported.\n  var has_msqrt =\n    mathEl.lastElementChild.getBoundingClientRect().width -\n      mathEl.firstElementChild.getBoundingClientRect().width >\n    5;\n  return has_msqrt;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mstyle": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.msub": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.msubsup": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.msup": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mtable": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mtd": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mtext": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.mtr": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.munder": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.munderover": {
-    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
+    "code": "(function () {\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML =\n    \"<munderover><mspace width='20px'></mspace><mspace width='20px'></mspace><mspace width='20px'></mspace></munderover><munderover><mspace width='40px'></mspace><mspace width='40px'></mspace><mspace width='40px'></mspace></munderover>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  var munderover = mathEl.getElementsByTagName(\"munderover\");\n  // width_delta will be 20px per MathML, 3 * 20 = 60px if mundeover does not stack its children and 0px if mspace is not supported.\n  var width_delta =\n    munderover[1].getBoundingClientRect().width -\n    munderover[0].getBoundingClientRect().width;\n  var has_munderover = width_delta > 10 && width_delta < 30;\n  return has_munderover;\n})();\n",
     "exposure": ["Window"]
   },
   "mathml.elements.semantics": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.getElementById(\"resources\").appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.getElementById(\"resources\").removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
+    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Object": {
@@ -62490,12 +62501,12 @@
     "code": "\"unescape\" in self",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Float16Error": {
-    "code": "\"Float16Error\" in self",
+  "javascript.builtins.Float16Array": {
+    "code": "\"Float16Array\" in self",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Float16Error.Float16Error": {
-    "code": "(function () {\n  if (!(\"Float16Error\" in self)) {\n    return { result: false, message: \"Float16Error is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Error\", false);\n})();\n",
+  "javascript.builtins.Float16Array.Float16Array": {
+    "code": "(function () {\n  if (!(\"Float16Array\" in self)) {\n    return { result: false, message: \"Float16Array is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Array\", false);\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.InternalError": {
