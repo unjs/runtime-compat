@@ -9,5 +9,5 @@ export type RuntimeName =
   | "llrt"
   | "netlify"
   | "node"
-  | "wasmer"
+  | "winterjs"
   | "workerd";
