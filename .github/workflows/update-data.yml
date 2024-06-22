@@ -59,10 +59,17 @@ jobs:
         with:
           repository: openwebdocs/mdn-bcd-collector
           path: .bcd
-      - name: Generate runtime tests
+          fetch-depth: 0
+      - name: Switch to latest mdn-bcd-collector release
         run: |
-          npm install --ignore-scripts
-          npm run build
+          latestTag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+          git checkout $latestTag
+      - name: Prepare mdn-bcd-collector environment
+        run: npm install --ignore-scripts
+      - name: Generate runtime tests
+        run: npm run build
+        env:
+          NODE_ENV: production
         working-directory: .bcd
       - name: Generate compat data
         timeout-minutes: 10
