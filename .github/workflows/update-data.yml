@@ -62,7 +62,9 @@ jobs:
           fetch-depth: 0
       - name: Switch to latest mdn-bcd-collector release
         run: |
+          echo rev-list: $(git rev-list --tags --max-count=1)
           latestTag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+          echo latest tag: $latestTag
           git checkout $latestTag
       - name: Prepare mdn-bcd-collector environment
         run: npm install --ignore-scripts
