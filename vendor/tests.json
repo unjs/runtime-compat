@@ -4947,7 +4947,7 @@
     "resources": ["cryptoKey", "cryptoKey"]
   },
   "api.CredentialsContainer.get.identity_option": {
-    "code": "(function () {\n  var instance = navigator.credentials;\n  return bcd.testOptionParam(instance, null, \"get\", \"identity\");\n})();\n",
+    "code": "(function () {\n  var instance = navigator.credentials;\n  return bcd.testOptionParam(instance, \"get\", \"identity\", {});\n})();\n",
     "exposure": ["Window"],
     "resources": ["cryptoKey", "cryptoKey"]
   },
@@ -10210,19 +10210,23 @@
     "exposure": ["Window"]
   },
   "api.Element.checkVisibility.options_checkOpacity_parameter": {
-    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    interface,\n    \"checkVisibility\",\n    \"checkOpacity\",\n    true,\n  );\n})();\n",
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(instance, \"checkVisibility\", \"checkOpacity\", true);\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.checkVisibility.options_checkVisibilityCSS_parameter": {
-    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    interface,\n    \"checkVisibility\",\n    \"checkVisibilityCSS\",\n    true,\n  );\n})();\n",
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"checkVisibility\",\n    \"checkVisibilityCSS\",\n    true,\n  );\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.checkVisibility.options_contentVisibilityAuto_parameter": {
-    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    interface,\n    \"checkVisibility\",\n    \"contentVisibilityAuto\",\n    true,\n  );\n})();\n",
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"checkVisibility\",\n    \"contentVisibilityAuto\",\n    true,\n  );\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.checkVisibility.options_opacityProperty_parameter": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"checkVisibility\",\n    \"opacityProperty\",\n    true,\n  );\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.checkVisibility.options_visibilityProperty_parameter": {
-    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    interface,\n    \"checkVisibility\",\n    \"visibilityProperty\",\n    true,\n  );\n})();\n",
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return bcd.testOptionParam(\n    instance,\n    \"checkVisibility\",\n    \"visibilityProperty\",\n    true,\n  );\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.childElementCount": {
@@ -14679,6 +14683,62 @@
     "code": "\"Gyroscope\" in self && \"z\" in Gyroscope.prototype",
     "exposure": ["Window"]
   },
+  "api.HandwritingDrawing": {
+    "code": "\"HandwritingDrawing\" in self",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingDrawing.addStroke": {
+    "code": "\"HandwritingDrawing\" in self && \"addStroke\" in HandwritingDrawing.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingDrawing.clear": {
+    "code": "\"HandwritingDrawing\" in self && \"clear\" in HandwritingDrawing.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingDrawing.getPrediction": {
+    "code": "\"HandwritingDrawing\" in self && \"getPrediction\" in HandwritingDrawing.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingDrawing.getStrokes": {
+    "code": "\"HandwritingDrawing\" in self && \"getStrokes\" in HandwritingDrawing.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingDrawing.removeStroke": {
+    "code": "\"HandwritingDrawing\" in self && \"removeStroke\" in HandwritingDrawing.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingRecognizer": {
+    "code": "\"HandwritingRecognizer\" in self",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingRecognizer.finish": {
+    "code": "\"HandwritingRecognizer\" in self && \"finish\" in HandwritingRecognizer.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingRecognizer.startDrawing": {
+    "code": "\"HandwritingRecognizer\" in self && \"startDrawing\" in HandwritingRecognizer.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingStroke": {
+    "code": "\"HandwritingStroke\" in self",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingStroke.addPoint": {
+    "code": "\"HandwritingStroke\" in self && \"addPoint\" in HandwritingStroke.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingStroke.clear": {
+    "code": "\"HandwritingStroke\" in self && \"clear\" in HandwritingStroke.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingStroke.getPoints": {
+    "code": "\"HandwritingStroke\" in self && \"getPoints\" in HandwritingStroke.prototype",
+    "exposure": ["Window"]
+  },
+  "api.HandwritingStroke.HandwritingStroke": {
+    "code": "bcd.testConstructor('HandwritingStroke')",
+    "exposure": ["Window"]
+  },
   "api.HashChangeEvent": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = new HashChangeEvent(\"hashchange\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"HashChangeEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
@@ -15563,6 +15623,16 @@
   },
   "api.HTMLCanvasElement.toDataURL": {
     "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"toDataURL\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.toDataURL.type_parameter_jpeg": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/jpeg\");\n  return blob.type === \"image/jpeg\";\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.toDataURL.type_parameter_png": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/png\");\n  return blob.type === \"image/png\";\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -22841,6 +22911,10 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"createAuctionNonce\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.createHandwritingRecognizer": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"createHandwritingRecognizer\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.credentials": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"credentials\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -23015,6 +23089,10 @@
   },
   "api.Navigator.protectedAudience": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"protectedAudience\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Navigator.queryHandwritingRecognizer": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"queryHandwritingRecognizer\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Navigator.registerProtocolHandler": {
@@ -55729,6 +55807,10 @@
     "code": "bcd.testCSSProperty(\"transform\", \"perspective(800px)\")",
     "exposure": ["Window"]
   },
+  "css.types.transform-function.perspective.none": {
+    "code": "bcd.testCSSProperty(\"transform\", \"perspective(none)\")",
+    "exposure": ["Window"]
+  },
   "css.types.transform-function.rotate": {
     "code": "bcd.testCSSProperty(\"transform\", \"rotate(90deg)\")",
     "exposure": ["Window"]
@@ -57015,6 +57097,122 @@
   },
   "html.elements.link": {
     "code": "(function() {\n    var instance = document.createElement('link');\n    return bcd.testObjectName(instance, 'HTMLLinkElement');\n  })()",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.alternate": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"alternate\";\n  return instance.rel === \"alternate\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.alternate_stylesheet": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"alternate stylesheet\";\n  return instance.rel === \"alternate stylesheet\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.author": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"author\";\n  return instance.rel === \"author\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.bookmark": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"bookmark\";\n  return instance.rel === \"bookmark\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.canonical": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"canonical\";\n  return instance.rel === \"canonical\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.dns-prefetch": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"dns-prefetch\";\n  return instance.rel === \"dns-prefetch\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.external": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"external\";\n  return instance.rel === \"external\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.help": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"help\";\n  return instance.rel === \"help\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.icon": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"icon\";\n  return instance.rel === \"icon\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.license": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"license\";\n  return instance.rel === \"license\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.manifest": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"manifest\";\n  return instance.rel === \"manifest\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.me": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"me\";\n  return instance.rel === \"me\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.modulepreload": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"modulepreload\";\n  return instance.rel === \"modulepreload\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.next": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"next\";\n  return instance.rel === \"next\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.nofollow": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"nofollow\";\n  return instance.rel === \"nofollow\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.noopener": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"noopener\";\n  return instance.rel === \"noopener\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.noreferrer": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"noreferrer\";\n  return instance.rel === \"noreferrer\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.opener": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"opener\";\n  return instance.rel === \"opener\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.pingback": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"pingback\";\n  return instance.rel === \"pingback\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.preconnect": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"preconnect\";\n  return instance.rel === \"preconnect\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.prefetch": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"prefetch\";\n  return instance.rel === \"prefetch\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.preload": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"preload\";\n  return instance.rel === \"preload\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.prerender": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"prerender\";\n  return instance.rel === \"prerender\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.prev": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"prev\";\n  return instance.rel === \"prev\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.privacy-policy": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"privacy-policy\";\n  return instance.rel === \"privacy-policy\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.search": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"search\";\n  return instance.rel === \"search\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.stylesheet": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"stylesheet\";\n  return instance.rel === \"stylesheet\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.tag": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"tag\";\n  return instance.rel === \"tag\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.link.rel.terms-of-service": {
+    "code": "(function () {\n  var instance = document.createElement(\"link\");\n  instance.rel = \"terms-of-service\";\n  return instance.rel === \"terms-of-service\";\n})();\n",
     "exposure": ["Window"]
   },
   "html.elements.link.crossorigin": {
@@ -62543,6 +62741,26 @@
   },
   "javascript.builtins.Intl.Collator.Collator.options_collation_parameter": {
     "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"collation\", \"default\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Intl.Collator.Collator.options_ignorePunctuation_parameter": {
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"ignorePunctuation\", true);\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Intl.Collator.Collator.options_localeMatcher_parameter": {
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"localeMatcher\", \"best fit\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Intl.Collator.Collator.options_numeric_parameter": {
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numeric\", false);\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Intl.Collator.Collator.options_sensitivity_parameter": {
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"sensitivity\", \"base\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Intl.Collator.Collator.options_usage_parameter": {
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"Collator\" in Intl)) {\n    return { result: false, message: \"Intl.Collator is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.Collator(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"usage\", \"sort\");\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.Collator.supportedLocalesOf": {
