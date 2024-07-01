@@ -23,7 +23,7 @@ jobs:
           cache: "pnpm"
       - uses: wasmerio/setup-wasmer@v3.1
       - run: wasmer run wasmer/winterjs -- -V
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - uses: denoland/setup-deno@v1
