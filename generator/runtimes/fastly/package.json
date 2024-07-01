@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fastly/js-compute": "^3.13.1",
+    "@fastly/js-compute": "^3.16.0",
     "unbuild": "^2.0.0",
-    "start-server-and-test": "^2.0.3"
+    "start-server-and-test": "^2.0.4"
   },
   "scripts": {
     "build": "unbuild && js-compute-runtime ./dist/handler.mjs ./bin/main.wasm",
