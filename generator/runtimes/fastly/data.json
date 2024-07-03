@@ -4609,7 +4609,7 @@
           "code": "\"WeakRef\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.WeakRef.symbol_as_target",
@@ -4618,7 +4618,7 @@
           "exposure": "Window"
         },
         "result": false,
-        "message": "WeakRef is not defined"
+        "message": "Symbol() is not a non-null object"
       },
       {
         "name": "javascript.builtins.WeakRef.WeakRef",
@@ -4626,8 +4626,8 @@
           "code": "(function () {\n  if (!(\"WeakRef\" in self)) {\n    return { result: false, message: \"WeakRef is not defined\" };\n  }\n  return bcd.testConstructor(\"WeakRef\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "WeakRef is not defined"
+        "result": null,
+        "message": "threw TypeError: undefined is not a non-null object"
       },
       {
         "name": "javascript.builtins.WeakRef.deref",
@@ -4635,7 +4635,7 @@
           "code": "\"WeakRef\" in self && \"deref\" in WeakRef.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.FinalizationRegistry",
@@ -4643,7 +4643,7 @@
           "code": "\"FinalizationRegistry\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.FinalizationRegistry.symbol_as_target",
@@ -4652,7 +4652,7 @@
           "exposure": "Window"
         },
         "result": false,
-        "message": "FinalizationRegistry is not defined"
+        "message": "target argument to FinalizationRegistry.register is not a non-null object"
       },
       {
         "name": "javascript.builtins.FinalizationRegistry.FinalizationRegistry",
@@ -4660,8 +4660,8 @@
           "code": "(function () {\n  if (!(\"FinalizationRegistry\" in self)) {\n    return { result: false, message: \"FinalizationRegistry is not defined\" };\n  }\n  return bcd.testConstructor(\"FinalizationRegistry\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "FinalizationRegistry is not defined"
+        "result": null,
+        "message": "threw TypeError: undefined is not a function"
       },
       {
         "name": "javascript.builtins.FinalizationRegistry.register",
@@ -4669,7 +4669,7 @@
           "code": "\"FinalizationRegistry\" in self && \"register\" in FinalizationRegistry.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.FinalizationRegistry.unregister",
@@ -4677,7 +4677,7 @@
           "code": "\"FinalizationRegistry\" in self && \"unregister\" in FinalizationRegistry.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator",
@@ -86512,7 +86512,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoF. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.getReader",
@@ -86530,7 +86530,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\u0019. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.pipeThrough",
@@ -86539,7 +86539,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoJ. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.pipeTo",
@@ -86557,7 +86557,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\u001c. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.values",
@@ -86593,7 +86593,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoª. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.closed",
@@ -86611,7 +86611,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.releaseLock",
@@ -86620,10 +86620,10 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoa. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       }
     ]
   },
   "extensions": [],
-  "userAgent": "!! fastly/3.13.1"
+  "userAgent": "!! fastly/3.16.0"
 }
