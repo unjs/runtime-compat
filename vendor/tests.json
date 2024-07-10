@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.9",
+  "__version": "10.12.1",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -6200,12 +6200,12 @@
     "exposure": ["Window"],
     "resources": ["createStyleSheet", "createStyleSheet"]
   },
-  "api.CSSNestRule": {
-    "code": "\"CSSNestRule\" in self",
+  "api.CSSNestedDeclarations": {
+    "code": "\"CSSNestedDeclarations\" in self",
     "exposure": ["Window"]
   },
-  "api.CSSNestRule.style": {
-    "code": "\"CSSNestRule\" in self && \"style\" in CSSNestRule.prototype",
+  "api.CSSNestedDeclarations.style": {
+    "code": "\"CSSNestedDeclarations\" in self && \"style\" in CSSNestedDeclarations.prototype",
     "exposure": ["Window"]
   },
   "api.CSSNumericArray": {
@@ -6378,6 +6378,10 @@
   },
   "api.CSSPageDescriptors.marks": {
     "code": "\"CSSPageDescriptors\" in self && \"marks\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.orientation": {
+    "code": "\"CSSPageDescriptors\" in self && \"orientation\" in CSSPageDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSPageDescriptors.size": {
@@ -8070,6 +8074,10 @@
   },
   "api.DeviceChangeEvent.devices": {
     "code": "\"DeviceChangeEvent\" in self && \"devices\" in DeviceChangeEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.DeviceChangeEvent.userInsertedDevices": {
+    "code": "\"DeviceChangeEvent\" in self && \"userInsertedDevices\" in DeviceChangeEvent.prototype",
     "exposure": ["Window"]
   },
   "api.DeviceLightEvent": {
@@ -13195,7 +13203,7 @@
     "exposure": ["Window", "Worker"]
   },
   "api.FormData.append.filename_parameter": {
-    "code": "(function () {\n  if (!(\"FormData\" in self)) {\n    return { result: false, message: \"FormData is not defined\" };\n  }\n  var instance = new FormData();\n  var blob;\n  try {\n    blob = new Blob();\n  } catch (e) {\n    blob = new BlobBuilder();\n  }\n  if (!blob) {\n    return { result: false, message: \"blob is falsy\" };\n  }\n  function append(filename) {\n    instance.append(\"foo\", blob, filename);\n  }\n  return bcd.testOptionParam(append, null, null, \"foo.txt\");\n})();\n",
+    "code": "(function () {\n  if (!(\"FormData\" in self)) {\n    return { result: false, message: \"FormData is not defined\" };\n  }\n  var instance = new FormData();\n  var blob;\n  try {\n    blob = new Blob();\n  } catch (e) {\n    blob = new BlobBuilder();\n  }\n  if (!blob) {\n    return { result: false, message: \"blob is falsy\" };\n  }\n\n  if (!(\"get\" in instance)) {\n    return {\n      result: null,\n      message: \"This test has not yet been adapted for older browsers\",\n    };\n  }\n\n  instance.append(\"foo\", blob, \"bar.txt\");\n  var file = instance.get(\"foo\");\n  return file.name === \"bar.txt\";\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.FormData.FormData.submitter": {
@@ -15497,7 +15505,7 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.getContext.bitmaprenderer_context": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"bitmaprenderer\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"bitmaprenderer\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -15507,7 +15515,7 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.getContext.webgl_context": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -15532,7 +15540,7 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.getContext.webgl2_context": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl2\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl2\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -15557,7 +15565,7 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.getContext.2d_context": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"2d\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"2d\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -15582,7 +15590,7 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.getContext.webgpu_context": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  bcd.skipIf(\n    \"Creating a WebGPU context on Safari 16.5 crashes the browser\",\n    \"safari\",\n    \"16.5\",\n  );\n\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgpu\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  bcd.skipIf(\n    \"Creating a WebGPU context on Safari 16.5 crashes the browser\",\n    \"safari\",\n    \"16.5\",\n  );\n\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgpu\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -15616,6 +15624,16 @@
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
+  "api.HTMLCanvasElement.toBlob.type_parameter_jpeg": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/jpeg\");\n  }\n  instance.toBlob(callback, \"image/jpeg\");\n  return \"callback\";\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.toBlob.type_parameter_png": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/png\");\n  }\n  instance.toBlob(callback, \"image/png\");\n  return \"callback\";\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
   "api.HTMLCanvasElement.toBlob.type_parameter_webp": {
     "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/webp\");\n  }\n  instance.toBlob(callback, \"image/webp\");\n  return \"callback\";\n})();\n",
     "exposure": ["Window"],
@@ -15627,17 +15645,17 @@
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.toDataURL.type_parameter_jpeg": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/jpeg\");\n  return blob.type === \"image/jpeg\";\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/jpeg\");\n  return url.indexOf(\"data:image/jpeg;\") === 0;\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.toDataURL.type_parameter_png": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/png\");\n  return blob.type === \"image/png\";\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/png\");\n  return url.indexOf(\"data:image/png;\") === 0;\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
   "api.HTMLCanvasElement.toDataURL.type_parameter_webp": {
-    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/webp\");\n  return blob.type === \"image/webp\";\n})();\n",
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/webp\");\n  return url.indexOf(\"data:image/webp;\") === 0;\n})();\n",
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
@@ -19628,6 +19646,10 @@
     "code": "\"IntersectionObserver\" in self",
     "exposure": ["Window"]
   },
+  "api.IntersectionObserver.delay": {
+    "code": "\"IntersectionObserver\" in self && \"delay\" in IntersectionObserver.prototype",
+    "exposure": ["Window"]
+  },
   "api.IntersectionObserver.disconnect": {
     "code": "\"IntersectionObserver\" in self && \"disconnect\" in IntersectionObserver.prototype",
     "exposure": ["Window"]
@@ -19664,6 +19686,10 @@
     "code": "\"IntersectionObserver\" in self && \"thresholds\" in IntersectionObserver.prototype",
     "exposure": ["Window"]
   },
+  "api.IntersectionObserver.trackVisibility": {
+    "code": "\"IntersectionObserver\" in self && \"trackVisibility\" in IntersectionObserver.prototype",
+    "exposure": ["Window"]
+  },
   "api.IntersectionObserver.unobserve": {
     "code": "\"IntersectionObserver\" in self && \"unobserve\" in IntersectionObserver.prototype",
     "exposure": ["Window"]
@@ -19690,6 +19716,10 @@
   },
   "api.IntersectionObserverEntry.isIntersecting": {
     "code": "\"IntersectionObserverEntry\" in self && \"isIntersecting\" in IntersectionObserverEntry.prototype",
+    "exposure": ["Window"]
+  },
+  "api.IntersectionObserverEntry.isVisible": {
+    "code": "\"IntersectionObserverEntry\" in self && \"isVisible\" in IntersectionObserverEntry.prototype",
     "exposure": ["Window"]
   },
   "api.IntersectionObserverEntry.rootBounds": {
@@ -23912,39 +23942,39 @@
     "resources": ["offlineAudioContext", "offlineAudioContext"]
   },
   "api.OffscreenCanvas": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.convertToBlob": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"convertToBlob\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"convertToBlob\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"getContext\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"getContext\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext.bitmaprenderer_context": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"bitmaprenderer\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"bitmaprenderer\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext.webgl_context": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext.webgl2_context": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl2\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl2\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext.webgpu_context": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgpu\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgpu\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.getContext.2d_context": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"2d\");\n  return !!ctx;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"2d\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.height": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"height\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"height\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.OffscreenCanvas": {
@@ -23952,23 +23982,23 @@
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.contextlost_event": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.contextrestored_event": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.transferToImageBitmap": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"transferToImageBitmap\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"transferToImageBitmap\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.width": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"width\" in instance;\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"width\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvas.convertToBlob.option_type_parameter_webp": {
-    "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  instance.getContext(\"2d\");\n  if (!(\"convertToBlob\" in instance)) {\n    return { result: false, message: \"instance.convertToBlob is not defined\" };\n  }\n  var blobPromise = instance.convertToBlob({ type: \"image/webp\" });\n  return blobPromise.then(function (blob) {\n    return blob.type === \"image/webp\";\n  });\n})();\n",
+    "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  instance.getContext(\"2d\");\n  if (!(\"convertToBlob\" in instance)) {\n    return { result: false, message: \"instance.convertToBlob is not defined\" };\n  }\n  var blobPromise = instance.convertToBlob({ type: \"image/webp\" });\n  return blobPromise.then(function (blob) {\n    return blob.type === \"image/webp\";\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvasRenderingContext2D": {
@@ -25890,6 +25920,10 @@
   },
   "api.PermissionsPolicyViolationReportBody.sourceFile": {
     "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\",\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.PermissionsPolicyViolationReportBody.toJSON": {
+    "code": "\"PermissionsPolicyViolationReportBody\" in self && \"toJSON\" in PermissionsPolicyViolationReportBody.prototype",
     "exposure": ["Window"]
   },
   "api.PermissionStatus": {
@@ -27897,7 +27931,7 @@
     "exposure": ["Window", "Worker"]
   },
   "api.Response.body.readable_byte_stream": {
-    "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance.body && \"getReader\" in instance.body;\n})();\n",
+    "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!instance.body) {\n    return { result: false, message: \"Response.body is not defined\" };\n  }\n  if (!(\"getReader\" in instance.body)) {\n    return { result: false, message: \"Response.body.getReader is not defined\" };\n  }\n  try {\n    instance.body.getReader({ mode: \"byob\" });\n    return true;\n  } catch (e) {\n    if (e instanceof TypeError) {\n      return { result: false, message: e.message };\n    }\n    return e;\n  }\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.Response.bodyUsed": {
@@ -30709,59 +30743,59 @@
     "exposure": ["Window"]
   },
   "api.ScreenDetailed": {
-    "code": "\"ScreenDetailed\" in self",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.availLeft": {
-    "code": "\"ScreenDetailed\" in self && \"availLeft\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"availLeft\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.availTop": {
-    "code": "\"ScreenDetailed\" in self && \"availTop\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"availTop\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.devicePixelRatio": {
-    "code": "\"ScreenDetailed\" in self && \"devicePixelRatio\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"devicePixelRatio\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.isInternal": {
-    "code": "\"ScreenDetailed\" in self && \"isInternal\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"isInternal\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.isPrimary": {
-    "code": "\"ScreenDetailed\" in self && \"isPrimary\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"isPrimary\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.label": {
-    "code": "\"ScreenDetailed\" in self && \"label\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"label\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.left": {
-    "code": "\"ScreenDetailed\" in self && \"left\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"left\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetailed.top": {
-    "code": "\"ScreenDetailed\" in self && \"top\" in ScreenDetailed.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"top\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetails": {
-    "code": "\"ScreenDetails\" in self",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetails.currentScreen": {
-    "code": "\"ScreenDetails\" in self && \"currentScreen\" in ScreenDetails.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"currentScreen\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetails.currentscreenchange_event": {
-    "code": "\"ScreenDetails\" in self && \"oncurrentscreenchange\" in ScreenDetails.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"oncurrentscreenchange\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetails.screenschange_event": {
-    "code": "\"ScreenDetails\" in self && \"onscreenschange\" in ScreenDetails.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"onscreenschange\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenDetails.screens": {
-    "code": "\"ScreenDetails\" in self && \"screens\" in ScreenDetails.prototype",
+    "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"screens\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.ScreenOrientation": {
@@ -44879,10 +44913,6 @@
     "code": "bcd.testCSSProperty(\"-moz-orient\")",
     "exposure": ["Window"]
   },
-  "css.properties.-moz-orient.auto": {
-    "code": "bcd.testCSSProperty(\"-moz-orient\", \"auto\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-moz-orient.inline": {
     "code": "bcd.testCSSProperty(\"-moz-orient\", \"inline\")",
     "exposure": ["Window"]
@@ -44901,14 +44931,6 @@
   },
   "css.properties.-moz-user-input.auto": {
     "code": "bcd.testCSSProperty(\"-moz-user-input\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-moz-user-input.disabled": {
-    "code": "bcd.testCSSProperty(\"-moz-user-input\", \"disabled\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-moz-user-input.enabled": {
-    "code": "bcd.testCSSProperty(\"-moz-user-input\", \"enabled\")",
     "exposure": ["Window"]
   },
   "css.properties.-moz-user-input.none": {
@@ -44987,10 +45009,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-line-box-contain\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-line-clamp": {
-    "code": "bcd.testCSSProperty(\"-webkit-line-clamp\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-line-grid": {
     "code": "bcd.testCSSProperty(\"-webkit-line-grid\")",
     "exposure": ["Window"]
@@ -45021,10 +45039,6 @@
   },
   "css.properties.-webkit-marquee": {
     "code": "bcd.testCSSProperty(\"-webkit-marquee\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-attachment": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-attachment\")",
     "exposure": ["Window"]
   },
   "css.properties.-webkit-mask-box-image": {
@@ -45093,10 +45107,6 @@
   },
   "css.properties.-webkit-nbsp-mode": {
     "code": "bcd.testCSSProperty(\"-webkit-nbsp-mode\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-overflow-scrolling": {
-    "code": "bcd.testCSSProperty(\"-webkit-overflow-scrolling\")",
     "exposure": ["Window"]
   },
   "css.properties.-webkit-perspective-origin-x": {
@@ -45321,10 +45331,6 @@
   },
   "css.properties.align-self.anchor-center": {
     "code": "bcd.testCSSProperty(\"align-self\", \"anchor-center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.align-tracks": {
-    "code": "bcd.testCSSProperty(\"align-tracks\")",
     "exposure": ["Window"]
   },
   "css.properties.alignment-baseline": {
@@ -46779,6 +46785,14 @@
     "code": "bcd.testCSSProperty(\"caption-side\", \"right\")",
     "exposure": ["Window"]
   },
+  "css.properties.caption-side.inline-start": {
+    "code": "bcd.testCSSProperty(\"caption-side\", \"inline-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.caption-side.inline-end": {
+    "code": "bcd.testCSSProperty(\"caption-side\", \"inline-end\")",
+    "exposure": ["Window"]
+  },
   "css.properties.caption-side.top-outside": {
     "code": "bcd.testCSSProperty(\"caption-side\", \"top-outside\")",
     "exposure": ["Window"]
@@ -47371,6 +47385,18 @@
     "code": "bcd.testCSSProperty(\"continue\", \"discard\")",
     "exposure": ["Window"]
   },
+  "css.properties.continue.overflow": {
+    "code": "bcd.testCSSProperty(\"continue\", \"overflow\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.continue.paginate": {
+    "code": "bcd.testCSSProperty(\"continue\", \"paginate\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.continue.fragments": {
+    "code": "bcd.testCSSProperty(\"continue\", \"fragments\")",
+    "exposure": ["Window"]
+  },
   "css.properties.copy-into": {
     "code": "bcd.testCSSProperty(\"copy-into\")",
     "exposure": ["Window"]
@@ -47761,10 +47787,6 @@
   },
   "css.properties.display.inline-grid": {
     "code": "bcd.testCSSProperty(\"display\", \"inline-grid\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.display.display-outside": {
-    "code": "bcd.testCSSProperty(\"display\", \"block\") && bcd.testCSSProperty(\"display\", \"inline\")",
     "exposure": ["Window"]
   },
   "css.properties.display.multi-keyword_values": {
@@ -49529,10 +49551,6 @@
   },
   "css.properties.justify-self.anchor-center": {
     "code": "bcd.testCSSProperty(\"justify-self\", \"anchor-center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.justify-tracks": {
-    "code": "bcd.testCSSProperty(\"justify-tracks\")",
     "exposure": ["Window"]
   },
   "css.properties.layout-grid": {
@@ -51567,24 +51585,24 @@
     "code": "bcd.testCSSProperty(\"position-try\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options": {
-    "code": "bcd.testCSSProperty(\"position-try-options\")",
+  "css.properties.position-try-fallbacks": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options.none": {
-    "code": "bcd.testCSSProperty(\"position-try-options\", \"none\")",
+  "css.properties.position-try-fallbacks.none": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"none\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options.flip-block": {
-    "code": "bcd.testCSSProperty(\"position-try-options\", \"flip-block\")",
+  "css.properties.position-try-fallbacks.flip-block": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-block\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options.flip-inline": {
-    "code": "bcd.testCSSProperty(\"position-try-options\", \"flip-inline\")",
+  "css.properties.position-try-fallbacks.flip-inline": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-inline\")",
     "exposure": ["Window"]
   },
-  "css.properties.position-try-options.flip-start": {
-    "code": "bcd.testCSSProperty(\"position-try-options\", \"flip-start\")",
+  "css.properties.position-try-fallbacks.flip-start": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-start\")",
     "exposure": ["Window"]
   },
   "css.properties.position-try-order": {
@@ -51947,6 +51965,22 @@
     "code": "bcd.testCSSProperty(\"scroll-margin-top\")",
     "exposure": ["Window"]
   },
+  "css.properties.scroll-marker-group": {
+    "code": "bcd.testCSSProperty(\"scroll-marker-group\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-marker-group.none": {
+    "code": "bcd.testCSSProperty(\"scroll-marker-group\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-marker-group.before": {
+    "code": "bcd.testCSSProperty(\"scroll-marker-group\", \"before\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-marker-group.after": {
+    "code": "bcd.testCSSProperty(\"scroll-marker-group\", \"after\")",
+    "exposure": ["Window"]
+  },
   "css.properties.scroll-padding": {
     "code": "bcd.testCSSProperty(\"scroll-padding\")",
     "exposure": ["Window"]
@@ -52183,54 +52217,6 @@
     "code": "bcd.testCSSProperty(\"scroll-start-target\", \"auto\")",
     "exposure": ["Window"]
   },
-  "css.properties.scroll-start-target-block": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-block\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-block.none": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-block\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-block.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-block\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-inline": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-inline\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-inline.none": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-inline\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-inline.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-inline\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-x": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-x\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-x.none": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-x\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-x.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-x\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-y": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-y\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-y.none": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-y\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target-y.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target-y\", \"auto\")",
-    "exposure": ["Window"]
-  },
   "css.properties.scroll-start-x": {
     "code": "bcd.testCSSProperty(\"scroll-start-x\")",
     "exposure": ["Window"]
@@ -52309,18 +52295,6 @@
   },
   "css.properties.scroll-timeline-name": {
     "code": "bcd.testCSSProperty(\"scroll-timeline-name\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-3dlight-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-3dlight-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-arrow-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-arrow-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-base-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-base-color\")",
     "exposure": ["Window"]
   },
   "css.properties.scrollbar-color": {
@@ -52435,14 +52409,6 @@
     "code": "bcd.testCSSProperty(\"scrollbar-color\", \"WindowText\")",
     "exposure": ["Window"]
   },
-  "css.properties.scrollbar-darkshadow-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-darkshadow-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-face-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-face-color\")",
-    "exposure": ["Window"]
-  },
   "css.properties.scrollbar-gutter": {
     "code": "bcd.testCSSProperty(\"scrollbar-gutter\")",
     "exposure": ["Window"]
@@ -52457,18 +52423,6 @@
   },
   "css.properties.scrollbar-gutter.both-edges": {
     "code": "bcd.testCSSProperty(\"scrollbar-gutter\", \"both-edges\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-highlight-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-highlight-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-shadow-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-shadow-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scrollbar-track-color": {
-    "code": "bcd.testCSSProperty(\"scrollbar-track-color\")",
     "exposure": ["Window"]
   },
   "css.properties.scrollbar-width": {
@@ -53025,10 +52979,6 @@
   },
   "css.properties.text-combine-upright.all": {
     "code": "bcd.testCSSProperty(\"text-combine-upright\", \"all\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-combine-upright.digits": {
-    "code": "bcd.testCSSProperty(\"text-combine-upright\", \"digits\")",
     "exposure": ["Window"]
   },
   "css.properties.text-decoration": {
@@ -53687,10 +53637,6 @@
     "code": "bcd.testCSSProperty(\"touch-action\")",
     "exposure": ["Window"]
   },
-  "css.properties.touch-action.double-tap-zoom": {
-    "code": "bcd.testCSSProperty(\"touch-action\", \"double-tap-zoom\")",
-    "exposure": ["Window"]
-  },
   "css.properties.touch-action.manipulation": {
     "code": "bcd.testCSSProperty(\"touch-action\", \"manipulation\")",
     "exposure": ["Window"]
@@ -53929,10 +53875,6 @@
   },
   "css.properties.user-select.all": {
     "code": "bcd.testCSSProperty(\"user-select\", \"all\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.user-select.element": {
-    "code": "bcd.testCSSProperty(\"user-select\", \"element\")",
     "exposure": ["Window"]
   },
   "css.properties.user-zoom": {
@@ -54739,6 +54681,18 @@
     "code": "bcd.testCSSSelector(\"&\")",
     "exposure": ["Window"]
   },
+  "css.selectors.scroll-marker-group": {
+    "code": "bcd.testCSSSelector(\"::scroll-marker-group\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.scroll-marker": {
+    "code": "bcd.testCSSSelector(\"::scroll-marker\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.nth-fragment": {
+    "code": "bcd.testCSSSelector(\"::nth-fragment()\")",
+    "exposure": ["Window"]
+  },
   "css.selectors.backdrop": {
     "code": "bcd.testCSSSelector(\"::backdrop\")",
     "exposure": ["Window"]
@@ -55163,14 +55117,6 @@
     "code": "bcd.testCSSSelector(\"::-moz-list-number\")",
     "exposure": ["Window"]
   },
-  "css.selectors.-moz-page": {
-    "code": "bcd.testCSSSelector(\"::-moz-page\")",
-    "exposure": ["Window"]
-  },
-  "css.selectors.-moz-page-sequence": {
-    "code": "bcd.testCSSSelector(\"::-moz-page-sequence\")",
-    "exposure": ["Window"]
-  },
   "css.selectors.-moz-progress-bar": {
     "code": "bcd.testCSSSelector(\"::-moz-progress-bar\")",
     "exposure": ["Window"]
@@ -55185,14 +55131,6 @@
   },
   "css.selectors.-moz-range-track": {
     "code": "bcd.testCSSSelector(\"::-moz-range-track\")",
-    "exposure": ["Window"]
-  },
-  "css.selectors.-moz-scrolled-page-sequence": {
-    "code": "bcd.testCSSSelector(\"::-moz-scrolled-page-sequence\")",
-    "exposure": ["Window"]
-  },
-  "css.selectors.-webkit-details-marker": {
-    "code": "bcd.testCSSSelector(\"::-webkit-details-marker\")",
     "exposure": ["Window"]
   },
   "css.selectors.-webkit-inner-spin-button": {
@@ -56731,6 +56669,162 @@
     "code": "(function() {\n  var instance = document.createElement('iframe');\n  return !!instance && 'allow' in instance;\n})()",
     "exposure": ["Window"]
   },
+  "html.elements.iframe.allow.accelerometer": {
+    "code": "(function () {\n  instance.allow = \"accelerometer\";\n  return instance.allow === \"accelerometer\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.ambient-light-sensor": {
+    "code": "(function () {\n  instance.allow = \"ambient-light-sensor\";\n  return instance.allow === \"ambient-light-sensor\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.attribution-reporting": {
+    "code": "(function () {\n  instance.allow = \"attribution-reporting\";\n  return instance.allow === \"attribution-reporting\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.autoplay": {
+    "code": "(function () {\n  instance.allow = \"autoplay\";\n  return instance.allow === \"autoplay\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.battery": {
+    "code": "(function () {\n  instance.allow = \"battery\";\n  return instance.allow === \"battery\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.bluetooth": {
+    "code": "(function () {\n  instance.allow = \"bluetooth\";\n  return instance.allow === \"bluetooth\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.browsing-topics": {
+    "code": "(function () {\n  instance.allow = \"browsing-topics\";\n  return instance.allow === \"browsing-topics\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.camera": {
+    "code": "(function () {\n  instance.allow = \"camera\";\n  return instance.allow === \"camera\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.compute-pressure": {
+    "code": "(function () {\n  instance.allow = \"compute-pressure\";\n  return instance.allow === \"compute-pressure\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.cross-origin-isolated": {
+    "code": "(function () {\n  instance.allow = \"cross-origin-isolated\";\n  return instance.allow === \"cross-origin-isolated\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.display-capture": {
+    "code": "(function () {\n  instance.allow = \"display-capture\";\n  return instance.allow === \"display-capture\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.document-domain": {
+    "code": "(function () {\n  instance.allow = \"document-domain\";\n  return instance.allow === \"document-domain\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.encrypted-media": {
+    "code": "(function () {\n  instance.allow = \"encrypted-media\";\n  return instance.allow === \"encrypted-media\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.execution-while-not-rendered": {
+    "code": "(function () {\n  instance.allow = \"execution-while-not-rendered\";\n  return instance.allow === \"execution-while-not-rendered\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.execution-while-out-of-viewport": {
+    "code": "(function () {\n  instance.allow = \"execution-while-out-of-viewport\";\n  return instance.allow === \"execution-while-out-of-viewport\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.fullscreen": {
+    "code": "(function () {\n  instance.allow = \"fullscreen\";\n  return instance.allow === \"fullscreen\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.gamepad": {
+    "code": "(function () {\n  instance.allow = \"gamepad\";\n  return instance.allow === \"gamepad\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.geolocation": {
+    "code": "(function () {\n  instance.allow = \"geolocation\";\n  return instance.allow === \"geolocation\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.gyroscope": {
+    "code": "(function () {\n  instance.allow = \"gyroscope\";\n  return instance.allow === \"gyroscope\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.hid": {
+    "code": "(function () {\n  instance.allow = \"hid\";\n  return instance.allow === \"hid\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.identity-credentials-get": {
+    "code": "(function () {\n  instance.allow = \"identity-credentials-get\";\n  return instance.allow === \"identity-credentials-get\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.idle-detection": {
+    "code": "(function () {\n  instance.allow = \"idle-detection\";\n  return instance.allow === \"idle-detection\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.local-fonts": {
+    "code": "(function () {\n  instance.allow = \"local-fonts\";\n  return instance.allow === \"local-fonts\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.magnetometer": {
+    "code": "(function () {\n  instance.allow = \"magnetometer\";\n  return instance.allow === \"magnetometer\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.microphone": {
+    "code": "(function () {\n  instance.allow = \"microphone\";\n  return instance.allow === \"microphone\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.midi": {
+    "code": "(function () {\n  instance.allow = \"midi\";\n  return instance.allow === \"midi\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.otp-credentials": {
+    "code": "(function () {\n  instance.allow = \"otp-credentials\";\n  return instance.allow === \"otp-credentials\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.payment": {
+    "code": "(function () {\n  instance.allow = \"payment\";\n  return instance.allow === \"payment\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.picture-in-picture": {
+    "code": "(function () {\n  instance.allow = \"picture-in-picture\";\n  return instance.allow === \"picture-in-picture\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.publickey-credentials-create": {
+    "code": "(function () {\n  instance.allow = \"publickey-credentials-create\";\n  return instance.allow === \"publickey-credentials-create\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.publickey-credentials-get": {
+    "code": "(function () {\n  instance.allow = \"publickey-credentials-get\";\n  return instance.allow === \"publickey-credentials-get\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.screen-wake-lock": {
+    "code": "(function () {\n  instance.allow = \"screen-wake-lock\";\n  return instance.allow === \"screen-wake-lock\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.serial": {
+    "code": "(function () {\n  instance.allow = \"serial\";\n  return instance.allow === \"serial\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.speaker-selection": {
+    "code": "(function () {\n  instance.allow = \"speaker-selection\";\n  return instance.allow === \"speaker-selection\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.storage-access": {
+    "code": "(function () {\n  instance.allow = \"storage-access\";\n  return instance.allow === \"storage-access\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.usb": {
+    "code": "(function () {\n  instance.allow = \"usb\";\n  return instance.allow === \"usb\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.web-share": {
+    "code": "(function () {\n  instance.allow = \"web-share\";\n  return instance.allow === \"web-share\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.window-management": {
+    "code": "(function () {\n  instance.allow = \"window-management\";\n  return instance.allow === \"window-management\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "html.elements.iframe.allow.xr-spatial-tracking": {
+    "code": "(function () {\n  instance.allow = \"xr-spatial-tracking\";\n  return instance.allow === \"xr-spatial-tracking\";\n})();\n",
+    "exposure": ["Window"]
+  },
   "html.elements.iframe.credentialless": {
     "code": "(function() {\n  var instance = document.createElement('iframe');\n  return !!instance && 'credentialless' in instance;\n})()",
     "exposure": ["Window"]
@@ -58247,164 +58341,28 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n    return bcd.testObjectName(instance, 'SVGAElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.a.download": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'download' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.hreflang": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'hreflang' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.ping": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'ping' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.rel": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'rel' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.target": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'target' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  return !!instance && 'type' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.xlink_actuate": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:actuate', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGAElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'actuate') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGAElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.xlink_show": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:show', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGAElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'show') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.a.xlink_title": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'a');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:title', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGAElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'title') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.animate": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n    return bcd.testObjectName(instance, 'SVGAnimateElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.dur": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'getSimpleDuration' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.attributeName": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'attributeName' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.attributeType": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'attributeType' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.from": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'from' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.repeatCount": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'repeatCount' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animate.to": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animate');\n  return !!instance && 'to' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.animateMotion": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n    return bcd.testObjectName(instance, 'SVGAnimateMotionElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.animateMotion.calcMode": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n  return !!instance && 'calcMode' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateMotion.keyPoints": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n  return !!instance && 'keyPoints' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateMotion.origin": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n  return !!instance && 'origin' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateMotion.path": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n  return !!instance && 'path' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateMotion.rotate": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');\n  return !!instance && 'rotate' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.animateTransform": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');\n    return bcd.testObjectName(instance, 'SVGAnimateTransformElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateTransform.by": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');\n  return !!instance && 'by' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateTransform.from": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');\n  return !!instance && 'from' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateTransform.to": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');\n  return !!instance && 'to' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.animateTransform.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');\n  return !!instance && 'type' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.circle": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'circle');\n    return bcd.testObjectName(instance, 'SVGCircleElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.circle.cx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'circle');\n  return !!instance && 'cx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.circle.cy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'circle');\n  return !!instance && 'cy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.circle.r": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'circle');\n  return !!instance && 'r' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.clipPath": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');\n    return bcd.testObjectName(instance, 'SVGClipPathElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.clipPath.clipPathUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');\n  return !!instance && 'clipPathUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.cursor": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'cursor');\n    return bcd.testObjectName(instance, 'SVGCursorElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.cursor.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'cursor');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.cursor.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'cursor');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.cursor.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'cursor');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGCursorElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.cursor.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'cursor');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.defs": {
@@ -58419,224 +58377,44 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');\n    return bcd.testObjectName(instance, 'SVGEllipseElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.ellipse.cx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');\n  return !!instance && 'cx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.ellipse.cy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');\n  return !!instance && 'cy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.ellipse.rx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');\n  return !!instance && 'rx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.ellipse.ry": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');\n  return !!instance && 'ry' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feBlend": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feBlend');\n    return bcd.testObjectName(instance, 'SVGFEBlendElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feBlend.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feBlend');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feBlend.in2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feBlend');\n  return !!instance && 'in2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feBlend.mode": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feBlend');\n  return !!instance && 'mode' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feColorMatrix": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feColorMatrix');\n    return bcd.testObjectName(instance, 'SVGFEColorMatrixElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feColorMatrix.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feColorMatrix');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feColorMatrix.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feColorMatrix');\n  return !!instance && 'type' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feColorMatrix.values": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feColorMatrix');\n  return !!instance && 'values' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feComponentTransfer": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComponentTransfer');\n    return bcd.testObjectName(instance, 'SVGFEComponentTransferElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComponentTransfer.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComponentTransfer');\n  return !!instance && 'in1' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feComposite": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n    return bcd.testObjectName(instance, 'SVGFECompositeElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feComposite.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.in2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'in2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.k1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'k1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.k2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'k2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.k3": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'k3' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.k4": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'k4' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feComposite.operator": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');\n  return !!instance && 'operator' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feConvolveMatrix": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n    return bcd.testObjectName(instance, 'SVGFEConvolveMatrixElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.kernelUnitLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'kernelUnitLengthX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.order": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'orderX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.bias": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'bias' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.divisor": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'divisor' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.edgeMode": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'edgeMode' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.kernelMatrix": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'kernelMatrix' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.preserveAlpha": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'preserveAlpha' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.targetX": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'targetX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feConvolveMatrix.targetY": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');\n  return !!instance && 'targetY' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feDiffuseLighting": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDiffuseLighting');\n    return bcd.testObjectName(instance, 'SVGFEDiffuseLightingElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feDiffuseLighting.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDiffuseLighting');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDiffuseLighting.kernelUnitLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDiffuseLighting');\n  return !!instance && 'kernelUnitLengthX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDiffuseLighting.diffuseConstant": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDiffuseLighting');\n  return !!instance && 'diffuseConstant' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDiffuseLighting.surfaceScale": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDiffuseLighting');\n  return !!instance && 'surfaceScale' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feDisplacementMap": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n    return bcd.testObjectName(instance, 'SVGFEDisplacementMapElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDisplacementMap.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDisplacementMap.in2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n  return !!instance && 'in2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDisplacementMap.scale": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n  return !!instance && 'scale' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDisplacementMap.xChannelSelector": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n  return !!instance && 'xChannelSelector' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDisplacementMap.yChannelSelector": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');\n  return !!instance && 'yChannelSelector' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feDistantLight": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDistantLight');\n    return bcd.testObjectName(instance, 'SVGFEDistantLightElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feDistantLight.azimuth": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDistantLight');\n  return !!instance && 'azimuth' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDistantLight.elevation": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDistantLight');\n  return !!instance && 'elevation' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feDropShadow": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');\n    return bcd.testObjectName(instance, 'SVGFEDropShadowElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feDropShadow.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDropShadow.stdDeviation": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');\n  return !!instance && 'stdDeviationX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDropShadow.dx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');\n  return !!instance && 'dx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feDropShadow.dy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');\n  return !!instance && 'dy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feFlood": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feFlood');\n    return bcd.testObjectName(instance, 'SVGFEFloodElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feFlood.flood-color": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feFlood');\n  return !!instance && 'flood-color' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feFlood.flood-opacity": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feFlood');\n  return !!instance && 'flood-opacity' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feFuncA": {
@@ -58659,36 +58437,8 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');\n    return bcd.testObjectName(instance, 'SVGFEGaussianBlurElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feGaussianBlur.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feGaussianBlur.stdDeviation": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');\n  return !!instance && 'stdDeviationX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feGaussianBlur.edgeMode": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');\n  return !!instance && 'edgeMode' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feImage": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feImage');\n    return bcd.testObjectName(instance, 'SVGFEImageElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feImage.crossorigin": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feImage');\n  return !!instance && 'crossOrigin' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feImage.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feImage');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feImage.preserveAspectRatio": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feImage');\n  return !!instance && 'preserveAspectRatio' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feImage.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feImage');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGFEImageElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feMerge": {
@@ -58699,364 +58449,52 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');\n    return bcd.testObjectName(instance, 'SVGFEMergeNodeElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feMergeNode.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feMorphology": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMorphology');\n    return bcd.testObjectName(instance, 'SVGFEMorphologyElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feMorphology.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMorphology');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feMorphology.radius": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMorphology');\n  return !!instance && 'radiusX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feMorphology.operator": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feMorphology');\n  return !!instance && 'operator' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feOffset": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feOffset');\n    return bcd.testObjectName(instance, 'SVGFEOffsetElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feOffset.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feOffset');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feOffset.dx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feOffset');\n  return !!instance && 'dx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feOffset.dy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feOffset');\n  return !!instance && 'dy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.fePointLight": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'fePointLight');\n    return bcd.testObjectName(instance, 'SVGFEPointLightElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.fePointLight.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'fePointLight');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.fePointLight.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'fePointLight');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.fePointLight.z": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'fePointLight');\n  return !!instance && 'z' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feSpecularLighting": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n    return bcd.testObjectName(instance, 'SVGFESpecularLightingElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feSpecularLighting.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpecularLighting.kernelUnitLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n  return !!instance && 'kernelUnitLengthX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpecularLighting.specularConstant": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n  return !!instance && 'specularConstant' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpecularLighting.specularExponent": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n  return !!instance && 'specularExponent' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpecularLighting.surfaceScale": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpecularLighting');\n  return !!instance && 'surfaceScale' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feSpotLight": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n    return bcd.testObjectName(instance, 'SVGFESpotLightElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.limitingConeAngle": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'limitingConeAngle' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.pointsAtX": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'pointsAtX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.pointsAtY": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'pointsAtY' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.pointsAtZ": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'pointsAtZ' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.specularExponent": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'specularExponent' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feSpotLight.z": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feSpotLight');\n  return !!instance && 'z' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.feTile": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTile');\n    return bcd.testObjectName(instance, 'SVGFETileElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.feTile.in": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTile');\n  return !!instance && 'in1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.feTurbulence": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n    return bcd.testObjectName(instance, 'SVGFETurbulenceElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feTurbulence.baseFrequency": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n  return !!instance && 'baseFrequencyX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feTurbulence.numOctaves": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n  return !!instance && 'numOctaves' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feTurbulence.seed": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n  return !!instance && 'seed' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feTurbulence.stitchTiles": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n  return !!instance && 'stitchTiles' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.feTurbulence.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');\n  return !!instance && 'type' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.filter": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n    return bcd.testObjectName(instance, 'SVGFilterElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.filter.filterRes": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'filterRes' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.filterUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'filterUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.primitiveUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'primitiveUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGFilterElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.filter.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'filter');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.font": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n    return bcd.testObjectName(instance, 'SVGFontElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.horiz-adv-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'horiz-adv-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.horiz-origin-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'horiz-origin-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.horiz-origin-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'horiz-origin-y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.vert-adv-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'vert-adv-y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.vert-origin-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'vert-origin-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font.vert-origin-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font');\n  return !!instance && 'vert-origin-y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.font-face": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n    return bcd.testObjectName(instance, 'SVGFontFaceElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.font-face.accent-height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'accent-height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.alphabetic": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'alphabetic' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.ascent": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'ascent' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.bbox": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'bbox' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.cap-height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'cap-height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.descent": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'descent' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-family": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-family' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-size": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-size' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-stretch": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-stretch' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-style": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-style' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-variant": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-variant' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.font-weight": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'font-weight' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.hanging": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'hanging' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.ideographic": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'ideographic' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.mathematical": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'mathematical' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.overline-position": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'overline-position' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.overline-thickness": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'overline-thickness' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.panose-1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'panose-1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.slope": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'slope' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.stemh": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'stemh' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.stemv": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'stemv' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.strikethrough-position": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'strikethrough-position' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.strikethrough-thickness": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'strikethrough-thickness' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.underline-position": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'underline-position' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.underline-thickness": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'underline-thickness' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.unicode-range": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'unicode-range' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.units-per-em": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'units-per-em' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.v-alphabetic": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'v-alphabetic' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.v-hanging": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'v-hanging' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.v-ideographic": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'v-ideographic' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.v-mathematical": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'v-mathematical' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.widths": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'widths' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face.x-height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face');\n  return !!instance && 'x-height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.font-face-format": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-format');\n    return bcd.testObjectName(instance, 'SVGFontFaceFormatElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.font-face-format.string": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-format');\n  return !!instance && 'string' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.font-face-name": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-name');\n    return bcd.testObjectName(instance, 'SVGFontFaceNameElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.font-face-name.name": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-name');\n  return !!instance && 'name' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.font-face-src": {
@@ -59067,384 +58505,44 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-uri');\n    return bcd.testObjectName(instance, 'SVGFontFaceUriElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.font-face-uri.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'font-face-uri');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGFontFaceUriElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.foreignObject": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');\n    return bcd.testObjectName(instance, 'SVGForeignObjectElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.foreignObject.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.foreignObject.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.foreignObject.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.foreignObject.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.g": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'g');\n    return bcd.testObjectName(instance, 'SVGGElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.global_attributes.class": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'className' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.tabindex": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'tabIndex' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.clip": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'clip' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.color": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'color' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.cursor": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'cursor' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.data": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'data' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.direction": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'direction' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.display": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'display' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.fill": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'fill' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.filter": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'filter' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.id": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'id' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.kerning": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'kerning' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.lang": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'lang' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.mask": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'mask' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.opacity": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'opacity' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.overflow": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'overflow' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.requiredExtensions": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'requiredExtensions' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.requiredFeatures": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'requiredFeatures' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.stroke": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'stroke' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.style": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'style' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.systemLanguage": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'systemLanguage' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.textLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'textLength' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.transform": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'transform' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.global_attributes.visibility": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'global_attributes');\n  return !!instance && 'visibility' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.glyph": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n    return bcd.testObjectName(instance, 'SVGGlyphElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.arabic-form": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'arabic-form' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.d": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'd' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.glyph-name": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'glyph-name' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.horiz-adv-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'horiz-adv-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.lang": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'lang' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.orientation": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'orientation' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.unicode": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'unicode' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.vert-adv-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'vert-adv-y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.vert-origin-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'vert-origin-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyph.vert-origin-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyph');\n  return !!instance && 'vert-origin-y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.glyphRef": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n    return bcd.testObjectName(instance, 'SVGGlyphRefElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.glyphRef.dx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'dx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.dy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'dy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.format": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'format' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.glyphRef": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'glyphRef' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGGlyphRefElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.glyphRef.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'glyphRef');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.hkern": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n    return bcd.testObjectName(instance, 'SVGHKernElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.hkern.g1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n  return !!instance && 'g1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.hkern.g2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n  return !!instance && 'g2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.hkern.k": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n  return !!instance && 'k' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.hkern.u1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n  return !!instance && 'u1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.hkern.u2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'hkern');\n  return !!instance && 'u2' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.image": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n    return bcd.testObjectName(instance, 'SVGImageElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.image.crossorigin": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'crossOrigin' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.decoding": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'decoding' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.preserveAspectRatio": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'preserveAspectRatio' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGImageElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.image.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'image');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.line": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'line');\n    return bcd.testObjectName(instance, 'SVGLineElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.line.x1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'line');\n  return !!instance && 'x1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.line.x2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'line');\n  return !!instance && 'x2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.line.y1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'line');\n  return !!instance && 'y1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.line.y2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'line');\n  return !!instance && 'y2' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.linearGradient": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n    return bcd.testObjectName(instance, 'SVGLinearGradientElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.linearGradient.gradientTransform": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'gradientTransform' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.gradientUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'gradientUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.spreadMethod": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'spreadMethod' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.x1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'x1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.x2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'x2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGLinearGradientElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.y1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'y1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.linearGradient.y2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');\n  return !!instance && 'y2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.marker": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n    return bcd.testObjectName(instance, 'SVGMarkerElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.marker.markerHeight": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'markerHeight' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.markerUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'markerUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.markerWidth": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'markerWidth' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.orient": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'orient' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.refX": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'refX' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.refY": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'refY' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.marker.viewBox": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'marker');\n  return !!instance && 'viewBox' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.mask": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n    return bcd.testObjectName(instance, 'SVGMaskElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.maskContentUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'maskContentUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.maskUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'maskUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mask.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mask');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.metadata": {
@@ -59455,352 +58553,68 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n    return bcd.testObjectName(instance, 'SVGMissingGlyphElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.missing-glyph.d": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n  return !!instance && 'd' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.missing-glyph.horiz-adv-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n  return !!instance && 'horiz-adv-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.missing-glyph.vert-adv-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n  return !!instance && 'vert-adv-y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.missing-glyph.vert-origin-x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n  return !!instance && 'vert-origin-x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.missing-glyph.vert-origin-y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'missing-glyph');\n  return !!instance && 'vert-origin-y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.mpath": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');\n    return bcd.testObjectName(instance, 'SVGMPathElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.mpath.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGMPathElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.path": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'path');\n    return bcd.testObjectName(instance, 'SVGPathElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.path.d": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'path');\n  return !!instance && 'd' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.pattern": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n    return bcd.testObjectName(instance, 'SVGPatternElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.patternContentUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'patternContentUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.patternTransform": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'patternTransform' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.patternUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'patternUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGPatternElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.pattern.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.polygon": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');\n    return bcd.testObjectName(instance, 'SVGPolygonElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.polygon.points": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');\n  return !!instance && 'points' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.polyline": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');\n    return bcd.testObjectName(instance, 'SVGPolylineElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.polyline.points": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');\n  return !!instance && 'points' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.radialGradient": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n    return bcd.testObjectName(instance, 'SVGRadialGradientElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.radialGradient.cx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'cx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.cy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'cy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.fr": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'fr' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.fx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'fx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.fy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'fy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.gradientTransform": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'gradientTransform' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.gradientUnits": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'gradientUnits' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.r": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'r' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.spreadMethod": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  return !!instance && 'spreadMethod' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.radialGradient.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGRadialGradientElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.rect": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n    return bcd.testObjectName(instance, 'SVGRectElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.rx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'rx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.ry": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'ry' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.rect.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'rect');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.script": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'script');\n    return bcd.testObjectName(instance, 'SVGScriptElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.script.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'script');\n  return !!instance && 'type' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.script.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'script');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGScriptElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.set": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'set');\n    return bcd.testObjectName(instance, 'SVGSetElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.set.to": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'set');\n  return !!instance && 'to' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.stop": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'stop');\n    return bcd.testObjectName(instance, 'SVGStopElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.stop.offset": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'stop');\n  return !!instance && 'offset' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.stop.stop-color": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'stop');\n  return !!instance && 'stop-color' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.stop.stop-opacity": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'stop');\n  return !!instance && 'stop-opacity' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.style": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'style');\n    return bcd.testObjectName(instance, 'SVGStyleElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.style.media": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'style');\n  return !!instance && 'media' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.style.title": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'style');\n  return !!instance && 'title' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.style.type": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'style');\n  return !!instance && 'type' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.svg": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n    return bcd.testObjectName(instance, 'SVGSVGElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.svg.baseProfile": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'baseProfile' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.contentScriptType": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'contentScriptType' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.contentStyleType": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'contentStyleType' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.preserveAspectRatio": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'preserveAspectRatio' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.version": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'version' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.viewBox": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'viewBox' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.svg.zoomAndPan": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'svg');\n  return !!instance && 'zoomAndPan' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.switch": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'switch');\n    return bcd.testObjectName(instance, 'SVGSwitchElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.switch.allowReorder": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'switch');\n  return !!instance && 'allowReorder' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.symbol": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'symbol');\n    return bcd.testObjectName(instance, 'SVGSymbolElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.symbol.preserveAspectRatio": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'symbol');\n  return !!instance && 'preserveAspectRatio' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.symbol.viewBox": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'symbol');\n  return !!instance && 'viewBox' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.text": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n    return bcd.testObjectName(instance, 'SVGTextElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.text.dx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'dx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.dy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'dy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.lengthAdjust": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'lengthAdjust' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.rotate": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'rotate' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.textLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'textLength' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.text.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'text');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.textPath": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n    return bcd.testObjectName(instance, 'SVGTextPathElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.path": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  return !!instance && 'path' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.side": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  return !!instance && 'side' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.spacing": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  return !!instance && 'spacing' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.startOffset": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  return !!instance && 'startOffset' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.textPath.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGTextPathElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.title": {
@@ -59811,112 +58625,20 @@
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tref');\n    return bcd.testObjectName(instance, 'SVGTRefElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.tref.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tref');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGTRefElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.tspan": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n    return bcd.testObjectName(instance, 'SVGTSpanElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.dx": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'dx' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.dy": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'dy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.lengthAdjust": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'lengthAdjust' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.rotate": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'rotate' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.textLength": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'textLength' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.tspan.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');\n  return !!instance && 'y' in instance;\n})()",
     "exposure": ["Window"]
   },
   "svg.elements.use": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n    return bcd.testObjectName(instance, 'SVGUseElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.use.height": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  return !!instance && 'height' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.use.href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  return !!instance && 'href' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.use.width": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  return !!instance && 'width' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.use.x": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  return !!instance && 'x' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.use.xlink_href": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  instance.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'test');\n  return !!instance && bcd.testObjectName(instance, 'SVGUseElement').result && instance.getAttributeNS('http://www.w3.org/1999/xlink', 'href') === 'test';\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.use.y": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'use');\n  return !!instance && 'y' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.view": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'view');\n    return bcd.testObjectName(instance, 'SVGViewElement');\n  })()",
     "exposure": ["Window"]
   },
-  "svg.elements.view.preserveAspectRatio": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'view');\n  return !!instance && 'preserveAspectRatio' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.view.viewBox": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'view');\n  return !!instance && 'viewBox' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.view.viewTarget": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'view');\n  return !!instance && 'viewTarget' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.view.zoomAndPan": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'view');\n  return !!instance && 'zoomAndPan' in instance;\n})()",
-    "exposure": ["Window"]
-  },
   "svg.elements.vkern": {
     "code": "(function() {\n    var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n    return bcd.testObjectName(instance, 'SVGVKernElement');\n  })()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.vkern.g1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n  return !!instance && 'g1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.vkern.g2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n  return !!instance && 'g2' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.vkern.k": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n  return !!instance && 'k' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.vkern.u1": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n  return !!instance && 'u1' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "svg.elements.vkern.u2": {
-    "code": "(function() {\n  var instance = document.createElementNS('http://www.w3.org/2000/svg', 'vkern');\n  return !!instance && 'u2' in instance;\n})()",
     "exposure": ["Window"]
   },
   "mathml.elements.annotation": {
@@ -59935,15 +58657,7 @@
     "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
-  "mathml.elements.menclose": {
-    "code": "(function () {\n  // Just check whether <mrow> is supported because discussion on this is\n  // still open (https://github.com/mathml-refresh/mathml/issues/105\n  // and it would have to behave at least like an mrow, even if it becomes\n  // an unknown element at the end.\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
-    "exposure": ["Window"]
-  },
   "mathml.elements.merror": {
-    "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "mathml.elements.mfenced": {
     "code": "(function () {\n  // XXX Improve feature detection\n  var mathEl = document.createElementNS(\n    \"http://www.w3.org/1998/Math/MathML\",\n    \"math\",\n  );\n  mathEl.innerHTML = \"<mspace></mspace><mspace width='20px'></mspace>\";\n  document.body.appendChild(mathEl);\n  bcd.addCleanup(function () {\n    document.body.removeChild(mathEl);\n  });\n\n  // The width attribute will add 20px per MathML and none if not supported.\n  var has_mspace =\n    mathEl.lastChild.getBoundingClientRect().width -\n      mathEl.firstChild.getBoundingClientRect().width >\n    10;\n  return has_mspace;\n})();\n",
     "exposure": ["Window"]
   },
@@ -62812,7 +61526,7 @@
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.DateTimeFormat.DateTimeFormat.options_parameter.options_numberingSystem_parameter": {
-    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"DateTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.DateTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.DateTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"DateTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.DateTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.DateTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.DateTimeFormat.DateTimeFormat.options_parameter.options_timeStyle_parameter": {
@@ -63076,7 +61790,7 @@
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_numberingSystem_parameter": {
-    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_roundingIncrement_parameter": {
@@ -63156,7 +61870,7 @@
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.PluralRules.PluralRules.options_parameter": {
-    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"PluralRules\" in Intl)) {\n    return { result: false, message: \"Intl.PluralRules is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.PluralRules(\"en\", options);\n  } // The roundingIncrement parameter was one of the first options available\n  return bcd.testOptionParam(construct, null, \"roundingIncrement\", 200);\n})();\n",
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"PluralRules\" in Intl)) {\n    return { result: false, message: \"Intl.PluralRules is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.PluralRules(\"en\", options);\n  } // The roundingPriority parameter was one of the first options available\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"roundingPriority\",\n    \"lessPrecision\",\n  );\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.PluralRules.PluralRules.options_parameter.options_roundingIncrement_parameter": {
@@ -63212,7 +61926,7 @@
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.RelativeTimeFormat.RelativeTimeFormat.options_parameter.options_numberingSystem_parameter": {
-    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"RelativeTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.RelativeTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.RelativeTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+    "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"RelativeTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.RelativeTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.RelativeTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl.RelativeTimeFormat.RelativeTimeFormat.options_parameter.options_numeric_parameter": {
