@@ -1,5 +1,5 @@
 {
-  "__version": "10.10.9",
+  "__version": "10.12.1",
   "results": {
     ".": [
       {
@@ -5580,7 +5580,7 @@
       {
         "name": "javascript.builtins.Intl.DateTimeFormat.DateTimeFormat.options_parameter.options_numberingSystem_parameter",
         "info": {
-          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"DateTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.DateTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.DateTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"DateTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.DateTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.DateTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -6114,7 +6114,7 @@
       {
         "name": "javascript.builtins.Intl.NumberFormat.NumberFormat.options_parameter.options_numberingSystem_parameter",
         "info": {
-          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"NumberFormat\" in Intl)) {\n    return { result: false, message: \"Intl.NumberFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.NumberFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -6277,7 +6277,7 @@
       {
         "name": "javascript.builtins.Intl.PluralRules.PluralRules.options_parameter",
         "info": {
-          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"PluralRules\" in Intl)) {\n    return { result: false, message: \"Intl.PluralRules is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.PluralRules(\"en\", options);\n  } // The roundingIncrement parameter was one of the first options available\n  return bcd.testOptionParam(construct, null, \"roundingIncrement\", 200);\n})();\n",
+          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"PluralRules\" in Intl)) {\n    return { result: false, message: \"Intl.PluralRules is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.PluralRules(\"en\", options);\n  } // The roundingPriority parameter was one of the first options available\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"roundingPriority\",\n    \"lessPrecision\",\n  );\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -6392,7 +6392,7 @@
       {
         "name": "javascript.builtins.Intl.RelativeTimeFormat.RelativeTimeFormat.options_parameter.options_numberingSystem_parameter",
         "info": {
-          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"RelativeTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.RelativeTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.RelativeTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"hans\");\n})();\n",
+          "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"RelativeTimeFormat\" in Intl)) {\n    return { result: false, message: \"Intl.RelativeTimeFormat is not defined\" };\n  }\n\n  function construct(options) {\n    new Intl.RelativeTimeFormat(\"en\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"numberingSystem\", \"latn\");\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -18345,17 +18345,17 @@
         "message": "threw ReferenceError: Can't find variable: document"
       },
       {
-        "name": "api.CSSNestRule",
+        "name": "api.CSSNestedDeclarations",
         "info": {
-          "code": "\"CSSNestRule\" in self",
+          "code": "\"CSSNestedDeclarations\" in self",
           "exposure": "Window"
         },
         "result": false
       },
       {
-        "name": "api.CSSNestRule.style",
+        "name": "api.CSSNestedDeclarations.style",
         "info": {
-          "code": "\"CSSNestRule\" in self && \"style\" in CSSNestRule.prototype",
+          "code": "\"CSSNestedDeclarations\" in self && \"style\" in CSSNestedDeclarations.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -18702,6 +18702,14 @@
         "name": "api.CSSPageDescriptors.marks",
         "info": {
           "code": "\"CSSPageDescriptors\" in self && \"marks\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.orientation",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"orientation\" in CSSPageDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -21483,6 +21491,14 @@
         "name": "api.DeviceChangeEvent.devices",
         "info": {
           "code": "\"DeviceChangeEvent\" in self && \"devices\" in DeviceChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.DeviceChangeEvent.userInsertedDevices",
+        "info": {
+          "code": "\"DeviceChangeEvent\" in self && \"userInsertedDevices\" in DeviceChangeEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -30115,7 +30131,7 @@
       {
         "name": "api.FormData.append.filename_parameter",
         "info": {
-          "code": "(function () {\n  if (!(\"FormData\" in self)) {\n    return { result: false, message: \"FormData is not defined\" };\n  }\n  var instance = new FormData();\n  var blob;\n  try {\n    blob = new Blob();\n  } catch (e) {\n    blob = new BlobBuilder();\n  }\n  if (!blob) {\n    return { result: false, message: \"blob is falsy\" };\n  }\n  function append(filename) {\n    instance.append(\"foo\", blob, filename);\n  }\n  return bcd.testOptionParam(append, null, null, \"foo.txt\");\n})();\n",
+          "code": "(function () {\n  if (!(\"FormData\" in self)) {\n    return { result: false, message: \"FormData is not defined\" };\n  }\n  var instance = new FormData();\n  var blob;\n  try {\n    blob = new Blob();\n  } catch (e) {\n    blob = new BlobBuilder();\n  }\n  if (!blob) {\n    return { result: false, message: \"blob is falsy\" };\n  }\n\n  if (!(\"get\" in instance)) {\n    return {\n      result: null,\n      message: \"This test has not yet been adapted for older browsers\",\n    };\n  }\n\n  instance.append(\"foo\", blob, \"bar.txt\");\n  var file = instance.get(\"foo\");\n  return file.name === \"bar.txt\";\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -34804,7 +34820,7 @@
       {
         "name": "api.HTMLCanvasElement.getContext.bitmaprenderer_context",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"bitmaprenderer\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"bitmaprenderer\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -34822,7 +34838,7 @@
       {
         "name": "api.HTMLCanvasElement.getContext.webgl_context",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -34867,7 +34883,7 @@
       {
         "name": "api.HTMLCanvasElement.getContext.webgl2_context",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl2\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl2\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -34912,7 +34928,7 @@
       {
         "name": "api.HTMLCanvasElement.getContext.2d_context",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"2d\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"2d\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -34957,7 +34973,7 @@
       {
         "name": "api.HTMLCanvasElement.getContext.webgpu_context",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  bcd.skipIf(\n    \"Creating a WebGPU context on Safari 16.5 crashes the browser\",\n    \"safari\",\n    \"16.5\",\n  );\n\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgpu\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  bcd.skipIf(\n    \"Creating a WebGPU context on Safari 16.5 crashes the browser\",\n    \"safari\",\n    \"16.5\",\n  );\n\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgpu\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -35018,6 +35034,24 @@
         "message": "threw ReferenceError: Can't find variable: document"
       },
       {
+        "name": "api.HTMLCanvasElement.toBlob.type_parameter_jpeg",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/jpeg\");\n  }\n  instance.toBlob(callback, \"image/jpeg\");\n  return \"callback\";\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: Can't find variable: document"
+      },
+      {
+        "name": "api.HTMLCanvasElement.toBlob.type_parameter_png",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/png\");\n  }\n  instance.toBlob(callback, \"image/png\");\n  return \"callback\";\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: Can't find variable: document"
+      },
+      {
         "name": "api.HTMLCanvasElement.toBlob.type_parameter_webp",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toBlob\" in instance)) {\n    return { result: false, message: \"instance.toBlob is not defined\" };\n  }\n  function callback(blob) {\n    success(blob.type === \"image/webp\");\n  }\n  instance.toBlob(callback, \"image/webp\");\n  return \"callback\";\n})();\n",
@@ -35038,7 +35072,7 @@
       {
         "name": "api.HTMLCanvasElement.toDataURL.type_parameter_jpeg",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/jpeg\");\n  return blob.type === \"image/jpeg\";\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/jpeg\");\n  return url.indexOf(\"data:image/jpeg;\") === 0;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -35047,7 +35081,7 @@
       {
         "name": "api.HTMLCanvasElement.toDataURL.type_parameter_png",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/png\");\n  return blob.type === \"image/png\";\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/png\");\n  return url.indexOf(\"data:image/png;\") === 0;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -35056,7 +35090,7 @@
       {
         "name": "api.HTMLCanvasElement.toDataURL.type_parameter_webp",
         "info": {
-          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var blob = instance.toDataURL(\"image/webp\");\n  return blob.type === \"image/webp\";\n})();\n",
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  if (!(\"toDataURL\" in instance)) {\n    return { result: false, message: \"instance.toDataURL is not defined\" };\n  }\n  var url = instance.toDataURL(\"image/webp\");\n  return url.indexOf(\"data:image/webp;\") === 0;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -43592,6 +43626,14 @@
         "result": false
       },
       {
+        "name": "api.IntersectionObserver.delay",
+        "info": {
+          "code": "\"IntersectionObserver\" in self && \"delay\" in IntersectionObserver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.IntersectionObserver.disconnect",
         "info": {
           "code": "\"IntersectionObserver\" in self && \"disconnect\" in IntersectionObserver.prototype",
@@ -43666,6 +43708,14 @@
         "result": false
       },
       {
+        "name": "api.IntersectionObserver.trackVisibility",
+        "info": {
+          "code": "\"IntersectionObserver\" in self && \"trackVisibility\" in IntersectionObserver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.IntersectionObserver.unobserve",
         "info": {
           "code": "\"IntersectionObserver\" in self && \"unobserve\" in IntersectionObserver.prototype",
@@ -43718,6 +43768,14 @@
         "name": "api.IntersectionObserverEntry.isIntersecting",
         "info": {
           "code": "\"IntersectionObserverEntry\" in self && \"isIntersecting\" in IntersectionObserverEntry.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.IntersectionObserverEntry.isVisible",
+        "info": {
+          "code": "\"IntersectionObserverEntry\" in self && \"isVisible\" in IntersectionObserverEntry.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -51438,83 +51496,83 @@
       {
         "name": "api.OffscreenCanvas",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.convertToBlob",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"convertToBlob\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"convertToBlob\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"getContext\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"getContext\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext.bitmaprenderer_context",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"bitmaprenderer\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"bitmaprenderer\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext.webgl_context",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext.webgl2_context",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgl2\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgl2\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext.webgpu_context",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"webgpu\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"webgpu\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.getContext.2d_context",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  var ctx = instance.getContext(\"2d\");\n  return !!ctx;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  if (!(instance && instance.getContext)) {\n    return { result: false, message: \"instance.getContext is not defined\" };\n  }\n  try {\n    var ctx = instance.getContext(\"2d\");\n    return !!ctx;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.height",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"height\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"height\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.OffscreenCanvas",
@@ -51528,47 +51586,47 @@
       {
         "name": "api.OffscreenCanvas.contextlost_event",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.contextrestored_event",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.transferToImageBitmap",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"transferToImageBitmap\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"transferToImageBitmap\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.width",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"width\" in instance;\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  return !!instance && \"width\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvas.convertToBlob.option_type_parameter_webp",
         "info": {
-          "code": "(function () {\n  var instance = new OffscreenCanvas(1024, 1024);\n  instance.getContext(\"2d\");\n  if (!(\"convertToBlob\" in instance)) {\n    return { result: false, message: \"instance.convertToBlob is not defined\" };\n  }\n  var blobPromise = instance.convertToBlob({ type: \"image/webp\" });\n  return blobPromise.then(function (blob) {\n    return blob.type === \"image/webp\";\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"OffscreenCanvas\" in self)) {\n    return { result: false, message: \"OffscreenCanvas is not defined\" };\n  }\n  var instance = new OffscreenCanvas(1024, 1024);\n  instance.getContext(\"2d\");\n  if (!(\"convertToBlob\" in instance)) {\n    return { result: false, message: \"instance.convertToBlob is not defined\" };\n  }\n  var blobPromise = instance.convertToBlob({ type: \"image/webp\" });\n  return blobPromise.then(function (blob) {\n    return blob.type === \"image/webp\";\n  });\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: Can't find variable: OffscreenCanvas"
+        "result": false,
+        "message": "OffscreenCanvas is not defined"
       },
       {
         "name": "api.OffscreenCanvasRenderingContext2D",
@@ -54795,6 +54853,14 @@
         "message": "Testing PermissionsPolicyViolationReportBody is not yet implemented"
       },
       {
+        "name": "api.PermissionsPolicyViolationReportBody.toJSON",
+        "info": {
+          "code": "\"PermissionsPolicyViolationReportBody\" in self && \"toJSON\" in PermissionsPolicyViolationReportBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.PermissionStatus",
         "info": {
           "code": "\"PermissionStatus\" in self",
@@ -57257,10 +57323,11 @@
       {
         "name": "api.Response.body.readable_byte_stream",
         "info": {
-          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance.body && \"getReader\" in instance.body;\n})();\n",
+          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!instance.body) {\n    return { result: false, message: \"Response.body is not defined\" };\n  }\n  if (!(\"getReader\" in instance.body)) {\n    return { result: false, message: \"Response.body.getReader is not defined\" };\n  }\n  try {\n    instance.body.getReader({ mode: \"byob\" });\n    return true;\n  } catch (e) {\n    if (e instanceof TypeError) {\n      return { result: false, message: e.message };\n    }\n    return e;\n  }\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false,
+        "message": "ReadableStreamBYOBReader needs a ReadableByteStreamController"
       },
       {
         "name": "api.Response.bodyUsed",
@@ -62497,114 +62564,128 @@
       {
         "name": "api.ScreenDetailed",
         "info": {
-          "code": "\"ScreenDetailed\" in self",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.availLeft",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"availLeft\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"availLeft\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.availTop",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"availTop\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"availTop\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.devicePixelRatio",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"devicePixelRatio\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"devicePixelRatio\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.isInternal",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"isInternal\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"isInternal\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.isPrimary",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"isPrimary\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"isPrimary\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.label",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"label\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"label\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.left",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"left\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"left\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetailed.top",
         "info": {
-          "code": "\"ScreenDetailed\" in self && \"top\" in ScreenDetailed.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetailed\" in self)) {\n    return { result: false, message: \"ScreenDetailed is not defined\" };\n  }\n  var instance = ScreenDetailed.prototype;\n  return !!instance && \"top\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetails",
         "info": {
-          "code": "\"ScreenDetails\" in self",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetails.currentScreen",
         "info": {
-          "code": "\"ScreenDetails\" in self && \"currentScreen\" in ScreenDetails.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"currentScreen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetails.currentscreenchange_event",
         "info": {
-          "code": "\"ScreenDetails\" in self && \"oncurrentscreenchange\" in ScreenDetails.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"oncurrentscreenchange\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetails.screenschange_event",
         "info": {
-          "code": "\"ScreenDetails\" in self && \"onscreenschange\" in ScreenDetails.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"onscreenschange\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenDetails.screens",
         "info": {
-          "code": "\"ScreenDetails\" in self && \"screens\" in ScreenDetails.prototype",
+          "code": "(function () {\n  // Chrome Android had exposed the API without support\n  if (!(\"getScreenDetails\" in self)) {\n    return { result: false, message: \"window.getScreenDetails is not defined\" };\n  }\n  // window.getScreenDetails() requires user action, so we'll avoid running it\n  if (!(\"ScreenDetails\" in self)) {\n    return { result: false, message: \"ScreenDetails is not defined\" };\n  }\n  var instance = ScreenDetails.prototype;\n  return !!instance && \"screens\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "window.getScreenDetails is not defined"
       },
       {
         "name": "api.ScreenOrientation",
@@ -86161,17 +86242,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.getReader",
+        "name": "api.ReadableStream.pipeTo",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.closed",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86185,9 +86258,33 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeTo",
+        "name": "api.ReadableStreamDefaultReader",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.locked",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.values",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.closed",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86196,6 +86293,14 @@
         "name": "api.ReadableStreamDefaultReader.read",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86217,9 +86322,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.values",
+        "name": "api.ReadableStream.@@asyncIterator",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86233,33 +86338,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.locked",
+        "name": "api.ReadableStream.getReader",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.@@asyncIterator",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86276,5 +86357,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! bun/1.1.17"
+  "userAgent": "!! bun/1.1.18"
 }
