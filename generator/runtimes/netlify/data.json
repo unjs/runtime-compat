@@ -1421,7 +1421,7 @@
           "code": "\"Math\" in self && \"f16round\" in Math",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Date",
@@ -2586,7 +2586,7 @@
           "code": "\"Array\" in self && \"fromAsync\" in Array",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Array.@@unscopables",
@@ -3871,7 +3871,7 @@
           "code": "\"Set\" in self && \"difference\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.intersection",
@@ -3879,7 +3879,7 @@
           "code": "\"Set\" in self && \"intersection\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.isDisjointFrom",
@@ -3887,7 +3887,7 @@
           "code": "\"Set\" in self && \"isDisjointFrom\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.isSubsetOf",
@@ -3895,7 +3895,7 @@
           "code": "\"Set\" in self && \"isSubsetOf\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.isSupersetOf",
@@ -3903,7 +3903,7 @@
           "code": "\"Set\" in self && \"isSupersetOf\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.symmetricDifference",
@@ -3911,7 +3911,7 @@
           "code": "\"Set\" in self && \"symmetricDifference\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Set.union",
@@ -3919,7 +3919,7 @@
           "code": "\"Set\" in self && \"union\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.WeakMap",
@@ -4452,7 +4452,7 @@
           "code": "\"DataView\" in self && \"getFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.DataView.setFloat16",
@@ -4460,7 +4460,7 @@
           "code": "\"DataView\" in self && \"setFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Atomics",
@@ -4888,7 +4888,7 @@
           "code": "\"Promise\" in self && \"withResolvers\" in Promise",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Promise.catch",
@@ -5353,7 +5353,7 @@
           "code": "\"Float16Array\" in self",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "javascript.builtins.Float16Array.Float16Array",
@@ -5361,8 +5361,8 @@
           "code": "(function () {\n  if (!(\"Float16Array\" in self)) {\n    return { result: false, message: \"Float16Array is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Array\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": true,
-        "message": "Constructor passed with no errors"
+        "result": false,
+        "message": "Float16Array is not defined"
       },
       {
         "name": "javascript.builtins.InternalError",
@@ -9008,7 +9008,7 @@
           "code": "\"AbortSignal\" in self && \"any\" in AbortSignal",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.AbortSignal.abort_event",
@@ -12156,7 +12156,7 @@
           "code": "(function () {\n  var instance;\n  try {\n    instance = new Blob();\n  } catch (e) {\n    instance = new BlobBuilder();\n  }\n  return !!instance && \"bytes\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.Blob.size",
@@ -27868,8 +27868,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.close",
@@ -27877,8 +27877,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.EventSource",
@@ -27886,8 +27886,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.EventSource.options_withCredentials_parameter",
@@ -27895,8 +27895,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  function construct(options) {\n    new EventSource(\"https://mdn-bcd-collector.gooborg.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"withCredentials\", true);\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.error_event",
@@ -27904,8 +27904,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.message_event",
@@ -27913,8 +27913,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onmessage\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.open_event",
@@ -27922,8 +27922,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onopen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.readyState",
@@ -27931,8 +27931,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"readyState\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.url",
@@ -27940,8 +27940,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"url\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.withCredentials",
@@ -27949,8 +27949,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"withCredentials\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventTarget",
@@ -41154,7 +41154,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.ImageData.colorSpace",
@@ -41162,7 +41162,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"colorSpace\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.ImageData.data",
@@ -41170,7 +41170,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"data\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.ImageData.height",
@@ -41178,7 +41178,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"height\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.ImageData.ImageData",
@@ -41186,8 +41186,8 @@
           "code": "bcd.testConstructor('ImageData')",
           "exposure": "Window"
         },
-        "result": true,
-        "message": "threw TypeError: Failed to construct \"ImageData\": 2 arguments required, but only 0 present."
+        "result": false,
+        "message": "threw ReferenceError: ImageData is not defined"
       },
       {
         "name": "api.ImageData.width",
@@ -41195,7 +41195,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"width\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.ImageDecoder",
@@ -47516,7 +47516,7 @@
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"gpu\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.Navigator.hardwareConcurrency",
@@ -54975,7 +54975,7 @@
           "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var instance = new Request(\"https://example.com\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.Request.cache",
@@ -55367,7 +55367,7 @@
           "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  return !!instance && \"bytes\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.Response.clone",
@@ -71744,7 +71744,7 @@
           "code": "\"URL\" in self && \"parse\" in URL",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.URL.password",
@@ -79340,7 +79340,7 @@
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"name\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false
       },
       {
         "name": "api.Window.navigate",
@@ -83378,7 +83378,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return true;\n})();\n",
           "exposure": "Window"
         },
-        "result": true
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_colorSpaceConversion_parameter",
@@ -83386,8 +83387,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"colorSpaceConversion\", \"default\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_imageOrientation_parameter",
@@ -83395,8 +83396,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"imageOrientation\", \"none\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_premultiplyAlpha_parameter",
@@ -83404,8 +83405,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"premultiplyAlpha\", \"default\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_resizeHeight_parameter",
@@ -83413,8 +83414,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"resizeHeight\", \"100\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_resizeQuality_parameter",
@@ -83422,8 +83423,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"resizeQuality\", \"high\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.options_resizeWidth_parameter",
@@ -83431,8 +83432,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  return bcd.testOptionParam(create, null, \"resizeWidth\", \"100\");\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.createImageBitmap.svgimageelement_as_source_image",
@@ -83440,8 +83441,8 @@
           "code": "(function () {\n  if (!(\"createImageBitmap\" in self)) {\n    return { result: false, message: \"createImageBitmap is not defined\" };\n  }\n  function create(options) {\n    return createImageBitmap(\n      document.getElementById(\"resource-image-black\"),\n      options,\n    );\n  }\n  var svgimg = document.createElementNS(\"http://www.w3.org/2000/svg\", \"image\");\n  svgimg.href.baseVal = document.getElementById(\"resource-image-black\").src; // Set a source for the image, required for certain tests\n  if (!svgimg) {\n    return { result: false, message: \"svgimg is falsy\" };\n  }\n  var bitmap = createImageBitmap(svgimg);\n  return bitmap\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": false,
+        "message": "createImageBitmap is not defined"
       },
       {
         "name": "api.crossOriginIsolated",
@@ -83989,5 +83990,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! netlify/17.31.0"
+  "userAgent": "!! netlify/17.33.5"
 }

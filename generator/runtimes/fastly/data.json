@@ -1421,7 +1421,7 @@
           "code": "\"Math\" in self && \"f16round\" in Math",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Date",
@@ -3871,7 +3871,7 @@
           "code": "\"Set\" in self && \"difference\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.intersection",
@@ -3879,7 +3879,7 @@
           "code": "\"Set\" in self && \"intersection\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.isDisjointFrom",
@@ -3887,7 +3887,7 @@
           "code": "\"Set\" in self && \"isDisjointFrom\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.isSubsetOf",
@@ -3895,7 +3895,7 @@
           "code": "\"Set\" in self && \"isSubsetOf\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.isSupersetOf",
@@ -3903,7 +3903,7 @@
           "code": "\"Set\" in self && \"isSupersetOf\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.symmetricDifference",
@@ -3911,7 +3911,7 @@
           "code": "\"Set\" in self && \"symmetricDifference\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Set.union",
@@ -3919,7 +3919,7 @@
           "code": "\"Set\" in self && \"union\" in Set.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.WeakMap",
@@ -3953,7 +3953,7 @@
           "exposure": "Window"
         },
         "result": false,
-        "message": "WeakMap key Symbol() must be an object or an unregistered symbol"
+        "message": "WeakMap key Symbol() must be an object"
       },
       {
         "name": "javascript.builtins.WeakMap.WeakMap",
@@ -4028,7 +4028,7 @@
           "exposure": "Window"
         },
         "result": false,
-        "message": "WeakSet value Symbol() must be an object or an unregistered symbol"
+        "message": "WeakSet value Symbol() must be an object"
       },
       {
         "name": "javascript.builtins.WeakSet.WeakSet",
@@ -4086,7 +4086,7 @@
           "code": "(function () {\n  function construct(options) {\n    new ArrayBuffer(8, options);\n  }\n  return bcd.testOptionParam(construct, null, \"maxByteLength\", 16);\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.ArrayBuffer.@@species",
@@ -4118,7 +4118,7 @@
           "code": "\"ArrayBuffer\" in self && \"maxByteLength\" in ArrayBuffer.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.ArrayBuffer.resizable",
@@ -4126,7 +4126,7 @@
           "code": "\"ArrayBuffer\" in self && \"resizable\" in ArrayBuffer.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.ArrayBuffer.resize",
@@ -4134,7 +4134,7 @@
           "code": "\"ArrayBuffer\" in self && \"resize\" in ArrayBuffer.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.ArrayBuffer.slice",
@@ -4457,7 +4457,7 @@
           "code": "\"DataView\" in self && \"getFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DataView.setFloat16",
@@ -4465,7 +4465,7 @@
           "code": "\"DataView\" in self && \"setFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Atomics",
@@ -5360,7 +5360,7 @@
           "code": "\"Float16Array\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Float16Array.Float16Array",
@@ -5368,8 +5368,8 @@
           "code": "(function () {\n  if (!(\"Float16Array\" in self)) {\n    return { result: false, message: \"Float16Array is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Array\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "Float16Array is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.InternalError",
@@ -86611,7 +86611,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico-coA. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.pipeThrough",
@@ -86706,5 +86706,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! fastly/3.16.0"
+  "userAgent": "!! fastly/3.19.0"
 }
