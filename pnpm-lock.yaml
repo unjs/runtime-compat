@@ -62,8 +62,8 @@ importers:
   generator/runtimes/edge-light:
     dependencies:
       edge-runtime:
-        specifier: ^2.5.10
-        version: 2.5.10
+        specifier: ^3.0.1
+        version: 3.0.1
     devDependencies:
       typescript:
         specifier: ^5.5.4
@@ -142,7 +142,7 @@ importers:
     devDependencies:
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@edge-runtime/vm@3.2.0)(@types/node@20.14.13)(terser@5.19.2)
+        version: 1.6.0(@edge-runtime/vm@4.0.1)(@types/node@20.14.13)(terser@5.19.2)
 
 packages:
 
@@ -590,20 +590,20 @@ packages:
     resolution: {integrity: sha512-KrkT6qO5NxqNfy68sBl6CTSoJ4SNDIS5iQArkibhlbGU4LaDukZ3q2HIkh8aUKDio6o4itU4xDR7t82Y2eP1Bg==}
     engines: {node: '>=14'}
 
-  '@edge-runtime/format@2.2.1':
-    resolution: {integrity: sha512-JQTRVuiusQLNNLe2W9tnzBlV/GvSVcozLl4XZHk5swnRZ/v6jp8TqR8P7sqmJsQqblDZ3EztcWmLDbhRje/+8g==}
+  '@edge-runtime/format@3.0.0':
+    resolution: {integrity: sha512-Mpg9LP4D9fxjXa6p3Wm4WnuK7XU5YKfFGvOje56ipdOvNXLj+DmLQSuX9uDbHmQ2KoJh/EYBAsmHqa+z8/wQgQ==}
     engines: {node: '>=16'}
 
-  '@edge-runtime/ponyfill@2.4.2':
-    resolution: {integrity: sha512-oN17GjFr69chu6sDLvXxdhg0Qe8EZviGSuqzR9qOiKh4MhFYGdBBcqRNzdmYeAdeRzOW2mM9yil4RftUQ7sUOA==}
+  '@edge-runtime/ponyfill@3.0.0':
+    resolution: {integrity: sha512-JQm5QjLYv/0P6/TwOjFDBfQVNPKNCRsgP8G9sWPwKzcB5bc5mt6AMtQvMloiOm+7PosvBhGB3V448eSNGd3CTQ==}
     engines: {node: '>=16'}
 
-  '@edge-runtime/primitives@4.1.0':
-    resolution: {integrity: sha512-Vw0lbJ2lvRUqc7/soqygUX216Xb8T3WBZ987oywz6aJqRxcwSVWwr9e+Nqo2m9bxobA9mdbWNNoRY6S9eko1EQ==}
+  '@edge-runtime/primitives@5.0.1':
+    resolution: {integrity: sha512-qjqqCa9v3IE7Fo9OnmkIWg9l0WUu3uOfUYomuOVxaaHqlIvNI75E5IB0XNNDypz249ObRSmjRj8jLjkBUmFYYw==}
     engines: {node: '>=16'}
 
-  '@edge-runtime/vm@3.2.0':
-    resolution: {integrity: sha512-0dEVyRLM/lG4gp1R/Ik5bfPl/1wX00xFwd5KcNH602tzBa09oF7pbTKETEhR1GjZ75K6OJnYFu8II2dyMhONMw==}
+  '@edge-runtime/vm@4.0.1':
+    resolution: {integrity: sha512-jYXrosmxlahsgLlChnSTRIfoOkcg+U+7jMEFvV5pQ9mJ7BrM2O4Kb+n/IDardpgEWZsXLBC9Y2RN7nhpuX7PTQ==}
     engines: {node: '>=16'}
 
   '@es-joy/jsdoccomment@0.46.0':
@@ -3679,8 +3679,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  edge-runtime@2.5.10:
-    resolution: {integrity: sha512-oe6JjFbU1MbISzeSBMHqmzBhNEwmy2AYDY0LxStl8FAIWSGdGO+CqzWub9nbgmANuJYPXZA0v3XAlbxeKV/Omw==}
+  edge-runtime@3.0.1:
+    resolution: {integrity: sha512-N2QwOpv2y6ju9WvQSCebLz/Ce8qMBVoqnFbrtgRbZXBCaASmko/SpvFQ1de95hepaUw2XGxZS8rSoLFwpJZMCA==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -8485,15 +8485,15 @@ snapshots:
       gonzales-pe: 4.3.0
       node-source-walk: 6.0.2
 
-  '@edge-runtime/format@2.2.1': {}
+  '@edge-runtime/format@3.0.0': {}
 
-  '@edge-runtime/ponyfill@2.4.2': {}
+  '@edge-runtime/ponyfill@3.0.0': {}
 
-  '@edge-runtime/primitives@4.1.0': {}
+  '@edge-runtime/primitives@5.0.1': {}
 
-  '@edge-runtime/vm@3.2.0':
+  '@edge-runtime/vm@4.0.1':
     dependencies:
-      '@edge-runtime/primitives': 4.1.0
+      '@edge-runtime/primitives': 5.0.1
 
   '@es-joy/jsdoccomment@0.46.0':
     dependencies:
@@ -11816,14 +11816,14 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  edge-runtime@2.5.10:
+  edge-runtime@3.0.1:
     dependencies:
-      '@edge-runtime/format': 2.2.1
-      '@edge-runtime/ponyfill': 2.4.2
-      '@edge-runtime/vm': 3.2.0
+      '@edge-runtime/format': 3.0.0
+      '@edge-runtime/ponyfill': 3.0.0
+      '@edge-runtime/vm': 4.0.1
       async-listen: 3.0.1
       mri: 1.2.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       pretty-ms: 7.0.1
       signal-exit: 4.0.2
       time-span: 4.0.0
@@ -16561,7 +16561,7 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.19.2
 
-  vitest@1.6.0(@edge-runtime/vm@3.2.0)(@types/node@20.14.13)(terser@5.19.2):
+  vitest@1.6.0(@edge-runtime/vm@4.0.1)(@types/node@20.14.13)(terser@5.19.2):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -16584,7 +16584,7 @@ snapshots:
       vite-node: 1.6.0(@types/node@20.14.13)(terser@5.19.2)
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@edge-runtime/vm': 3.2.0
+      '@edge-runtime/vm': 4.0.1
       '@types/node': 20.14.13
     transitivePeerDependencies:
       - less
