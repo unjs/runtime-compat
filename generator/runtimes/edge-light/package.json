@@ -30,6 +30,6 @@
     }
   },
   "dependencies": {
-    "edge-runtime": "^2.5.10"
+    "edge-runtime": "^3.0.1"
   }
 }
