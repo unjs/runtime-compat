@@ -86584,7 +86584,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.cancel",
@@ -86593,7 +86593,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.getReader",
@@ -86602,7 +86602,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.locked",
@@ -86611,7 +86611,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.pipeThrough",
@@ -86620,7 +86620,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.pipeTo",
@@ -86629,7 +86629,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.tee",
@@ -86638,7 +86638,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStream.values",
@@ -86647,7 +86647,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.Response.Response.accept_readablestream",
@@ -86656,7 +86656,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader",
@@ -86665,7 +86665,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.cancel",
@@ -86674,7 +86674,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.closed",
@@ -86683,7 +86683,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.read",
@@ -86692,7 +86692,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       },
       {
         "name": "api.ReadableStreamDefaultReader.releaseLock",
@@ -86701,7 +86701,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.icoës. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
       }
     ]
   },
