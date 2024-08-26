@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.1",
+  "__version": "10.12.2",
   "results": {
     ".": [
       {
@@ -3343,6 +3343,54 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.Uint8Array.fromBase64",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"fromBase64\" in Uint8Array",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Uint8Array.fromHex",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"fromHex\" in Uint8Array",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Uint8Array.toBase64",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"toBase64\" in Uint8Array.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Uint8Array.toHex",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"toHex\" in Uint8Array.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Uint8Array.setFromBase64",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"setFromBase64\" in Uint8Array.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Uint8Array.setFromHex",
+        "info": {
+          "code": "\"Uint8Array\" in self && \"setFromHex\" in Uint8Array.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.Uint8ClampedArray",
         "info": {
           "code": "\"Uint8ClampedArray\" in self",
@@ -4888,6 +4936,14 @@
         "name": "javascript.builtins.Promise.withResolvers",
         "info": {
           "code": "\"Promise\" in self && \"withResolvers\" in Promise",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Promise.try",
+        "info": {
+          "code": "\"Promise\" in self && \"try\" in Promise",
           "exposure": "Window"
         },
         "result": false
@@ -6986,14 +7042,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Instant.epochMicroseconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochMicroseconds\" in Temporal.Instant",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.Instant.epochMilliseconds",
         "info": {
           "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochMilliseconds\" in Temporal.Instant",
@@ -7005,14 +7053,6 @@
         "name": "javascript.builtins.Temporal.Instant.epochNanoseconds",
         "info": {
           "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochNanoseconds\" in Temporal.Instant",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Instant.epochSeconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochSeconds\" in Temporal.Instant",
           "exposure": "Window"
         },
         "result": false
@@ -7034,14 +7074,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Instant.fromEpochMicroseconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochMicroseconds\" in Temporal.Instant",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.Instant.fromEpochMilliseconds",
         "info": {
           "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochMilliseconds\" in Temporal.Instant",
@@ -7053,14 +7085,6 @@
         "name": "javascript.builtins.Temporal.Instant.fromEpochNanoseconds",
         "info": {
           "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochNanoseconds\" in Temporal.Instant",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Instant.fromEpochSeconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochSeconds\" in Temporal.Instant",
           "exposure": "Window"
         },
         "result": false
@@ -7114,14 +7138,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Instant.toZonedDateTime",
-        "info": {
-          "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"toZonedDateTime\" in Temporal.Instant",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.Instant.toZonedDateTimeISO",
         "info": {
           "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"toZonedDateTimeISO\" in Temporal.Instant",
@@ -7162,25 +7178,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Now.plainDate",
-        "info": {
-          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDate\" in Temporal.Now",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.Now.plainDateISO",
         "info": {
           "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateISO\" in Temporal.Now",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Now.plainDateTime",
-        "info": {
-          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateTime\" in Temporal.Now",
           "exposure": "Window"
         },
         "result": false
@@ -7194,17 +7194,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Now.timeZone",
+        "name": "javascript.builtins.Temporal.Now.timeZoneId",
         "info": {
-          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZone\" in Temporal.Now",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Now.zonedDateTime",
-        "info": {
-          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"zonedDateTime\" in Temporal.Now",
+          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZoneId\" in Temporal.Now",
           "exposure": "Window"
         },
         "result": false
@@ -7243,9 +7235,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainDate.calendar",
+        "name": "javascript.builtins.Temporal.PlainDate.calendarId",
         "info": {
-          "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"calendar\" in Temporal.PlainDate",
+          "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"calendarId\" in Temporal.PlainDate",
           "exposure": "Window"
         },
         "result": false
@@ -7499,6 +7491,14 @@
         "result": false
       },
       {
+        "name": "javascript.builtins.Temporal.PlainDate.yearOfWeek",
+        "info": {
+          "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"yearOfWeek\" in Temporal.PlainDate",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.Temporal.PlainDateTime",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal",
@@ -7524,9 +7524,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainDateTime.calendar",
+        "name": "javascript.builtins.Temporal.PlainDateTime.calendarId",
         "info": {
-          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"calendar\" in Temporal.PlainDateTime",
+          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"calendarId\" in Temporal.PlainDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -7756,25 +7756,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainDateTime.toPlainMonthDay",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainMonthDay\" in Temporal.PlainDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.PlainDateTime.toPlainTime",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainTime\" in Temporal.PlainDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.PlainDateTime.toPlainYearMonth",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainYearMonth\" in Temporal.PlainDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -7836,14 +7820,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainDateTime.withPlainDate",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"withPlainDate\" in Temporal.PlainDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.PlainDateTime.withPlainTime",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"withPlainTime\" in Temporal.PlainDateTime",
@@ -7855,6 +7831,14 @@
         "name": "javascript.builtins.Temporal.PlainDateTime.year",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"year\" in Temporal.PlainDateTime",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Temporal.PlainDateTime.yearOfWeek",
+        "info": {
+          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"yearOfWeek\" in Temporal.PlainDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -7877,9 +7861,9 @@
         "message": "Temporal is not defined"
       },
       {
-        "name": "javascript.builtins.Temporal.PlainMonthDay.calendar",
+        "name": "javascript.builtins.Temporal.PlainMonthDay.calendarId",
         "info": {
-          "code": "\"Temporal\" in self && \"PlainMonthDay\" in Temporal && \"calendar\" in Temporal.PlainMonthDay",
+          "code": "\"Temporal\" in self && \"PlainMonthDay\" in Temporal && \"calendarId\" in Temporal.PlainMonthDay",
           "exposure": "Window"
         },
         "result": false
@@ -7993,14 +7977,6 @@
         "name": "javascript.builtins.Temporal.PlainTime.add",
         "info": {
           "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"add\" in Temporal.PlainTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.PlainTime.calendar",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"calendar\" in Temporal.PlainTime",
           "exposure": "Window"
         },
         "result": false
@@ -8126,25 +8102,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainTime.toPlainDateTime",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toPlainDateTime\" in Temporal.PlainTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.PlainTime.toString",
         "info": {
           "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toString\" in Temporal.PlainTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.PlainTime.toZonedDateTime",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toZonedDateTime\" in Temporal.PlainTime",
           "exposure": "Window"
         },
         "result": false
@@ -8199,9 +8159,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainYearMonth.calendar",
+        "name": "javascript.builtins.Temporal.PlainYearMonth.calendarId",
         "info": {
-          "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"calendar\" in Temporal.PlainYearMonth",
+          "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"calendarId\" in Temporal.PlainYearMonth",
           "exposure": "Window"
         },
         "result": false
@@ -8416,14 +8376,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.TimeZone.getNextTransition",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getNextTransition\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.TimeZone.getOffsetNanosecondsFor",
         "info": {
           "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetNanosecondsFor\" in Temporal.TimeZone",
@@ -8451,14 +8403,6 @@
         "name": "javascript.builtins.Temporal.TimeZone.getPossibleInstantsFor",
         "info": {
           "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPossibleInstantsFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getPreviousTransition",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPreviousTransition\" in Temporal.TimeZone",
           "exposure": "Window"
         },
         "result": false
@@ -8513,9 +8457,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.calendar",
+        "name": "javascript.builtins.Temporal.ZonedDateTime.calendarId",
         "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"calendar\" in Temporal.ZonedDateTime",
+          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"calendarId\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8577,14 +8521,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.epochMicroseconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochMicroseconds\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.ZonedDateTime.epochMilliseconds",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochMilliseconds\" in Temporal.ZonedDateTime",
@@ -8596,14 +8532,6 @@
         "name": "javascript.builtins.Temporal.ZonedDateTime.epochNanoseconds",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochNanoseconds\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.epochSeconds",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochSeconds\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8644,6 +8572,14 @@
         "name": "javascript.builtins.Temporal.ZonedDateTime.getISOFields",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getISOFields\" in Temporal.ZonedDateTime",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Temporal.ZonedDateTime.getTimeZoneTransition",
+        "info": {
+          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getTimeZoneTransition\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8785,9 +8721,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.timeZone",
+        "name": "javascript.builtins.Temporal.ZonedDateTime.timeZoneId",
         "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"timeZone\" in Temporal.ZonedDateTime",
+          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"timeZoneId\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8833,25 +8769,9 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.toPlainMonthDay",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainMonthDay\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.ZonedDateTime.toPlainTime",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainTime\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.toPlainYearMonth",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainYearMonth\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8905,14 +8825,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.withPlainDate",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"withPlainDate\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.ZonedDateTime.withPlainTime",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"withPlainTime\" in Temporal.ZonedDateTime",
@@ -8932,6 +8844,14 @@
         "name": "javascript.builtins.Temporal.ZonedDateTime.year",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"year\" in Temporal.ZonedDateTime",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Temporal.ZonedDateTime.yearOfWeek",
+        "info": {
+          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"yearOfWeek\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -10186,6 +10106,14 @@
         "name": "api.AudioContext.getOutputTimestamp",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"getOutputTimestamp\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AudioContext.error_event",
+        "info": {
+          "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -14394,15 +14322,6 @@
         "message": "Testing CanvasRenderingContext2D in workers is not yet implemented"
       },
       {
-        "name": "api.CanvasRenderingContext2D.scrollPathIntoView",
-        "info": {
-          "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"scrollPathIntoView\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "Testing CanvasRenderingContext2D in workers is not yet implemented"
-      },
-      {
         "name": "api.CanvasRenderingContext2D.setLineDash",
         "info": {
           "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"setLineDash\" in instance;\n})();\n",
@@ -17408,98 +17327,110 @@
       {
         "name": "api.CSSFontFeatureValuesMap",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.@@iterator",
         "info": {
-          "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"CSSFontFeatureValuesMap\" in self && !!(CSSFontFeatureValuesMap.prototype[Symbol.iterator])",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"iterator\" in Symbol &&\n    !!instance[Symbol.iterator]\n  );\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.clear",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"clear\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"clear\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.delete",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"delete\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"delete\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.entries",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"entries\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"entries\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.forEach",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"forEach\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"forEach\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.get",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"get\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"get\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.has",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"has\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"has\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.keys",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"keys\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"keys\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.set",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"set\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"set\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.size",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"size\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"size\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesMap.values",
         "info": {
-          "code": "\"CSSFontFeatureValuesMap\" in self && \"values\" in CSSFontFeatureValuesMap.prototype",
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"values\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.CSSFontFeatureValuesRule",
@@ -17618,6 +17549,14 @@
         "name": "api.CSSFontPaletteValuesRule.overrideColors",
         "info": {
           "code": "\"CSSFontPaletteValuesRule\" in self && \"overrideColors\" in CSSFontPaletteValuesRule.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFunctionRule",
+        "info": {
+          "code": "\"CSSFunctionRule\" in self",
           "exposure": "Window"
         },
         "result": false
@@ -18329,6 +18268,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.CSSMediaRule.matches",
+        "info": {
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@media (max-width: 600px) {body {background-color: #111;color: white;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"matches\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.CSSMediaRule.media",
         "info": {
           "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@media (max-width: 600px) {body {background-color: #111;color: white;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"media\" in instance;\n})();\n",
@@ -18727,9 +18675,17 @@
         "result": false
       },
       {
-        "name": "api.CSSPageDescriptors.orientation",
+        "name": "api.CSSPageDescriptors.page-orientation",
         "info": {
-          "code": "\"CSSPageDescriptors\" in self && \"orientation\" in CSSPageDescriptors.prototype",
+          "code": "\"CSSPageDescriptors\" in self && \"page-orientation\" in CSSPageDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPageDescriptors.pageOrientation",
+        "info": {
+          "code": "\"CSSPageDescriptors\" in self && \"pageOrientation\" in CSSPageDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -19104,14 +19060,6 @@
         "result": false
       },
       {
-        "name": "api.CSSPositionTryDescriptors.inset-area",
-        "info": {
-          "code": "\"CSSPositionTryDescriptors\" in self && \"inset-area\" in CSSPositionTryDescriptors.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.CSSPositionTryDescriptors.inset-block",
         "info": {
           "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block\" in CSSPositionTryDescriptors.prototype",
@@ -19155,14 +19103,6 @@
         "name": "api.CSSPositionTryDescriptors.inset-inline-start",
         "info": {
           "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-start\" in CSSPositionTryDescriptors.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.CSSPositionTryDescriptors.insetArea",
-        "info": {
-          "code": "\"CSSPositionTryDescriptors\" in self && \"insetArea\" in CSSPositionTryDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -19560,9 +19500,25 @@
         "result": false
       },
       {
+        "name": "api.CSSPositionTryDescriptors.position-area",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"position-area\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSPositionTryDescriptors.positionAnchor",
         "info": {
           "code": "\"CSSPositionTryDescriptors\" in self && \"positionAnchor\" in CSSPositionTryDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSPositionTryDescriptors.positionArea",
+        "info": {
+          "code": "\"CSSPositionTryDescriptors\" in self && \"positionArea\" in CSSPositionTryDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -20516,6 +20472,15 @@
         "name": "api.CSSSupportsRule",
         "info": {
           "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@supports (display: grid) {div {display: grid;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.CSSSupportsRule.matches",
+        "info": {
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@supports (display: grid) {div {display: grid;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"matches\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -29686,15 +29651,6 @@
           "exposure": "Window"
         },
         "result": false
-      },
-      {
-        "name": "api.FontFaceSet.FontFaceSet",
-        "info": {
-          "code": "bcd.testConstructor('FontFaceSet')",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "threw ReferenceError: FontFaceSet is not defined"
       },
       {
         "name": "api.FontFaceSet.forEach",
@@ -47421,14 +47377,6 @@
         "result": false
       },
       {
-        "name": "api.MLActivation",
-        "info": {
-          "code": "\"MLActivation\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.MLContext",
         "info": {
           "code": "\"MLContext\" in self",
@@ -55265,6 +55213,14 @@
         "name": "api.PointerEvent.isPrimary",
         "info": {
           "code": "\"PointerEvent\" in self && \"isPrimary\" in PointerEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PointerEvent.persistentDeviceId",
+        "info": {
+          "code": "\"PointerEvent\" in self && \"persistentDeviceId\" in PointerEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -86369,9 +86325,9 @@
         "result": false
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
         "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86385,14 +86341,6 @@
         "result": true
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256,\n        },\n        true,\n        [\"sign\", \"verify\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_pbkdf2",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"PBKDF2\",\n          salt: \"foobar\",\n          iterations: 100000,\n          hash: \"SHA-256\",\n        },\n        false,\n        [\"deriveBits\", \"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
@@ -86401,17 +86349,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.@@asyncIterator",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\",\n      },\n      true,\n      [\"deriveKey\"],\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey,\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array(),\n        },\n        false,\n        [\"deriveKey\"],\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86425,6 +86365,14 @@
         "result": true
       },
       {
+        "name": "api.ReadableStream.@@asyncIterator",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.ReadableStream.getReader",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
@@ -86433,9 +86381,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeTo",
+        "name": "api.ReadableStream.cancel",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86465,9 +86413,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.tee",
+        "name": "api.ReadableStream.pipeTo",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86481,9 +86429,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.cancel",
+        "name": "api.ReadableStream.tee",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86497,9 +86445,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.read",
+        "name": "api.ReadableStreamDefaultReader.cancel",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86508,6 +86456,14 @@
         "name": "api.ReadableStreamDefaultReader.releaseLock",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.read",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\",\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true

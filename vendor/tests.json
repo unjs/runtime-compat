@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.1",
+  "__version": "10.12.2",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -939,6 +939,11 @@
   },
   "api.AudioContext.getOutputTimestamp": {
     "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"getOutputTimestamp\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["audioContext", "audioContext"]
+  },
+  "api.AudioContext.error_event": {
+    "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"onerror\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["audioContext", "audioContext"]
   },
@@ -3400,11 +3405,6 @@
     "exposure": ["Window"],
     "resources": ["image-black", "image-black"]
   },
-  "api.CanvasRenderingContext2D.scrollPathIntoView": {
-    "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"scrollPathIntoView\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["image-black", "image-black"]
-  },
   "api.CanvasRenderingContext2D.setLineDash": {
     "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\",\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"setLineDash\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -5686,52 +5686,64 @@
     "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap": {
-    "code": "\"CSSFontFeatureValuesMap\" in self",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.@@iterator": {
-    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"CSSFontFeatureValuesMap\" in self && !!(CSSFontFeatureValuesMap.prototype[Symbol.iterator])",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"iterator\" in Symbol &&\n    !!instance[Symbol.iterator]\n  );\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.clear": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"clear\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"clear\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.delete": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"delete\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"delete\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.entries": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"entries\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"entries\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.forEach": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"forEach\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"forEach\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.get": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"get\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"get\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.has": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"has\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"has\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.keys": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"keys\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"keys\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.set": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"set\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"set\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.size": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"size\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"size\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesMap.values": {
-    "code": "\"CSSFontFeatureValuesMap\" in self && \"values\" in CSSFontFeatureValuesMap.prototype",
-    "exposure": ["Window"]
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var rule = stylesheet.cssRules.item(0);\n  if (!rule) {\n    return { result: false, message: \"rule is falsy\" };\n  }\n  var instance = rule.annotation;\n  return !!instance && \"values\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSFontFeatureValuesRule": {
     "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@font-feature-values Font {@styleset {nice-style: 12;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
@@ -5796,6 +5808,10 @@
   },
   "api.CSSFontPaletteValuesRule.overrideColors": {
     "code": "\"CSSFontPaletteValuesRule\" in self && \"overrideColors\" in CSSFontPaletteValuesRule.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFunctionRule": {
+    "code": "\"CSSFunctionRule\" in self",
     "exposure": ["Window"]
   },
   "api.CSSGroupingRule": {
@@ -6180,6 +6196,11 @@
     "exposure": ["Window"],
     "resources": ["createStyleSheet"]
   },
+  "api.CSSMediaRule.matches": {
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@media (max-width: 600px) {body {background-color: #111;color: white;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"matches\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
+  },
   "api.CSSMediaRule.media": {
     "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@media (max-width: 600px) {body {background-color: #111;color: white;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"media\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -6380,8 +6401,12 @@
     "code": "\"CSSPageDescriptors\" in self && \"marks\" in CSSPageDescriptors.prototype",
     "exposure": ["Window"]
   },
-  "api.CSSPageDescriptors.orientation": {
-    "code": "\"CSSPageDescriptors\" in self && \"orientation\" in CSSPageDescriptors.prototype",
+  "api.CSSPageDescriptors.page-orientation": {
+    "code": "\"CSSPageDescriptors\" in self && \"page-orientation\" in CSSPageDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPageDescriptors.pageOrientation": {
+    "code": "\"CSSPageDescriptors\" in self && \"pageOrientation\" in CSSPageDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSPageDescriptors.size": {
@@ -6567,10 +6592,6 @@
     "code": "\"CSSPositionTryDescriptors\" in self && \"inset\" in CSSPositionTryDescriptors.prototype",
     "exposure": ["Window"]
   },
-  "api.CSSPositionTryDescriptors.inset-area": {
-    "code": "\"CSSPositionTryDescriptors\" in self && \"inset-area\" in CSSPositionTryDescriptors.prototype",
-    "exposure": ["Window"]
-  },
   "api.CSSPositionTryDescriptors.inset-block": {
     "code": "\"CSSPositionTryDescriptors\" in self && \"inset-block\" in CSSPositionTryDescriptors.prototype",
     "exposure": ["Window"]
@@ -6593,10 +6614,6 @@
   },
   "api.CSSPositionTryDescriptors.inset-inline-start": {
     "code": "\"CSSPositionTryDescriptors\" in self && \"inset-inline-start\" in CSSPositionTryDescriptors.prototype",
-    "exposure": ["Window"]
-  },
-  "api.CSSPositionTryDescriptors.insetArea": {
-    "code": "\"CSSPositionTryDescriptors\" in self && \"insetArea\" in CSSPositionTryDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSPositionTryDescriptors.insetBlock": {
@@ -6795,8 +6812,16 @@
     "code": "\"CSSPositionTryDescriptors\" in self && \"position-anchor\" in CSSPositionTryDescriptors.prototype",
     "exposure": ["Window"]
   },
+  "api.CSSPositionTryDescriptors.position-area": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"position-area\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSPositionTryDescriptors.positionAnchor": {
     "code": "\"CSSPositionTryDescriptors\" in self && \"positionAnchor\" in CSSPositionTryDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSPositionTryDescriptors.positionArea": {
+    "code": "\"CSSPositionTryDescriptors\" in self && \"positionArea\" in CSSPositionTryDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSPositionTryDescriptors.right": {
@@ -7375,6 +7400,11 @@
     "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@supports (display: grid) {div {display: grid;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["createStyleSheet"]
+  },
+  "api.CSSSupportsRule.matches": {
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@supports (display: grid) {div {display: grid;}}\",\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance && \"matches\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
   },
   "api.CSSTransformComponent": {
     "code": "\"CSSTransformComponent\" in self",
@@ -12960,10 +12990,6 @@
   },
   "api.FontFaceSet.entries": {
     "code": "(function () {\n  var instance;\n  if (\"document\" in self) {\n    instance = document.fonts;\n  } else {\n    instance = self.fonts;\n  }\n  return !!instance && \"entries\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.FontFaceSet.FontFaceSet": {
-    "code": "bcd.testConstructor('FontFaceSet')",
     "exposure": ["Window", "Worker"]
   },
   "api.FontFaceSet.forEach": {
@@ -19602,6 +19628,10 @@
     "code": "\"forDebuggingOnly\" in self",
     "exposure": ["InterestGroupBiddingAndScoringScriptRunnerGlobalScope"]
   },
+  "api.InterestGroupBiddingAndScoringScriptRunnerGlobalScope.realTimeReporting": {
+    "code": "\"realTimeReporting\" in self",
+    "exposure": ["InterestGroupBiddingAndScoringScriptRunnerGlobalScope"]
+  },
   "api.InterestGroupBiddingScriptRunnerGlobalScope": {
     "code": "\"InterestGroupBiddingScriptRunnerGlobalScope\" in self",
     "exposure": ["InterestGroupBiddingScriptRunnerGlobalScope"]
@@ -21594,177 +21624,183 @@
   },
   "api.MIDIAccess": {
     "code": "\"MIDIAccess\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIAccess.inputs": {
     "code": "\"MIDIAccess\" in self && \"inputs\" in MIDIAccess.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIAccess.statechange_event": {
     "code": "\"MIDIAccess\" in self && \"onstatechange\" in MIDIAccess.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIAccess.outputs": {
     "code": "\"MIDIAccess\" in self && \"outputs\" in MIDIAccess.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIAccess.sysexEnabled": {
     "code": "\"MIDIAccess\" in self && \"sysexEnabled\" in MIDIAccess.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIConnectionEvent": {
     "code": "\"MIDIConnectionEvent\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIConnectionEvent.MIDIConnectionEvent": {
     "code": "bcd.testConstructor('MIDIConnectionEvent')",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIConnectionEvent.port": {
     "code": "\"MIDIConnectionEvent\" in self && \"port\" in MIDIConnectionEvent.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
-  "api.MIDIInput": { "code": "\"MIDIInput\" in self", "exposure": ["Window"] },
+  "api.MIDIInput": {
+    "code": "\"MIDIInput\" in self",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MIDIInput.midimessage_event": {
     "code": "\"MIDIInput\" in self && \"onmidimessage\" in MIDIInput.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap": {
     "code": "\"MIDIInputMap\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.@@iterator": {
     "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"MIDIInputMap\" in self && !!(MIDIInputMap.prototype[Symbol.iterator])",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.entries": {
     "code": "\"MIDIInputMap\" in self && \"entries\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.forEach": {
     "code": "\"MIDIInputMap\" in self && \"forEach\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.get": {
     "code": "\"MIDIInputMap\" in self && \"get\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.has": {
     "code": "\"MIDIInputMap\" in self && \"has\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.keys": {
     "code": "\"MIDIInputMap\" in self && \"keys\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.size": {
     "code": "\"MIDIInputMap\" in self && \"size\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIInputMap.values": {
     "code": "\"MIDIInputMap\" in self && \"values\" in MIDIInputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIMessageEvent": {
     "code": "\"MIDIMessageEvent\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIMessageEvent.data": {
     "code": "\"MIDIMessageEvent\" in self && \"data\" in MIDIMessageEvent.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIMessageEvent.MIDIMessageEvent": {
     "code": "bcd.testConstructor('MIDIMessageEvent')",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutput": {
     "code": "\"MIDIOutput\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutput.clear": {
     "code": "\"MIDIOutput\" in self && \"clear\" in MIDIOutput.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutput.send": {
     "code": "\"MIDIOutput\" in self && \"send\" in MIDIOutput.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap": {
     "code": "\"MIDIOutputMap\" in self",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.@@iterator": {
     "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"MIDIOutputMap\" in self && !!(MIDIOutputMap.prototype[Symbol.iterator])",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.entries": {
     "code": "\"MIDIOutputMap\" in self && \"entries\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.forEach": {
     "code": "\"MIDIOutputMap\" in self && \"forEach\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.get": {
     "code": "\"MIDIOutputMap\" in self && \"get\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.has": {
     "code": "\"MIDIOutputMap\" in self && \"has\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.keys": {
     "code": "\"MIDIOutputMap\" in self && \"keys\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.size": {
     "code": "\"MIDIOutputMap\" in self && \"size\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIOutputMap.values": {
     "code": "\"MIDIOutputMap\" in self && \"values\" in MIDIOutputMap.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
-  "api.MIDIPort": { "code": "\"MIDIPort\" in self", "exposure": ["Window"] },
+  "api.MIDIPort": {
+    "code": "\"MIDIPort\" in self",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MIDIPort.close": {
     "code": "\"MIDIPort\" in self && \"close\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.connection": {
     "code": "\"MIDIPort\" in self && \"connection\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.id": {
     "code": "\"MIDIPort\" in self && \"id\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.manufacturer": {
     "code": "\"MIDIPort\" in self && \"manufacturer\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.name": {
     "code": "\"MIDIPort\" in self && \"name\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.statechange_event": {
     "code": "\"MIDIPort\" in self && \"onstatechange\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.open": {
     "code": "\"MIDIPort\" in self && \"open\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.state": {
     "code": "\"MIDIPort\" in self && \"state\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.type": {
     "code": "\"MIDIPort\" in self && \"type\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MIDIPort.version": {
     "code": "\"MIDIPort\" in self && \"version\" in MIDIPort.prototype",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.MimeType": {
     "code": "(function () {\n  if (!(\"mimeTypes\" in navigator)) {\n    return { result: false, message: \"navigator.mimeTypes is not defined\" };\n  }\n  var mimetypes = navigator.mimeTypes;\n  if (!mimetypes) {\n    return { result: false, message: \"mimetypes is falsy\" };\n  }\n  if (mimetypes.length === 0) {\n    return { result: null, message: \"navigator.mimeTypes is an empty array\" };\n  }\n  var instance = mimeTypes[0];\n  return !!instance;\n})();\n",
@@ -21805,10 +21841,6 @@
   "api.ML": { "code": "\"ML\" in self", "exposure": ["Window", "Worker"] },
   "api.ML.createContext": {
     "code": "\"ML\" in self && \"createContext\" in ML.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.MLActivation": {
-    "code": "\"MLActivation\" in self",
     "exposure": ["Window", "Worker"]
   },
   "api.MLContext": {
@@ -26050,6 +26082,10 @@
     "code": "\"PointerEvent\" in self && \"isPrimary\" in PointerEvent.prototype",
     "exposure": ["Window"]
   },
+  "api.PointerEvent.persistentDeviceId": {
+    "code": "\"PointerEvent\" in self && \"persistentDeviceId\" in PointerEvent.prototype",
+    "exposure": ["Window"]
+  },
   "api.PointerEvent.PointerEvent": {
     "code": "bcd.testConstructor('PointerEvent')",
     "exposure": ["Window"]
@@ -27620,6 +27656,14 @@
       "AudioWorklet",
       "RTCIdentityProvider"
     ]
+  },
+  "api.RealTimeReporting": {
+    "code": "\"RealTimeReporting\" in self",
+    "exposure": ["InterestGroupBiddingAndScoringScriptRunnerGlobalScope"]
+  },
+  "api.RealTimeReporting.contributeToHistogram": {
+    "code": "\"RealTimeReporting\" in self && \"contributeToHistogram\" in RealTimeReporting.prototype",
+    "exposure": ["InterestGroupBiddingAndScoringScriptRunnerGlobalScope"]
   },
   "api.Rect": { "code": "\"Rect\" in self", "exposure": ["Window"] },
   "api.Rect.bottom": {
@@ -49029,6 +49073,18 @@
     "code": "bcd.testCSSProperty(\"height\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.height.percentage": {
+    "code": "bcd.testCSSProperty(\"height\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.height.size": {
+    "code": "bcd.testCSSProperty(\"height\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.height.any": {
+    "code": "bcd.testCSSProperty(\"height\", \"any\")",
+    "exposure": ["Window"]
+  },
   "css.properties.hyphenate-character": {
     "code": "bcd.testCSSProperty(\"hyphenate-character\")",
     "exposure": ["Window"]
@@ -49277,166 +49333,6 @@
     "code": "bcd.testCSSProperty(\"inset\", \"auto\")",
     "exposure": ["Window"]
   },
-  "css.properties.inset-area": {
-    "code": "bcd.testCSSProperty(\"inset-area\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.none": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.self-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"self-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.self-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"self-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.top": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"top\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.bottom": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"bottom\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.left": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"left\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.right": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"right\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.y-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"y-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.y-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"y-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.y-self-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"y-self-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.y-self-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"y-self-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.x-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"x-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.x-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"x-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.x-self-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"x-self-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.x-self-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"x-self-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.block-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"block-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.block-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"block-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.block-self-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"block-self-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.block-self-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"block-self-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.inline-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"inline-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.inline-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"inline-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.inline-self-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"inline-self-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.inline-self-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"inline-self-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.center": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-top": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-top\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-bottom": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-bottom\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-y-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-y-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-y-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-y-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-x-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-x-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-x-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-x-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-block-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-block-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-block-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-block-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-inline-start": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-inline-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-inline-end": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-inline-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inset-area.span-all": {
-    "code": "bcd.testCSSProperty(\"inset-area\", \"span-all\")",
-    "exposure": ["Window"]
-  },
   "css.properties.inset-block": {
     "code": "bcd.testCSSProperty(\"inset-block\")",
     "exposure": ["Window"]
@@ -49483,6 +49379,18 @@
   },
   "css.properties.inset-inline-start.auto": {
     "code": "bcd.testCSSProperty(\"inset-inline-start\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.interpolate-size": {
+    "code": "bcd.testCSSProperty(\"interpolate-size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.interpolate-size.numeric-only": {
+    "code": "bcd.testCSSProperty(\"interpolate-size\", \"numeric-only\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.interpolate-size.allow-keywords": {
+    "code": "bcd.testCSSProperty(\"interpolate-size\", \"allow-keywords\")",
     "exposure": ["Window"]
   },
   "css.properties.isolation": {
@@ -50449,10 +50357,6 @@
     "code": "bcd.testCSSProperty(\"masonry\")",
     "exposure": ["Window"]
   },
-  "css.properties.masonry-auto-flow": {
-    "code": "bcd.testCSSProperty(\"masonry-auto-flow\")",
-    "exposure": ["Window"]
-  },
   "css.properties.math-depth": {
     "code": "bcd.testCSSProperty(\"math-depth\")",
     "exposure": ["Window"]
@@ -50525,6 +50429,18 @@
     "code": "bcd.testCSSProperty(\"max-height\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-height.percentage": {
+    "code": "bcd.testCSSProperty(\"max-height\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-height.size": {
+    "code": "bcd.testCSSProperty(\"max-height\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-height.any": {
+    "code": "bcd.testCSSProperty(\"max-height\", \"any\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-inline-size": {
     "code": "bcd.testCSSProperty(\"max-inline-size\")",
     "exposure": ["Window"]
@@ -50593,6 +50509,18 @@
     "code": "bcd.testCSSProperty(\"max-width\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-width.percentage": {
+    "code": "bcd.testCSSProperty(\"max-width\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-width.size": {
+    "code": "bcd.testCSSProperty(\"max-width\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-width.any": {
+    "code": "bcd.testCSSProperty(\"max-width\", \"any\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-zoom": {
     "code": "bcd.testCSSProperty(\"max-zoom\")",
     "exposure": ["Window"]
@@ -50655,6 +50583,18 @@
   },
   "css.properties.min-height.fit-content_function": {
     "code": "bcd.testCSSProperty(\"min-height\", \"fit-content(10px)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-height.percentage": {
+    "code": "bcd.testCSSProperty(\"min-height\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-height.size": {
+    "code": "bcd.testCSSProperty(\"min-height\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-height.any": {
+    "code": "bcd.testCSSProperty(\"min-height\", \"any\")",
     "exposure": ["Window"]
   },
   "css.properties.min-inline-size": {
@@ -50731,6 +50671,18 @@
   },
   "css.properties.min-width.fit-content_function": {
     "code": "bcd.testCSSProperty(\"min-width\", \"fit-content(10px)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-width.percentage": {
+    "code": "bcd.testCSSProperty(\"min-width\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-width.size": {
+    "code": "bcd.testCSSProperty(\"min-width\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-width.any": {
+    "code": "bcd.testCSSProperty(\"min-width\", \"any\")",
     "exposure": ["Window"]
   },
   "css.properties.min-zoom": {
@@ -51581,6 +51533,166 @@
     "code": "bcd.testCSSProperty(\"position-anchor\")",
     "exposure": ["Window"]
   },
+  "css.properties.position-area": {
+    "code": "bcd.testCSSProperty(\"position-area\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.none": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.self-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"self-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.self-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"self-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.top": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"top\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.bottom": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"bottom\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.left": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"left\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.right": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"right\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.y-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"y-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.y-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"y-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.y-self-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"y-self-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.y-self-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"y-self-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.x-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"x-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.x-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"x-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.x-self-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"x-self-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.x-self-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"x-self-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.block-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"block-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.block-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"block-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.block-self-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"block-self-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.block-self-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"block-self-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.inline-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"inline-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.inline-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"inline-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.inline-self-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"inline-self-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.inline-self-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"inline-self-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.center": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"center\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-top": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-top\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-bottom": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-bottom\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-y-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-y-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-y-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-y-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-x-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-x-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-x-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-x-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-block-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-block-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-block-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-block-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-inline-start": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-inline-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-inline-end": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-inline-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-area.span-all": {
+    "code": "bcd.testCSSProperty(\"position-area\", \"span-all\")",
+    "exposure": ["Window"]
+  },
   "css.properties.position-try": {
     "code": "bcd.testCSSProperty(\"position-try\")",
     "exposure": ["Window"]
@@ -52145,66 +52257,6 @@
     "code": "bcd.testCSSProperty(\"scroll-snap-type-y\")",
     "exposure": ["Window"]
   },
-  "css.properties.scroll-start": {
-    "code": "bcd.testCSSProperty(\"scroll-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start.start": {
-    "code": "bcd.testCSSProperty(\"scroll-start\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start.center": {
-    "code": "bcd.testCSSProperty(\"scroll-start\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start.end": {
-    "code": "bcd.testCSSProperty(\"scroll-start\", \"end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-block": {
-    "code": "bcd.testCSSProperty(\"scroll-start-block\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-block.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-block\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-block.start": {
-    "code": "bcd.testCSSProperty(\"scroll-start-block\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-block.center": {
-    "code": "bcd.testCSSProperty(\"scroll-start-block\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-block.end": {
-    "code": "bcd.testCSSProperty(\"scroll-start-block\", \"end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-inline": {
-    "code": "bcd.testCSSProperty(\"scroll-start-inline\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-inline.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-inline\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-inline.start": {
-    "code": "bcd.testCSSProperty(\"scroll-start-inline\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-inline.center": {
-    "code": "bcd.testCSSProperty(\"scroll-start-inline\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-inline.end": {
-    "code": "bcd.testCSSProperty(\"scroll-start-inline\", \"end\")",
-    "exposure": ["Window"]
-  },
   "css.properties.scroll-start-target": {
     "code": "bcd.testCSSProperty(\"scroll-start-target\")",
     "exposure": ["Window"]
@@ -52215,46 +52267,6 @@
   },
   "css.properties.scroll-start-target.auto": {
     "code": "bcd.testCSSProperty(\"scroll-start-target\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-x": {
-    "code": "bcd.testCSSProperty(\"scroll-start-x\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-x.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-x\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-x.start": {
-    "code": "bcd.testCSSProperty(\"scroll-start-x\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-x.center": {
-    "code": "bcd.testCSSProperty(\"scroll-start-x\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-x.end": {
-    "code": "bcd.testCSSProperty(\"scroll-start-x\", \"end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-y": {
-    "code": "bcd.testCSSProperty(\"scroll-start-y\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-y.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-y\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-y.start": {
-    "code": "bcd.testCSSProperty(\"scroll-start-y\", \"start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-y.center": {
-    "code": "bcd.testCSSProperty(\"scroll-start-y\", \"center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-y.end": {
-    "code": "bcd.testCSSProperty(\"scroll-start-y\", \"end\")",
     "exposure": ["Window"]
   },
   "css.properties.scroll-timeline": {
@@ -54347,6 +54359,18 @@
   },
   "css.properties.width.fit-content_function": {
     "code": "bcd.testCSSProperty(\"width\", \"fit-content(10px)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.width.percentage": {
+    "code": "bcd.testCSSProperty(\"width\", \"percentage\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.width.size": {
+    "code": "bcd.testCSSProperty(\"width\", \"size\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.width.any": {
+    "code": "bcd.testCSSProperty(\"width\", \"any\")",
     "exposure": ["Window"]
   },
   "css.properties.width.fill": {
@@ -60421,6 +60445,30 @@
     "code": "(function () {\n  if (!(\"Uint8Array\" in self)) {\n    return { result: false, message: \"Uint8Array is not defined\" };\n  }\n  try {\n    new Uint8Array();\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Uint8Array.fromBase64": {
+    "code": "\"Uint8Array\" in self && \"fromBase64\" in Uint8Array",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Uint8Array.fromHex": {
+    "code": "\"Uint8Array\" in self && \"fromHex\" in Uint8Array",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Uint8Array.toBase64": {
+    "code": "\"Uint8Array\" in self && \"toBase64\" in Uint8Array.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Uint8Array.toHex": {
+    "code": "\"Uint8Array\" in self && \"toHex\" in Uint8Array.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Uint8Array.setFromBase64": {
+    "code": "\"Uint8Array\" in self && \"setFromBase64\" in Uint8Array.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Uint8Array.setFromHex": {
+    "code": "\"Uint8Array\" in self && \"setFromHex\" in Uint8Array.prototype",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Uint8ClampedArray": {
     "code": "\"Uint8ClampedArray\" in self",
     "exposure": ["Window"]
@@ -61183,6 +61231,10 @@
   },
   "javascript.builtins.Promise.withResolvers": {
     "code": "\"Promise\" in self && \"withResolvers\" in Promise",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Promise.try": {
+    "code": "\"Promise\" in self && \"try\" in Promise",
     "exposure": ["Window"]
   },
   "javascript.builtins.Promise.catch": {
@@ -62221,20 +62273,12 @@
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"compare\" in Temporal.Instant",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Instant.epochMicroseconds": {
-    "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochMicroseconds\" in Temporal.Instant",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.Instant.epochMilliseconds": {
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochMilliseconds\" in Temporal.Instant",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Instant.epochNanoseconds": {
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochNanoseconds\" in Temporal.Instant",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Instant.epochSeconds": {
-    "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"epochSeconds\" in Temporal.Instant",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Instant.equals": {
@@ -62245,20 +62289,12 @@
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"from\" in Temporal.Instant",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Instant.fromEpochMicroseconds": {
-    "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochMicroseconds\" in Temporal.Instant",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.Instant.fromEpochMilliseconds": {
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochMilliseconds\" in Temporal.Instant",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Instant.fromEpochNanoseconds": {
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochNanoseconds\" in Temporal.Instant",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Instant.fromEpochSeconds": {
-    "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"fromEpochSeconds\" in Temporal.Instant",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Instant.round": {
@@ -62285,10 +62321,6 @@
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"toString\" in Temporal.Instant",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Instant.toZonedDateTime": {
-    "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"toZonedDateTime\" in Temporal.Instant",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.Instant.toZonedDateTimeISO": {
     "code": "\"Temporal\" in self && \"Instant\" in Temporal && \"toZonedDateTimeISO\" in Temporal.Instant",
     "exposure": ["Window"]
@@ -62309,28 +62341,16 @@
     "code": "\"Temporal\" in self && \"Now\" in Temporal && \"instant\" in Temporal.Now",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Now.plainDate": {
-    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDate\" in Temporal.Now",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.Now.plainDateISO": {
     "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateISO\" in Temporal.Now",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Now.plainDateTime": {
-    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateTime\" in Temporal.Now",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Now.plainDateTimeISO": {
     "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateTimeISO\" in Temporal.Now",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Now.timeZone": {
-    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZone\" in Temporal.Now",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Now.zonedDateTime": {
-    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"zonedDateTime\" in Temporal.Now",
+  "javascript.builtins.Temporal.Now.timeZoneId": {
+    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZoneId\" in Temporal.Now",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.Now.zonedDateTimeISO": {
@@ -62349,8 +62369,8 @@
     "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"add\" in Temporal.PlainDate",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainDate.calendar": {
-    "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"calendar\" in Temporal.PlainDate",
+  "javascript.builtins.Temporal.PlainDate.calendarId": {
+    "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"calendarId\" in Temporal.PlainDate",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDate.compare": {
@@ -62477,6 +62497,10 @@
     "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"year\" in Temporal.PlainDate",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Temporal.PlainDate.yearOfWeek": {
+    "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"yearOfWeek\" in Temporal.PlainDate",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Temporal.PlainDateTime": {
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal",
     "exposure": ["Window"]
@@ -62489,8 +62513,8 @@
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"add\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainDateTime.calendar": {
-    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"calendar\" in Temporal.PlainDateTime",
+  "javascript.builtins.Temporal.PlainDateTime.calendarId": {
+    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"calendarId\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDateTime.compare": {
@@ -62605,16 +62629,8 @@
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainDate\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainDateTime.toPlainMonthDay": {
-    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainMonthDay\" in Temporal.PlainDateTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.PlainDateTime.toPlainTime": {
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainTime\" in Temporal.PlainDateTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.PlainDateTime.toPlainYearMonth": {
-    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"toPlainYearMonth\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDateTime.toString": {
@@ -62645,16 +62661,16 @@
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"withCalendar\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainDateTime.withPlainDate": {
-    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"withPlainDate\" in Temporal.PlainDateTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.PlainDateTime.withPlainTime": {
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"withPlainTime\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDateTime.year": {
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"year\" in Temporal.PlainDateTime",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Temporal.PlainDateTime.yearOfWeek": {
+    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"yearOfWeek\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainMonthDay": {
@@ -62665,8 +62681,8 @@
     "code": "(function () {\n  if (!(\"Temporal\" in self)) {\n    return { result: false, message: \"Temporal is not defined\" };\n  }\n  if (!(\"PlainMonthDay\" in Temporal)) {\n    return { result: false, message: \"Temporal.PlainMonthDay is not defined\" };\n  }\n  return bcd.testConstructor(\"Temporal.PlainMonthDay\", false);\n})();\n",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainMonthDay.calendar": {
-    "code": "\"Temporal\" in self && \"PlainMonthDay\" in Temporal && \"calendar\" in Temporal.PlainMonthDay",
+  "javascript.builtins.Temporal.PlainMonthDay.calendarId": {
+    "code": "\"Temporal\" in self && \"PlainMonthDay\" in Temporal && \"calendarId\" in Temporal.PlainMonthDay",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainMonthDay.day": {
@@ -62723,10 +62739,6 @@
   },
   "javascript.builtins.Temporal.PlainTime.add": {
     "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"add\" in Temporal.PlainTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.PlainTime.calendar": {
-    "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"calendar\" in Temporal.PlainTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainTime.compare": {
@@ -62789,16 +62801,8 @@
     "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toLocaleString\" in Temporal.PlainTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainTime.toPlainDateTime": {
-    "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toPlainDateTime\" in Temporal.PlainTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.PlainTime.toString": {
     "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toString\" in Temporal.PlainTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.PlainTime.toZonedDateTime": {
-    "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"toZonedDateTime\" in Temporal.PlainTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainTime.until": {
@@ -62825,8 +62829,8 @@
     "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"add\" in Temporal.PlainYearMonth",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainYearMonth.calendar": {
-    "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"calendar\" in Temporal.PlainYearMonth",
+  "javascript.builtins.Temporal.PlainYearMonth.calendarId": {
+    "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"calendarId\" in Temporal.PlainYearMonth",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainYearMonth.compare": {
@@ -62933,10 +62937,6 @@
     "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getInstantFor\" in Temporal.TimeZone",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.TimeZone.getNextTransition": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getNextTransition\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.TimeZone.getOffsetNanosecondsFor": {
     "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetNanosecondsFor\" in Temporal.TimeZone",
     "exposure": ["Window"]
@@ -62951,10 +62951,6 @@
   },
   "javascript.builtins.Temporal.TimeZone.getPossibleInstantsFor": {
     "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPossibleInstantsFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getPreviousTransition": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPreviousTransition\" in Temporal.TimeZone",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.TimeZone.id": {
@@ -62981,8 +62977,8 @@
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"add\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.ZonedDateTime.calendar": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"calendar\" in Temporal.ZonedDateTime",
+  "javascript.builtins.Temporal.ZonedDateTime.calendarId": {
+    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"calendarId\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.compare": {
@@ -63013,20 +63009,12 @@
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"daysInYear\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.ZonedDateTime.epochMicroseconds": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochMicroseconds\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.ZonedDateTime.epochMilliseconds": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochMilliseconds\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.epochNanoseconds": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochNanoseconds\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.ZonedDateTime.epochSeconds": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"epochSeconds\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.equals": {
@@ -63047,6 +63035,10 @@
   },
   "javascript.builtins.Temporal.ZonedDateTime.getISOFields": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getISOFields\" in Temporal.ZonedDateTime",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Temporal.ZonedDateTime.getTimeZoneTransition": {
+    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getTimeZoneTransition\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.hour": {
@@ -63117,8 +63109,8 @@
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"subtract\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.ZonedDateTime.timeZone": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"timeZone\" in Temporal.ZonedDateTime",
+  "javascript.builtins.Temporal.ZonedDateTime.timeZoneId": {
+    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"timeZoneId\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.toInstant": {
@@ -63141,16 +63133,8 @@
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainDateTime\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.ZonedDateTime.toPlainMonthDay": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainMonthDay\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.ZonedDateTime.toPlainTime": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainTime\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.ZonedDateTime.toPlainYearMonth": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"toPlainYearMonth\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.toString": {
@@ -63177,10 +63161,6 @@
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"withCalendar\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.ZonedDateTime.withPlainDate": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"withPlainDate\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.ZonedDateTime.withPlainTime": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"withPlainTime\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
@@ -63191,6 +63171,10 @@
   },
   "javascript.builtins.Temporal.ZonedDateTime.year": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"year\" in Temporal.ZonedDateTime",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Temporal.ZonedDateTime.yearOfWeek": {
+    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"yearOfWeek\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.grammar.array_literals": {
