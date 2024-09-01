@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fastly/js-compute": "^3.19.0",
+    "@fastly/js-compute": "^3.21.2",
     "unbuild": "^2.0.0",
     "start-server-and-test": "^2.0.5"
   },
