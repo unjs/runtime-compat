@@ -10,8 +10,8 @@
     "start": "start-server-and-test start-server http://localhost:8888 run"
   },
   "devDependencies": {
-    "start-server-and-test": "^2.0.5",
-    "netlify-cli": "^17.34.3"
+    "start-server-and-test": "^2.0.8",
+    "netlify-cli": "^17.36.0"
   },
   "keywords": [],
   "author": "",

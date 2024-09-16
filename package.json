@@ -13,12 +13,12 @@
     "website": "pnpm run --filter \"website\" dev"
   },
   "devDependencies": {
-    "@mdn/browser-compat-data": "^5.5.49",
-    "@types/node": "^20.16.3",
+    "@mdn/browser-compat-data": "^5.5.51",
+    "@types/node": "^20.16.5",
     "automd": "^0.3.8",
     "eslint": "^8.57.0",
     "eslint-config-unjs": "^0.3.2",
     "prettier": "^3.3.3"
   },
-  "packageManager": "pnpm@9.9.0"
+  "packageManager": "pnpm@9.10.0"
 }
