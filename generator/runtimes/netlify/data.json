@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.2",
+  "__version": "10.12.3",
   "results": {
     ".": [
       {
@@ -2322,6 +2322,14 @@
           "exposure": "Window"
         },
         "result": true
+      },
+      {
+        "name": "javascript.builtins.RegExp.escape",
+        "info": {
+          "code": "\"RegExp\" in self && \"escape\" in RegExp",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "javascript.builtins.RegExp.input",
@@ -10369,10 +10377,11 @@
       {
         "name": "api.AudioEncoder",
         "info": {
-          "code": "\"AudioEncoder\" in self",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.AudioEncoder",
@@ -10386,42 +10395,83 @@
       {
         "name": "api.AudioEncoder.close",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"close\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.configure",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"configure\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"configure\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
+      },
+      {
+        "name": "api.AudioEncoder.configure.bitrateMode",
+        "info": {
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return bcd.testOptionParam(instance, \"configure\", \"bitrateMode\", \"constant\", {\n    bitrate: 320000,\n    codec: \"mp3\",\n    numberOfChannels: 2,\n    sampleRate: 44100,\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "AudioEncoder is not defined"
+      },
+      {
+        "name": "api.AudioEncoder.configure.opus",
+        "info": {
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return bcd.testOptionParam(\n    instance,\n    \"configure\",\n    \"opus\",\n    {},\n    { bitrate: 320000, codec: \"mp3\", numberOfChannels: 2, sampleRate: 44100 },\n  );\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "AudioEncoder is not defined"
+      },
+      {
+        "name": "api.AudioEncoder.configure.opus.opus_application",
+        "info": {
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  function configure(opus) {\n    instance.configure({\n      bitrate: 320000,\n      codec: \"mp3\",\n      numberOfChannels: 2,\n      sampleRate: 44100,\n      opus: opus,\n    });\n  }\n  return bcd.testOptionParam(configure, null, \"application\", \"voip\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "AudioEncoder is not defined"
+      },
+      {
+        "name": "api.AudioEncoder.configure.opus.opus_signal",
+        "info": {
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  function configure(opus) {\n    instance.configure({\n      bitrate: 320000,\n      codec: \"mp3\",\n      numberOfChannels: 2,\n      sampleRate: 44100,\n      opus: opus,\n    });\n  }\n  return bcd.testOptionParam(configure, null, \"signal\", \"voice\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.encode",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"encode\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"encode\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.encodeQueueSize",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"encodeQueueSize\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"encodeQueueSize\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.flush",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"flush\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"flush\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.isConfigSupported_static",
@@ -10434,26 +10484,29 @@
       {
         "name": "api.AudioEncoder.dequeue_event",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"ondequeue\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"ondequeue\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.reset",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"reset\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"reset\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioEncoder.state",
         "info": {
-          "code": "\"AudioEncoder\" in self && \"state\" in AudioEncoder.prototype",
+          "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"state\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "AudioEncoder is not defined"
       },
       {
         "name": "api.AudioListener",
@@ -15832,6 +15885,14 @@
         "result": false
       },
       {
+        "name": "api.CrashReportBody.stack",
+        "info": {
+          "code": "\"CrashReportBody\" in self && \"stack\" in CrashReportBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CrashReportBody.toJSON",
         "info": {
           "code": "\"CrashReportBody\" in self && \"toJSON\" in CrashReportBody.prototype",
@@ -20080,6 +20141,15 @@
         "name": "api.CSSStyleDeclaration.@@iterator",
         "info": {
           "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"iterator\" in Symbol &&\n    !!instance[Symbol.iterator]\n  );\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.CSSStyleDeclaration.cssFloat",
+        "info": {
+          "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssFloat\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -28429,38 +28499,6 @@
         "result": false
       },
       {
-        "name": "api.FencedFrameConfig.containerHeight",
-        "info": {
-          "code": "\"FencedFrameConfig\" in self && \"containerHeight\" in FencedFrameConfig.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.FencedFrameConfig.containerWidth",
-        "info": {
-          "code": "\"FencedFrameConfig\" in self && \"containerWidth\" in FencedFrameConfig.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.FencedFrameConfig.contentHeight",
-        "info": {
-          "code": "\"FencedFrameConfig\" in self && \"contentHeight\" in FencedFrameConfig.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.FencedFrameConfig.contentWidth",
-        "info": {
-          "code": "\"FencedFrameConfig\" in self && \"contentWidth\" in FencedFrameConfig.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.FencedFrameConfig.FencedFrameConfig",
         "info": {
           "code": "bcd.testConstructor('FencedFrameConfig')",
@@ -29574,6 +29612,15 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.FontFaceSet.FontFaceSet",
+        "info": {
+          "code": "bcd.testConstructor('FontFaceSet')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: FontFaceSet is not defined"
       },
       {
         "name": "api.FontFaceSet.forEach",
@@ -32555,6 +32602,24 @@
         "message": "threw ReferenceError: HTMLButtonElement is not defined"
       },
       {
+        "name": "api.HTMLButtonElement.invokeaction",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"invokeaction\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLButtonElement.invoketarget",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"invoketarget\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLButtonElement.labels",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"labels\" in instance;\n})();\n",
@@ -33311,6 +33376,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLElement.anchorElement",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"anchorElement\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLElement.attachInternals",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"attachInternals\" in instance;\n})();\n",
@@ -33332,6 +33406,15 @@
         "name": "api.HTMLElement.autocapitalize",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"autocapitalize\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.autocorrect",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"autocorrect\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -33809,6 +33892,14 @@
         },
         "result": false,
         "message": "threw ReferenceError: HTMLFencedFrameElement is not defined"
+      },
+      {
+        "name": "api.HTMLFencedFrameElement.sandbox",
+        "info": {
+          "code": "\"HTMLFencedFrameElement\" in self && \"sandbox\" in HTMLFencedFrameElement.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.HTMLFencedFrameElement.width",
@@ -41731,6 +41822,39 @@
         "message": "Testing InterventionReportBody is not yet implemented"
       },
       {
+        "name": "api.InvokeEvent",
+        "info": {
+          "code": "\"InvokeEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.InvokeEvent.action",
+        "info": {
+          "code": "\"InvokeEvent\" in self && \"action\" in InvokeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.InvokeEvent.InvokeEvent",
+        "info": {
+          "code": "bcd.testConstructor('InvokeEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: InvokeEvent is not defined"
+      },
+      {
+        "name": "api.InvokeEvent.invoker",
+        "info": {
+          "code": "\"InvokeEvent\" in self && \"invoker\" in InvokeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Keyboard",
         "info": {
           "code": "\"Keyboard\" in self",
@@ -45236,6 +45360,14 @@
         "result": false
       },
       {
+        "name": "api.MLContext.opSupportLimits",
+        "info": {
+          "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraph",
         "info": {
           "code": "\"MLGraph\" in self",
@@ -47443,6 +47575,22 @@
         "result": false
       },
       {
+        "name": "api.Navigator.getInterestGroupAdAuctionData",
+        "info": {
+          "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInterestGroupAdAuctionData\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Navigator.getUserMedia",
+        "info": {
+          "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Navigator.getVRDisplays",
         "info": {
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getVRDisplays\" in instance;\n})();\n",
@@ -49537,6 +49685,14 @@
         "name": "api.OffscreenCanvasRenderingContext2D.closePath",
         "info": {
           "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"closePath\" in OffscreenCanvasRenderingContext2D.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.OffscreenCanvasRenderingContext2D.commit",
+        "info": {
+          "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"commit\" in OffscreenCanvasRenderingContext2D.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -53844,6 +54000,30 @@
         "name": "api.PublicKeyCredential.response",
         "info": {
           "code": "\"PublicKeyCredential\" in self && \"response\" in PublicKeyCredential.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PublicKeyCredential.signalAllAcceptedCredentials_static",
+        "info": {
+          "code": "\"PublicKeyCredential\" in self && \"signalAllAcceptedCredentials\" in PublicKeyCredential",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PublicKeyCredential.signalCurrentUserDetails_static",
+        "info": {
+          "code": "\"PublicKeyCredential\" in self && \"signalCurrentUserDetails\" in PublicKeyCredential",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PublicKeyCredential.signalUnknownCredential_static",
+        "info": {
+          "code": "\"PublicKeyCredential\" in self && \"signalUnknownCredential\" in PublicKeyCredential",
           "exposure": "Window"
         },
         "result": false
@@ -62050,6 +62230,14 @@
         "result": false
       },
       {
+        "name": "api.SharedStorage.@@asyncIterator",
+        "info": {
+          "code": "\"Symbol\" in self && \"asyncIterator\" in Symbol && \"SharedStorage\" in self && !!(SharedStorage.prototype[Symbol.asyncIterator])",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SharedStorage.append",
         "info": {
           "code": "\"SharedStorage\" in self && \"append\" in SharedStorage.prototype",
@@ -62066,6 +62254,14 @@
         "result": false
       },
       {
+        "name": "api.SharedStorage.createWorklet",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"createWorklet\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SharedStorage.delete",
         "info": {
           "code": "\"SharedStorage\" in self && \"delete\" in SharedStorage.prototype",
@@ -62074,9 +62270,121 @@
         "result": false
       },
       {
+        "name": "api.SharedStorage.entries",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"entries\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.get",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"get\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.keys",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"keys\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.length",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"length\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.remainingBudget",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"remainingBudget\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.run",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"run\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.selectURL",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"selectURL\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SharedStorage.set",
         "info": {
           "code": "\"SharedStorage\" in self && \"set\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.values",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"values\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorage.worklet",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"worklet\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageOperation",
+        "info": {
+          "code": "\"SharedStorageOperation\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageRunOperation",
+        "info": {
+          "code": "\"SharedStorageRunOperation\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageRunOperation.run",
+        "info": {
+          "code": "\"SharedStorageRunOperation\" in self && \"run\" in SharedStorageRunOperation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageSelectURLOperation",
+        "info": {
+          "code": "\"SharedStorageSelectURLOperation\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageSelectURLOperation.run",
+        "info": {
+          "code": "\"SharedStorageSelectURLOperation\" in self && \"run\" in SharedStorageSelectURLOperation.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -73539,6 +73847,22 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Viewport",
+        "info": {
+          "code": "\"Viewport\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Viewport.segments",
+        "info": {
+          "code": "\"Viewport\" in self && \"segments\" in Viewport.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.ViewTimeline",
         "info": {
           "code": "\"ViewTimeline\" in self",
@@ -79956,6 +80280,14 @@
         "result": false
       },
       {
+        "name": "api.Window.viewport",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"viewport\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Window.visualViewport",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"visualViewport\" in instance;\n})();\n",
@@ -80056,14 +80388,6 @@
         "name": "api.WindowSharedStorage",
         "info": {
           "code": "\"WindowSharedStorage\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.WindowSharedStorage.createWorklet",
-        "info": {
-          "code": "\"WindowSharedStorage\" in self && \"createWorklet\" in WindowSharedStorage.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -80191,6 +80515,102 @@
         },
         "result": false,
         "message": "threw ReferenceError: WorkletAnimation is not defined"
+      },
+      {
+        "name": "api.WorkletSharedStorage",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.@@iterator",
+        "info": {
+          "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"WorkletSharedStorage\" in self && !!(WorkletSharedStorage.prototype[Symbol.iterator])",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.clear",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"clear\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.delete",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"delete\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.entries",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"entries\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.forEach",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"forEach\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.get",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"get\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.has",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"has\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.keys",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"keys\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.set",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"set\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.size",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"size\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.WorkletSharedStorage.values",
+        "info": {
+          "code": "\"WorkletSharedStorage\" in self && \"values\" in WorkletSharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.WritableStream",
@@ -83946,5 +84366,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! netlify/17.33.5"
+  "userAgent": "!! netlify/17.36.0"
 }
