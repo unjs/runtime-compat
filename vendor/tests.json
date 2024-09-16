@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.2",
+  "__version": "10.12.3",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -1085,7 +1085,7 @@
     "resources": ["audioContext", "audioContext"]
   },
   "api.AudioEncoder": {
-    "code": "\"AudioEncoder\" in self",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.AudioEncoder": {
@@ -1093,23 +1093,39 @@
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.close": {
-    "code": "\"AudioEncoder\" in self && \"close\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.configure": {
-    "code": "\"AudioEncoder\" in self && \"configure\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"configure\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.AudioEncoder.configure.bitrateMode": {
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return bcd.testOptionParam(instance, \"configure\", \"bitrateMode\", \"constant\", {\n    bitrate: 320000,\n    codec: \"mp3\",\n    numberOfChannels: 2,\n    sampleRate: 44100,\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.AudioEncoder.configure.opus": {
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return bcd.testOptionParam(\n    instance,\n    \"configure\",\n    \"opus\",\n    {},\n    { bitrate: 320000, codec: \"mp3\", numberOfChannels: 2, sampleRate: 44100 },\n  );\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.AudioEncoder.configure.opus.opus_application": {
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  function configure(opus) {\n    instance.configure({\n      bitrate: 320000,\n      codec: \"mp3\",\n      numberOfChannels: 2,\n      sampleRate: 44100,\n      opus: opus,\n    });\n  }\n  return bcd.testOptionParam(configure, null, \"application\", \"voip\");\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.AudioEncoder.configure.opus.opus_signal": {
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  function configure(opus) {\n    instance.configure({\n      bitrate: 320000,\n      codec: \"mp3\",\n      numberOfChannels: 2,\n      sampleRate: 44100,\n      opus: opus,\n    });\n  }\n  return bcd.testOptionParam(configure, null, \"signal\", \"voice\");\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.encode": {
-    "code": "\"AudioEncoder\" in self && \"encode\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"encode\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.encodeQueueSize": {
-    "code": "\"AudioEncoder\" in self && \"encodeQueueSize\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"encodeQueueSize\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.flush": {
-    "code": "\"AudioEncoder\" in self && \"flush\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"flush\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.isConfigSupported_static": {
@@ -1117,15 +1133,15 @@
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.dequeue_event": {
-    "code": "\"AudioEncoder\" in self && \"ondequeue\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"ondequeue\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.reset": {
-    "code": "\"AudioEncoder\" in self && \"reset\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"reset\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioEncoder.state": {
-    "code": "\"AudioEncoder\" in self && \"state\" in AudioEncoder.prototype",
+    "code": "(function () {\n  if (!(\"AudioEncoder\" in self)) {\n    return { result: false, message: \"AudioEncoder is not defined\" };\n  }\n  var instance = new AudioEncoder({\n    output: function () {},\n    error: function () {},\n  });\n  return !!instance && \"state\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.AudioListener": {
@@ -4907,6 +4923,10 @@
     "code": "\"CrashReportBody\" in self && \"reason\" in CrashReportBody.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.CrashReportBody.stack": {
+    "code": "\"CrashReportBody\" in self && \"stack\" in CrashReportBody.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.CrashReportBody.toJSON": {
     "code": "\"CrashReportBody\" in self && \"toJSON\" in CrashReportBody.prototype",
     "exposure": ["Window", "Worker"]
@@ -7164,6 +7184,10 @@
   },
   "api.CSSStyleDeclaration.@@iterator": {
     "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"iterator\" in Symbol &&\n    !!instance[Symbol.iterator]\n  );\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.CSSStyleDeclaration.cssFloat": {
+    "code": "(function () {\n  var el = document.createElement(\"b\");\n  var instance = el.style;\n  return !!instance && \"cssFloat\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.CSSStyleDeclaration.cssText": {
@@ -12345,22 +12369,6 @@
     "code": "\"FencedFrameConfig\" in self",
     "exposure": ["Window"]
   },
-  "api.FencedFrameConfig.containerHeight": {
-    "code": "\"FencedFrameConfig\" in self && \"containerHeight\" in FencedFrameConfig.prototype",
-    "exposure": ["Window"]
-  },
-  "api.FencedFrameConfig.containerWidth": {
-    "code": "\"FencedFrameConfig\" in self && \"containerWidth\" in FencedFrameConfig.prototype",
-    "exposure": ["Window"]
-  },
-  "api.FencedFrameConfig.contentHeight": {
-    "code": "\"FencedFrameConfig\" in self && \"contentHeight\" in FencedFrameConfig.prototype",
-    "exposure": ["Window"]
-  },
-  "api.FencedFrameConfig.contentWidth": {
-    "code": "\"FencedFrameConfig\" in self && \"contentWidth\" in FencedFrameConfig.prototype",
-    "exposure": ["Window"]
-  },
   "api.FencedFrameConfig.FencedFrameConfig": {
     "code": "bcd.testConstructor('FencedFrameConfig')",
     "exposure": ["Window"]
@@ -12990,6 +12998,10 @@
   },
   "api.FontFaceSet.entries": {
     "code": "(function () {\n  var instance;\n  if (\"document\" in self) {\n    instance = document.fonts;\n  } else {\n    instance = self.fonts;\n  }\n  return !!instance && \"entries\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.FontFaceSet.FontFaceSet": {
+    "code": "bcd.testConstructor('FontFaceSet')",
     "exposure": ["Window", "Worker"]
   },
   "api.FontFaceSet.forEach": {
@@ -13738,6 +13750,10 @@
   },
   "api.GPUAdapter.limits": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"limits\" in instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUAdapter.requestAdapterInfo": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"requestAdapterInfo\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUAdapter.requestDevice": {
@@ -15471,6 +15487,14 @@
     "code": "bcd.testConstructor('HTMLButtonElement')",
     "exposure": ["Window"]
   },
+  "api.HTMLButtonElement.invokeaction": {
+    "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"invokeaction\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLButtonElement.invoketarget": {
+    "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"invoketarget\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLButtonElement.labels": {
     "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"labels\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -15843,6 +15867,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"accessKeyLabel\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLElement.anchorElement": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"anchorElement\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLElement.attachInternals": {
     "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"attachInternals\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -15853,6 +15881,10 @@
   },
   "api.HTMLElement.autocapitalize": {
     "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"autocapitalize\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.autocorrect": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"autocorrect\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLElement.autofocus": {
@@ -16065,6 +16097,10 @@
   },
   "api.HTMLFencedFrameElement.HTMLFencedFrameElement": {
     "code": "bcd.testConstructor('HTMLFencedFrameElement')",
+    "exposure": ["Window"]
+  },
+  "api.HTMLFencedFrameElement.sandbox": {
+    "code": "\"HTMLFencedFrameElement\" in self && \"sandbox\" in HTMLFencedFrameElement.prototype",
     "exposure": ["Window"]
   },
   "api.HTMLFencedFrameElement.width": {
@@ -19804,6 +19840,22 @@
     "code": "\"IntrinsicSizes\" in self && \"minContentSize\" in IntrinsicSizes.prototype",
     "exposure": ["LayoutWorklet"]
   },
+  "api.InvokeEvent": {
+    "code": "\"InvokeEvent\" in self",
+    "exposure": ["Window"]
+  },
+  "api.InvokeEvent.action": {
+    "code": "\"InvokeEvent\" in self && \"action\" in InvokeEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.InvokeEvent.InvokeEvent": {
+    "code": "bcd.testConstructor('InvokeEvent')",
+    "exposure": ["Window"]
+  },
+  "api.InvokeEvent.invoker": {
+    "code": "\"InvokeEvent\" in self && \"invoker\" in InvokeEvent.prototype",
+    "exposure": ["Window"]
+  },
   "api.Keyboard": { "code": "\"Keyboard\" in self", "exposure": ["Window"] },
   "api.Keyboard.getLayoutMap": {
     "code": "\"Keyboard\" in self && \"getLayoutMap\" in Keyboard.prototype",
@@ -21851,6 +21903,10 @@
     "code": "\"MLContext\" in self && \"compute\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLContext.opSupportLimits": {
+    "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraph": {
     "code": "\"MLGraph\" in self",
     "exposure": ["Window", "Worker"]
@@ -23025,6 +23081,14 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInstalledRelatedApps\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.getInterestGroupAdAuctionData": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getInterestGroupAdAuctionData\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Navigator.getUserMedia": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getUserMedia\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.getVRDisplays": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"getVRDisplays\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -24067,6 +24131,10 @@
   },
   "api.OffscreenCanvasRenderingContext2D.closePath": {
     "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"closePath\" in OffscreenCanvasRenderingContext2D.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.OffscreenCanvasRenderingContext2D.commit": {
+    "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"commit\" in OffscreenCanvasRenderingContext2D.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvasRenderingContext2D.createConicGradient": {
@@ -26577,6 +26645,18 @@
   },
   "api.PublicKeyCredential.response": {
     "code": "\"PublicKeyCredential\" in self && \"response\" in PublicKeyCredential.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PublicKeyCredential.signalAllAcceptedCredentials_static": {
+    "code": "\"PublicKeyCredential\" in self && \"signalAllAcceptedCredentials\" in PublicKeyCredential",
+    "exposure": ["Window"]
+  },
+  "api.PublicKeyCredential.signalCurrentUserDetails_static": {
+    "code": "\"PublicKeyCredential\" in self && \"signalCurrentUserDetails\" in PublicKeyCredential",
+    "exposure": ["Window"]
+  },
+  "api.PublicKeyCredential.signalUnknownCredential_static": {
+    "code": "\"PublicKeyCredential\" in self && \"signalUnknownCredential\" in PublicKeyCredential",
     "exposure": ["Window"]
   },
   "api.PublicKeyCredential.toJSON": {
@@ -31609,6 +31689,10 @@
     "code": "\"SharedStorage\" in self",
     "exposure": ["Window", "SharedStorageWorklet"]
   },
+  "api.SharedStorage.@@asyncIterator": {
+    "code": "\"Symbol\" in self && \"asyncIterator\" in Symbol && \"SharedStorage\" in self && !!(SharedStorage.prototype[Symbol.asyncIterator])",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
   "api.SharedStorage.append": {
     "code": "\"SharedStorage\" in self && \"append\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
@@ -31617,13 +31701,73 @@
     "code": "\"SharedStorage\" in self && \"clear\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
   },
+  "api.SharedStorage.createWorklet": {
+    "code": "\"SharedStorage\" in self && \"createWorklet\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
   "api.SharedStorage.delete": {
     "code": "\"SharedStorage\" in self && \"delete\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.entries": {
+    "code": "\"SharedStorage\" in self && \"entries\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.get": {
+    "code": "\"SharedStorage\" in self && \"get\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.keys": {
+    "code": "\"SharedStorage\" in self && \"keys\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.length": {
+    "code": "\"SharedStorage\" in self && \"length\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.remainingBudget": {
+    "code": "\"SharedStorage\" in self && \"remainingBudget\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.run": {
+    "code": "\"SharedStorage\" in self && \"run\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.selectURL": {
+    "code": "\"SharedStorage\" in self && \"selectURL\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
   },
   "api.SharedStorage.set": {
     "code": "\"SharedStorage\" in self && \"set\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.values": {
+    "code": "\"SharedStorage\" in self && \"values\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorage.worklet": {
+    "code": "\"SharedStorage\" in self && \"worklet\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageOperation": {
+    "code": "\"SharedStorageOperation\" in self",
+    "exposure": ["Window"]
+  },
+  "api.SharedStorageRunOperation": {
+    "code": "\"SharedStorageRunOperation\" in self",
+    "exposure": ["Window"]
+  },
+  "api.SharedStorageRunOperation.run": {
+    "code": "\"SharedStorageRunOperation\" in self && \"run\" in SharedStorageRunOperation.prototype",
+    "exposure": ["Window"]
+  },
+  "api.SharedStorageSelectURLOperation": {
+    "code": "\"SharedStorageSelectURLOperation\" in self",
+    "exposure": ["Window"]
+  },
+  "api.SharedStorageSelectURLOperation.run": {
+    "code": "\"SharedStorageSelectURLOperation\" in self && \"run\" in SharedStorageSelectURLOperation.prototype",
+    "exposure": ["Window"]
   },
   "api.SharedStorageWorklet": {
     "code": "\"SharedStorageWorklet\" in self",
@@ -38693,6 +38837,11 @@
     "exposure": ["Window"],
     "resources": ["video-blank", "video-blank"]
   },
+  "api.Viewport": { "code": "\"Viewport\" in self", "exposure": ["Window"] },
+  "api.Viewport.segments": {
+    "code": "\"Viewport\" in self && \"segments\" in Viewport.prototype",
+    "exposure": ["Window"]
+  },
   "api.ViewTimeline": {
     "code": "\"ViewTimeline\" in self",
     "exposure": ["Window"]
@@ -42586,6 +42735,10 @@
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"updateCommands\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Window.viewport": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"viewport\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Window.visualViewport": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"visualViewport\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -42660,10 +42813,6 @@
   },
   "api.WindowSharedStorage": {
     "code": "\"WindowSharedStorage\" in self",
-    "exposure": ["Window"]
-  },
-  "api.WindowSharedStorage.createWorklet": {
-    "code": "\"WindowSharedStorage\" in self && \"createWorklet\" in WindowSharedStorage.prototype",
     "exposure": ["Window"]
   },
   "api.WindowSharedStorage.run": {
@@ -43002,35 +43151,51 @@
   },
   "api.WorkletSharedStorage": {
     "code": "\"WorkletSharedStorage\" in self",
-    "exposure": ["SharedStorageWorklet"]
+    "exposure": ["Window"]
   },
-  "api.WorkletSharedStorage.@@asyncIterator": {
-    "code": "\"Symbol\" in self && \"asyncIterator\" in Symbol && \"WorkletSharedStorage\" in self && !!(WorkletSharedStorage.prototype[Symbol.asyncIterator])",
-    "exposure": ["SharedStorageWorklet"]
+  "api.WorkletSharedStorage.@@iterator": {
+    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"WorkletSharedStorage\" in self && !!(WorkletSharedStorage.prototype[Symbol.iterator])",
+    "exposure": ["Window"]
+  },
+  "api.WorkletSharedStorage.clear": {
+    "code": "\"WorkletSharedStorage\" in self && \"clear\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
+  },
+  "api.WorkletSharedStorage.delete": {
+    "code": "\"WorkletSharedStorage\" in self && \"delete\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
   },
   "api.WorkletSharedStorage.entries": {
     "code": "\"WorkletSharedStorage\" in self && \"entries\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+    "exposure": ["Window"]
+  },
+  "api.WorkletSharedStorage.forEach": {
+    "code": "\"WorkletSharedStorage\" in self && \"forEach\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
   },
   "api.WorkletSharedStorage.get": {
     "code": "\"WorkletSharedStorage\" in self && \"get\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+    "exposure": ["Window"]
+  },
+  "api.WorkletSharedStorage.has": {
+    "code": "\"WorkletSharedStorage\" in self && \"has\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
   },
   "api.WorkletSharedStorage.keys": {
     "code": "\"WorkletSharedStorage\" in self && \"keys\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+    "exposure": ["Window"]
   },
-  "api.WorkletSharedStorage.length": {
-    "code": "\"WorkletSharedStorage\" in self && \"length\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+  "api.WorkletSharedStorage.set": {
+    "code": "\"WorkletSharedStorage\" in self && \"set\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
   },
-  "api.WorkletSharedStorage.remainingBudget": {
-    "code": "\"WorkletSharedStorage\" in self && \"remainingBudget\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+  "api.WorkletSharedStorage.size": {
+    "code": "\"WorkletSharedStorage\" in self && \"size\" in WorkletSharedStorage.prototype",
+    "exposure": ["Window"]
   },
   "api.WorkletSharedStorage.values": {
     "code": "\"WorkletSharedStorage\" in self && \"values\" in WorkletSharedStorage.prototype",
-    "exposure": ["SharedStorageWorklet"]
+    "exposure": ["Window"]
   },
   "api.WritableStream": {
     "code": "\"WritableStream\" in self",
@@ -45041,10 +45206,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-hyphenate-limit-lines\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-initial-letter": {
-    "code": "bcd.testCSSProperty(\"-webkit-initial-letter\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-line-align": {
     "code": "bcd.testCSSProperty(\"-webkit-line-align\")",
     "exposure": ["Window"]
@@ -45859,6 +46020,86 @@
   },
   "css.properties.background-repeat.multiple_backgrounds": {
     "code": "bcd.testCSSProperty(\"background-repeat\", \"repeat, no-repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-block": {
+    "code": "bcd.testCSSProperty(\"background-repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-block.repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-block\", \"repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-block.space": {
+    "code": "bcd.testCSSProperty(\"background-repeat-block\", \"space\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-block.round": {
+    "code": "bcd.testCSSProperty(\"background-repeat-block\", \"round\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-block.no-repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-block\", \"no-repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-inline": {
+    "code": "bcd.testCSSProperty(\"background-repeat-inline\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-inline.repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-inline\", \"repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-inline.space": {
+    "code": "bcd.testCSSProperty(\"background-repeat-inline\", \"space\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-inline.round": {
+    "code": "bcd.testCSSProperty(\"background-repeat-inline\", \"round\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-inline.no-repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-inline\", \"no-repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-x": {
+    "code": "bcd.testCSSProperty(\"background-repeat-x\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-x.repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-x\", \"repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-x.space": {
+    "code": "bcd.testCSSProperty(\"background-repeat-x\", \"space\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-x.round": {
+    "code": "bcd.testCSSProperty(\"background-repeat-x\", \"round\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-x.no-repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-x\", \"no-repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-y": {
+    "code": "bcd.testCSSProperty(\"background-repeat-y\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-y.repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-y\", \"repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-y.space": {
+    "code": "bcd.testCSSProperty(\"background-repeat-y\", \"space\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-y.round": {
+    "code": "bcd.testCSSProperty(\"background-repeat-y\", \"round\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat-y.no-repeat": {
+    "code": "bcd.testCSSProperty(\"background-repeat-y\", \"no-repeat\")",
     "exposure": ["Window"]
   },
   "css.properties.background-size": {
@@ -47365,6 +47606,10 @@
     "code": "bcd.testCSSProperty(\"container-type\", \"inline-size\")",
     "exposure": ["Window"]
   },
+  "css.properties.container-type.scroll-state": {
+    "code": "bcd.testCSSProperty(\"container-type\", \"scroll-state\")",
+    "exposure": ["Window"]
+  },
   "css.properties.container-type.normal": {
     "code": "bcd.testCSSProperty(\"container-type\", \"normal\")",
     "exposure": ["Window"]
@@ -47831,6 +48076,14 @@
   },
   "css.properties.display.inline-grid": {
     "code": "bcd.testCSSProperty(\"display\", \"inline-grid\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.display.masonry": {
+    "code": "bcd.testCSSProperty(\"display\", \"masonry\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.display.inline-masonry": {
+    "code": "bcd.testCSSProperty(\"display\", \"inline-masonry\")",
     "exposure": ["Window"]
   },
   "css.properties.display.multi-keyword_values": {
@@ -48873,6 +49126,18 @@
     "code": "bcd.testCSSProperty(\"grid-auto-flow\")",
     "exposure": ["Window"]
   },
+  "css.properties.grid-auto-flow.row-reverse": {
+    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"row-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.grid-auto-flow.column-reverse": {
+    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"column-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.grid-auto-flow.wrap-reverse": {
+    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"wrap-reverse\")",
+    "exposure": ["Window"]
+  },
   "css.properties.grid-auto-flow.row": {
     "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"row\")",
     "exposure": ["Window"]
@@ -49071,10 +49336,6 @@
   },
   "css.properties.height.fit-content_function": {
     "code": "bcd.testCSSProperty(\"height\", \"fit-content(10px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.height.percentage": {
-    "code": "bcd.testCSSProperty(\"height\", \"percentage\")",
     "exposure": ["Window"]
   },
   "css.properties.height.size": {
@@ -49531,6 +49792,38 @@
   },
   "css.properties.line-clamp.none": {
     "code": "bcd.testCSSProperty(\"line-clamp\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.leading": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"leading\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.text": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"text\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.cap": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"cap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.ex": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"ex\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.ideographic": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"ideographic\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.ideographic-ink": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"ideographic-ink\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-fit-edge.alphabetic": {
+    "code": "bcd.testCSSProperty(\"line-fit-edge\", \"alphabetic\")",
     "exposure": ["Window"]
   },
   "css.properties.line-grid": {
@@ -50101,16 +50394,16 @@
     "code": "bcd.testCSSProperty(\"margin-trim\", \"block-start\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-trim.block-end": {
+    "code": "bcd.testCSSProperty(\"margin-trim\", \"block-end\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-trim.inline-start": {
     "code": "bcd.testCSSProperty(\"margin-trim\", \"inline-start\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-trim.inline-end": {
     "code": "bcd.testCSSProperty(\"margin-trim\", \"inline-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.margin-trim.block-end": {
-    "code": "bcd.testCSSProperty(\"margin-trim\", \"block-end\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-trim.block": {
@@ -50357,6 +50650,66 @@
     "code": "bcd.testCSSProperty(\"masonry\")",
     "exposure": ["Window"]
   },
+  "css.properties.masonry-auto-tracks": {
+    "code": "bcd.testCSSProperty(\"masonry-auto-tracks\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-direction": {
+    "code": "bcd.testCSSProperty(\"masonry-direction\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-direction.column": {
+    "code": "bcd.testCSSProperty(\"masonry-direction\", \"column\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-direction.column-reverse": {
+    "code": "bcd.testCSSProperty(\"masonry-direction\", \"column-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-direction.row": {
+    "code": "bcd.testCSSProperty(\"masonry-direction\", \"row\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-direction.row-reverse": {
+    "code": "bcd.testCSSProperty(\"masonry-direction\", \"row-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-fill": {
+    "code": "bcd.testCSSProperty(\"masonry-fill\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-fill.normal": {
+    "code": "bcd.testCSSProperty(\"masonry-fill\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-fill.reverse": {
+    "code": "bcd.testCSSProperty(\"masonry-fill\", \"reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-flow": {
+    "code": "bcd.testCSSProperty(\"masonry-flow\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-template-areas": {
+    "code": "bcd.testCSSProperty(\"masonry-template-areas\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-template-tracks": {
+    "code": "bcd.testCSSProperty(\"masonry-template-tracks\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-track": {
+    "code": "bcd.testCSSProperty(\"masonry-track\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-track-end": {
+    "code": "bcd.testCSSProperty(\"masonry-track-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.masonry-track-start": {
+    "code": "bcd.testCSSProperty(\"masonry-track-start\")",
+    "exposure": ["Window"]
+  },
   "css.properties.math-depth": {
     "code": "bcd.testCSSProperty(\"math-depth\")",
     "exposure": ["Window"]
@@ -50427,10 +50780,6 @@
   },
   "css.properties.max-height.fit-content_function": {
     "code": "bcd.testCSSProperty(\"max-height\", \"fit-content(10px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-height.percentage": {
-    "code": "bcd.testCSSProperty(\"max-height\", \"percentage\")",
     "exposure": ["Window"]
   },
   "css.properties.max-height.size": {
@@ -50509,10 +50858,6 @@
     "code": "bcd.testCSSProperty(\"max-width\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
-  "css.properties.max-width.percentage": {
-    "code": "bcd.testCSSProperty(\"max-width\", \"percentage\")",
-    "exposure": ["Window"]
-  },
   "css.properties.max-width.size": {
     "code": "bcd.testCSSProperty(\"max-width\", \"size\")",
     "exposure": ["Window"]
@@ -50583,10 +50928,6 @@
   },
   "css.properties.min-height.fit-content_function": {
     "code": "bcd.testCSSProperty(\"min-height\", \"fit-content(10px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-height.percentage": {
-    "code": "bcd.testCSSProperty(\"min-height\", \"percentage\")",
     "exposure": ["Window"]
   },
   "css.properties.min-height.size": {
@@ -50671,10 +51012,6 @@
   },
   "css.properties.min-width.fit-content_function": {
     "code": "bcd.testCSSProperty(\"min-width\", \"fit-content(10px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-width.percentage": {
-    "code": "bcd.testCSSProperty(\"min-width\", \"percentage\")",
     "exposure": ["Window"]
   },
   "css.properties.min-width.size": {
@@ -51531,6 +51868,10 @@
   },
   "css.properties.position-anchor": {
     "code": "bcd.testCSSProperty(\"position-anchor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-anchor.auto": {
+    "code": "bcd.testCSSProperty(\"position-anchor\", \"auto\")",
     "exposure": ["Window"]
   },
   "css.properties.position-area": {
@@ -52925,36 +53266,20 @@
     "code": "bcd.testCSSProperty(\"text-autospace\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.text-box": {
+    "code": "bcd.testCSSProperty(\"text-box\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.text-box.normal": {
+    "code": "bcd.testCSSProperty(\"text-box\", \"normal\")",
+    "exposure": ["Window"]
+  },
   "css.properties.text-box-edge": {
     "code": "bcd.testCSSProperty(\"text-box-edge\")",
     "exposure": ["Window"]
   },
-  "css.properties.text-box-edge.leading": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"leading\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.text": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"text\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.cap": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"cap\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.ex": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"ex\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.ideographic": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"ideographic\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.ideographic-ink": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"ideographic-ink\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-box-edge.alphabetic": {
-    "code": "bcd.testCSSProperty(\"text-box-edge\", \"alphabetic\")",
+  "css.properties.text-box-edge.auto": {
+    "code": "bcd.testCSSProperty(\"text-box-edge\", \"auto\")",
     "exposure": ["Window"]
   },
   "css.properties.text-box-trim": {
@@ -52965,16 +53290,16 @@
     "code": "bcd.testCSSProperty(\"text-box-trim\", \"none\")",
     "exposure": ["Window"]
   },
-  "css.properties.text-box-trim.start": {
-    "code": "bcd.testCSSProperty(\"text-box-trim\", \"start\")",
+  "css.properties.text-box-trim.trim-start": {
+    "code": "bcd.testCSSProperty(\"text-box-trim\", \"trim-start\")",
     "exposure": ["Window"]
   },
-  "css.properties.text-box-trim.end": {
-    "code": "bcd.testCSSProperty(\"text-box-trim\", \"end\")",
+  "css.properties.text-box-trim.trim-end": {
+    "code": "bcd.testCSSProperty(\"text-box-trim\", \"trim-end\")",
     "exposure": ["Window"]
   },
-  "css.properties.text-box-trim.both": {
-    "code": "bcd.testCSSProperty(\"text-box-trim\", \"both\")",
+  "css.properties.text-box-trim.trim-both": {
+    "code": "bcd.testCSSProperty(\"text-box-trim\", \"trim-both\")",
     "exposure": ["Window"]
   },
   "css.properties.text-combine-horizontal": {
@@ -54021,6 +54346,22 @@
     "code": "bcd.testCSSProperty(\"view-transition-class\", \"none\")",
     "exposure": ["Window"]
   },
+  "css.properties.view-transition-group": {
+    "code": "bcd.testCSSProperty(\"view-transition-group\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.view-transition-group.normal": {
+    "code": "bcd.testCSSProperty(\"view-transition-group\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.view-transition-group.nearest": {
+    "code": "bcd.testCSSProperty(\"view-transition-group\", \"nearest\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.view-transition-group.contain": {
+    "code": "bcd.testCSSProperty(\"view-transition-group\", \"contain\")",
+    "exposure": ["Window"]
+  },
   "css.properties.view-transition-name": {
     "code": "bcd.testCSSProperty(\"view-transition-name\")",
     "exposure": ["Window"]
@@ -54359,10 +54700,6 @@
   },
   "css.properties.width.fit-content_function": {
     "code": "bcd.testCSSProperty(\"width\", \"fit-content(10px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.width.percentage": {
-    "code": "bcd.testCSSProperty(\"width\", \"percentage\")",
     "exposure": ["Window"]
   },
   "css.properties.width.size": {
@@ -54817,6 +55154,14 @@
     "code": "(function () {\n  return bcd.testCSSSelector(\"::view-transition-new(*)\");\n})();\n",
     "exposure": ["Window"]
   },
+  "css.selectors.local-link": {
+    "code": "bcd.testCSSSelector(\":local-link\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.state": {
+    "code": "bcd.testCSSSelector(\":state()\")",
+    "exposure": ["Window"]
+  },
   "css.selectors.is": {
     "code": "(function () {\n  return bcd.testCSSSelector(\":is(h1)\");\n})();\n",
     "exposure": ["Window"]
@@ -54851,10 +55196,6 @@
   },
   "css.selectors.visited": {
     "code": "bcd.testCSSSelector(\":visited\")",
-    "exposure": ["Window"]
-  },
-  "css.selectors.local-link": {
-    "code": "bcd.testCSSSelector(\":local-link\")",
     "exposure": ["Window"]
   },
   "css.selectors.target": {
@@ -59935,6 +60276,10 @@
   },
   "javascript.builtins.RegExp.@@species": {
     "code": "\"Symbol\" in self && \"species\" in Symbol && \"RegExp\" in self && !!(RegExp[Symbol.species])",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.RegExp.escape": {
+    "code": "\"RegExp\" in self && \"escape\" in RegExp",
     "exposure": ["Window"]
   },
   "javascript.builtins.RegExp.input": {
