@@ -1,5 +1,5 @@
 import { runTests, formatResults } from "../../shared/test.js";
-import tests from "../../../vendor/tests.json" assert { type: "json" };
+import tests from "../../../vendor/tests.json" with { type: "json" };
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
 async function handleRequest(event: FetchEvent) {

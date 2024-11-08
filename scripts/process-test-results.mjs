@@ -29,7 +29,7 @@ for (const runtime of runtimes) {
   const { default: data } = await import(
     `../generator/runtimes/${runtime}/data.json`,
     {
-      assert: { type: "json" },
+      with: { type: "json" },
     }
   );
   runtimeVersions[runtime] = data.userAgent.split("/")[1];

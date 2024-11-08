@@ -1,7 +1,7 @@
 import type { Request as WorkerRequest } from "@cloudflare/workers-types/experimental";
 import { runTests, formatResults } from "../../shared/test.js";
-import tests from "../../../vendor/tests.json" assert { type: "json" };
-import packageJson from "./package.json" assert { type: "json" };
+import tests from "../../../vendor/tests.json" with { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 
 interface Env {
   unsafe: {

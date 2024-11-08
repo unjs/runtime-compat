@@ -1,8 +1,8 @@
 /// <reference types="@fastly/js-compute" />
 
 import { runTests, formatResults } from "../../shared/test.js";
-import tests from "../../../vendor/tests.json" assert { type: "json" };
-import packageJson from "./package.json" assert { type: "json" };
+import tests from "../../../vendor/tests.json" with { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 // eslint-disable-next-line no-undef
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
@@ -16,7 +16,10 @@ async function handleRequest(event: FetchEvent) {
     results,
     {
       name: "fastly",
-      version: packageJson.dependencies["@fastly/js-compute"].replace(/^(\^|~)/, '')
+      version: packageJson.dependencies["@fastly/js-compute"].replace(
+        /^(\^|~)/,
+        "",
+      ),
     },
     tests.__version,
   );
