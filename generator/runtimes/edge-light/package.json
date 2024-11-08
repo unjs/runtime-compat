@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "unbuild": "^2.0.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "unbuild": {
     "entries": [
@@ -30,6 +30,6 @@
     }
   },
   "dependencies": {
-    "edge-runtime": "^3.0.3"
+    "edge-runtime": "^3.0.5"
   }
 }
