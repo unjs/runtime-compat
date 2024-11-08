@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@mdn/browser-compat-data": "^5.6.14",
-    "@types/node": "^20.17.6",
+    "@types/node": "^22.9.0",
     "automd": "^0.3.12",
     "eslint": "^8.57.1",
     "eslint-config-unjs": "^0.4.1",
