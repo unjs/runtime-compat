@@ -9,7 +9,8 @@ export default unjs({
     "coverage/*",
     "**/dist/*",
     "vendor/*",
-    "tailwind.config.js",
+    "**/tailwind.config.js",
     "**/.nuxt/*",
+    "**/.output/*",
   ],
 });

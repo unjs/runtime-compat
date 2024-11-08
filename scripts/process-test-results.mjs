@@ -1,7 +1,7 @@
 // @ts-check
 import { readdir, writeFile } from "node:fs/promises";
-import bcd from "@mdn/browser-compat-data" assert { type: "json" };
-import packageJson from "../packages/runtime-compat-data/package.json" assert { type: "json" };
+import bcd from "@mdn/browser-compat-data" with { type: "json" };
+import packageJson from "../packages/runtime-compat-data/package.json" with { type: "json" };
 import { deepCreate, get } from "./traverse-utils.mjs";
 
 const runtimeDir = new URL("../generator/runtimes", import.meta.url);
@@ -26,10 +26,13 @@ const runtimeVersions = {};
 const support = {};
 for (const runtime of runtimes) {
   console.log(`Processing results for ${runtime}...`);
-  const { default: data } = await import(`../generator/runtimes/${runtime}/data.json`, {
-    assert: { type: "json" },
-  });
-  runtimeVersions[runtime] = data.userAgent.split('/')[1];
+  const { default: data } = await import(
+    `../generator/runtimes/${runtime}/data.json`,
+    {
+      with: { type: "json" },
+    }
+  );
+  runtimeVersions[runtime] = data.userAgent.split("/")[1];
   support[runtime] = new Set(getSupportedApis(data));
 }
 const union = new Set(
@@ -73,8 +76,8 @@ await writeFile(
   JSON.stringify({
     __version: {
       __package: packageJson.version,
-      ...runtimeVersions
+      ...runtimeVersions,
     },
-    ...compat
+    ...compat,
   }),
 );

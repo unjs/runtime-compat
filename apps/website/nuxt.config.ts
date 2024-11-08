@@ -3,12 +3,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src",
   css: ["~/assets/main.css"],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   app: {
     head: {
       charset: "utf8",
@@ -23,4 +25,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  compatibilityDate: "2024-11-08",
 });
