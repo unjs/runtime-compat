@@ -1,4 +1,4 @@
-/* eslint-disable yield-star-spacing */
+ 
 import { readdir } from "node:fs/promises";
 import { expect, it, describe } from "vitest";
 import data from ".." with { type: "json" };

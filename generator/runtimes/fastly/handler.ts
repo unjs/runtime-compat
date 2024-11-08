@@ -3,10 +3,10 @@
 import { runTests, formatResults } from "../../shared/test.js";
 import tests from "../../../vendor/tests.json" with { type: "json" };
 import packageJson from "./package.json" with { type: "json" };
-// eslint-disable-next-line no-undef
+ 
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
-// eslint-disable-next-line require-await
+ 
 async function handleRequest(event: FetchEvent) {
   if (event.request.method === "HEAD") {
     return new Response(undefined, { status: 200 });
