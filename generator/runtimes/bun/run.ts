@@ -1,5 +1,5 @@
 import { runTests, formatResults } from "../../shared/test.js";
-import tests from "../../../vendor/tests.json" assert { type: "json" };
+import tests from "../../../vendor/tests.json" with { type: "json" };
 
 const results = await runTests(tests);
 const data = formatResults(

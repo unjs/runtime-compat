@@ -54,10 +54,10 @@ bun install runtime-compat-data
 
 ```js
 // ESM with Import Assertions (Node.js 16+)
-import data from "runtime-compat-data" assert { type: "json" };
+import data from "runtime-compat-data" with { type: "json" };
 // ...or...
 const { default: data } = await import("runtime-compat-data", {
-  assert: { type: "json" },
+  with: { type: "json" },
 });
 // ...or...
 
@@ -77,12 +77,12 @@ const data = require("runtime-compat-data");
 For Deno or the browser, you can load the data from a CDN:
 
 ```js
-import data from "https://unpkg.com/runtime-compat-data" assert { type: "json" };
+import data from "https://unpkg.com/runtime-compat-data" with { type: "json" };
 // ...or...
 const { default: data } = await import(
   "https://unpkg.com/runtime-compat-data",
   {
-    assert: { type: "json" },
+    with: { type: "json" },
   }
 );
 ```

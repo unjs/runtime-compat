@@ -1,7 +1,7 @@
 /* eslint-disable yield-star-spacing */
 import { readdir } from "node:fs/promises";
 import { expect, it, describe } from "vitest";
-import data from ".." assert { type: "json" };
+import data from ".." with { type: "json" };
 
 function* walk(obj: any, path: string[] = []): Generator<[string[], any]> {
   for (const key in obj) {

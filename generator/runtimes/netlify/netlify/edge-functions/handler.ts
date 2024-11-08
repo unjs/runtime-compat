@@ -1,5 +1,5 @@
 import { runTests, formatResults } from "../../../../shared/test.ts";
-import tests from "../../../../../vendor/tests.json" assert { type: "json" };
+import tests from "../../../../../vendor/tests.json" with { type: "json" };
 import { alerts, gpu, storage } from "../../../../shared/features.ts";
 
 export default async function handler(request: Request) {
@@ -9,7 +9,7 @@ export default async function handler(request: Request) {
   const results = await runTests(tests, [...gpu, ...storage, ...alerts]);
   const data = formatResults(
     results,
-    { name: "netlify", version: Netlify.env.get('NETLIFY_CLI_VERSION') },
+    { name: "netlify", version: Netlify.env.get("NETLIFY_CLI_VERSION") },
     tests.__version,
   );
   return new Response(JSON.stringify(data, undefined, 2));

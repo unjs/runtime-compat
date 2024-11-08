@@ -1,5 +1,5 @@
 import { runTests, formatResults } from "../../shared/test.ts";
-import tests from "../../../vendor/tests.json" assert { type: "json" };
+import tests from "../../../vendor/tests.json" with { type: "json" };
 import { gpu } from "../../shared/features.ts";
 
 const results = await runTests(tests, gpu);
