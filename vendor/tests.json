@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.4",
+  "__version": "10.12.6",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -32,7 +32,7 @@
     "cspViolationReportBody": {
       "type": "instance",
       "callback": true,
-      "src": "// Note: the Content-Security-Policy header is already configured on this website\nif (!('ReportingObserver' in self)) {\n  return {result: false, message: 'ReportingObserver is not defined'};\n}\n\nvar timeout = setTimeout(function() {\n  callback(false);\n}, 3000);\n\n// Create the observer\nvar observer = new ReportingObserver(\n  function(reports, observer) {\n    var instance = reports.length && reports[0].body;\n    clearTimeout(timeout);\n    console.log(instance);\n    callback(instance);\n    el.remove();\n    observer.disconnect();\n  },\n  {\n    types: [\"csp-violation\"],\n    buffered: true,\n  }\n);\n\n// Start observing\nobserver.observe();\n\n// Load some \"script\" from bad-domain.awful\nvar el = document.createElement('script');\nel.src = \"//bad-domain.awful/dummy-script.js\";\ntry {\n  document.getElementById('resources').append(el);\n} catch(e) {\n  // We expect a CSP error here\n}"
+      "src": "// Note: the Content-Security-Policy header is already configured on this website\nif (!('ReportingObserver' in self)) {\n  return {result: false, message: 'ReportingObserver is not defined'};\n}\n\nvar timeout = setTimeout(function() {\n  callback(false);\n}, 3000);\n\n// Create the observer\nvar observer = new ReportingObserver(\n  function(reports, observer) {\n    var instance = reports.length && reports[0].body;\n    clearTimeout(timeout);\n    callback(instance);\n    el.remove();\n    observer.disconnect();\n  },\n  {\n    types: [\"csp-violation\"],\n    buffered: true,\n  }\n);\n\n// Start observing\nobserver.observe();\n\n// Load some \"script\" from bad-domain.awful\nvar el = document.createElement('script');\nel.src = \"//bad-domain.awful/dummy-script.js\";\ntry {\n  document.getElementById('resources').append(el);\n} catch(e) {\n  // We expect a CSP error here\n}"
     },
     "mediaStream": {
       "type": "instance",
@@ -12390,6 +12390,10 @@
     "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
     "exposure": ["Window"]
   },
+  "api.Fence.notifyEvent": {
+    "code": "\"Fence\" in self && \"notifyEvent\" in Fence.prototype",
+    "exposure": ["Window"]
+  },
   "api.Fence.reportEvent": {
     "code": "\"Fence\" in self && \"reportEvent\" in Fence.prototype",
     "exposure": ["Window"]
@@ -13879,6 +13883,10 @@
   },
   "api.GPUCanvasContext.configure": {
     "code": "\"GPUCanvasContext\" in self && \"configure\" in GPUCanvasContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUCanvasContext.getConfiguration": {
+    "code": "\"GPUCanvasContext\" in self && \"getConfiguration\" in GPUCanvasContext.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUCanvasContext.getCurrentTexture": {
@@ -16723,6 +16731,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"align\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLInputElement.alpha": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alpha\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLInputElement.alt": {
     "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alt\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -16741,6 +16753,10 @@
   },
   "api.HTMLInputElement.checkValidity": {
     "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"checkValidity\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLInputElement.colorSpace": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"colorSpace\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLInputElement.defaultChecked": {
@@ -26071,6 +26087,10 @@
     "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"fetchStart\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.PerformanceResourceTiming.finalResponseHeadersStart": {
+    "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"finalResponseHeadersStart\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.PerformanceResourceTiming.firstInterimResponseStart": {
     "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"firstInterimResponseStart\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -28688,99 +28708,99 @@
   },
   "api.RTCDataChannel": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.binaryType": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"binaryType\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.binaryType.arraybuffer_value": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  try {\n    instance.binaryType = \"arraybuffer\";\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.binaryType.blob_value": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  try {\n    instance.binaryType = \"blob\";\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.bufferedAmount": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"bufferedAmount\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.bufferedAmountLowThreshold": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"bufferedAmountLowThreshold\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.close": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"close\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.id": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"id\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.label": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"label\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.maxPacketLifeTime": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"maxPacketLifeTime\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.maxRetransmits": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"maxRetransmits\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.negotiated": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"negotiated\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.bufferedamountlow_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onbufferedamountlow\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.close_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onclose\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.closing_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onclosing\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.error_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onerror\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.message_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onmessage\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.open_event": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"onopen\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.ordered": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"ordered\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.priority": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"priority\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.protocol": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"protocol\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.readyState": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"readyState\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.reliable": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"reliable\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannel.send": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var instance = connection.createDataChannel(\"channel\");\n  return !!instance && \"send\" in instance;\n})();\n",
-    "exposure": ["Window"]
+    "exposure": ["Window", "Worker"]
   },
   "api.RTCDataChannelEvent": {
     "code": "(function () {\n  /* Firefox briefly defines RTCPeerConnection in older versions, but it is not a valid constructor until later versions. */\n  var constructor =\n    self.mozRTCPeerConnection ||\n    self.RTCPeerConnection ||\n    self.webkitRTCPeerConnection;\n  if (!constructor) {\n    return {\n      result: false,\n      message: \"(moz/webkit)RTCPeerConnection is not defined or is falsy\"\n    };\n  }\n  var connection = new constructor({ iceServers: [] });\n  if (!connection) {\n    return { result: false, message: \"connection is falsy\" };\n  }\n  var channel = connection.createDataChannel(\"channel\");\n  if (!channel) {\n    return { result: false, message: \"channel is falsy\" };\n  }\n  if (!(\"RTCDataChannelEvent\" in self)) {\n    return { result: false, message: \"RTCDataChannelEvent is not defined\" };\n  }\n  var instance = new RTCDataChannelEvent(\"datachannel\", { channel: channel });\n  return !!instance;\n})();\n",
@@ -38781,347 +38801,347 @@
   },
   "api.USBAlternateInterface": {
     "code": "\"USBAlternateInterface\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.alternateSetting": {
     "code": "\"USBAlternateInterface\" in self && \"alternateSetting\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.endpoints": {
     "code": "\"USBAlternateInterface\" in self && \"endpoints\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.interfaceClass": {
     "code": "\"USBAlternateInterface\" in self && \"interfaceClass\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.interfaceName": {
     "code": "\"USBAlternateInterface\" in self && \"interfaceName\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.interfaceProtocol": {
     "code": "\"USBAlternateInterface\" in self && \"interfaceProtocol\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.interfaceSubclass": {
     "code": "\"USBAlternateInterface\" in self && \"interfaceSubclass\" in USBAlternateInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBAlternateInterface.USBAlternateInterface": {
     "code": "bcd.testConstructor('USBAlternateInterface')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConfiguration": {
     "code": "\"USBConfiguration\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConfiguration.configurationName": {
     "code": "\"USBConfiguration\" in self && \"configurationName\" in USBConfiguration.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConfiguration.configurationValue": {
     "code": "\"USBConfiguration\" in self && \"configurationValue\" in USBConfiguration.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConfiguration.interfaces": {
     "code": "\"USBConfiguration\" in self && \"interfaces\" in USBConfiguration.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConfiguration.USBConfiguration": {
     "code": "bcd.testConstructor('USBConfiguration')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConnectionEvent": {
     "code": "\"USBConnectionEvent\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConnectionEvent.device": {
     "code": "\"USBConnectionEvent\" in self && \"device\" in USBConnectionEvent.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBConnectionEvent.USBConnectionEvent": {
     "code": "bcd.testConstructor('USBConnectionEvent')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice": {
     "code": "\"USBDevice\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.claimInterface": {
     "code": "\"USBDevice\" in self && \"claimInterface\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.clearHalt": {
     "code": "\"USBDevice\" in self && \"clearHalt\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.close": {
     "code": "\"USBDevice\" in self && \"close\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.configuration": {
     "code": "\"USBDevice\" in self && \"configuration\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.configurations": {
     "code": "\"USBDevice\" in self && \"configurations\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.controlTransferIn": {
     "code": "\"USBDevice\" in self && \"controlTransferIn\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.controlTransferOut": {
     "code": "\"USBDevice\" in self && \"controlTransferOut\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceClass": {
     "code": "\"USBDevice\" in self && \"deviceClass\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceProtocol": {
     "code": "\"USBDevice\" in self && \"deviceProtocol\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceSubclass": {
     "code": "\"USBDevice\" in self && \"deviceSubclass\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceVersionMajor": {
     "code": "\"USBDevice\" in self && \"deviceVersionMajor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceVersionMinor": {
     "code": "\"USBDevice\" in self && \"deviceVersionMinor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.deviceVersionSubminor": {
     "code": "\"USBDevice\" in self && \"deviceVersionSubminor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.forget": {
     "code": "\"USBDevice\" in self && \"forget\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.isochronousTransferIn": {
     "code": "\"USBDevice\" in self && \"isochronousTransferIn\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.isochronousTransferOut": {
     "code": "\"USBDevice\" in self && \"isochronousTransferOut\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.manufacturerName": {
     "code": "\"USBDevice\" in self && \"manufacturerName\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.open": {
     "code": "\"USBDevice\" in self && \"open\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.opened": {
     "code": "\"USBDevice\" in self && \"opened\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.productId": {
     "code": "\"USBDevice\" in self && \"productId\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.productName": {
     "code": "\"USBDevice\" in self && \"productName\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.releaseInterface": {
     "code": "\"USBDevice\" in self && \"releaseInterface\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.reset": {
     "code": "\"USBDevice\" in self && \"reset\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.selectAlternateInterface": {
     "code": "\"USBDevice\" in self && \"selectAlternateInterface\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.selectConfiguration": {
     "code": "\"USBDevice\" in self && \"selectConfiguration\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.serialNumber": {
     "code": "\"USBDevice\" in self && \"serialNumber\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.transferIn": {
     "code": "\"USBDevice\" in self && \"transferIn\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.transferOut": {
     "code": "\"USBDevice\" in self && \"transferOut\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.usbVersionMajor": {
     "code": "\"USBDevice\" in self && \"usbVersionMajor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.usbVersionMinor": {
     "code": "\"USBDevice\" in self && \"usbVersionMinor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.usbVersionSubminor": {
     "code": "\"USBDevice\" in self && \"usbVersionSubminor\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBDevice.vendorId": {
     "code": "\"USBDevice\" in self && \"vendorId\" in USBDevice.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint": {
     "code": "\"USBEndpoint\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint.direction": {
     "code": "\"USBEndpoint\" in self && \"direction\" in USBEndpoint.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint.endpointNumber": {
     "code": "\"USBEndpoint\" in self && \"endpointNumber\" in USBEndpoint.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint.packetSize": {
     "code": "\"USBEndpoint\" in self && \"packetSize\" in USBEndpoint.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint.type": {
     "code": "\"USBEndpoint\" in self && \"type\" in USBEndpoint.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBEndpoint.USBEndpoint": {
     "code": "bcd.testConstructor('USBEndpoint')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface": {
     "code": "\"USBInterface\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface.alternate": {
     "code": "\"USBInterface\" in self && \"alternate\" in USBInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface.alternates": {
     "code": "\"USBInterface\" in self && \"alternates\" in USBInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface.claimed": {
     "code": "\"USBInterface\" in self && \"claimed\" in USBInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface.interfaceNumber": {
     "code": "\"USBInterface\" in self && \"interfaceNumber\" in USBInterface.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInterface.USBInterface": {
     "code": "bcd.testConstructor('USBInterface')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInTransferResult": {
     "code": "\"USBInTransferResult\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInTransferResult.data": {
     "code": "\"USBInTransferResult\" in self && \"data\" in USBInTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInTransferResult.status": {
     "code": "\"USBInTransferResult\" in self && \"status\" in USBInTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBInTransferResult.USBInTransferResult": {
     "code": "bcd.testConstructor('USBInTransferResult')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferPacket": {
     "code": "\"USBIsochronousInTransferPacket\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferPacket.data": {
     "code": "\"USBIsochronousInTransferPacket\" in self && \"data\" in USBIsochronousInTransferPacket.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferPacket.status": {
     "code": "\"USBIsochronousInTransferPacket\" in self && \"status\" in USBIsochronousInTransferPacket.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferPacket.USBIsochronousInTransferPacket": {
     "code": "bcd.testConstructor('USBIsochronousInTransferPacket')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferResult": {
     "code": "\"USBIsochronousInTransferResult\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferResult.data": {
     "code": "\"USBIsochronousInTransferResult\" in self && \"data\" in USBIsochronousInTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferResult.packets": {
     "code": "\"USBIsochronousInTransferResult\" in self && \"packets\" in USBIsochronousInTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousInTransferResult.USBIsochronousInTransferResult": {
     "code": "bcd.testConstructor('USBIsochronousInTransferResult')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferPacket": {
     "code": "\"USBIsochronousOutTransferPacket\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferPacket.bytesWritten": {
     "code": "\"USBIsochronousOutTransferPacket\" in self && \"bytesWritten\" in USBIsochronousOutTransferPacket.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferPacket.status": {
     "code": "\"USBIsochronousOutTransferPacket\" in self && \"status\" in USBIsochronousOutTransferPacket.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferPacket.USBIsochronousOutTransferPacket": {
     "code": "bcd.testConstructor('USBIsochronousOutTransferPacket')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferResult": {
     "code": "\"USBIsochronousOutTransferResult\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferResult.packets": {
     "code": "\"USBIsochronousOutTransferResult\" in self && \"packets\" in USBIsochronousOutTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBIsochronousOutTransferResult.USBIsochronousOutTransferResult": {
     "code": "bcd.testConstructor('USBIsochronousOutTransferResult')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBOutTransferResult": {
     "code": "\"USBOutTransferResult\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBOutTransferResult.bytesWritten": {
     "code": "\"USBOutTransferResult\" in self && \"bytesWritten\" in USBOutTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBOutTransferResult.status": {
     "code": "\"USBOutTransferResult\" in self && \"status\" in USBOutTransferResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBOutTransferResult.USBOutTransferResult": {
     "code": "bcd.testConstructor('USBOutTransferResult')",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBPermissionResult": {
     "code": "\"USBPermissionResult\" in self",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.USBPermissionResult.devices": {
     "code": "\"USBPermissionResult\" in self && \"devices\" in USBPermissionResult.prototype",
-    "exposure": ["SharedWorker", "Window", "Worker"]
+    "exposure": ["Worker", "Window"]
   },
   "api.UserActivation": {
     "code": "\"UserActivation\" in self",
@@ -39367,12 +39387,20 @@
     "code": "\"VideoFrame\" in self && \"duration\" in VideoFrame.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.VideoFrame.flip": {
+    "code": "\"VideoFrame\" in self && \"flip\" in VideoFrame.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.VideoFrame.format": {
     "code": "\"VideoFrame\" in self && \"format\" in VideoFrame.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.VideoFrame.metadata": {
     "code": "\"VideoFrame\" in self && \"metadata\" in VideoFrame.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.VideoFrame.rotation": {
+    "code": "\"VideoFrame\" in self && \"rotation\" in VideoFrame.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.VideoFrame.timestamp": {
@@ -45348,6 +45376,10 @@
     "code": "\"XRSession\" in self && \"supportedFrameRates\" in XRSession.prototype",
     "exposure": ["Window"]
   },
+  "api.XRSession.trackedSources": {
+    "code": "\"XRSession\" in self && \"trackedSources\" in XRSession.prototype",
+    "exposure": ["Window"]
+  },
   "api.XRSession.updateRenderState": {
     "code": "\"XRSession\" in self && \"updateRenderState\" in XRSession.prototype",
     "exposure": ["Window"]
@@ -46432,6 +46464,10 @@
     "code": "bcd.testCSSProperty(\"appearance\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.appearance.base": {
+    "code": "bcd.testCSSProperty(\"appearance\", \"base\")",
+    "exposure": ["Window"]
+  },
   "css.properties.appearance.searchfield": {
     "code": "bcd.testCSSProperty(\"appearance\", \"searchfield\")",
     "exposure": ["Window"]
@@ -46854,18 +46890,6 @@
   },
   "css.properties.block-size": {
     "code": "bcd.testCSSProperty(\"block-size\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.block-size.stretch": {
-    "code": "bcd.testCSSProperty(\"block-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.block-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"block-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.block-size.contain": {
-    "code": "bcd.testCSSProperty(\"block-size\", \"contain\")",
     "exposure": ["Window"]
   },
   "css.properties.block-size.fit-content_function": {
@@ -50212,18 +50236,6 @@
     "code": "bcd.testCSSProperty(\"inline-size\")",
     "exposure": ["Window"]
   },
-  "css.properties.inline-size.stretch": {
-    "code": "bcd.testCSSProperty(\"inline-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inline-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"inline-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.inline-size.contain": {
-    "code": "bcd.testCSSProperty(\"inline-size\", \"contain\")",
-    "exposure": ["Window"]
-  },
   "css.properties.inline-size.fit-content_function": {
     "code": "bcd.testCSSProperty(\"inline-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
@@ -51368,6 +51380,10 @@
     "code": "bcd.testCSSProperty(\"masonry-slack\")",
     "exposure": ["Window"]
   },
+  "css.properties.masonry-slack.infinite": {
+    "code": "bcd.testCSSProperty(\"masonry-slack\", \"infinite\")",
+    "exposure": ["Window"]
+  },
   "css.properties.masonry-template-areas": {
     "code": "bcd.testCSSProperty(\"masonry-template-areas\")",
     "exposure": ["Window"]
@@ -51402,18 +51418,6 @@
   },
   "css.properties.max-block-size": {
     "code": "bcd.testCSSProperty(\"max-block-size\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-block-size.stretch": {
-    "code": "bcd.testCSSProperty(\"max-block-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-block-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"max-block-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-block-size.contain": {
-    "code": "bcd.testCSSProperty(\"max-block-size\", \"contain\")",
     "exposure": ["Window"]
   },
   "css.properties.max-block-size.fit-content_function": {
@@ -51470,18 +51474,6 @@
   },
   "css.properties.max-inline-size": {
     "code": "bcd.testCSSProperty(\"max-inline-size\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-inline-size.stretch": {
-    "code": "bcd.testCSSProperty(\"max-inline-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-inline-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"max-inline-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.max-inline-size.contain": {
-    "code": "bcd.testCSSProperty(\"max-inline-size\", \"contain\")",
     "exposure": ["Window"]
   },
   "css.properties.max-inline-size.fit-content_function": {
@@ -51552,18 +51544,6 @@
     "code": "bcd.testCSSProperty(\"min-block-size\")",
     "exposure": ["Window"]
   },
-  "css.properties.min-block-size.stretch": {
-    "code": "bcd.testCSSProperty(\"min-block-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-block-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"min-block-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-block-size.contain": {
-    "code": "bcd.testCSSProperty(\"min-block-size\", \"contain\")",
-    "exposure": ["Window"]
-  },
   "css.properties.min-block-size.fit-content_function": {
     "code": "bcd.testCSSProperty(\"min-block-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
@@ -51618,18 +51598,6 @@
   },
   "css.properties.min-inline-size": {
     "code": "bcd.testCSSProperty(\"min-inline-size\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-inline-size.stretch": {
-    "code": "bcd.testCSSProperty(\"min-inline-size\", \"stretch\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-inline-size.fit-content": {
-    "code": "bcd.testCSSProperty(\"min-inline-size\", \"fit-content\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.min-inline-size.contain": {
-    "code": "bcd.testCSSProperty(\"min-inline-size\", \"contain\")",
     "exposure": ["Window"]
   },
   "css.properties.min-inline-size.fit-content_function": {
@@ -51800,6 +51768,58 @@
     "code": "bcd.testCSSProperty(\"offset-anchor\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.offset-anchor.top": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"top\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.right": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"right\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.bottom": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"bottom\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.left": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"left\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.y-start": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"y-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.y-end": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"y-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.x-start": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"x-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.x-end": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"x-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.block-start": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"block-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.block-end": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"block-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.inline-start": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"inline-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.inline-end": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"inline-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-anchor.center": {
+    "code": "bcd.testCSSProperty(\"offset-anchor\", \"center\")",
+    "exposure": ["Window"]
+  },
   "css.properties.offset-block": {
     "code": "bcd.testCSSProperty(\"offset-block\")",
     "exposure": ["Window"]
@@ -51894,6 +51914,58 @@
   },
   "css.properties.offset-position.auto": {
     "code": "bcd.testCSSProperty(\"offset-position\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.top": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"top\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.right": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"right\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.bottom": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"bottom\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.left": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"left\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.y-start": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"y-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.y-end": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"y-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.x-start": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"x-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.x-end": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"x-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.block-start": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"block-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.block-end": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"block-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.inline-start": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"inline-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.inline-end": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"inline-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.offset-position.center": {
+    "code": "bcd.testCSSProperty(\"offset-position\", \"center\")",
     "exposure": ["Window"]
   },
   "css.properties.offset-rotate": {
@@ -54628,6 +54700,10 @@
     "code": "bcd.testCSSProperty(\"text-wrap-style\", \"pretty\")",
     "exposure": ["Window"]
   },
+  "css.properties.text-wrap-style.avoid-orphans": {
+    "code": "bcd.testCSSProperty(\"text-wrap-style\", \"avoid-orphans\")",
+    "exposure": ["Window"]
+  },
   "css.properties.timeline-scope": {
     "code": "bcd.testCSSProperty(\"timeline-scope\")",
     "exposure": ["Window"]
@@ -55032,12 +55108,12 @@
     "code": "bcd.testCSSProperty(\"view-transition-group\", \"normal\")",
     "exposure": ["Window"]
   },
-  "css.properties.view-transition-group.nearest": {
-    "code": "bcd.testCSSProperty(\"view-transition-group\", \"nearest\")",
-    "exposure": ["Window"]
-  },
   "css.properties.view-transition-group.contain": {
     "code": "bcd.testCSSProperty(\"view-transition-group\", \"contain\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.view-transition-group.nearest": {
+    "code": "bcd.testCSSProperty(\"view-transition-group\", \"nearest\")",
     "exposure": ["Window"]
   },
   "css.properties.view-transition-name": {
@@ -55712,10 +55788,6 @@
     "code": "bcd.testCSSSelector(\":nth()\")",
     "exposure": ["Window"]
   },
-  "css.selectors.highlight": {
-    "code": "(function () {\n  return bcd.testCSSSelector(\"::highlight(rainbow-color-1)\");\n})();\n",
-    "exposure": ["Window"]
-  },
   "css.selectors.nesting": {
     "code": "bcd.testCSSSelector(\"&\")",
     "exposure": ["Window"]
@@ -55740,6 +55812,10 @@
     "code": "bcd.testCSSSelector(\"::selection\")",
     "exposure": ["Window"]
   },
+  "css.selectors.search-text": {
+    "code": "bcd.testCSSSelector(\"::search-text\")",
+    "exposure": ["Window"]
+  },
   "css.selectors.target-text": {
     "code": "bcd.testCSSSelector(\"::target-text\")",
     "exposure": ["Window"]
@@ -55750,6 +55826,10 @@
   },
   "css.selectors.grammar-error": {
     "code": "bcd.testCSSSelector(\"::grammar-error\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.highlight": {
+    "code": "(function () {\n  return bcd.testCSSSelector(\"::highlight(rainbow-color-1)\");\n})();\n",
     "exposure": ["Window"]
   },
   "css.selectors.marker": {
@@ -55778,6 +55858,10 @@
   },
   "css.selectors.slotted": {
     "code": "(function () {\n  return bcd.testCSSSelector(\"::slotted(*)\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "css.selectors.has-slotted": {
+    "code": "bcd.testCSSSelector(\":has-slotted\")",
     "exposure": ["Window"]
   },
   "css.selectors.snapped": {
@@ -56118,6 +56202,10 @@
   },
   "css.selectors.cue-region": {
     "code": "bcd.testCSSSelector(\"::cue-region()\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.xr-overlay": {
+    "code": "bcd.testCSSSelector(\":xr-overlay\")",
     "exposure": ["Window"]
   },
   "css.selectors.-moz-broken": {

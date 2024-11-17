@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.4",
+  "__version": "10.12.6",
   "results": {
     ".": [
       {
@@ -28719,6 +28719,14 @@
         "result": false
       },
       {
+        "name": "api.Fence.notifyEvent",
+        "info": {
+          "code": "\"Fence\" in self && \"notifyEvent\" in Fence.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Fence.reportEvent",
         "info": {
           "code": "\"Fence\" in self && \"reportEvent\" in Fence.prototype",
@@ -31403,6 +31411,14 @@
         "name": "api.GPUCanvasContext.configure",
         "info": {
           "code": "\"GPUCanvasContext\" in self && \"configure\" in GPUCanvasContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUCanvasContext.getConfiguration",
+        "info": {
+          "code": "\"GPUCanvasContext\" in self && \"getConfiguration\" in GPUCanvasContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -37540,6 +37556,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLInputElement.alpha",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alpha\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLInputElement.alt",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alt\" in instance;\n})();\n",
@@ -37579,6 +37604,15 @@
         "name": "api.HTMLInputElement.checkValidity",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"checkValidity\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLInputElement.colorSpace",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"colorSpace\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -54592,6 +54626,15 @@
         "name": "api.PerformanceResourceTiming.fetchStart",
         "info": {
           "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"fetchStart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw TypeError: performance.getEntriesByType is not a function"
+      },
+      {
+        "name": "api.PerformanceResourceTiming.finalResponseHeadersStart",
+        "info": {
+          "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"finalResponseHeadersStart\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -76369,6 +76412,14 @@
         "result": false
       },
       {
+        "name": "api.VideoFrame.flip",
+        "info": {
+          "code": "\"VideoFrame\" in self && \"flip\" in VideoFrame.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.VideoFrame.format",
         "info": {
           "code": "\"VideoFrame\" in self && \"format\" in VideoFrame.prototype",
@@ -76380,6 +76431,14 @@
         "name": "api.VideoFrame.metadata",
         "info": {
           "code": "\"VideoFrame\" in self && \"metadata\" in VideoFrame.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.VideoFrame.rotation",
+        "info": {
+          "code": "\"VideoFrame\" in self && \"rotation\" in VideoFrame.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -85972,6 +86031,14 @@
         "result": false
       },
       {
+        "name": "api.XRSession.trackedSources",
+        "info": {
+          "code": "\"XRSession\" in self && \"trackedSources\" in XRSession.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.XRSession.updateRenderState",
         "info": {
           "code": "\"XRSession\" in self && \"updateRenderState\" in XRSession.prototype",
@@ -87226,7 +87293,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.@@asyncIterator",
@@ -87235,7 +87302,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.cancel",
@@ -87244,7 +87311,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.getReader",
@@ -87253,7 +87320,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.locked",
@@ -87262,7 +87329,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.pipeThrough",
@@ -87271,7 +87338,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.pipeTo",
@@ -87280,7 +87347,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStream.tee",
@@ -87289,7 +87356,15 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
+      },
+      {
+        "name": "api.ReadableStream.pipeThrough",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
       },
       {
         "name": "api.ReadableStream.values",
@@ -87298,16 +87373,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
-      },
-      {
-        "name": "api.Response.Response.accept_readablestream",
-        "info": {
-          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var rsPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!rsPromise) {\n    return { result: false, message: \"rsPromise is falsy\" };\n  }\n  return rsPromise.then(function (readableStream) {\n    try {\n      new Response(readableStream);\n      return true;\n    } catch (e) {\n      return { result: false, message: e.message };\n    }\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStreamDefaultReader",
@@ -87316,7 +87382,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStreamDefaultReader.cancel",
@@ -87325,7 +87391,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStreamDefaultReader.closed",
@@ -87334,7 +87400,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStreamDefaultReader.read",
@@ -87343,7 +87409,7 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       },
       {
         "name": "api.ReadableStreamDefaultReader.releaseLock",
@@ -87352,10 +87418,10 @@
           "exposure": "Window"
         },
         "result": null,
-        "message": "threw Error: No backend specified for request with url https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico. Must provide a `backend` property on the `init` object passed to either `new Request()` or `fetch`"
+        "message": "threw Error: Timed out"
       }
     ]
   },
   "extensions": [],
-  "userAgent": "!! fastly/3.22.4"
+  "userAgent": "!! fastly/3.26.0"
 }

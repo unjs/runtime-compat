@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.4",
+  "__version": "10.12.6",
   "results": {
     ".": [
       {
@@ -4744,8 +4744,8 @@
           "code": "(function () {\n  if (!(\"Iterator\" in self)) {\n    return { result: false, message: \"Iterator is not defined\" };\n  }\n  return bcd.testConstructor(\"Iterator\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "Iterator is not defined"
+        "result": null,
+        "message": "threw TypeError: Iterator cannot be constructed directly"
       },
       {
         "name": "javascript.builtins.Iterator.@@iterator",
@@ -4761,7 +4761,7 @@
           "code": "\"Iterator\" in self && \"from\" in Iterator",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.drop",
@@ -4769,7 +4769,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"drop\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.every",
@@ -4777,7 +4777,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"every\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.filter",
@@ -4785,7 +4785,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"filter\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.find",
@@ -4793,7 +4793,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"find\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.flatMap",
@@ -4801,7 +4801,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"flatMap\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.forEach",
@@ -4809,7 +4809,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"forEach\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.map",
@@ -4817,7 +4817,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"map\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.reduce",
@@ -4825,7 +4825,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"reduce\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.some",
@@ -4833,7 +4833,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"some\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.take",
@@ -4841,7 +4841,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"take\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Iterator.toArray",
@@ -4849,7 +4849,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return !!instance && \"toArray\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncIterator",
@@ -27966,8 +27966,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.close",
@@ -27975,8 +27975,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.EventSource",
@@ -27984,8 +27984,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.EventSource.options_withCredentials_parameter",
@@ -27993,8 +27993,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  function construct(options) {\n    new EventSource(\"https://mdn-bcd-collector.gooborg.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"withCredentials\", true);\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.error_event",
@@ -28002,8 +28002,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.message_event",
@@ -28011,8 +28011,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onmessage\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.open_event",
@@ -28020,8 +28020,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onopen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.readyState",
@@ -28029,8 +28029,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"readyState\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.url",
@@ -28038,8 +28038,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"url\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventSource.withCredentials",
@@ -28047,8 +28047,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"withCredentials\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw TypeError: undefined is not a constructor (evaluating 'new EventSource(\"/eventstream\")')"
+        "result": false,
+        "message": "EventSource is not defined"
       },
       {
         "name": "api.EventTarget",
@@ -28544,6 +28544,14 @@
         "name": "api.Fence.getNestedConfigs",
         "info": {
           "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Fence.notifyEvent",
+        "info": {
+          "code": "\"Fence\" in self && \"notifyEvent\" in Fence.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -31212,6 +31220,14 @@
         "name": "api.GPUCanvasContext.configure",
         "info": {
           "code": "\"GPUCanvasContext\" in self && \"configure\" in GPUCanvasContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUCanvasContext.getConfiguration",
+        "info": {
+          "code": "\"GPUCanvasContext\" in self && \"getConfiguration\" in GPUCanvasContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -37349,6 +37365,15 @@
         "message": "threw ReferenceError: Can't find variable: document"
       },
       {
+        "name": "api.HTMLInputElement.alpha",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alpha\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: Can't find variable: document"
+      },
+      {
         "name": "api.HTMLInputElement.alt",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"alt\" in instance;\n})();\n",
@@ -37388,6 +37413,15 @@
         "name": "api.HTMLInputElement.checkValidity",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"checkValidity\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: Can't find variable: document"
+      },
+      {
+        "name": "api.HTMLInputElement.colorSpace",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"colorSpace\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -54252,6 +54286,14 @@
         "name": "api.PerformanceResourceTiming.fetchStart",
         "info": {
           "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"fetchStart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceResourceTiming.finalResponseHeadersStart",
+        "info": {
+          "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"finalResponseHeadersStart\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -75957,6 +75999,14 @@
         "result": false
       },
       {
+        "name": "api.VideoFrame.flip",
+        "info": {
+          "code": "\"VideoFrame\" in self && \"flip\" in VideoFrame.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.VideoFrame.format",
         "info": {
           "code": "\"VideoFrame\" in self && \"format\" in VideoFrame.prototype",
@@ -75968,6 +76018,14 @@
         "name": "api.VideoFrame.metadata",
         "info": {
           "code": "\"VideoFrame\" in self && \"metadata\" in VideoFrame.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.VideoFrame.rotation",
+        "info": {
+          "code": "\"VideoFrame\" in self && \"rotation\" in VideoFrame.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -85560,6 +85618,14 @@
         "result": false
       },
       {
+        "name": "api.XRSession.trackedSources",
+        "info": {
+          "code": "\"XRSession\" in self && \"trackedSources\" in XRSession.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.XRSession.updateRenderState",
         "info": {
           "code": "\"XRSession\" in self && \"updateRenderState\" in XRSession.prototype",
@@ -86875,49 +86941,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.read",
+        "name": "api.ReadableStream.pipeThrough",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.values",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.pipeTo",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.locked",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86931,25 +86957,17 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.getReader",
+        "name": "api.ReadableStreamDefaultReader.closed",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
       },
       {
-        "name": "api.ReadableStream.tee",
+        "name": "api.ReadableStreamDefaultReader.read",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86963,9 +86981,25 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeThrough",
+        "name": "api.ReadableStream.tee",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.values",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.pipeTo",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86979,9 +87013,41 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.closed",
+        "name": "api.ReadableStream.locked",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.getReader",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -87006,5 +87072,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! bun/1.1.30"
+  "userAgent": "!! bun/1.1.34"
 }
