@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.6",
+  "__version": "10.12.7",
   "results": {
     ".": [
       {
@@ -9334,6 +9334,14 @@
         "result": false
       },
       {
+        "name": "api.Animation.overallProgress",
+        "info": {
+          "code": "\"Animation\" in self && \"overallProgress\" in Animation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Animation.pause",
         "info": {
           "code": "\"Animation\" in self && \"pause\" in Animation.prototype",
@@ -9377,14 +9385,6 @@
         "name": "api.Animation.playState",
         "info": {
           "code": "\"Animation\" in self && \"playState\" in Animation.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Animation.progress",
-        "info": {
-          "code": "\"Animation\" in self && \"progress\" in Animation.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -28499,6 +28499,14 @@
         "result": false
       },
       {
+        "name": "api.Fence.disableUntrustedNetwork",
+        "info": {
+          "code": "\"Fence\" in self && \"disableUntrustedNetwork\" in Fence.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Fence.getNestedConfigs",
         "info": {
           "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
@@ -32150,6 +32158,15 @@
         "name": "api.HTMLAreaElement.alt",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"alt\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLAreaElement.attributionSrc",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"attributionSrc\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -41020,6 +41037,14 @@
         "result": false
       },
       {
+        "name": "api.IdentityProvider.resolve_static",
+        "info": {
+          "code": "\"IdentityProvider\" in self && \"resolve\" in IdentityProvider",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.IdleDeadline",
         "info": {
           "code": "\"IdleDeadline\" in self",
@@ -45391,9 +45416,41 @@
         "result": false
       },
       {
+        "name": "api.MLContext.createTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"createTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.dispatch",
+        "info": {
+          "code": "\"MLContext\" in self && \"dispatch\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLContext.opSupportLimits",
         "info": {
           "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.readTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"readTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.writeTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"writeTensor\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46096,6 +46153,54 @@
         "result": false
       },
       {
+        "name": "api.MLTensor",
+        "info": {
+          "code": "\"MLTensor\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.dataType",
+        "info": {
+          "code": "\"MLTensor\" in self && \"dataType\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.destroy",
+        "info": {
+          "code": "\"MLTensor\" in self && \"destroy\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.readable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"readable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.shape",
+        "info": {
+          "code": "\"MLTensor\" in self && \"shape\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.writable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"writable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MouseEvent",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = new MouseEvent(\"click\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MouseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
@@ -46722,14 +46827,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.canTransition",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"canTransition\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.destination",
         "info": {
           "code": "\"NavigateEvent\" in self && \"destination\" in NavigateEvent.prototype",
@@ -46803,14 +46900,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.restoreScroll",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"restoreScroll\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.scroll",
         "info": {
           "code": "\"NavigateEvent\" in self && \"scroll\" in NavigateEvent.prototype",
@@ -46822,14 +46911,6 @@
         "name": "api.NavigateEvent.signal",
         "info": {
           "code": "\"NavigateEvent\" in self && \"signal\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.NavigateEvent.transitionWhile",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"transitionWhile\" in NavigateEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -51749,6 +51830,22 @@
         "result": false
       },
       {
+        "name": "api.PerformanceLongAnimationFrameTiming.paintTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"paintTime\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceLongAnimationFrameTiming.presentationTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"presentationTime\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.PerformanceLongAnimationFrameTiming.renderStart",
         "info": {
           "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"renderStart\" in PerformanceLongAnimationFrameTiming.prototype",
@@ -52091,6 +52188,22 @@
         "name": "api.PerformancePaintTiming",
         "info": {
           "code": "\"PerformancePaintTiming\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformancePaintTiming.paintTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"paintTime\" in PerformancePaintTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformancePaintTiming.presentationTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"presentationTime\" in PerformancePaintTiming.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -84653,17 +84766,9 @@
         "result": true
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
         "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256\n        },\n        true,\n        [\"encrypt\", \"decrypt\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256\n        },\n        true,\n        [\"sign\", \"verify\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -84677,9 +84782,17 @@
         "result": true
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
         "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256\n        },\n        true,\n        [\"encrypt\", \"decrypt\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256\n        },\n        true,\n        [\"sign\", \"verify\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
