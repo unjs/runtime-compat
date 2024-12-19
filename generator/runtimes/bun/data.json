@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.6",
+  "__version": "10.12.8",
   "results": {
     ".": [
       {
@@ -9334,6 +9334,14 @@
         "result": false
       },
       {
+        "name": "api.Animation.overallProgress",
+        "info": {
+          "code": "\"Animation\" in self && \"overallProgress\" in Animation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Animation.pause",
         "info": {
           "code": "\"Animation\" in self && \"pause\" in Animation.prototype",
@@ -9377,14 +9385,6 @@
         "name": "api.Animation.playState",
         "info": {
           "code": "\"Animation\" in self && \"playState\" in Animation.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.Animation.progress",
-        "info": {
-          "code": "\"Animation\" in self && \"progress\" in Animation.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -14567,6 +14567,30 @@
         "message": "threw ReferenceError: Can't find variable: CaptureController"
       },
       {
+        "name": "api.CaptureController.forwardWheel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"forwardWheel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.getSupportedZoomLevels",
+        "info": {
+          "code": "\"CaptureController\" in self && \"getSupportedZoomLevels\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.getZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CaptureController.capturedmousechange_event",
         "info": {
           "code": "\"CaptureController\" in self && \"oncapturedmousechange\" in CaptureController.prototype",
@@ -14575,9 +14599,25 @@
         "result": false
       },
       {
+        "name": "api.CaptureController.capturedzoomlevelchange_event",
+        "info": {
+          "code": "\"CaptureController\" in self && \"oncapturedzoomlevelchange\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CaptureController.setFocusBehavior",
         "info": {
           "code": "\"CaptureController\" in self && \"setFocusBehavior\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.setZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"setZoomLevel\" in CaptureController.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -28541,6 +28581,14 @@
         "result": false
       },
       {
+        "name": "api.Fence.disableUntrustedNetwork",
+        "info": {
+          "code": "\"Fence\" in self && \"disableUntrustedNetwork\" in Fence.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Fence.getNestedConfigs",
         "info": {
           "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
@@ -31604,6 +31652,15 @@
         "message": "gpu is falsy"
       },
       {
+        "name": "api.GPUDevice.adapterInfo",
+        "info": {
+          "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"adapterInfo\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "gpu is falsy"
+      },
+      {
         "name": "api.GPUDevice.createBindGroup",
         "info": {
           "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"createBindGroup\" in instance;\n  });\n})();\n",
@@ -34260,6 +34317,15 @@
         "name": "api.HTMLAreaElement.alt",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"alt\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: Can't find variable: document"
+      },
+      {
+        "name": "api.HTMLAreaElement.attributionSrc",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"attributionSrc\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -43130,6 +43196,14 @@
         "result": false
       },
       {
+        "name": "api.IdentityProvider.resolve_static",
+        "info": {
+          "code": "\"IdentityProvider\" in self && \"resolve\" in IdentityProvider",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.IdleDeadline",
         "info": {
           "code": "\"IdleDeadline\" in self",
@@ -47507,9 +47581,17 @@
         "result": false
       },
       {
-        "name": "api.MLContext.compute",
+        "name": "api.MLContext.createTensor",
         "info": {
-          "code": "\"MLContext\" in self && \"compute\" in MLContext.prototype",
+          "code": "\"MLContext\" in self && \"createTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.dispatch",
+        "info": {
+          "code": "\"MLContext\" in self && \"dispatch\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -47518,6 +47600,22 @@
         "name": "api.MLContext.opSupportLimits",
         "info": {
           "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.readTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"readTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.writeTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"writeTensor\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -48220,6 +48318,54 @@
         "result": false
       },
       {
+        "name": "api.MLTensor",
+        "info": {
+          "code": "\"MLTensor\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.dataType",
+        "info": {
+          "code": "\"MLTensor\" in self && \"dataType\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.destroy",
+        "info": {
+          "code": "\"MLTensor\" in self && \"destroy\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.readable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"readable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.shape",
+        "info": {
+          "code": "\"MLTensor\" in self && \"shape\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.writable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"writable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MouseEvent",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = new MouseEvent(\"click\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MouseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
@@ -48846,14 +48992,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.canTransition",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"canTransition\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.destination",
         "info": {
           "code": "\"NavigateEvent\" in self && \"destination\" in NavigateEvent.prototype",
@@ -48927,14 +49065,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.restoreScroll",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"restoreScroll\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.scroll",
         "info": {
           "code": "\"NavigateEvent\" in self && \"scroll\" in NavigateEvent.prototype",
@@ -48946,14 +49076,6 @@
         "name": "api.NavigateEvent.signal",
         "info": {
           "code": "\"NavigateEvent\" in self && \"signal\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.NavigateEvent.transitionWhile",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"transitionWhile\" in NavigateEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -49105,34 +49227,38 @@
       {
         "name": "api.NavigationActivation",
         "info": {
-          "code": "\"NavigationActivation\" in self",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.entry",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"entry\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"entry\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.from",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"from\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"from\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.navigationType",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"navigationType\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"navigationType\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationCurrentEntryChangeEvent",
@@ -53478,7 +53604,7 @@
           "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"clearResourceTimings\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Performance.eventCounts",
@@ -53606,7 +53732,7 @@
           "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"onresourcetimingbufferfull\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Performance.setResourceTimingBufferSize",
@@ -53614,7 +53740,7 @@
           "code": "(function () {\n  if (!(\"performance\" in self)) {\n    return { result: false, message: \"performance is not defined\" };\n  }\n  var instance = performance;\n  return !!instance && \"setResourceTimingBufferSize\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Performance.timeOrigin",
@@ -53868,6 +53994,22 @@
         "name": "api.PerformanceLongAnimationFrameTiming.firstUIEventTimestamp",
         "info": {
           "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"firstUIEventTimestamp\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceLongAnimationFrameTiming.paintTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"paintTime\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceLongAnimationFrameTiming.presentationTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"presentationTime\" in PerformanceLongAnimationFrameTiming.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -54211,6 +54353,22 @@
         "result": false
       },
       {
+        "name": "api.PerformancePaintTiming.paintTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"paintTime\" in PerformancePaintTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformancePaintTiming.presentationTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"presentationTime\" in PerformancePaintTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.PerformanceResourceTiming",
         "info": {
           "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance;\n})();\n",
@@ -54400,7 +54558,7 @@
           "code": "\"PerformanceResourceTiming\" in self && \"toJSON\" in PerformanceResourceTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceResourceTiming.transferSize",
@@ -54520,7 +54678,7 @@
           "code": "\"PerformanceServerTiming\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceServerTiming.description",
@@ -54528,7 +54686,7 @@
           "code": "\"PerformanceServerTiming\" in self && \"description\" in PerformanceServerTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceServerTiming.duration",
@@ -54536,7 +54694,7 @@
           "code": "\"PerformanceServerTiming\" in self && \"duration\" in PerformanceServerTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceServerTiming.name",
@@ -54544,7 +54702,7 @@
           "code": "\"PerformanceServerTiming\" in self && \"name\" in PerformanceServerTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceServerTiming.toJSON",
@@ -54552,7 +54710,7 @@
           "code": "\"PerformanceServerTiming\" in self && \"toJSON\" in PerformanceServerTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceTiming",
@@ -54720,7 +54878,7 @@
           "code": "\"PerformanceTiming\" in self && \"toJSON\" in PerformanceTiming.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.PerformanceTiming.unloadEventEnd",
@@ -62712,6 +62870,22 @@
         "result": false
       },
       {
+        "name": "api.Sanitizer.allowAttribute",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"allowAttribute\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.allowElement",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"allowElement\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Sanitizer.get",
         "info": {
           "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
@@ -62720,9 +62894,33 @@
         "result": false
       },
       {
-        "name": "api.Sanitizer.getUnsafe",
+        "name": "api.Sanitizer.removeAttribute",
         "info": {
-          "code": "\"Sanitizer\" in self && \"getUnsafe\" in Sanitizer.prototype",
+          "code": "\"Sanitizer\" in self && \"removeAttribute\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.removeElement",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"removeElement\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.removeUnsafe",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"removeUnsafe\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.replaceElementWithChildren",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"replaceElementWithChildren\" in Sanitizer.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -62735,6 +62933,22 @@
         },
         "result": false,
         "message": "threw ReferenceError: Can't find variable: Sanitizer"
+      },
+      {
+        "name": "api.Sanitizer.setComments",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"setComments\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.setDataAttributes",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"setDataAttributes\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.Scheduler",
@@ -86941,33 +87155,17 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.pipeThrough",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.closed",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.ReadableStreamDefaultReader.read",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.pipeTo",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86981,25 +87179,17 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.tee",
+        "name": "api.ReadableStreamDefaultReader.cancel",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
       },
       {
-        "name": "api.ReadableStream.values",
+        "name": "api.ReadableStreamDefaultReader",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.pipeTo",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeTo\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -87021,14 +87211,6 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.ReadableStream",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
@@ -87037,9 +87219,25 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.cancel",
+        "name": "api.ReadableStream.tee",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.pipeThrough",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.closed",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -87061,6 +87259,22 @@
         "result": true
       },
       {
+        "name": "api.ReadableStream.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.values",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.PerformanceObserver.PerformanceObserver.droppedEntriesCount",
         "info": {
           "code": "(function () {\n  // Using the \"completed\" variable ensures the callback isn't run multiple times\n  var completed = false;\n\n  function perfObserver(entries, observer, droppedEntriesCount) {\n    if (!completed) {\n      success(typeof droppedEntriesCount != \"undefined\");\n      completed = true;\n    }\n  }\n\n  var observer = new PerformanceObserver(perfObserver);\n  observer.observe({ type: \"resource\", buffered: true });\n\n  bcd.addCleanup(function () {\n    observer.disconnect();\n  });\n\n  return \"callback\";\n})();\n",
@@ -87072,5 +87286,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! bun/1.1.34"
+  "userAgent": "!! bun/1.1.40"
 }

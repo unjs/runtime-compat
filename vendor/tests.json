@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.6",
+  "__version": "10.12.8",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -536,6 +536,10 @@
     "code": "\"Animation\" in self && \"onremove\" in Animation.prototype",
     "exposure": ["Window"]
   },
+  "api.Animation.overallProgress": {
+    "code": "\"Animation\" in self && \"overallProgress\" in Animation.prototype",
+    "exposure": ["Window"]
+  },
   "api.Animation.pause": {
     "code": "\"Animation\" in self && \"pause\" in Animation.prototype",
     "exposure": ["Window"]
@@ -558,10 +562,6 @@
   },
   "api.Animation.playState": {
     "code": "\"Animation\" in self && \"playState\" in Animation.prototype",
-    "exposure": ["Window"]
-  },
-  "api.Animation.progress": {
-    "code": "\"Animation\" in self && \"progress\" in Animation.prototype",
     "exposure": ["Window"]
   },
   "api.Animation.ready": {
@@ -3531,12 +3531,32 @@
     "code": "bcd.testConstructor('CaptureController')",
     "exposure": ["Window"]
   },
+  "api.CaptureController.forwardWheel": {
+    "code": "\"CaptureController\" in self && \"forwardWheel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.getSupportedZoomLevels": {
+    "code": "\"CaptureController\" in self && \"getSupportedZoomLevels\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.getZoomLevel": {
+    "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
   "api.CaptureController.capturedmousechange_event": {
     "code": "\"CaptureController\" in self && \"oncapturedmousechange\" in CaptureController.prototype",
     "exposure": ["Window"]
   },
+  "api.CaptureController.capturedzoomlevelchange_event": {
+    "code": "\"CaptureController\" in self && \"oncapturedzoomlevelchange\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
   "api.CaptureController.setFocusBehavior": {
     "code": "\"CaptureController\" in self && \"setFocusBehavior\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.setZoomLevel": {
+    "code": "\"CaptureController\" in self && \"setZoomLevel\" in CaptureController.prototype",
     "exposure": ["Window"]
   },
   "api.CapturedMouseEvent": {
@@ -12386,6 +12406,10 @@
     "exposure": ["Window"]
   },
   "api.Fence": { "code": "\"Fence\" in self", "exposure": ["Window"] },
+  "api.Fence.disableUntrustedNetwork": {
+    "code": "\"Fence\" in self && \"disableUntrustedNetwork\" in Fence.prototype",
+    "exposure": ["Window"]
+  },
   "api.Fence.getNestedConfigs": {
     "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
     "exposure": ["Window"]
@@ -14061,6 +14085,10 @@
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.GPUDevice.adapterInfo": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"adapterInfo\" in instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.GPUDevice.createBindGroup": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"createBindGroup\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -15313,6 +15341,10 @@
   },
   "api.HTMLAreaElement.alt": {
     "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"alt\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLAreaElement.attributionSrc": {
+    "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"attributionSrc\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLAreaElement.coords": {
@@ -19331,6 +19363,10 @@
     "code": "\"IdentityProvider\" in self && \"getUserInfo\" in IdentityProvider",
     "exposure": ["Window"]
   },
+  "api.IdentityProvider.resolve_static": {
+    "code": "\"IdentityProvider\" in self && \"resolve\" in IdentityProvider",
+    "exposure": ["Window"]
+  },
   "api.IdleDeadline": {
     "code": "\"IdleDeadline\" in self",
     "exposure": ["Window"]
@@ -21944,12 +21980,24 @@
     "code": "\"MLContext\" in self",
     "exposure": ["Window", "Worker"]
   },
-  "api.MLContext.compute": {
-    "code": "\"MLContext\" in self && \"compute\" in MLContext.prototype",
+  "api.MLContext.createTensor": {
+    "code": "\"MLContext\" in self && \"createTensor\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.dispatch": {
+    "code": "\"MLContext\" in self && \"dispatch\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLContext.opSupportLimits": {
     "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.readTensor": {
+    "code": "\"MLContext\" in self && \"readTensor\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.writeTensor": {
+    "code": "\"MLContext\" in self && \"writeTensor\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraph": {
@@ -22298,6 +22346,30 @@
   },
   "api.MLOperand.shape": {
     "code": "\"MLOperand\" in self && \"shape\" in MLOperand.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor": {
+    "code": "\"MLTensor\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.dataType": {
+    "code": "\"MLTensor\" in self && \"dataType\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.destroy": {
+    "code": "\"MLTensor\" in self && \"destroy\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.readable": {
+    "code": "\"MLTensor\" in self && \"readable\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.shape": {
+    "code": "\"MLTensor\" in self && \"shape\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.writable": {
+    "code": "\"MLTensor\" in self && \"writable\" in MLTensor.prototype",
     "exposure": ["Window", "Worker"]
   },
   "webassembly.api.Module": {
@@ -22690,10 +22762,6 @@
     "code": "\"NavigateEvent\" in self && \"canIntercept\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.NavigateEvent.canTransition": {
-    "code": "\"NavigateEvent\" in self && \"canTransition\" in NavigateEvent.prototype",
-    "exposure": ["Window"]
-  },
   "api.NavigateEvent.destination": {
     "code": "\"NavigateEvent\" in self && \"destination\" in NavigateEvent.prototype",
     "exposure": ["Window"]
@@ -22730,20 +22798,12 @@
     "code": "\"NavigateEvent\" in self && \"navigationType\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.NavigateEvent.restoreScroll": {
-    "code": "\"NavigateEvent\" in self && \"restoreScroll\" in NavigateEvent.prototype",
-    "exposure": ["Window"]
-  },
   "api.NavigateEvent.scroll": {
     "code": "\"NavigateEvent\" in self && \"scroll\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
   "api.NavigateEvent.signal": {
     "code": "\"NavigateEvent\" in self && \"signal\" in NavigateEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.NavigateEvent.transitionWhile": {
-    "code": "\"NavigateEvent\" in self && \"transitionWhile\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
   "api.NavigateEvent.userInitiated": {
@@ -22819,19 +22879,19 @@
     "exposure": ["Window"]
   },
   "api.NavigationActivation": {
-    "code": "\"NavigationActivation\" in self",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.entry": {
-    "code": "\"NavigationActivation\" in self && \"entry\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"entry\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.from": {
-    "code": "\"NavigationActivation\" in self && \"from\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"from\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.navigationType": {
-    "code": "\"NavigationActivation\" in self && \"navigationType\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"navigationType\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationCurrentEntryChangeEvent": {
@@ -25875,6 +25935,14 @@
     "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"firstUIEventTimestamp\" in PerformanceLongAnimationFrameTiming.prototype",
     "exposure": ["Window"]
   },
+  "api.PerformanceLongAnimationFrameTiming.paintTime": {
+    "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"paintTime\" in PerformanceLongAnimationFrameTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformanceLongAnimationFrameTiming.presentationTime": {
+    "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"presentationTime\" in PerformanceLongAnimationFrameTiming.prototype",
+    "exposure": ["Window"]
+  },
   "api.PerformanceLongAnimationFrameTiming.renderStart": {
     "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"renderStart\" in PerformanceLongAnimationFrameTiming.prototype",
     "exposure": ["Window"]
@@ -26045,6 +26113,14 @@
   },
   "api.PerformancePaintTiming": {
     "code": "\"PerformancePaintTiming\" in self",
+    "exposure": ["Window"]
+  },
+  "api.PerformancePaintTiming.paintTime": {
+    "code": "\"PerformancePaintTiming\" in self && \"paintTime\" in PerformancePaintTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformancePaintTiming.presentationTime": {
+    "code": "\"PerformancePaintTiming\" in self && \"presentationTime\" in PerformancePaintTiming.prototype",
     "exposure": ["Window"]
   },
   "api.PerformanceResourceTiming": {
@@ -31297,16 +31373,44 @@
     "code": "\"Sanitizer\" in self",
     "exposure": ["Window", "Worker"]
   },
+  "api.Sanitizer.allowAttribute": {
+    "code": "\"Sanitizer\" in self && \"allowAttribute\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.allowElement": {
+    "code": "\"Sanitizer\" in self && \"allowElement\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.Sanitizer.get": {
     "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
-  "api.Sanitizer.getUnsafe": {
-    "code": "\"Sanitizer\" in self && \"getUnsafe\" in Sanitizer.prototype",
+  "api.Sanitizer.removeAttribute": {
+    "code": "\"Sanitizer\" in self && \"removeAttribute\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.removeElement": {
+    "code": "\"Sanitizer\" in self && \"removeElement\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.removeUnsafe": {
+    "code": "\"Sanitizer\" in self && \"removeUnsafe\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.replaceElementWithChildren": {
+    "code": "\"Sanitizer\" in self && \"replaceElementWithChildren\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.Sanitizer.Sanitizer": {
     "code": "bcd.testConstructor('Sanitizer')",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.setComments": {
+    "code": "\"Sanitizer\" in self && \"setComments\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.setDataAttributes": {
+    "code": "\"Sanitizer\" in self && \"setDataAttributes\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.Scheduler": {
@@ -32322,6 +32426,10 @@
   },
   "api.SharedStorageWorkletGlobalScope": {
     "code": "\"SharedStorageWorkletGlobalScope\" in self",
+    "exposure": ["SharedStorageWorklet"]
+  },
+  "api.SharedStorageWorkletGlobalScope.interestGroups": {
+    "code": "\"interestGroups\" in self",
     "exposure": ["SharedStorageWorklet"]
   },
   "api.SharedStorageWorkletGlobalScope.privateAggregation": {
@@ -45956,26 +46064,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-mask-box-image\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-mask-box-image-outset": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-outset\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-repeat": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-repeat\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-slice": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-slice\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-source": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-source\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-width": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-width\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-mask-composite": {
     "code": "bcd.testCSSProperty(\"-webkit-mask-composite\")",
     "exposure": ["Window"]
@@ -46040,10 +46128,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-text-combine\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-text-decoration-skip": {
-    "code": "bcd.testCSSProperty(\"-webkit-text-decoration-skip\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-text-decorations-in-effect": {
     "code": "bcd.testCSSProperty(\"-webkit-text-decorations-in-effect\")",
     "exposure": ["Window"]
@@ -46090,10 +46174,6 @@
   },
   "css.properties.-webkit-user-drag": {
     "code": "bcd.testCSSProperty(\"-webkit-user-drag\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-user-modify": {
-    "code": "bcd.testCSSProperty(\"-webkit-user-modify\")",
     "exposure": ["Window"]
   },
   "css.properties.accent-color": {
@@ -46944,12 +47024,16 @@
     "code": "bcd.testCSSProperty(\"block-step-insert\")",
     "exposure": ["Window"]
   },
-  "css.properties.block-step-insert.margin": {
-    "code": "bcd.testCSSProperty(\"block-step-insert\", \"margin\")",
+  "css.properties.block-step-insert.margin-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"margin-box\")",
     "exposure": ["Window"]
   },
-  "css.properties.block-step-insert.padding": {
-    "code": "bcd.testCSSProperty(\"block-step-insert\", \"padding\")",
+  "css.properties.block-step-insert.padding-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"padding-box\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.block-step-insert.content-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"content-box\")",
     "exposure": ["Window"]
   },
   "css.properties.block-step-round": {
@@ -48618,10 +48702,6 @@
   },
   "css.properties.cursor.-webkit-zoom": {
     "code": "bcd.testCSSProperty(\"cursor\", \"-webkit-zoom\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.cursor.inherit": {
-    "code": "bcd.testCSSProperty(\"cursor\", \"inherit\")",
     "exposure": ["Window"]
   },
   "css.properties.custom-property": {
@@ -55544,10 +55624,6 @@
     "code": "bcd.testCSSProperty(\"word-spacing\", \"50%\")",
     "exposure": ["Window"]
   },
-  "css.properties.word-wrap": {
-    "code": "bcd.testCSSProperty(\"word-wrap\")",
-    "exposure": ["Window"]
-  },
   "css.properties.wrap-after": {
     "code": "bcd.testCSSProperty(\"wrap-after\")",
     "exposure": ["Window"]
@@ -55788,6 +55864,10 @@
     "code": "bcd.testCSSSelector(\":nth()\")",
     "exposure": ["Window"]
   },
+  "css.selectors.column": {
+    "code": "(function () {\n  return bcd.testCSSSelector(\"div || span\");\n})();\n",
+    "exposure": ["Window"]
+  },
   "css.selectors.nesting": {
     "code": "bcd.testCSSSelector(\"&\")",
     "exposure": ["Window"]
@@ -55798,6 +55878,14 @@
   },
   "css.selectors.scroll-marker": {
     "code": "bcd.testCSSSelector(\"::scroll-marker\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.target-current": {
+    "code": "bcd.testCSSSelector(\":target-current\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.scroll-button": {
+    "code": "bcd.testCSSSelector(\"::scroll-button()\")",
     "exposure": ["Window"]
   },
   "css.selectors.nth-fragment": {
@@ -56036,10 +56124,6 @@
     "code": "bcd.testCSSSelector(\":open\")",
     "exposure": ["Window"]
   },
-  "css.selectors.closed": {
-    "code": "bcd.testCSSSelector(\":closed\")",
-    "exposure": ["Window"]
-  },
   "css.selectors.modal": {
     "code": "bcd.testCSSSelector(\":modal\")",
     "exposure": ["Window"]
@@ -56182,10 +56266,6 @@
   },
   "css.selectors.subsequent-sibling": {
     "code": "(function () {\n  return bcd.testCSSSelector(\"div ~ span\");\n})();\n",
-    "exposure": ["Window"]
-  },
-  "css.selectors.column": {
-    "code": "(function () {\n  return bcd.testCSSSelector(\"div || span\");\n})();\n",
     "exposure": ["Window"]
   },
   "css.selectors.nth-col": {
@@ -57038,10 +57118,6 @@
   },
   "html.elements.area.referrerpolicy": {
     "code": "(function() {\n  var instance = document.createElement('area');\n  return !!instance && 'referrerPolicy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.area.tabindex": {
-    "code": "(function() {\n  var instance = document.createElement('area');\n  return !!instance && 'tabIndex' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.area.alt": {
@@ -58666,10 +58742,6 @@
   },
   "html.elements.object.codetype": {
     "code": "(function() {\n  var instance = document.createElement('object');\n  return !!instance && 'codeType' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.object.tabindex": {
-    "code": "(function() {\n  var instance = document.createElement('object');\n  return !!instance && 'tabIndex' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.object.usemap": {
