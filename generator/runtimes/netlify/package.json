@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "start-server-and-test": "^2.0.8",
-    "netlify-cli": "^17.37.2"
+    "netlify-cli": "^18.0.3"
   },
   "keywords": [],
   "author": "",
