@@ -3,7 +3,7 @@
   "type": "module",
   "dependencies": {
     "unbuild": "^2.0.0",
-    "start-server-and-test": "^2.0.8"
+    "start-server-and-test": "^2.0.10"
   },
   "scripts": {
     "build": "unbuild",
