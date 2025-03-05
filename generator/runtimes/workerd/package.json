@@ -16,11 +16,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241106.0",
+    "@cloudflare/workers-types": "^4.20250303.0",
     "unbuild": "^2.0.0",
-    "typescript": "^5.6.3",
-    "workerd": "^1.20241106.1",
-    "start-server-and-test": "^2.0.8"
+    "typescript": "^5.8.2",
+    "workerd": "^1.20250303.0",
+    "start-server-and-test": "^2.0.10"
   },
   "unbuild": {
     "entries": [

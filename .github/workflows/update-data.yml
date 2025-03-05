@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -42,7 +42,7 @@ jobs:
         with:
           repository: awslabs/llrt
           latest: true
-          fileName: llrt-linux-x64.zip 
+          fileName: llrt-linux-x64.zip
           out-file-path: downloads
           # Manually unzip because this seems to corrupt the binary
           extract: false
@@ -101,6 +101,6 @@ jobs:
           body: |
             Updates the runtime compat data.
             Runtime versions:
-            
+
             ${{ steps.get-versions.outputs.versions }}
           base: main
