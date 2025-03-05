@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.6",
+  "__version": "10.12.10",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -536,6 +536,10 @@
     "code": "\"Animation\" in self && \"onremove\" in Animation.prototype",
     "exposure": ["Window"]
   },
+  "api.Animation.overallProgress": {
+    "code": "\"Animation\" in self && \"overallProgress\" in Animation.prototype",
+    "exposure": ["Window"]
+  },
   "api.Animation.pause": {
     "code": "\"Animation\" in self && \"pause\" in Animation.prototype",
     "exposure": ["Window"]
@@ -560,10 +564,6 @@
     "code": "\"Animation\" in self && \"playState\" in Animation.prototype",
     "exposure": ["Window"]
   },
-  "api.Animation.progress": {
-    "code": "\"Animation\" in self && \"progress\" in Animation.prototype",
-    "exposure": ["Window"]
-  },
   "api.Animation.ready": {
     "code": "\"Animation\" in self && \"ready\" in Animation.prototype",
     "exposure": ["Window"]
@@ -582,6 +582,10 @@
   },
   "api.Animation.timeline": {
     "code": "\"Animation\" in self && \"timeline\" in Animation.prototype",
+    "exposure": ["Window"]
+  },
+  "api.Animation.trigger": {
+    "code": "\"Animation\" in self && \"trigger\" in Animation.prototype",
     "exposure": ["Window"]
   },
   "api.Animation.updatePlaybackRate": {
@@ -698,6 +702,38 @@
   },
   "api.AnimationTimeline.play": {
     "code": "\"AnimationTimeline\" in self && \"play\" in AnimationTimeline.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger": {
+    "code": "\"AnimationTrigger\" in self",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.AnimationTrigger": {
+    "code": "bcd.testConstructor('AnimationTrigger')",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.exitRangeEnd": {
+    "code": "\"AnimationTrigger\" in self && \"exitRangeEnd\" in AnimationTrigger.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.exitRangeStart": {
+    "code": "\"AnimationTrigger\" in self && \"exitRangeStart\" in AnimationTrigger.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.rangeEnd": {
+    "code": "\"AnimationTrigger\" in self && \"rangeEnd\" in AnimationTrigger.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.rangeStart": {
+    "code": "\"AnimationTrigger\" in self && \"rangeStart\" in AnimationTrigger.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.timeline": {
+    "code": "\"AnimationTrigger\" in self && \"timeline\" in AnimationTrigger.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AnimationTrigger.type": {
+    "code": "\"AnimationTrigger\" in self && \"type\" in AnimationTrigger.prototype",
     "exposure": ["Window"]
   },
   "api.AnimationWorkletGlobalScope": {
@@ -3531,8 +3567,36 @@
     "code": "bcd.testConstructor('CaptureController')",
     "exposure": ["Window"]
   },
+  "api.CaptureController.decreaseZoomLevel": {
+    "code": "\"CaptureController\" in self && \"decreaseZoomLevel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.forwardWheel": {
+    "code": "\"CaptureController\" in self && \"forwardWheel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.getSupportedZoomLevels": {
+    "code": "\"CaptureController\" in self && \"getSupportedZoomLevels\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.getZoomLevel": {
+    "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.increaseZoomLevel": {
+    "code": "\"CaptureController\" in self && \"increaseZoomLevel\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
   "api.CaptureController.capturedmousechange_event": {
     "code": "\"CaptureController\" in self && \"oncapturedmousechange\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.zoomlevelchange_event": {
+    "code": "\"CaptureController\" in self && \"onzoomlevelchange\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.resetZoomLevel": {
+    "code": "\"CaptureController\" in self && \"resetZoomLevel\" in CaptureController.prototype",
     "exposure": ["Window"]
   },
   "api.CaptureController.setFocusBehavior": {
@@ -5615,6 +5679,10 @@
     "code": "\"CSSFontFaceDescriptors\" in self && \"font-named-instance\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
   },
+  "api.CSSFontFaceDescriptors.font-size": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"font-size\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSFontFaceDescriptors.font-stretch": {
     "code": "\"CSSFontFaceDescriptors\" in self && \"font-stretch\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
@@ -5655,6 +5723,10 @@
     "code": "\"CSSFontFaceDescriptors\" in self && \"fontNamedInstance\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
   },
+  "api.CSSFontFaceDescriptors.fontSize": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"fontSize\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSFontFaceDescriptors.fontStretch": {
     "code": "\"CSSFontFaceDescriptors\" in self && \"fontStretch\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
@@ -5683,8 +5755,48 @@
     "code": "\"CSSFontFaceDescriptors\" in self && \"lineGapOverride\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
   },
+  "api.CSSFontFaceDescriptors.size-adjust": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"size-adjust\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.sizeAdjust": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"sizeAdjust\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
   "api.CSSFontFaceDescriptors.src": {
     "code": "\"CSSFontFaceDescriptors\" in self && \"src\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.subscript-position-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"subscript-position-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.subscript-size-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"subscript-size-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.subscriptPositionOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"subscriptPositionOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.subscriptSizeOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"subscriptSizeOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.superscript-position-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"superscript-position-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.superscript-size-override": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"superscript-size-override\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.superscriptPositionOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"superscriptPositionOverride\" in CSSFontFaceDescriptors.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFontFaceDescriptors.superscriptSizeOverride": {
+    "code": "\"CSSFontFaceDescriptors\" in self && \"superscriptSizeOverride\" in CSSFontFaceDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSFontFaceDescriptors.unicode-range": {
@@ -5828,6 +5940,22 @@
   },
   "api.CSSFontPaletteValuesRule.overrideColors": {
     "code": "\"CSSFontPaletteValuesRule\" in self && \"overrideColors\" in CSSFontPaletteValuesRule.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFunctionDeclarations": {
+    "code": "\"CSSFunctionDeclarations\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSFunctionDeclarations.style": {
+    "code": "\"CSSFunctionDeclarations\" in self && \"style\" in CSSFunctionDeclarations.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CSSFunctionDescriptors": {
+    "code": "\"CSSFunctionDescriptors\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CSSFunctionDescriptors.result": {
+    "code": "\"CSSFunctionDescriptors\" in self && \"result\" in CSSFunctionDescriptors.prototype",
     "exposure": ["Window"]
   },
   "api.CSSFunctionRule": {
@@ -8730,6 +8858,10 @@
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"measureText\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Document.moveBefore": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Document.mozSetImageElement": {
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"mozSetImageElement\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -8984,6 +9116,10 @@
   },
   "api.DocumentFragment.lastElementChild": {
     "code": "(function () {\n  if (!(\"createDocumentFragment\" in document)) {\n    return {\n      result: false,\n      message: \"document.createDocumentFragment is not defined\"\n    };\n  }\n  var instance = document.createDocumentFragment();\n  return !!instance && \"lastElementChild\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.DocumentFragment.moveBefore": {
+    "code": "(function () {\n  if (!(\"createDocumentFragment\" in document)) {\n    return {\n      result: false,\n      message: \"document.createDocumentFragment is not defined\"\n    };\n  }\n  var instance = document.createDocumentFragment();\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.DocumentFragment.prepend": {
@@ -10485,6 +10621,10 @@
   },
   "api.Element.matches": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"matches\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.moveBefore": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.namespaceURI": {
@@ -12386,6 +12526,10 @@
     "exposure": ["Window"]
   },
   "api.Fence": { "code": "\"Fence\" in self", "exposure": ["Window"] },
+  "api.Fence.disableUntrustedNetwork": {
+    "code": "\"Fence\" in self && \"disableUntrustedNetwork\" in Fence.prototype",
+    "exposure": ["Window"]
+  },
   "api.Fence.getNestedConfigs": {
     "code": "\"Fence\" in self && \"getNestedConfigs\" in Fence.prototype",
     "exposure": ["Window"]
@@ -12762,6 +12906,26 @@
   "api.FileSystemHandle.requestPermission": {
     "code": "\"FileSystemHandle\" in self && \"requestPermission\" in FileSystemHandle.prototype",
     "exposure": ["Window", "Worker"]
+  },
+  "api.FileSystemObserver": {
+    "code": "\"FileSystemObserver\" in self",
+    "exposure": ["SharedWorker", "Window", "Worker"]
+  },
+  "api.FileSystemObserver.disconnect": {
+    "code": "\"FileSystemObserver\" in self && \"disconnect\" in FileSystemObserver.prototype",
+    "exposure": ["SharedWorker", "Window", "Worker"]
+  },
+  "api.FileSystemObserver.FileSystemObserver": {
+    "code": "bcd.testConstructor('FileSystemObserver')",
+    "exposure": ["SharedWorker", "Window", "Worker"]
+  },
+  "api.FileSystemObserver.observe": {
+    "code": "\"FileSystemObserver\" in self && \"observe\" in FileSystemObserver.prototype",
+    "exposure": ["SharedWorker", "Window", "Worker"]
+  },
+  "api.FileSystemObserver.unobserve": {
+    "code": "\"FileSystemObserver\" in self && \"unobserve\" in FileSystemObserver.prototype",
+    "exposure": ["SharedWorker", "Window", "Worker"]
   },
   "api.FileSystemSync": {
     "code": "(function () {\n  if ((!\"webkitRequestFileSystemSync\") in self) {\n    return {\n      result: false,\n      message: \"webkitRequestFileSystemSync is not defined\"\n    };\n  }\n  var instance = self.webkitRequestFileSystemSync(\n    TEMPORARY,\n    8 * 1024 /* 8KB */\n  );\n  return !!instance;\n})();\n",
@@ -13817,6 +13981,14 @@
     "code": "\"GPUAdapterInfo\" in self && \"device\" in GPUAdapterInfo.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.GPUAdapterInfo.subgroupMaxSize": {
+    "code": "\"GPUAdapterInfo\" in self && \"subgroupMaxSize\" in GPUAdapterInfo.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUAdapterInfo.subgroupMinSize": {
+    "code": "\"GPUAdapterInfo\" in self && \"subgroupMinSize\" in GPUAdapterInfo.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.GPUAdapterInfo.vendor": {
     "code": "\"GPUAdapterInfo\" in self && \"vendor\" in GPUAdapterInfo.prototype",
     "exposure": ["Window", "Worker"]
@@ -14059,6 +14231,10 @@
   },
   "api.GPUDevice": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUDevice.adapterInfo": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var promise = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"adapterInfo\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUDevice.createBindGroup": {
@@ -15091,6 +15267,10 @@
     "code": "\"HighlightRegistry\" in self && \"has\" in HighlightRegistry.prototype",
     "exposure": ["Window"]
   },
+  "api.HighlightRegistry.highlightsFromPoint": {
+    "code": "\"HighlightRegistry\" in self && \"highlightsFromPoint\" in HighlightRegistry.prototype",
+    "exposure": ["Window"]
+  },
   "api.HighlightRegistry.keys": {
     "code": "\"HighlightRegistry\" in self && \"keys\" in HighlightRegistry.prototype",
     "exposure": ["Window"]
@@ -15313,6 +15493,10 @@
   },
   "api.HTMLAreaElement.alt": {
     "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"alt\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLAreaElement.attributionSrc": {
+    "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"attributionSrc\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLAreaElement.coords": {
@@ -15839,12 +16023,20 @@
     "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"close\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLDialogElement.closedBy": {
+    "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"closedBy\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLDialogElement.HTMLDialogElement": {
     "code": "bcd.testConstructor('HTMLDialogElement')",
     "exposure": ["Window"]
   },
   "api.HTMLDialogElement.open": {
     "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"open\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLDialogElement.requestClose": {
+    "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"requestClose\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLDialogElement.returnValue": {
@@ -19331,6 +19523,10 @@
     "code": "\"IdentityProvider\" in self && \"getUserInfo\" in IdentityProvider",
     "exposure": ["Window"]
   },
+  "api.IdentityProvider.resolve_static": {
+    "code": "\"IdentityProvider\" in self && \"resolve\" in IdentityProvider",
+    "exposure": ["Window"]
+  },
   "api.IdleDeadline": {
     "code": "\"IdleDeadline\" in self",
     "exposure": ["Window"]
@@ -19477,7 +19673,17 @@
     "resources": ["image-black", "image-black"]
   },
   "api.ImageData.ImageData.settings_parameter": {
-    "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(16, 16, { colorSpace: \"display-p3\" });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
+    "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    colorSpace: \"display-p3\"\n  });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
+    "exposure": ["Window", "Worker"],
+    "resources": ["image-black"]
+  },
+  "api.ImageData.ImageData.settings_parameter.colorSpace_option": {
+    "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    colorSpace: \"display-p3\"\n  });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
+    "exposure": ["Window", "Worker"],
+    "resources": ["image-black"]
+  },
+  "api.ImageData.ImageData.settings_parameter.desynchronized_option": {
+    "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    desynchronized: true\n  });\n  return instance.desynchronized == true;\n})();\n",
     "exposure": ["Window", "Worker"],
     "resources": ["image-black"]
   },
@@ -20372,26 +20578,29 @@
     "code": "(function () {\n  var instance = location;\n  if (!(\"toString\" in instance)) {\n    return { result: false, message: \"toString is not defined\" };\n  }\n  return instance.toString() == instance.href;\n})();\n",
     "exposure": ["Window"]
   },
-  "api.Lock": { "code": "\"Lock\" in self", "exposure": ["Window", "Worker"] },
+  "api.Lock": {
+    "code": "\"Lock\" in self",
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
+  },
   "api.Lock.mode": {
     "code": "\"Lock\" in self && \"mode\" in Lock.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
   },
   "api.Lock.name": {
     "code": "\"Lock\" in self && \"name\" in Lock.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
   },
   "api.LockManager": {
     "code": "\"LockManager\" in self",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
   },
   "api.LockManager.query": {
     "code": "\"LockManager\" in self && \"query\" in LockManager.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
   },
   "api.LockManager.request": {
     "code": "\"LockManager\" in self && \"request\" in LockManager.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window", "Worker", "SharedStorageWorklet"]
   },
   "api.Magnetometer": {
     "code": "\"Magnetometer\" in self",
@@ -21944,16 +22153,40 @@
     "code": "\"MLContext\" in self",
     "exposure": ["Window", "Worker"]
   },
-  "api.MLContext.compute": {
-    "code": "\"MLContext\" in self && \"compute\" in MLContext.prototype",
+  "api.MLContext.createTensor": {
+    "code": "\"MLContext\" in self && \"createTensor\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.destroy": {
+    "code": "\"MLContext\" in self && \"destroy\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.dispatch": {
+    "code": "\"MLContext\" in self && \"dispatch\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.lost": {
+    "code": "\"MLContext\" in self && \"lost\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLContext.opSupportLimits": {
     "code": "\"MLContext\" in self && \"opSupportLimits\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLContext.readTensor": {
+    "code": "\"MLContext\" in self && \"readTensor\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.writeTensor": {
+    "code": "\"MLContext\" in self && \"writeTensor\" in MLContext.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraph": {
     "code": "\"MLGraph\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraph.destroy": {
+    "code": "\"MLGraph\" in self && \"destroy\" in MLGraph.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder": {
@@ -22298,6 +22531,30 @@
   },
   "api.MLOperand.shape": {
     "code": "\"MLOperand\" in self && \"shape\" in MLOperand.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor": {
+    "code": "\"MLTensor\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.dataType": {
+    "code": "\"MLTensor\" in self && \"dataType\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.destroy": {
+    "code": "\"MLTensor\" in self && \"destroy\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.readable": {
+    "code": "\"MLTensor\" in self && \"readable\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.shape": {
+    "code": "\"MLTensor\" in self && \"shape\" in MLTensor.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLTensor.writable": {
+    "code": "\"MLTensor\" in self && \"writable\" in MLTensor.prototype",
     "exposure": ["Window", "Worker"]
   },
   "webassembly.api.Module": {
@@ -22690,10 +22947,6 @@
     "code": "\"NavigateEvent\" in self && \"canIntercept\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.NavigateEvent.canTransition": {
-    "code": "\"NavigateEvent\" in self && \"canTransition\" in NavigateEvent.prototype",
-    "exposure": ["Window"]
-  },
   "api.NavigateEvent.destination": {
     "code": "\"NavigateEvent\" in self && \"destination\" in NavigateEvent.prototype",
     "exposure": ["Window"]
@@ -22730,10 +22983,6 @@
     "code": "\"NavigateEvent\" in self && \"navigationType\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.NavigateEvent.restoreScroll": {
-    "code": "\"NavigateEvent\" in self && \"restoreScroll\" in NavigateEvent.prototype",
-    "exposure": ["Window"]
-  },
   "api.NavigateEvent.scroll": {
     "code": "\"NavigateEvent\" in self && \"scroll\" in NavigateEvent.prototype",
     "exposure": ["Window"]
@@ -22742,8 +22991,8 @@
     "code": "\"NavigateEvent\" in self && \"signal\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
-  "api.NavigateEvent.transitionWhile": {
-    "code": "\"NavigateEvent\" in self && \"transitionWhile\" in NavigateEvent.prototype",
+  "api.NavigateEvent.sourceElement": {
+    "code": "\"NavigateEvent\" in self && \"sourceElement\" in NavigateEvent.prototype",
     "exposure": ["Window"]
   },
   "api.NavigateEvent.userInitiated": {
@@ -22819,19 +23068,19 @@
     "exposure": ["Window"]
   },
   "api.NavigationActivation": {
-    "code": "\"NavigationActivation\" in self",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.entry": {
-    "code": "\"NavigationActivation\" in self && \"entry\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"entry\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.from": {
-    "code": "\"NavigationActivation\" in self && \"from\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"from\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationActivation.navigationType": {
-    "code": "\"NavigationActivation\" in self && \"navigationType\" in NavigationActivation.prototype",
+    "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"navigationType\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.NavigationCurrentEntryChangeEvent": {
@@ -23158,6 +23407,10 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"locks\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.login": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"login\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.managed": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"managed\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -23348,6 +23601,14 @@
   },
   "api.Navigator.xr": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"xr\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorLogin": {
+    "code": "\"NavigatorLogin\" in self",
+    "exposure": ["Window"]
+  },
+  "api.NavigatorLogin.setStatus": {
+    "code": "\"NavigatorLogin\" in self && \"setStatus\" in NavigatorLogin.prototype",
     "exposure": ["Window"]
   },
   "api.NavigatorManagedData": {
@@ -24672,6 +24933,10 @@
     "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"fontVariantCaps\" in OffscreenCanvasRenderingContext2D.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.OffscreenCanvasRenderingContext2D.getContextAttributes": {
+    "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"getContextAttributes\" in OffscreenCanvasRenderingContext2D.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.OffscreenCanvasRenderingContext2D.getImageData": {
     "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"getImageData\" in OffscreenCanvasRenderingContext2D.prototype",
     "exposure": ["Window", "Worker"]
@@ -25791,6 +26056,14 @@
     "code": "\"PerformanceElementTiming\" in self && \"naturalWidth\" in PerformanceElementTiming.prototype",
     "exposure": ["Window"]
   },
+  "api.PerformanceElementTiming.paintTime": {
+    "code": "\"PerformanceElementTiming\" in self && \"paintTime\" in PerformanceElementTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformanceElementTiming.presentationTime": {
+    "code": "\"PerformanceElementTiming\" in self && \"presentationTime\" in PerformanceElementTiming.prototype",
+    "exposure": ["Window"]
+  },
   "api.PerformanceElementTiming.renderTime": {
     "code": "\"PerformanceElementTiming\" in self && \"renderTime\" in PerformanceElementTiming.prototype",
     "exposure": ["Window"]
@@ -25873,6 +26146,14 @@
   },
   "api.PerformanceLongAnimationFrameTiming.firstUIEventTimestamp": {
     "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"firstUIEventTimestamp\" in PerformanceLongAnimationFrameTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformanceLongAnimationFrameTiming.paintTime": {
+    "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"paintTime\" in PerformanceLongAnimationFrameTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformanceLongAnimationFrameTiming.presentationTime": {
+    "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"presentationTime\" in PerformanceLongAnimationFrameTiming.prototype",
     "exposure": ["Window"]
   },
   "api.PerformanceLongAnimationFrameTiming.renderStart": {
@@ -26045,6 +26326,14 @@
   },
   "api.PerformancePaintTiming": {
     "code": "\"PerformancePaintTiming\" in self",
+    "exposure": ["Window"]
+  },
+  "api.PerformancePaintTiming.paintTime": {
+    "code": "\"PerformancePaintTiming\" in self && \"paintTime\" in PerformancePaintTiming.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PerformancePaintTiming.presentationTime": {
+    "code": "\"PerformancePaintTiming\" in self && \"presentationTime\" in PerformancePaintTiming.prototype",
     "exposure": ["Window"]
   },
   "api.PerformanceResourceTiming": {
@@ -26473,6 +26762,10 @@
     "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.PermissionsPolicyViolationReportBody.allowAttribute": {
+    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"allowAttribute\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.PermissionsPolicyViolationReportBody.columnNumber": {
     "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -26491,6 +26784,10 @@
   },
   "api.PermissionsPolicyViolationReportBody.sourceFile": {
     "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.PermissionsPolicyViolationReportBody.srcAttribute": {
+    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"srcAttribute\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.PermissionsPolicyViolationReportBody.toJSON": {
@@ -31297,16 +31594,44 @@
     "code": "\"Sanitizer\" in self",
     "exposure": ["Window", "Worker"]
   },
+  "api.Sanitizer.allowAttribute": {
+    "code": "\"Sanitizer\" in self && \"allowAttribute\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.allowElement": {
+    "code": "\"Sanitizer\" in self && \"allowElement\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.Sanitizer.get": {
     "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
-  "api.Sanitizer.getUnsafe": {
-    "code": "\"Sanitizer\" in self && \"getUnsafe\" in Sanitizer.prototype",
+  "api.Sanitizer.removeAttribute": {
+    "code": "\"Sanitizer\" in self && \"removeAttribute\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.removeElement": {
+    "code": "\"Sanitizer\" in self && \"removeElement\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.removeUnsafe": {
+    "code": "\"Sanitizer\" in self && \"removeUnsafe\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.replaceElementWithChildren": {
+    "code": "\"Sanitizer\" in self && \"replaceElementWithChildren\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.Sanitizer.Sanitizer": {
     "code": "bcd.testConstructor('Sanitizer')",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.setComments": {
+    "code": "\"Sanitizer\" in self && \"setComments\" in Sanitizer.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Sanitizer.setDataAttributes": {
+    "code": "\"Sanitizer\" in self && \"setDataAttributes\" in Sanitizer.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.Scheduler": {
@@ -32236,6 +32561,10 @@
     "code": "\"SharedStorage\" in self && \"append\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
   },
+  "api.SharedStorage.batchUpdate": {
+    "code": "\"SharedStorage\" in self && \"batchUpdate\" in SharedStorage.prototype",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
   "api.SharedStorage.clear": {
     "code": "\"SharedStorage\" in self && \"clear\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
@@ -32288,6 +32617,34 @@
     "code": "\"SharedStorage\" in self && \"worklet\" in SharedStorage.prototype",
     "exposure": ["Window", "SharedStorageWorklet"]
   },
+  "api.SharedStorageAppendMethod": {
+    "code": "\"SharedStorageAppendMethod\" in self",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageAppendMethod.SharedStorageAppendMethod": {
+    "code": "bcd.testConstructor('SharedStorageAppendMethod')",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageClearMethod": {
+    "code": "\"SharedStorageClearMethod\" in self",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageClearMethod.SharedStorageClearMethod": {
+    "code": "bcd.testConstructor('SharedStorageClearMethod')",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageDeleteMethod": {
+    "code": "\"SharedStorageDeleteMethod\" in self",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageDeleteMethod.SharedStorageDeleteMethod": {
+    "code": "bcd.testConstructor('SharedStorageDeleteMethod')",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageModifierMethod": {
+    "code": "\"SharedStorageModifierMethod\" in self",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
   "api.SharedStorageOperation": {
     "code": "\"SharedStorageOperation\" in self",
     "exposure": ["Window"]
@@ -32308,6 +32665,14 @@
     "code": "\"SharedStorageSelectURLOperation\" in self && \"run\" in SharedStorageSelectURLOperation.prototype",
     "exposure": ["Window"]
   },
+  "api.SharedStorageSetMethod": {
+    "code": "\"SharedStorageSetMethod\" in self",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
+  "api.SharedStorageSetMethod.SharedStorageSetMethod": {
+    "code": "bcd.testConstructor('SharedStorageSetMethod')",
+    "exposure": ["Window", "SharedStorageWorklet"]
+  },
   "api.SharedStorageWorklet": {
     "code": "\"SharedStorageWorklet\" in self",
     "exposure": ["Window"]
@@ -32324,6 +32689,14 @@
     "code": "\"SharedStorageWorkletGlobalScope\" in self",
     "exposure": ["SharedStorageWorklet"]
   },
+  "api.SharedStorageWorkletGlobalScope.interestGroups": {
+    "code": "\"interestGroups\" in self",
+    "exposure": ["SharedStorageWorklet"]
+  },
+  "api.SharedStorageWorkletGlobalScope.navigator": {
+    "code": "\"navigator\" in self",
+    "exposure": ["SharedStorageWorklet"]
+  },
   "api.SharedStorageWorkletGlobalScope.privateAggregation": {
     "code": "\"privateAggregation\" in self",
     "exposure": ["SharedStorageWorklet"]
@@ -32334,6 +32707,14 @@
   },
   "api.SharedStorageWorkletGlobalScope.sharedStorage": {
     "code": "\"sharedStorage\" in self",
+    "exposure": ["SharedStorageWorklet"]
+  },
+  "api.SharedStorageWorkletNavigator": {
+    "code": "\"SharedStorageWorkletNavigator\" in self",
+    "exposure": ["SharedStorageWorklet"]
+  },
+  "api.SharedStorageWorkletNavigator.locks": {
+    "code": "\"SharedStorageWorkletNavigator\" in self && \"locks\" in SharedStorageWorkletNavigator.prototype",
     "exposure": ["SharedStorageWorklet"]
   },
   "api.SharedWorker": {
@@ -32481,56 +32862,6 @@
     "code": "\"SourceBufferList\" in self && \"onremovesourcebuffer\" in SourceBufferList.prototype",
     "exposure": ["Window", "Worker"]
   },
-  "api.SpeechGrammar": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition"]
-  },
-  "api.SpeechGrammar.SpeechGrammar": {
-    "code": "bcd.testConstructor('SpeechGrammar')",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition"]
-  },
-  "api.SpeechGrammar.src": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"src\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammar.weight": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"weight\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammarList": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition"]
-  },
-  "api.SpeechGrammarList.addFromString": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromString\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammarList.addFromURI": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromURI\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammarList.item": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"item\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammarList.length": {
-    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"length\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechGrammarList.SpeechGrammarList": {
-    "code": "bcd.testConstructor('SpeechGrammarList')",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition"]
-  },
   "api.SpeechRecognition": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return \"SpeechRecognition\" in self;\n})();\n",
     "exposure": ["Window"],
@@ -32546,8 +32877,8 @@
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
-  "api.SpeechRecognition.grammars": {
-    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"grammars\" in instance;\n})();\n",
+  "api.SpeechRecognition.installOnDeviceSpeechRecognition": {
+    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"installOnDeviceSpeechRecognition\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
@@ -32566,6 +32897,11 @@
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
+  "api.SpeechRecognition.mode": {
+    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"mode\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
   "api.SpeechRecognition.audioend_event": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudioend\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -32573,6 +32909,11 @@
   },
   "api.SpeechRecognition.audiostart_event": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudiostart\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechRecognition.onDeviceWebSpeechAvailable": {
+    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onDeviceWebSpeechAvailable\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
@@ -43229,6 +43570,10 @@
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"postMessage\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Window.postMessage.options_delegate_parameter": {
+    "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  try {\n    return bcd.testOptionParam(postMessage, null, \"delegate\", \"test\");\n  } catch (e) {\n    if (\n      e.name === \"NotSupportedError\" &&\n      stringIncludes(e.message, \"Delegation of 'test' is not supported.\")\n    ) {\n      return true;\n    }\n    throw e;\n  }\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Window.print": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"print\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -45956,26 +46301,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-mask-box-image\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-mask-box-image-outset": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-outset\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-repeat": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-repeat\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-slice": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-slice\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-source": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-source\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-mask-box-image-width": {
-    "code": "bcd.testCSSProperty(\"-webkit-mask-box-image-width\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-mask-composite": {
     "code": "bcd.testCSSProperty(\"-webkit-mask-composite\")",
     "exposure": ["Window"]
@@ -46040,10 +46365,6 @@
     "code": "bcd.testCSSProperty(\"-webkit-text-combine\")",
     "exposure": ["Window"]
   },
-  "css.properties.-webkit-text-decoration-skip": {
-    "code": "bcd.testCSSProperty(\"-webkit-text-decoration-skip\")",
-    "exposure": ["Window"]
-  },
   "css.properties.-webkit-text-decorations-in-effect": {
     "code": "bcd.testCSSProperty(\"-webkit-text-decorations-in-effect\")",
     "exposure": ["Window"]
@@ -46090,10 +46411,6 @@
   },
   "css.properties.-webkit-user-drag": {
     "code": "bcd.testCSSProperty(\"-webkit-user-drag\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.-webkit-user-modify": {
-    "code": "bcd.testCSSProperty(\"-webkit-user-modify\")",
     "exposure": ["Window"]
   },
   "css.properties.accent-color": {
@@ -46281,11 +46598,11 @@
     "exposure": ["Window"]
   },
   "css.properties.alignment-baseline.text-before-edge": {
-    "code": "bcd.testCSSProperty(\"alignment-baseline\", \"text-top\")",
+    "code": "bcd.testCSSProperty(\"alignment-baseline\", \"text-before-edge\")",
     "exposure": ["Window"]
   },
   "css.properties.alignment-baseline.text-after-edge": {
-    "code": "bcd.testCSSProperty(\"alignment-baseline\", \"text-bottom\")",
+    "code": "bcd.testCSSProperty(\"alignment-baseline\", \"text-after-edge\")",
     "exposure": ["Window"]
   },
   "css.properties.all": {
@@ -46450,6 +46767,74 @@
   },
   "css.properties.animation-timing-function.jump": {
     "code": "bcd.testCSSProperty(\"animation-timing-function\", \"steps(1, jump-start)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger": {
+    "code": "bcd.testCSSProperty(\"animation-trigger\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-end": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-end.auto": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-end.normal": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-start": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-start.auto": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-exit-range-start.normal": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-range": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-range\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-range-end": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-range-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-range-start": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-range-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-timeline": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-timeline\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-type": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-type\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-type.once": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-type\", \"once\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-type.repeat": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-type\", \"repeat\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-type.alternate": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-type\", \"alternate\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-trigger-type.state": {
+    "code": "bcd.testCSSProperty(\"animation-trigger-type\", \"state\")",
     "exposure": ["Window"]
   },
   "css.properties.appearance": {
@@ -46944,12 +47329,16 @@
     "code": "bcd.testCSSProperty(\"block-step-insert\")",
     "exposure": ["Window"]
   },
-  "css.properties.block-step-insert.margin": {
-    "code": "bcd.testCSSProperty(\"block-step-insert\", \"margin\")",
+  "css.properties.block-step-insert.margin-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"margin-box\")",
     "exposure": ["Window"]
   },
-  "css.properties.block-step-insert.padding": {
-    "code": "bcd.testCSSProperty(\"block-step-insert\", \"padding\")",
+  "css.properties.block-step-insert.padding-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"padding-box\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.block-step-insert.content-box": {
+    "code": "bcd.testCSSProperty(\"block-step-insert\", \"content-box\")",
     "exposure": ["Window"]
   },
   "css.properties.block-step-round": {
@@ -47338,6 +47727,10 @@
   },
   "css.properties.border-right-width": {
     "code": "bcd.testCSSProperty(\"border-right-width\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-shape": {
+    "code": "bcd.testCSSProperty(\"border-shape\")",
     "exposure": ["Window"]
   },
   "css.properties.border-spacing": {
@@ -48024,6 +48417,22 @@
     "code": "bcd.testCSSProperty(\"column-rule\")",
     "exposure": ["Window"]
   },
+  "css.properties.column-rule-break": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-rule-break.intersection": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\", \"intersection\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-rule-break.spanning-item": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\", \"spanning-item\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-rule-break.none": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\", \"none\")",
+    "exposure": ["Window"]
+  },
   "css.properties.column-rule-color": {
     "code": "bcd.testCSSProperty(\"column-rule-color\")",
     "exposure": ["Window"]
@@ -48130,6 +48539,10 @@
   },
   "css.properties.column-rule-color.WindowText": {
     "code": "bcd.testCSSProperty(\"column-rule-color\", \"WindowText\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-rule-outset": {
+    "code": "bcd.testCSSProperty(\"column-rule-outset\")",
     "exposure": ["Window"]
   },
   "css.properties.column-rule-style": {
@@ -48388,20 +48801,72 @@
     "code": "bcd.testCSSProperty(\"copy-into\")",
     "exposure": ["Window"]
   },
+  "css.properties.corner-block-end-shape": {
+    "code": "bcd.testCSSProperty(\"corner-block-end-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-block-start-shape": {
+    "code": "bcd.testCSSProperty(\"corner-block-start-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-bottom-left-shape": {
+    "code": "bcd.testCSSProperty(\"corner-bottom-left-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-bottom-right-shape": {
+    "code": "bcd.testCSSProperty(\"corner-bottom-right-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-bottom-shape": {
+    "code": "bcd.testCSSProperty(\"corner-bottom-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-end-end-shape": {
+    "code": "bcd.testCSSProperty(\"corner-end-end-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-end-start-shape": {
+    "code": "bcd.testCSSProperty(\"corner-end-start-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-inline-end-shape": {
+    "code": "bcd.testCSSProperty(\"corner-inline-end-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-inline-start-shape": {
+    "code": "bcd.testCSSProperty(\"corner-inline-start-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-left-shape": {
+    "code": "bcd.testCSSProperty(\"corner-left-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-right-shape": {
+    "code": "bcd.testCSSProperty(\"corner-right-shape\")",
+    "exposure": ["Window"]
+  },
   "css.properties.corner-shape": {
     "code": "bcd.testCSSProperty(\"corner-shape\")",
     "exposure": ["Window"]
   },
-  "css.properties.corner-shape.round": {
-    "code": "bcd.testCSSProperty(\"corner-shape\", \"round\")",
+  "css.properties.corner-start-end-shape": {
+    "code": "bcd.testCSSProperty(\"corner-start-end-shape\")",
     "exposure": ["Window"]
   },
-  "css.properties.corner-shape.angle": {
-    "code": "bcd.testCSSProperty(\"corner-shape\", \"angle\")",
+  "css.properties.corner-start-start-shape": {
+    "code": "bcd.testCSSProperty(\"corner-start-start-shape\")",
     "exposure": ["Window"]
   },
-  "css.properties.corners": {
-    "code": "bcd.testCSSProperty(\"corners\")",
+  "css.properties.corner-top-left-shape": {
+    "code": "bcd.testCSSProperty(\"corner-top-left-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-top-right-shape": {
+    "code": "bcd.testCSSProperty(\"corner-top-right-shape\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.corner-top-shape": {
+    "code": "bcd.testCSSProperty(\"corner-top-shape\")",
     "exposure": ["Window"]
   },
   "css.properties.counter-increment": {
@@ -48620,10 +49085,6 @@
     "code": "bcd.testCSSProperty(\"cursor\", \"-webkit-zoom\")",
     "exposure": ["Window"]
   },
-  "css.properties.cursor.inherit": {
-    "code": "bcd.testCSSProperty(\"cursor\", \"inherit\")",
-    "exposure": ["Window"]
-  },
   "css.properties.custom-property": {
     "code": "(function () {\n  return (\n    CSS.supports(\"color\", \"var(--foo)\") || CSS.supports(\"color\", \"env(--foo)\")\n  );\n})();\n",
     "exposure": ["Window"]
@@ -48776,14 +49237,6 @@
     "code": "bcd.testCSSProperty(\"display\", \"inline-grid\")",
     "exposure": ["Window"]
   },
-  "css.properties.display.masonry": {
-    "code": "bcd.testCSSProperty(\"display\", \"masonry\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.display.inline-masonry": {
-    "code": "bcd.testCSSProperty(\"display\", \"inline-masonry\")",
-    "exposure": ["Window"]
-  },
   "css.properties.display.multi-keyword_values": {
     "code": "bcd.testCSSProperty(\"display\", \"inline flow\")",
     "exposure": ["Window"]
@@ -48840,8 +49293,8 @@
     "code": "bcd.testCSSProperty(\"dynamic-range-limit\", \"standard\")",
     "exposure": ["Window"]
   },
-  "css.properties.dynamic-range-limit.high": {
-    "code": "bcd.testCSSProperty(\"dynamic-range-limit\", \"high\")",
+  "css.properties.dynamic-range-limit.no-limit": {
+    "code": "bcd.testCSSProperty(\"dynamic-range-limit\", \"no-limit\")",
     "exposure": ["Window"]
   },
   "css.properties.dynamic-range-limit.constrained-high": {
@@ -49804,6 +50257,34 @@
     "code": "bcd.testCSSProperty(\"gap\", \"normal\")",
     "exposure": ["Window"]
   },
+  "css.properties.gap-rule": {
+    "code": "bcd.testCSSProperty(\"gap-rule\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-break": {
+    "code": "bcd.testCSSProperty(\"gap-rule-break\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-color": {
+    "code": "bcd.testCSSProperty(\"gap-rule-color\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-outset": {
+    "code": "bcd.testCSSProperty(\"gap-rule-outset\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-paint-order": {
+    "code": "bcd.testCSSProperty(\"gap-rule-paint-order\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-style": {
+    "code": "bcd.testCSSProperty(\"gap-rule-style\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.gap-rule-width": {
+    "code": "bcd.testCSSProperty(\"gap-rule-width\")",
+    "exposure": ["Window"]
+  },
   "css.properties.glyph-orientation-vertical": {
     "code": "bcd.testCSSProperty(\"glyph-orientation-vertical\")",
     "exposure": ["Window"]
@@ -49822,18 +50303,6 @@
   },
   "css.properties.grid-auto-flow": {
     "code": "bcd.testCSSProperty(\"grid-auto-flow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.grid-auto-flow.row-reverse": {
-    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"row-reverse\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.grid-auto-flow.column-reverse": {
-    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"column-reverse\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.grid-auto-flow.wrap-reverse": {
-    "code": "bcd.testCSSProperty(\"grid-auto-flow\", \"wrap-reverse\")",
     "exposure": ["Window"]
   },
   "css.properties.grid-auto-flow.row": {
@@ -50328,6 +50797,18 @@
     "code": "bcd.testCSSProperty(\"inset-inline-start\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.interactivity": {
+    "code": "bcd.testCSSProperty(\"interactivity\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.interactivity.auto": {
+    "code": "bcd.testCSSProperty(\"interactivity\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.interactivity.inert": {
+    "code": "bcd.testCSSProperty(\"interactivity\", \"inert\")",
+    "exposure": ["Window"]
+  },
   "css.properties.interpolate-size": {
     "code": "bcd.testCSSProperty(\"interpolate-size\")",
     "exposure": ["Window"]
@@ -50342,6 +50823,138 @@
   },
   "css.properties.isolation": {
     "code": "bcd.testCSSProperty(\"isolation\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross": {
+    "code": "bcd.testCSSProperty(\"item-cross\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.auto": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.nowrap": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"nowrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.wrap": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"wrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.normal": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.reverse": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-cross.wrap-reverse": {
+    "code": "bcd.testCSSProperty(\"item-cross\", \"wrap-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction": {
+    "code": "bcd.testCSSProperty(\"item-direction\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction.auto": {
+    "code": "bcd.testCSSProperty(\"item-direction\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction.row": {
+    "code": "bcd.testCSSProperty(\"item-direction\", \"row\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction.column": {
+    "code": "bcd.testCSSProperty(\"item-direction\", \"column\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction.row-reverse": {
+    "code": "bcd.testCSSProperty(\"item-direction\", \"row-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-direction.column-reverse": {
+    "code": "bcd.testCSSProperty(\"item-direction\", \"column-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-flow": {
+    "code": "bcd.testCSSProperty(\"item-flow\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-pack": {
+    "code": "bcd.testCSSProperty(\"item-pack\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-pack.normal": {
+    "code": "bcd.testCSSProperty(\"item-pack\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-pack.dense": {
+    "code": "bcd.testCSSProperty(\"item-pack\", \"dense\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-pack.balance": {
+    "code": "bcd.testCSSProperty(\"item-pack\", \"balance\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-slack": {
+    "code": "bcd.testCSSProperty(\"item-slack\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-slack.infinite": {
+    "code": "bcd.testCSSProperty(\"item-slack\", \"infinite\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track": {
+    "code": "bcd.testCSSProperty(\"item-track\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track.auto": {
+    "code": "bcd.testCSSProperty(\"item-track\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track.row": {
+    "code": "bcd.testCSSProperty(\"item-track\", \"row\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track.column": {
+    "code": "bcd.testCSSProperty(\"item-track\", \"column\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track.row-reverse": {
+    "code": "bcd.testCSSProperty(\"item-track\", \"row-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-track.column-reverse": {
+    "code": "bcd.testCSSProperty(\"item-track\", \"column-reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap": {
+    "code": "bcd.testCSSProperty(\"item-wrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.auto": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.nowrap": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"nowrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.wrap": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"wrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.normal": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.reverse": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"reverse\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.item-wrap.wrap-reverse": {
+    "code": "bcd.testCSSProperty(\"item-wrap\", \"wrap-reverse\")",
     "exposure": ["Window"]
   },
   "css.properties.justify-content": {
@@ -51332,78 +51945,6 @@
     "code": "bcd.testCSSProperty(\"mask-type\", \"alpha\")",
     "exposure": ["Window"]
   },
-  "css.properties.masonry": {
-    "code": "bcd.testCSSProperty(\"masonry\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-auto-tracks": {
-    "code": "bcd.testCSSProperty(\"masonry-auto-tracks\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-direction": {
-    "code": "bcd.testCSSProperty(\"masonry-direction\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-direction.column": {
-    "code": "bcd.testCSSProperty(\"masonry-direction\", \"column\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-direction.column-reverse": {
-    "code": "bcd.testCSSProperty(\"masonry-direction\", \"column-reverse\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-direction.row": {
-    "code": "bcd.testCSSProperty(\"masonry-direction\", \"row\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-direction.row-reverse": {
-    "code": "bcd.testCSSProperty(\"masonry-direction\", \"row-reverse\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-fill": {
-    "code": "bcd.testCSSProperty(\"masonry-fill\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-fill.normal": {
-    "code": "bcd.testCSSProperty(\"masonry-fill\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-fill.reverse": {
-    "code": "bcd.testCSSProperty(\"masonry-fill\", \"reverse\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-flow": {
-    "code": "bcd.testCSSProperty(\"masonry-flow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-slack": {
-    "code": "bcd.testCSSProperty(\"masonry-slack\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-slack.infinite": {
-    "code": "bcd.testCSSProperty(\"masonry-slack\", \"infinite\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-template-areas": {
-    "code": "bcd.testCSSProperty(\"masonry-template-areas\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-template-tracks": {
-    "code": "bcd.testCSSProperty(\"masonry-template-tracks\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-track": {
-    "code": "bcd.testCSSProperty(\"masonry-track\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-track-end": {
-    "code": "bcd.testCSSProperty(\"masonry-track-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.masonry-track-start": {
-    "code": "bcd.testCSSProperty(\"masonry-track-start\")",
-    "exposure": ["Window"]
-  },
   "css.properties.math-depth": {
     "code": "bcd.testCSSProperty(\"math-depth\")",
     "exposure": ["Window"]
@@ -51886,10 +52427,6 @@
   },
   "css.properties.offset-path.basic_shape": {
     "code": "bcd.testCSSProperty(\"offset-path\", \"circle(50px at 0 100px)\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.offset-path.coord_box": {
-    "code": "bcd.testCSSProperty(\"offset-path\", \"content-box\")",
     "exposure": ["Window"]
   },
   "css.properties.offset-path.path": {
@@ -52912,6 +53449,10 @@
     "code": "bcd.testCSSProperty(\"reading-flow\", \"grid-order\")",
     "exposure": ["Window"]
   },
+  "css.properties.reading-order": {
+    "code": "bcd.testCSSProperty(\"reading-order\")",
+    "exposure": ["Window"]
+  },
   "css.properties.region-fragment": {
     "code": "bcd.testCSSProperty(\"region-fragment\")",
     "exposure": ["Window"]
@@ -53028,6 +53569,42 @@
     "code": "bcd.testCSSProperty(\"row-gap\", \"normal\")",
     "exposure": ["Window"]
   },
+  "css.properties.row-rule": {
+    "code": "bcd.testCSSProperty(\"row-rule\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-break": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-break.intersection": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\", \"intersection\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-break.spanning-item": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\", \"spanning-item\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-break.none": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-color": {
+    "code": "bcd.testCSSProperty(\"row-rule-color\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-outset": {
+    "code": "bcd.testCSSProperty(\"row-rule-outset\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-style": {
+    "code": "bcd.testCSSProperty(\"row-rule-style\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.row-rule-width": {
+    "code": "bcd.testCSSProperty(\"row-rule-width\")",
+    "exposure": ["Window"]
+  },
   "css.properties.ruby-align": {
     "code": "bcd.testCSSProperty(\"ruby-align\")",
     "exposure": ["Window"]
@@ -53122,6 +53699,18 @@
   },
   "css.properties.scroll-behavior.smooth": {
     "code": "bcd.testCSSProperty(\"scroll-behavior\", \"smooth\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-initial-target": {
+    "code": "bcd.testCSSProperty(\"scroll-initial-target\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-initial-target.none": {
+    "code": "bcd.testCSSProperty(\"scroll-initial-target\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.scroll-initial-target.nearest": {
+    "code": "bcd.testCSSProperty(\"scroll-initial-target\", \"nearest\")",
     "exposure": ["Window"]
   },
   "css.properties.scroll-margin": {
@@ -53346,18 +53935,6 @@
   },
   "css.properties.scroll-snap-type-y": {
     "code": "bcd.testCSSProperty(\"scroll-snap-type-y\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target.none": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.scroll-start-target.auto": {
-    "code": "bcd.testCSSProperty(\"scroll-start-target\", \"auto\")",
     "exposure": ["Window"]
   },
   "css.properties.scroll-timeline": {
@@ -55544,10 +56121,6 @@
     "code": "bcd.testCSSProperty(\"word-spacing\", \"50%\")",
     "exposure": ["Window"]
   },
-  "css.properties.word-wrap": {
-    "code": "bcd.testCSSProperty(\"word-wrap\")",
-    "exposure": ["Window"]
-  },
   "css.properties.wrap-after": {
     "code": "bcd.testCSSProperty(\"wrap-after\")",
     "exposure": ["Window"]
@@ -55788,6 +56361,10 @@
     "code": "bcd.testCSSSelector(\":nth()\")",
     "exposure": ["Window"]
   },
+  "css.selectors.column": {
+    "code": "(function () {\n  return bcd.testCSSSelector(\"div || span\");\n})();\n",
+    "exposure": ["Window"]
+  },
   "css.selectors.nesting": {
     "code": "bcd.testCSSSelector(\"&\")",
     "exposure": ["Window"]
@@ -55798,6 +56375,14 @@
   },
   "css.selectors.scroll-marker": {
     "code": "bcd.testCSSSelector(\"::scroll-marker\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.target-current": {
+    "code": "bcd.testCSSSelector(\":target-current\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.scroll-button": {
+    "code": "bcd.testCSSSelector(\"::scroll-button()\")",
     "exposure": ["Window"]
   },
   "css.selectors.nth-fragment": {
@@ -56036,8 +56621,8 @@
     "code": "bcd.testCSSSelector(\":open\")",
     "exposure": ["Window"]
   },
-  "css.selectors.closed": {
-    "code": "bcd.testCSSSelector(\":closed\")",
+  "css.selectors.popover-open": {
+    "code": "bcd.testCSSSelector(\":popover-open\")",
     "exposure": ["Window"]
   },
   "css.selectors.modal": {
@@ -56182,10 +56767,6 @@
   },
   "css.selectors.subsequent-sibling": {
     "code": "(function () {\n  return bcd.testCSSSelector(\"div ~ span\");\n})();\n",
-    "exposure": ["Window"]
-  },
-  "css.selectors.column": {
-    "code": "(function () {\n  return bcd.testCSSSelector(\"div || span\");\n})();\n",
     "exposure": ["Window"]
   },
   "css.selectors.nth-col": {
@@ -56344,10 +56925,6 @@
     "code": "bcd.testCSSSelector(\"::-webkit-slider-thumb\")",
     "exposure": ["Window"]
   },
-  "css.selectors.popover-open": {
-    "code": "bcd.testCSSSelector(\":popover-open\")",
-    "exposure": ["Window"]
-  },
   "css.selectors.id": {
     "code": "bcd.testCSSSelector(\"#foo\")",
     "exposure": ["Window"]
@@ -56476,23 +57053,23 @@
     "code": "bcd.testCSSProperty(\"background-blend-mode\", \"normal\")",
     "exposure": ["Window"]
   },
-  "css.types.calc-constant": {
+  "css.types.calc-keyword": {
     "code": "bcd.testCSSProperty(\"width\", \"calc(100px * pi)\")",
     "exposure": ["Window"]
   },
-  "css.types.calc-constant.NaN": {
+  "css.types.calc-keyword.NaN": {
     "code": "bcd.testCSSProperty(\"width\", \"calc(100px * NaN)\")",
     "exposure": ["Window"]
   },
-  "css.types.calc-constant.e": {
+  "css.types.calc-keyword.e": {
     "code": "bcd.testCSSProperty(\"width\", \"calc(100px * e)\")",
     "exposure": ["Window"]
   },
-  "css.types.calc-constant.infinity": {
+  "css.types.calc-keyword.infinity": {
     "code": "bcd.testCSSProperty(\"width\", \"calc(100px * infinity)\")",
     "exposure": ["Window"]
   },
-  "css.types.calc-constant.pi": {
+  "css.types.calc-keyword.pi": {
     "code": "bcd.testCSSProperty(\"width\", \"calc(100px * pi)\")",
     "exposure": ["Window"]
   },
@@ -57038,10 +57615,6 @@
   },
   "html.elements.area.referrerpolicy": {
     "code": "(function() {\n  var instance = document.createElement('area');\n  return !!instance && 'referrerPolicy' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.area.tabindex": {
-    "code": "(function() {\n  var instance = document.createElement('area');\n  return !!instance && 'tabIndex' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.area.alt": {
@@ -58666,10 +59239,6 @@
   },
   "html.elements.object.codetype": {
     "code": "(function() {\n  var instance = document.createElement('object');\n  return !!instance && 'codeType' in instance;\n})()",
-    "exposure": ["Window"]
-  },
-  "html.elements.object.tabindex": {
-    "code": "(function() {\n  var instance = document.createElement('object');\n  return !!instance && 'tabIndex' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.object.usemap": {
@@ -62188,6 +62757,10 @@
     "code": "\"Atomics\" in self && \"xor\" in Atomics",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Atomics.pause": {
+    "code": "\"Atomics\" in self && \"pause\" in Atomics",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.JSON": {
     "code": "\"JSON\" in self",
     "exposure": ["Window"]
@@ -63152,114 +63725,6 @@
     "code": "\"Temporal\" in self",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.Calendar": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.Calendar": {
-    "code": "(function () {\n  if (!(\"Temporal\" in self)) {\n    return { result: false, message: \"Temporal is not defined\" };\n  }\n  if (!(\"Calendar\" in Temporal)) {\n    return { result: false, message: \"Temporal.Calendar is not defined\" };\n  }\n  return bcd.testConstructor(\"Temporal.Calendar\", false);\n})();\n",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.dateAdd": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateAdd\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.dateFromFields": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateFromFields\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.dateUntil": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateUntil\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.day": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"day\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.dayOfWeek": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dayOfWeek\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.dayOfYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dayOfYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.daysInMonth": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInMonth\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.daysInWeek": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInWeek\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.daysInYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.era": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"era\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.eraYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"eraYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.fields": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"fields\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.from": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"from\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.id": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"id\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.inLeapYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"inLeapYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.mergeFields": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"mergeFields\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.month": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"month\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.monthCode": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthCode\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.monthDayFromFields": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthDayFromFields\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.monthsInYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthsInYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.toJSON": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"toJSON\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.toString": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"toString\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.weekOfYear": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"weekOfYear\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.year": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"year\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.Calendar.yearMonthFromFields": {
-    "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"yearMonthFromFields\" in Temporal.Calendar",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.Duration": {
     "code": "\"Temporal\" in self && \"Duration\" in Temporal",
     "exposure": ["Window"]
@@ -63460,6 +63925,10 @@
     "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainDateTimeISO\" in Temporal.Now",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Temporal.Now.plainTimeISO": {
+    "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainTimeISO\" in Temporal.Now",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Temporal.Now.timeZoneId": {
     "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZoneId\" in Temporal.Now",
     "exposure": ["Window"]
@@ -63526,10 +63995,6 @@
   },
   "javascript.builtins.Temporal.PlainDate.from": {
     "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"from\" in Temporal.PlainDate",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.PlainDate.getISOFields": {
-    "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"getISOFields\" in Temporal.PlainDate",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDate.inLeapYear": {
@@ -63670,10 +64135,6 @@
   },
   "javascript.builtins.Temporal.PlainDateTime.from": {
     "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"from\" in Temporal.PlainDateTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.PlainDateTime.getISOFields": {
-    "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"getISOFields\" in Temporal.PlainDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.PlainDateTime.hour": {
@@ -63864,10 +64325,6 @@
     "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"from\" in Temporal.PlainTime",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainTime.getISOFields": {
-    "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"getISOFields\" in Temporal.PlainTime",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.PlainTime.hour": {
     "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"hour\" in Temporal.PlainTime",
     "exposure": ["Window"]
@@ -63972,10 +64429,6 @@
     "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"from\" in Temporal.PlainYearMonth",
     "exposure": ["Window"]
   },
-  "javascript.builtins.Temporal.PlainYearMonth.getISOFields": {
-    "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"getISOFields\" in Temporal.PlainYearMonth",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.Temporal.PlainYearMonth.inLeapYear": {
     "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"inLeapYear\" in Temporal.PlainYearMonth",
     "exposure": ["Window"]
@@ -64030,50 +64483,6 @@
   },
   "javascript.builtins.Temporal.PlainYearMonth.year": {
     "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"year\" in Temporal.PlainYearMonth",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.TimeZone": {
-    "code": "(function () {\n  if (!(\"Temporal\" in self)) {\n    return { result: false, message: \"Temporal is not defined\" };\n  }\n  if (!(\"TimeZone\" in Temporal)) {\n    return { result: false, message: \"Temporal.TimeZone is not defined\" };\n  }\n  return bcd.testConstructor(\"Temporal.TimeZone\", false);\n})();\n",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.from": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"from\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getInstantFor": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getInstantFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getOffsetNanosecondsFor": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetNanosecondsFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getOffsetStringFor": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetStringFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getPlainDateTimeFor": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPlainDateTimeFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.getPossibleInstantsFor": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPossibleInstantsFor\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.id": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"id\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.toJSON": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"toJSON\" in Temporal.TimeZone",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.TimeZone.toString": {
-    "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"toString\" in Temporal.TimeZone",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime": {
@@ -64142,10 +64551,6 @@
   },
   "javascript.builtins.Temporal.ZonedDateTime.from": {
     "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"from\" in Temporal.ZonedDateTime",
-    "exposure": ["Window"]
-  },
-  "javascript.builtins.Temporal.ZonedDateTime.getISOFields": {
-    "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getISOFields\" in Temporal.ZonedDateTime",
     "exposure": ["Window"]
   },
   "javascript.builtins.Temporal.ZonedDateTime.getTimeZoneTransition": {
@@ -64653,7 +65058,7 @@
     "exposure": ["Window"]
   },
   "javascript.regular_expressions.named_backreference": {
-    "code": "(function() {\n  try {\n    /\\k<foo>/i;\n    return true;\n  } catch(e) {\n    return {result: false, message: e.message};\n  }\n})();",
+    "code": "(function () {\n  try {\n    var regex = new RegExp(/title=(?<quote>[\"'])(.*?)\\k<quote>/);\n    result = 'title=\"foo\"'.match(regex)[2];\n    return result == \"foo\";\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.regular_expressions.named_capturing_group": {
@@ -64734,6 +65139,10 @@
   },
   "javascript.statements.try_catch": {
     "code": "(function() {\n  try {\n    /* This function is already wrapped in a try-catch */\n    return true;\n  } catch(e) {\n    return {result: false, message: e.message};\n  }\n})();",
+    "exposure": ["Window"]
+  },
+  "javascript.statements.using": {
+    "code": "(function() {\n  try {\n    function* g() { using x = true };\n    return true;\n  } catch(e) {\n    return {result: false, message: e.message};\n  }\n})();",
     "exposure": ["Window"]
   },
   "javascript.statements.var": {
