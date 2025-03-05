@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.5.0",
     "typescript": "^5.8.2"
   },
   "unbuild": {

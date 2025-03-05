@@ -17,7 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250303.0",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.5.0",
     "typescript": "^5.8.2",
     "workerd": "^1.20250303.0",
     "start-server-and-test": "^2.0.10"
