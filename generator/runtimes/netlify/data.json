@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.6",
+  "__version": "10.12.10",
   "results": {
     ".": [
       {
@@ -2594,7 +2594,7 @@
           "code": "\"Array\" in self && \"fromAsync\" in Array",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Array.@@unscopables",
@@ -4631,6 +4631,14 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.Atomics.pause",
+        "info": {
+          "code": "\"Atomics\" in self && \"pause\" in Atomics",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.JSON",
         "info": {
           "code": "\"JSON\" in self",
@@ -4944,7 +4952,7 @@
           "code": "\"Promise\" in self && \"withResolvers\" in Promise",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Promise.try",
@@ -6584,223 +6592,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.Calendar",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.Calendar",
-        "info": {
-          "code": "(function () {\n  if (!(\"Temporal\" in self)) {\n    return { result: false, message: \"Temporal is not defined\" };\n  }\n  if (!(\"Calendar\" in Temporal)) {\n    return { result: false, message: \"Temporal.Calendar is not defined\" };\n  }\n  return bcd.testConstructor(\"Temporal.Calendar\", false);\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "Temporal is not defined"
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.dateAdd",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateAdd\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.dateFromFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateFromFields\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.dateUntil",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dateUntil\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.day",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"day\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.dayOfWeek",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dayOfWeek\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.dayOfYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"dayOfYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.daysInMonth",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInMonth\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.daysInWeek",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInWeek\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.daysInYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"daysInYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.era",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"era\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.eraYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"eraYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.fields",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"fields\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.from",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"from\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.id",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"id\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.inLeapYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"inLeapYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.mergeFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"mergeFields\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.month",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"month\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.monthCode",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthCode\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.monthDayFromFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthDayFromFields\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.monthsInYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"monthsInYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.toJSON",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"toJSON\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.toString",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"toString\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.weekOfYear",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"weekOfYear\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.year",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"year\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.Calendar.yearMonthFromFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"Calendar\" in Temporal && \"yearMonthFromFields\" in Temporal.Calendar",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.Duration",
         "info": {
           "code": "\"Temporal\" in self && \"Duration\" in Temporal",
@@ -7203,6 +6994,14 @@
         "result": false
       },
       {
+        "name": "javascript.builtins.Temporal.Now.plainTimeISO",
+        "info": {
+          "code": "\"Temporal\" in self && \"Now\" in Temporal && \"plainTimeISO\" in Temporal.Now",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.Temporal.Now.timeZoneId",
         "info": {
           "code": "\"Temporal\" in self && \"Now\" in Temporal && \"timeZoneId\" in Temporal.Now",
@@ -7335,14 +7134,6 @@
         "name": "javascript.builtins.Temporal.PlainDate.from",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"from\" in Temporal.PlainDate",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.PlainDate.getISOFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainDate\" in Temporal && \"getISOFields\" in Temporal.PlainDate",
           "exposure": "Window"
         },
         "result": false
@@ -7624,14 +7415,6 @@
         "name": "javascript.builtins.Temporal.PlainDateTime.from",
         "info": {
           "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"from\" in Temporal.PlainDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.PlainDateTime.getISOFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainDateTime\" in Temporal && \"getISOFields\" in Temporal.PlainDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8015,14 +7798,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainTime.getISOFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"getISOFields\" in Temporal.PlainTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.PlainTime.hour",
         "info": {
           "code": "\"Temporal\" in self && \"PlainTime\" in Temporal && \"hour\" in Temporal.PlainTime",
@@ -8232,14 +8007,6 @@
         "result": false
       },
       {
-        "name": "javascript.builtins.Temporal.PlainYearMonth.getISOFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"getISOFields\" in Temporal.PlainYearMonth",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "javascript.builtins.Temporal.PlainYearMonth.inLeapYear",
         "info": {
           "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"inLeapYear\" in Temporal.PlainYearMonth",
@@ -8347,95 +8114,6 @@
         "name": "javascript.builtins.Temporal.PlainYearMonth.year",
         "info": {
           "code": "\"Temporal\" in self && \"PlainYearMonth\" in Temporal && \"year\" in Temporal.PlainYearMonth",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.TimeZone",
-        "info": {
-          "code": "(function () {\n  if (!(\"Temporal\" in self)) {\n    return { result: false, message: \"Temporal is not defined\" };\n  }\n  if (!(\"TimeZone\" in Temporal)) {\n    return { result: false, message: \"Temporal.TimeZone is not defined\" };\n  }\n  return bcd.testConstructor(\"Temporal.TimeZone\", false);\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "Temporal is not defined"
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.from",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"from\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getInstantFor",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getInstantFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getOffsetNanosecondsFor",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetNanosecondsFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getOffsetStringFor",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getOffsetStringFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getPlainDateTimeFor",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPlainDateTimeFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.getPossibleInstantsFor",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"getPossibleInstantsFor\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.id",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"id\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.toJSON",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"toJSON\" in Temporal.TimeZone",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.TimeZone.toString",
-        "info": {
-          "code": "\"Temporal\" in self && \"TimeZone\" in Temporal && \"toString\" in Temporal.TimeZone",
           "exposure": "Window"
         },
         "result": false
@@ -8573,14 +8251,6 @@
         "name": "javascript.builtins.Temporal.ZonedDateTime.from",
         "info": {
           "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"from\" in Temporal.ZonedDateTime",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "javascript.builtins.Temporal.ZonedDateTime.getISOFields",
-        "info": {
-          "code": "\"Temporal\" in self && \"ZonedDateTime\" in Temporal && \"getISOFields\" in Temporal.ZonedDateTime",
           "exposure": "Window"
         },
         "result": false
@@ -8936,7 +8606,7 @@
           "code": "\"AbortSignal\" in self && \"any\" in AbortSignal",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.AbortSignal.abort_event",
@@ -9334,6 +9004,14 @@
         "result": false
       },
       {
+        "name": "api.Animation.overallProgress",
+        "info": {
+          "code": "\"Animation\" in self && \"overallProgress\" in Animation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Animation.pause",
         "info": {
           "code": "\"Animation\" in self && \"pause\" in Animation.prototype",
@@ -9382,14 +9060,6 @@
         "result": false
       },
       {
-        "name": "api.Animation.progress",
-        "info": {
-          "code": "\"Animation\" in self && \"progress\" in Animation.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.Animation.ready",
         "info": {
           "code": "\"Animation\" in self && \"ready\" in Animation.prototype",
@@ -9425,6 +9095,14 @@
         "name": "api.Animation.timeline",
         "info": {
           "code": "\"Animation\" in self && \"timeline\" in Animation.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Animation.trigger",
+        "info": {
+          "code": "\"Animation\" in self && \"trigger\" in Animation.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -9664,6 +9342,71 @@
         "name": "api.AnimationTimeline.play",
         "info": {
           "code": "\"AnimationTimeline\" in self && \"play\" in AnimationTimeline.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger",
+        "info": {
+          "code": "\"AnimationTrigger\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.AnimationTrigger",
+        "info": {
+          "code": "bcd.testConstructor('AnimationTrigger')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: AnimationTrigger is not defined"
+      },
+      {
+        "name": "api.AnimationTrigger.exitRangeEnd",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"exitRangeEnd\" in AnimationTrigger.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.exitRangeStart",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"exitRangeStart\" in AnimationTrigger.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.rangeEnd",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"rangeEnd\" in AnimationTrigger.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.rangeStart",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"rangeStart\" in AnimationTrigger.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.timeline",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"timeline\" in AnimationTrigger.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.AnimationTrigger.type",
+        "info": {
+          "code": "\"AnimationTrigger\" in self && \"type\" in AnimationTrigger.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -14546,9 +14289,65 @@
         "message": "threw ReferenceError: CaptureController is not defined"
       },
       {
+        "name": "api.CaptureController.decreaseZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"decreaseZoomLevel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.forwardWheel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"forwardWheel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.getSupportedZoomLevels",
+        "info": {
+          "code": "\"CaptureController\" in self && \"getSupportedZoomLevels\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.getZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.increaseZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"increaseZoomLevel\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CaptureController.capturedmousechange_event",
         "info": {
           "code": "\"CaptureController\" in self && \"oncapturedmousechange\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.zoomlevelchange_event",
+        "info": {
+          "code": "\"CaptureController\" in self && \"onzoomlevelchange\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.resetZoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"resetZoomLevel\" in CaptureController.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -17161,6 +16960,14 @@
         "result": false
       },
       {
+        "name": "api.CSSFontFaceDescriptors.font-size",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"font-size\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSFontFaceDescriptors.font-stretch",
         "info": {
           "code": "\"CSSFontFaceDescriptors\" in self && \"font-stretch\" in CSSFontFaceDescriptors.prototype",
@@ -17241,6 +17048,14 @@
         "result": false
       },
       {
+        "name": "api.CSSFontFaceDescriptors.fontSize",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"fontSize\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSFontFaceDescriptors.fontStretch",
         "info": {
           "code": "\"CSSFontFaceDescriptors\" in self && \"fontStretch\" in CSSFontFaceDescriptors.prototype",
@@ -17297,9 +17112,89 @@
         "result": false
       },
       {
+        "name": "api.CSSFontFaceDescriptors.size-adjust",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"size-adjust\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.sizeAdjust",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"sizeAdjust\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSFontFaceDescriptors.src",
         "info": {
           "code": "\"CSSFontFaceDescriptors\" in self && \"src\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.subscript-position-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"subscript-position-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.subscript-size-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"subscript-size-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.subscriptPositionOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"subscriptPositionOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.subscriptSizeOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"subscriptSizeOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.superscript-position-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"superscript-position-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.superscript-size-override",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"superscript-size-override\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.superscriptPositionOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"superscriptPositionOverride\" in CSSFontFaceDescriptors.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFontFaceDescriptors.superscriptSizeOverride",
+        "info": {
+          "code": "\"CSSFontFaceDescriptors\" in self && \"superscriptSizeOverride\" in CSSFontFaceDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -17563,6 +17458,38 @@
         "name": "api.CSSFontPaletteValuesRule.overrideColors",
         "info": {
           "code": "\"CSSFontPaletteValuesRule\" in self && \"overrideColors\" in CSSFontPaletteValuesRule.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFunctionDeclarations",
+        "info": {
+          "code": "\"CSSFunctionDeclarations\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFunctionDeclarations.style",
+        "info": {
+          "code": "\"CSSFunctionDeclarations\" in self && \"style\" in CSSFunctionDeclarations.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFunctionDescriptors",
+        "info": {
+          "code": "\"CSSFunctionDescriptors\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSFunctionDescriptors.result",
+        "info": {
+          "code": "\"CSSFunctionDescriptors\" in self && \"result\" in CSSFunctionDescriptors.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -22804,6 +22731,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Document.moveBefore",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Document.mozSetImageElement",
         "info": {
           "code": "(function () {\n  var instance = document;\n  return !!instance && \"mozSetImageElement\" in instance;\n})();\n",
@@ -23373,6 +23309,15 @@
         "name": "api.DocumentFragment.lastElementChild",
         "info": {
           "code": "(function () {\n  if (!(\"createDocumentFragment\" in document)) {\n    return {\n      result: false,\n      message: \"document.createDocumentFragment is not defined\"\n    };\n  }\n  var instance = document.createDocumentFragment();\n  return !!instance && \"lastElementChild\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.DocumentFragment.moveBefore",
+        "info": {
+          "code": "(function () {\n  if (!(\"createDocumentFragment\" in document)) {\n    return {\n      result: false,\n      message: \"document.createDocumentFragment is not defined\"\n    };\n  }\n  var instance = document.createDocumentFragment();\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -26423,6 +26368,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Element.moveBefore",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"moveBefore\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Element.namespaceURI",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"namespaceURI\" in instance;\n})();\n",
@@ -27927,8 +27881,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.close",
@@ -27936,8 +27890,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"close\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.EventSource",
@@ -27945,8 +27899,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.EventSource.options_withCredentials_parameter",
@@ -27954,8 +27908,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  function construct(options) {\n    new EventSource(\"https://mdn-bcd-collector.gooborg.com\", options);\n  }\n  return bcd.testOptionParam(construct, null, \"withCredentials\", true);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.error_event",
@@ -27963,8 +27917,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onerror\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.message_event",
@@ -27972,8 +27926,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onmessage\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.open_event",
@@ -27981,8 +27935,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"onopen\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.readyState",
@@ -27990,8 +27944,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"readyState\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.url",
@@ -27999,8 +27953,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"url\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventSource.withCredentials",
@@ -28008,8 +27962,8 @@
           "code": "(function () {\n  if (!(\"EventSource\" in self)) {\n    return { result: false, message: \"EventSource is not defined\" };\n  }\n  var instance = new EventSource(\"/eventstream\");\n  bcd.addCleanup(function () {\n    instance.close();\n  });\n  return !!instance && \"withCredentials\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "EventSource is not defined"
+        "result": null,
+        "message": "threw SyntaxError: Invalid URL: '/eventstream'"
       },
       {
         "name": "api.EventTarget",
@@ -28494,6 +28448,14 @@
         "name": "api.Fence",
         "info": {
           "code": "\"Fence\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Fence.disableUntrustedNetwork",
+        "info": {
+          "code": "\"Fence\" in self && \"disableUntrustedNetwork\" in Fence.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -29146,6 +29108,47 @@
         "name": "api.FileSystemHandle.requestPermission",
         "info": {
           "code": "\"FileSystemHandle\" in self && \"requestPermission\" in FileSystemHandle.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.FileSystemObserver",
+        "info": {
+          "code": "\"FileSystemObserver\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.FileSystemObserver.disconnect",
+        "info": {
+          "code": "\"FileSystemObserver\" in self && \"disconnect\" in FileSystemObserver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.FileSystemObserver.FileSystemObserver",
+        "info": {
+          "code": "bcd.testConstructor('FileSystemObserver')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: FileSystemObserver is not defined"
+      },
+      {
+        "name": "api.FileSystemObserver.observe",
+        "info": {
+          "code": "\"FileSystemObserver\" in self && \"observe\" in FileSystemObserver.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.FileSystemObserver.unobserve",
+        "info": {
+          "code": "\"FileSystemObserver\" in self && \"unobserve\" in FileSystemObserver.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -31659,6 +31662,14 @@
         "result": false
       },
       {
+        "name": "api.HighlightRegistry.highlightsFromPoint",
+        "info": {
+          "code": "\"HighlightRegistry\" in self && \"highlightsFromPoint\" in HighlightRegistry.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.HighlightRegistry.keys",
         "info": {
           "code": "\"HighlightRegistry\" in self && \"keys\" in HighlightRegistry.prototype",
@@ -32150,6 +32161,15 @@
         "name": "api.HTMLAreaElement.alt",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"alt\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLAreaElement.attributionSrc",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"area\");\n  return !!instance && \"attributionSrc\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -33254,6 +33274,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLDialogElement.closedBy",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"closedBy\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLDialogElement.HTMLDialogElement",
         "info": {
           "code": "bcd.testConstructor('HTMLDialogElement')",
@@ -33266,6 +33295,15 @@
         "name": "api.HTMLDialogElement.open",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"open\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLDialogElement.requestClose",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"requestClose\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -41020,6 +41058,14 @@
         "result": false
       },
       {
+        "name": "api.IdentityProvider.resolve_static",
+        "info": {
+          "code": "\"IdentityProvider\" in self && \"resolve\" in IdentityProvider",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.IdleDeadline",
         "info": {
           "code": "\"IdleDeadline\" in self",
@@ -41259,7 +41305,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.ImageData.colorSpace",
@@ -41267,7 +41313,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"colorSpace\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.ImageData.data",
@@ -41275,7 +41321,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"data\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.ImageData.height",
@@ -41283,7 +41329,7 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"height\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.ImageData.ImageData",
@@ -41291,8 +41337,8 @@
           "code": "bcd.testConstructor('ImageData')",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "threw ReferenceError: ImageData is not defined"
+        "result": true,
+        "message": "threw TypeError: Failed to construct \"ImageData\": 2 arguments required, but only 0 present."
       },
       {
         "name": "api.ImageData.width",
@@ -41300,16 +41346,31 @@
           "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  return !!instance && \"width\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.ImageData.ImageData.settings_parameter",
         "info": {
-          "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(16, 16, { colorSpace: \"display-p3\" });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
+          "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    colorSpace: \"display-p3\"\n  });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "ImageData is not defined"
+        "result": true
+      },
+      {
+        "name": "api.ImageData.ImageData.settings_parameter.colorSpace_option",
+        "info": {
+          "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    colorSpace: \"display-p3\"\n  });\n  return instance.colorSpace == \"display-p3\";\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ImageData.ImageData.settings_parameter.desynchronized_option",
+        "info": {
+          "code": "(function () {\n  var instance;\n  if (\"ImageData\" in self) {\n    instance = new ImageData(5, 5);\n  } else if (\"document\" in self) {\n    if (!(\"document\" in self)) {\n      // XXX Implement worker tests for CanvasRenderingContext2D\n      return {\n        result: null,\n        message:\n          \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n      };\n    }\n    var canvas = document.createElement(\"canvas\");\n    if (!canvas) {\n      return { result: false, message: \"Could not create canvas element\" };\n    }\n    var ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n      return { result: false, message: \"ctx is falsy\" };\n    }\n    instance = ctx.createImageData(16, 16);\n  }\n  if (!(\"ImageData\" in self)) {\n    return { result: false, message: \"ImageData is not defined\" };\n  }\n  instance = new ImageData(new Uint8ClampedArray(4 * 16 * 16), 16, 16, {\n    desynchronized: true\n  });\n  return instance.desynchronized == true;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.ImageDecoder",
@@ -45383,9 +45444,33 @@
         "result": false
       },
       {
-        "name": "api.MLContext.compute",
+        "name": "api.MLContext.createTensor",
         "info": {
-          "code": "\"MLContext\" in self && \"compute\" in MLContext.prototype",
+          "code": "\"MLContext\" in self && \"createTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.destroy",
+        "info": {
+          "code": "\"MLContext\" in self && \"destroy\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.dispatch",
+        "info": {
+          "code": "\"MLContext\" in self && \"dispatch\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.lost",
+        "info": {
+          "code": "\"MLContext\" in self && \"lost\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -45399,9 +45484,33 @@
         "result": false
       },
       {
+        "name": "api.MLContext.readTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"readTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.writeTensor",
+        "info": {
+          "code": "\"MLContext\" in self && \"writeTensor\" in MLContext.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraph",
         "info": {
           "code": "\"MLGraph\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraph.destroy",
+        "info": {
+          "code": "\"MLGraph\" in self && \"destroy\" in MLGraph.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46096,6 +46205,54 @@
         "result": false
       },
       {
+        "name": "api.MLTensor",
+        "info": {
+          "code": "\"MLTensor\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.dataType",
+        "info": {
+          "code": "\"MLTensor\" in self && \"dataType\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.destroy",
+        "info": {
+          "code": "\"MLTensor\" in self && \"destroy\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.readable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"readable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.shape",
+        "info": {
+          "code": "\"MLTensor\" in self && \"shape\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLTensor.writable",
+        "info": {
+          "code": "\"MLTensor\" in self && \"writable\" in MLTensor.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MouseEvent",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = new MouseEvent(\"click\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MouseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
@@ -46722,14 +46879,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.canTransition",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"canTransition\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.destination",
         "info": {
           "code": "\"NavigateEvent\" in self && \"destination\" in NavigateEvent.prototype",
@@ -46803,14 +46952,6 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.restoreScroll",
-        "info": {
-          "code": "\"NavigateEvent\" in self && \"restoreScroll\" in NavigateEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.NavigateEvent.scroll",
         "info": {
           "code": "\"NavigateEvent\" in self && \"scroll\" in NavigateEvent.prototype",
@@ -46827,9 +46968,9 @@
         "result": false
       },
       {
-        "name": "api.NavigateEvent.transitionWhile",
+        "name": "api.NavigateEvent.sourceElement",
         "info": {
-          "code": "\"NavigateEvent\" in self && \"transitionWhile\" in NavigateEvent.prototype",
+          "code": "\"NavigateEvent\" in self && \"sourceElement\" in NavigateEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46981,34 +47122,38 @@
       {
         "name": "api.NavigationActivation",
         "info": {
-          "code": "\"NavigationActivation\" in self",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.entry",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"entry\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"entry\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.from",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"from\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"from\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationActivation.navigationType",
         "info": {
-          "code": "\"NavigationActivation\" in self && \"navigationType\" in NavigationActivation.prototype",
+          "code": "(function () {\n  if (!(\"navigation\" in self)) {\n    return { result: false, message: \"navigation is not defined\" };\n  }\n  var instance = navigation.activation;\n  return !!instance && \"navigationType\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": false,
+        "message": "navigation is not defined"
       },
       {
         "name": "api.NavigationCurrentEntryChangeEvent",
@@ -47580,7 +47725,7 @@
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"gpu\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Navigator.hardwareConcurrency",
@@ -47658,6 +47803,14 @@
         "name": "api.Navigator.locks",
         "info": {
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"locks\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Navigator.login",
+        "info": {
+          "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"login\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -48044,6 +48197,22 @@
         "name": "api.Navigator.xr",
         "info": {
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"xr\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorLogin",
+        "info": {
+          "code": "\"NavigatorLogin\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.NavigatorLogin.setStatus",
+        "info": {
+          "code": "\"NavigatorLogin\" in self && \"setStatus\" in NavigatorLogin.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -49955,6 +50124,14 @@
         "result": false
       },
       {
+        "name": "api.OffscreenCanvasRenderingContext2D.getContextAttributes",
+        "info": {
+          "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"getContextAttributes\" in OffscreenCanvasRenderingContext2D.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.OffscreenCanvasRenderingContext2D.getImageData",
         "info": {
           "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"getImageData\" in OffscreenCanvasRenderingContext2D.prototype",
@@ -51581,6 +51758,22 @@
         "result": false
       },
       {
+        "name": "api.PerformanceElementTiming.paintTime",
+        "info": {
+          "code": "\"PerformanceElementTiming\" in self && \"paintTime\" in PerformanceElementTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceElementTiming.presentationTime",
+        "info": {
+          "code": "\"PerformanceElementTiming\" in self && \"presentationTime\" in PerformanceElementTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.PerformanceElementTiming.renderTime",
         "info": {
           "code": "\"PerformanceElementTiming\" in self && \"renderTime\" in PerformanceElementTiming.prototype",
@@ -51744,6 +51937,22 @@
         "name": "api.PerformanceLongAnimationFrameTiming.firstUIEventTimestamp",
         "info": {
           "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"firstUIEventTimestamp\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceLongAnimationFrameTiming.paintTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"paintTime\" in PerformanceLongAnimationFrameTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceLongAnimationFrameTiming.presentationTime",
+        "info": {
+          "code": "\"PerformanceLongAnimationFrameTiming\" in self && \"presentationTime\" in PerformanceLongAnimationFrameTiming.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -52091,6 +52300,22 @@
         "name": "api.PerformancePaintTiming",
         "info": {
           "code": "\"PerformancePaintTiming\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformancePaintTiming.paintTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"paintTime\" in PerformancePaintTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformancePaintTiming.presentationTime",
+        "info": {
+          "code": "\"PerformancePaintTiming\" in self && \"presentationTime\" in PerformancePaintTiming.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -52943,6 +53168,15 @@
         "message": "Testing PermissionsPolicyViolationReportBody is not yet implemented"
       },
       {
+        "name": "api.PermissionsPolicyViolationReportBody.allowAttribute",
+        "info": {
+          "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"allowAttribute\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "Testing PermissionsPolicyViolationReportBody is not yet implemented"
+      },
+      {
         "name": "api.PermissionsPolicyViolationReportBody.columnNumber",
         "info": {
           "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
@@ -52982,6 +53216,15 @@
         "name": "api.PermissionsPolicyViolationReportBody.sourceFile",
         "info": {
           "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "Testing PermissionsPolicyViolationReportBody is not yet implemented"
+      },
+      {
+        "name": "api.PermissionsPolicyViolationReportBody.srcAttribute",
+        "info": {
+          "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"srcAttribute\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -60728,6 +60971,22 @@
         "result": false
       },
       {
+        "name": "api.Sanitizer.allowAttribute",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"allowAttribute\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.allowElement",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"allowElement\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Sanitizer.get",
         "info": {
           "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
@@ -60736,9 +60995,33 @@
         "result": false
       },
       {
-        "name": "api.Sanitizer.getUnsafe",
+        "name": "api.Sanitizer.removeAttribute",
         "info": {
-          "code": "\"Sanitizer\" in self && \"getUnsafe\" in Sanitizer.prototype",
+          "code": "\"Sanitizer\" in self && \"removeAttribute\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.removeElement",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"removeElement\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.removeUnsafe",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"removeUnsafe\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.replaceElementWithChildren",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"replaceElementWithChildren\" in Sanitizer.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -60751,6 +61034,22 @@
         },
         "result": false,
         "message": "threw ReferenceError: Sanitizer is not defined"
+      },
+      {
+        "name": "api.Sanitizer.setComments",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"setComments\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Sanitizer.setDataAttributes",
+        "info": {
+          "code": "\"Sanitizer\" in self && \"setDataAttributes\" in Sanitizer.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.Scheduler",
@@ -62479,6 +62778,14 @@
         "result": false
       },
       {
+        "name": "api.SharedStorage.batchUpdate",
+        "info": {
+          "code": "\"SharedStorage\" in self && \"batchUpdate\" in SharedStorage.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SharedStorage.clear",
         "info": {
           "code": "\"SharedStorage\" in self && \"clear\" in SharedStorage.prototype",
@@ -62583,6 +62890,65 @@
         "result": false
       },
       {
+        "name": "api.SharedStorageAppendMethod",
+        "info": {
+          "code": "\"SharedStorageAppendMethod\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageAppendMethod.SharedStorageAppendMethod",
+        "info": {
+          "code": "bcd.testConstructor('SharedStorageAppendMethod')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SharedStorageAppendMethod is not defined"
+      },
+      {
+        "name": "api.SharedStorageClearMethod",
+        "info": {
+          "code": "\"SharedStorageClearMethod\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageClearMethod.SharedStorageClearMethod",
+        "info": {
+          "code": "bcd.testConstructor('SharedStorageClearMethod')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SharedStorageClearMethod is not defined"
+      },
+      {
+        "name": "api.SharedStorageDeleteMethod",
+        "info": {
+          "code": "\"SharedStorageDeleteMethod\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageDeleteMethod.SharedStorageDeleteMethod",
+        "info": {
+          "code": "bcd.testConstructor('SharedStorageDeleteMethod')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SharedStorageDeleteMethod is not defined"
+      },
+      {
+        "name": "api.SharedStorageModifierMethod",
+        "info": {
+          "code": "\"SharedStorageModifierMethod\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SharedStorageOperation",
         "info": {
           "code": "\"SharedStorageOperation\" in self",
@@ -62621,6 +62987,23 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.SharedStorageSetMethod",
+        "info": {
+          "code": "\"SharedStorageSetMethod\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SharedStorageSetMethod.SharedStorageSetMethod",
+        "info": {
+          "code": "bcd.testConstructor('SharedStorageSetMethod')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SharedStorageSetMethod is not defined"
       },
       {
         "name": "api.SharedStorageWorklet",
@@ -62913,96 +63296,6 @@
         "result": false
       },
       {
-        "name": "api.SpeechGrammar",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammar.SpeechGrammar",
-        "info": {
-          "code": "bcd.testConstructor('SpeechGrammar')",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "threw ReferenceError: SpeechGrammar is not defined"
-      },
-      {
-        "name": "api.SpeechGrammar.src",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"src\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammar.weight",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"weight\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList.addFromString",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromString\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList.addFromURI",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromURI\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList.item",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"item\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList.length",
-        "info": {
-          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"length\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "SpeechGrammarList is not defined"
-      },
-      {
-        "name": "api.SpeechGrammarList.SpeechGrammarList",
-        "info": {
-          "code": "bcd.testConstructor('SpeechGrammarList')",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "threw ReferenceError: SpeechGrammarList is not defined"
-      },
-      {
         "name": "api.SpeechRecognition",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return \"SpeechRecognition\" in self;\n})();\n",
@@ -63027,9 +63320,9 @@
         "result": false
       },
       {
-        "name": "api.SpeechRecognition.grammars",
+        "name": "api.SpeechRecognition.installOnDeviceSpeechRecognition",
         "info": {
-          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"grammars\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"installOnDeviceSpeechRecognition\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -63059,6 +63352,14 @@
         "result": false
       },
       {
+        "name": "api.SpeechRecognition.mode",
+        "info": {
+          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"mode\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SpeechRecognition.audioend_event",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudioend\" in instance;\n})();\n",
@@ -63070,6 +63371,14 @@
         "name": "api.SpeechRecognition.audiostart_event",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudiostart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SpeechRecognition.onDeviceWebSpeechAvailable",
+        "info": {
+          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onDeviceWebSpeechAvailable\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -79933,7 +80242,7 @@
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"name\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Window.navigate",
@@ -80182,6 +80491,15 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.Window.postMessage.options_delegate_parameter",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  try {\n    return bcd.testOptionParam(postMessage, null, \"delegate\", \"test\");\n  } catch (e) {\n    if (\n      e.name === \"NotSupportedError\" &&\n      stringIncludes(e.message, \"Delegation of 'test' is not supported.\")\n    ) {\n      return true;\n    }\n    throw e;\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw TypeError: window.postMessage is not a function"
       },
       {
         "name": "api.Window.print",
@@ -84661,6 +84979,14 @@
         "result": true
       },
       {
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hmac",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HMAC\",\n          hash: \"SHA-512\",\n          length: 256\n        },\n        true,\n        [\"sign\", \"verify\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
@@ -84675,17 +85001,9 @@
           "exposure": "Window"
         },
         "result": true
-      },
-      {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
-        "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
       }
     ]
   },
   "extensions": [],
-  "userAgent": "!! netlify/17.37.2"
+  "userAgent": "!! netlify/19.0.1"
 }
