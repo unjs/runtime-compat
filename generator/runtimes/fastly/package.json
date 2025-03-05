@@ -4,7 +4,7 @@
   "type": "module",
   "dependencies": {
     "@fastly/js-compute": "^3.32.2",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.5.0",
     "start-server-and-test": "^2.0.10"
   },
   "scripts": {
