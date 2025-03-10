@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.10",
+  "__version": "10.12.11",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -90,6 +90,27 @@
   },
   "api.AbortController.abort": {
     "code": "\"AbortController\" in self && \"abort\" in AbortController.prototype",
+    "exposure": [
+      "Worklet",
+      "AnimationWorklet",
+      "LayoutWorklet",
+      "PaintWorklet",
+      "Window",
+      "Worker",
+      "SharedWorker",
+      "ServiceWorker",
+      "SharedStorageWorklet",
+      "InterestGroupBiddingAndScoringScriptRunnerGlobalScope",
+      "InterestGroupScriptRunnerGlobalScope",
+      "InterestGroupBiddingScriptRunnerGlobalScope",
+      "InterestGroupScoringScriptRunnerGlobalScope",
+      "InterestGroupReportingScriptRunnerGlobalScope",
+      "AudioWorklet",
+      "RTCIdentityProvider"
+    ]
+  },
+  "api.AbortController.abort.reason_parameter": {
+    "code": "(function () {\n  if (!(\"AbortController\" in self)) {\n    return { result: false, message: \"AbortController is not defined\" };\n  }\n  var controller = new AbortController();\n  if (!(\"abort\" in controller)) {\n    return { result: false, message: \"AbortController.abort is undefined\" };\n  }\n  controller.abort(\"foo bar\");\n  return controller.signal.aborted && controller.signal.reason == \"foo bar\";\n})();\n",
     "exposure": [
       "Worklet",
       "AnimationWorklet",
@@ -993,11 +1014,6 @@
     "exposure": ["Window"],
     "resources": ["audioContext", "audioContext"]
   },
-  "api.AudioContext.renderCapacity": {
-    "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"renderCapacity\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["audioContext", "audioContext"]
-  },
   "api.AudioContext.resume": {
     "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"resume\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -1544,46 +1560,6 @@
   },
   "api.AudioProcessingEvent.playbackTime": {
     "code": "(function () {\n  var instance;\n  var inputBuffer = new AudioBuffer({ length: 1, sampleRate: 30000 });\n  var outputBuffer = new AudioBuffer({ length: 1, sampleRate: 30000 });\n  try {\n    instance = new AudioProcessingEvent(\"audioprocess\", {\n      inputBuffer: inputBuffer,\n      outputBuffer: outputBuffer,\n      playbackTime: 0\n    });\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"AudioProcessingEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"playbackTime\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacity": {
-    "code": "\"AudioRenderCapacity\" in self",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacity.update_event": {
-    "code": "\"AudioRenderCapacity\" in self && \"onupdate\" in AudioRenderCapacity.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacity.start": {
-    "code": "\"AudioRenderCapacity\" in self && \"start\" in AudioRenderCapacity.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacity.stop": {
-    "code": "\"AudioRenderCapacity\" in self && \"stop\" in AudioRenderCapacity.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent": {
-    "code": "\"AudioRenderCapacityEvent\" in self",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent.AudioRenderCapacityEvent": {
-    "code": "bcd.testConstructor('AudioRenderCapacityEvent')",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent.averageLoad": {
-    "code": "\"AudioRenderCapacityEvent\" in self && \"averageLoad\" in AudioRenderCapacityEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent.peakLoad": {
-    "code": "\"AudioRenderCapacityEvent\" in self && \"peakLoad\" in AudioRenderCapacityEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent.timestamp": {
-    "code": "\"AudioRenderCapacityEvent\" in self && \"timestamp\" in AudioRenderCapacityEvent.prototype",
-    "exposure": ["Window"]
-  },
-  "api.AudioRenderCapacityEvent.underrunRatio": {
-    "code": "\"AudioRenderCapacityEvent\" in self && \"underrunRatio\" in AudioRenderCapacityEvent.prototype",
     "exposure": ["Window"]
   },
   "api.AudioScheduledSourceNode": {
@@ -3362,6 +3338,11 @@
     "exposure": ["Window"],
     "resources": ["image-black", "image-black"]
   },
+  "api.CanvasRenderingContext2D.lang": {
+    "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"lang\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["image-black", "image-black"]
+  },
   "api.CanvasRenderingContext2D.letterSpacing": {
     "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"letterSpacing\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -3579,10 +3560,6 @@
     "code": "\"CaptureController\" in self && \"getSupportedZoomLevels\" in CaptureController.prototype",
     "exposure": ["Window"]
   },
-  "api.CaptureController.getZoomLevel": {
-    "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
-    "exposure": ["Window"]
-  },
   "api.CaptureController.increaseZoomLevel": {
     "code": "\"CaptureController\" in self && \"increaseZoomLevel\" in CaptureController.prototype",
     "exposure": ["Window"]
@@ -3601,6 +3578,10 @@
   },
   "api.CaptureController.setFocusBehavior": {
     "code": "\"CaptureController\" in self && \"setFocusBehavior\" in CaptureController.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CaptureController.zoomLevel": {
+    "code": "\"CaptureController\" in self && \"zoomLevel\" in CaptureController.prototype",
     "exposure": ["Window"]
   },
   "api.CapturedMouseEvent": {
@@ -3819,6 +3800,10 @@
     "code": "(function () {\n  var instance = navigator.clipboard;\n  return !!instance && \"read\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Clipboard.read.formats_unsanitized_parameter": {
+    "code": "(function () {\n  var instance = navigator.clipboard;\n  return bcd.testOptionParam(instance, \"read\", \"unsanitized\", [\"text/html\"]);\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Clipboard.readText": {
     "code": "(function () {\n  var instance = navigator.clipboard;\n  return !!instance && \"readText\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -3829,6 +3814,18 @@
   },
   "api.Clipboard.writeText": {
     "code": "(function () {\n  var instance = navigator.clipboard;\n  return !!instance && \"writeText\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Clipboard.type_image-png": {
+    "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"image/png\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Clipboard.type_text-html": {
+    "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"text/html\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Clipboard.type_text-plain": {
+    "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"text/plain\");\n})();\n",
     "exposure": ["Window"]
   },
   "api.ClipboardEvent": {
@@ -3913,6 +3910,22 @@
   },
   "api.CloseWatcher.requestClose": {
     "code": "\"CloseWatcher\" in self && \"requestClose\" in CloseWatcher.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CommandEvent": {
+    "code": "\"CommandEvent\" in self",
+    "exposure": ["Window"]
+  },
+  "api.CommandEvent.command": {
+    "code": "\"CommandEvent\" in self && \"command\" in CommandEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.CommandEvent.CommandEvent": {
+    "code": "bcd.testConstructor('CommandEvent')",
+    "exposure": ["Window"]
+  },
+  "api.CommandEvent.source": {
+    "code": "\"CommandEvent\" in self && \"source\" in CommandEvent.prototype",
     "exposure": ["Window"]
   },
   "api.Comment": { "code": "\"Comment\" in self", "exposure": ["Window"] },
@@ -4851,19 +4864,75 @@
     "exposure": ["ServiceWorker", "Window"]
   },
   "api.CookieStore.delete.partitioned_option": {
-    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  return bcd.testOptionParam(cookieStore, \"delete\", \"partitioned\", true, {\n    name: \"one\"\n  });\n})();\n",
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  return bcd.testOptionParam(cookieStore, \"delete\", \"partitioned\", true, {\n    name: \"test_delete_partitioned\"\n  });\n})();\n",
     "exposure": ["ServiceWorker", "Window"]
   },
   "api.CookieStore.set.partitioned_option": {
-    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"two\", partitioned: true });\n  });\n  return bcd.testOptionParam(cookieStore, \"set\", \"partitioned\", true, {\n    name: \"two\",\n    value: \"bar\"\n  });\n})();\n",
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_set_partitioned\", partitioned: true });\n  });\n  return bcd.testOptionParam(cookieStore, \"set\", \"partitioned\", true, {\n    name: \"test_set_partitioned\",\n    value: \"bar\"\n  });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.domain_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_domain\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_domain\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_domain\");\n    })\n    .then(function (cookie) {\n      return \"domain\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.expires_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_expires\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_expires\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_expires\");\n    })\n    .then(function (cookie) {\n      return \"expires\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.name_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_name\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_name\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_name\");\n    })\n    .then(function (cookie) {\n      return \"name\" in cookie;\n    });\n})();\n",
     "exposure": ["ServiceWorker", "Window"]
   },
   "api.CookieStore.get.partitioned_return_property": {
-    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"three\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"three\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.get(\"three\");\n    })\n    .then(function (cookie) {\n      return \"partitioned\" in cookie;\n    });\n})();\n",
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_partitioned\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"test_get_partitioned\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.get(\"test_get_partitioned\");\n    })\n    .then(function (cookie) {\n      return \"partitioned\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.path_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_path\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_path\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_path\");\n    })\n    .then(function (cookie) {\n      return \"path\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.sameSite_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_sameSite\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_sameSite\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_sameSite\");\n    })\n    .then(function (cookie) {\n      return \"sameSite\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.secure_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_secure\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_secure\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_secure\");\n    })\n    .then(function (cookie) {\n      return \"secure\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.get.value_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_value\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_value\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_value\");\n    })\n    .then(function (cookie) {\n      return \"value\" in cookie;\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.domain_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_domain\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_domain\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_domain\");\n    })\n    .then(function (cookies) {\n      return \"domain\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.expires_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_expires\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_expires\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_expires\");\n    })\n    .then(function (cookies) {\n      return \"expires\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.name_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_name\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_name\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_name\");\n    })\n    .then(function (cookies) {\n      return \"name\" in cookies[0];\n    });\n})();\n",
     "exposure": ["ServiceWorker", "Window"]
   },
   "api.CookieStore.getAll.partitioned_return_property": {
-    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"four\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"four\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.getAll();\n    })\n    .then(function (cookies) {\n      return \"partitioned\" in cookies[0];\n    });\n})();\n",
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_partitioned\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_partitioned\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_partitioned\");\n    })\n    .then(function (cookies) {\n      return \"partitioned\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.path_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_path\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_path\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_path\");\n    })\n    .then(function (cookies) {\n      return \"path\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.sameSite_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_sameSite\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_sameSite\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_sameSite\");\n    })\n    .then(function (cookies) {\n      return \"sameSite\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.secure_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_secure\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_secure\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_secure\");\n    })\n    .then(function (cookies) {\n      return \"secure\" in cookies[0];\n    });\n})();\n",
+    "exposure": ["ServiceWorker", "Window"]
+  },
+  "api.CookieStore.getAll.value_return_property": {
+    "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_value\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_value\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_value\");\n    })\n    .then(function (cookies) {\n      return \"value\" in cookies[0];\n    });\n})();\n",
     "exposure": ["ServiceWorker", "Window"]
   },
   "api.CookieStoreManager": {
@@ -5442,6 +5511,10 @@
   },
   "api.CSS.supports_static": {
     "code": "\"CSS\" in self && \"supports\" in CSS",
+    "exposure": ["Window"]
+  },
+  "api.CSS.supports_static.optional_parens": {
+    "code": "(function () {\n  return CSS.supports(\"display: block\");\n})();\n",
     "exposure": ["Window"]
   },
   "api.CSS.svb_static": {
@@ -6576,6 +6649,11 @@
     "exposure": ["Window"],
     "resources": ["createStyleSheet", "createStyleSheet"]
   },
+  "api.CSSPageRule.style.type_CSSPageDescriptors": {
+    "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\"@page {margin: 1cm;}\");\n  var instance = stylesheet.cssRules.item(0);\n  return bcd.testObjectName(instance.style, \"CSSPageDescriptors\");\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet", "createStyleSheet"]
+  },
   "api.CSSParserAtRule": {
     "code": "\"CSSParserAtRule\" in self",
     "exposure": ["Window"]
@@ -7492,6 +7570,11 @@
     "exposure": ["Window"],
     "resources": ["createStyleSheet"]
   },
+  "api.CSSStyleSheet.CSSStyleSheet.options_baseURL_parameter": {
+    "code": "(function () {\n  var instance = reusableInstances.createStyleSheet(\"p {color: red;}\");\n  function construct(options) {\n    new CSSStyleSheet(options);\n  }\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"baseURL\",\n    \"https://mdn-bcd-collector.gooborg.com\",\n    { media: \"screen\" }\n  );\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["createStyleSheet"]
+  },
   "api.CSSStyleSheet.deleteRule": {
     "code": "(function () {\n  var instance = reusableInstances.createStyleSheet(\"p {color: red;}\");\n  return !!instance && \"deleteRule\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -8218,6 +8301,10 @@
     "code": "\"DelegatedInkTrailPresenter\" in self",
     "exposure": ["Window"]
   },
+  "api.DelegatedInkTrailPresenter.expectedImprovement": {
+    "code": "\"DelegatedInkTrailPresenter\" in self && \"expectedImprovement\" in DelegatedInkTrailPresenter.prototype",
+    "exposure": ["Window"]
+  },
   "api.DelegatedInkTrailPresenter.presentationArea": {
     "code": "\"DelegatedInkTrailPresenter\" in self && \"presentationArea\" in DelegatedInkTrailPresenter.prototype",
     "exposure": ["Window"]
@@ -8512,6 +8599,10 @@
   },
   "api.Document.caretPositionFromPoint": {
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"caretPositionFromPoint\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.caretPositionFromPoint.options_parameter": {
+    "code": "(function () {\n  var instance = document;\n  function caretPositionFromPoint(options) {\n    document.caretPositionFromPoint(0, 0, options);\n  }\n  return bcd.testOptionParam(caretPositionFromPoint, null, \"shadowRoots\", []);\n})();\n",
     "exposure": ["Window"]
   },
   "api.Document.caretRangeFromPoint": {
@@ -8908,6 +8999,30 @@
   },
   "api.Document.resume_event": {
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"onresume\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.scroll_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscroll\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.scrollend_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.scrollsnapchange_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.scrollsnapchanging_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.securitypolicyviolation_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onsecuritypolicyviolation\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Document.selectionchange_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Document.visibilitychange_event": {
@@ -10407,6 +10522,10 @@
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"delegatesFocus\", true, {\n    mode: \"open\"\n  });\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Element.attachShadow.options_serializable_parameter": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"serializable\", true, {\n    mode: \"open\"\n  });\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Element.attributes": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"attributes\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -10635,6 +10754,90 @@
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"nextElementSibling\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Element.afterscriptexecute_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onafterscriptexecute\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.animationcancel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationcancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.animationend_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.animationiteration_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationiteration\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.animationstart_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.auxclick_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onauxclick\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.beforeinput_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforeinput\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.beforematch_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforematch\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.beforescriptexecute_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforescriptexecute\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.beforexrselect_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforexrselect\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.blur_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onblur\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.click_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onclick\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.compositionend_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.compositionstart_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.compositionupdate_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionupdate\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.contentvisibilityautostatechange_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncontentvisibilityautostatechange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.contextmenu_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncontextmenu\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.copy_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncopy\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.cut_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncut\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.dblclick_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ondblclick\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.focus_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onfocus\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Element.focusin_event": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onfocusin\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -10661,6 +10864,174 @@
   },
   "api.Element.gesturestart_event": {
     "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ongesturestart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.gotpointercapture_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ongotpointercapture\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.input_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oninput\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.keydown_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeydown\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.keypress_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeypress\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.keyup_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeyup\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.lostpointercapture_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onlostpointercapture\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mousedown_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousedown\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mouseenter_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseenter\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mouseleave_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseleave\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mousemove_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousemove\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mouseout_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseout\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mouseover_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseover\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mouseup_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseup\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.mousewheel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousewheel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.paste_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpaste\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointercancel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointercancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerdown_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerdown\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerenter_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerenter\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerleave_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerleave\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointermove_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointermove\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerout_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerout\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerover_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerover\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerrawupdate_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerrawupdate\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.pointerup_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerup\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.scroll_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscroll\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.scrollend_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.scrollsnapchange_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.scrollsnapchanging_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.securitypolicyviolation_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onsecuritypolicyviolation\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.touchcancel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchcancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.touchend_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.touchmove_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchmove\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.touchstart_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.transitioncancel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitioncancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.transitionend_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.transitionrun_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionrun\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.transitionstart_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.webkitmouseforcechanged_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcechanged\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.webkitmouseforcedown_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcedown\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.webkitmouseforceup_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforceup\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.webkitmouseforcewillbegin_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcewillbegin\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Element.wheel_event": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwheel\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Element.outerHTML": {
@@ -12598,6 +12969,14 @@
     "code": "(function () {\n  if (!(\"Request\" in self)) {\n    return { result: false, message: \"Request is not defined\" };\n  }\n  var req = new Request(\"https://example.com\");\n  if (!req) {\n    return { result: false, message: \"req is falsy\" };\n  }\n  if (!(\"FetchEvent\" in self)) {\n    return { result: false, message: \"FetchEvent is not defined\" };\n  }\n  var instance = new FetchEvent(\"fetch\", { request: req });\n  return !!instance && \"resultingClientId\" in instance;\n})();\n",
     "exposure": ["ServiceWorker"]
   },
+  "api.FetchLaterResult": {
+    "code": "\"FetchLaterResult\" in self",
+    "exposure": ["Window"]
+  },
+  "api.FetchLaterResult.activated": {
+    "code": "\"FetchLaterResult\" in self && \"activated\" in FetchLaterResult.prototype",
+    "exposure": ["Window"]
+  },
   "api.File": { "code": "\"File\" in self", "exposure": ["Window", "Worker"] },
   "api.File.File": {
     "code": "bcd.testConstructor('File')",
@@ -13541,8 +13920,8 @@
     "code": "\"Gamepad\" in self && \"timestamp\" in Gamepad.prototype",
     "exposure": ["Window"]
   },
-  "api.Gamepad.touchEvents": {
-    "code": "\"Gamepad\" in self && \"touchEvents\" in Gamepad.prototype",
+  "api.Gamepad.touches": {
+    "code": "\"Gamepad\" in self && \"touches\" in Gamepad.prototype",
     "exposure": ["Window"]
   },
   "api.Gamepad.vibrationActuator": {
@@ -13639,26 +14018,6 @@
   },
   "api.GamepadPose.position": {
     "code": "\"GamepadPose\" in self && \"position\" in GamepadPose.prototype",
-    "exposure": ["Window"]
-  },
-  "api.GamepadTouch": {
-    "code": "\"GamepadTouch\" in self",
-    "exposure": ["Window"]
-  },
-  "api.GamepadTouch.position": {
-    "code": "\"GamepadTouch\" in self && \"position\" in GamepadTouch.prototype",
-    "exposure": ["Window"]
-  },
-  "api.GamepadTouch.surfaceDimensions": {
-    "code": "\"GamepadTouch\" in self && \"surfaceDimensions\" in GamepadTouch.prototype",
-    "exposure": ["Window"]
-  },
-  "api.GamepadTouch.surfaceId": {
-    "code": "\"GamepadTouch\" in self && \"surfaceId\" in GamepadTouch.prototype",
-    "exposure": ["Window"]
-  },
-  "api.GamepadTouch.touchId": {
-    "code": "\"GamepadTouch\" in self && \"touchId\" in GamepadTouch.prototype",
     "exposure": ["Window"]
   },
   "api.Geolocation": {
@@ -15683,6 +16042,14 @@
     "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"checkValidity\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLButtonElement.command": {
+    "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"command\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLButtonElement.commandForElement": {
+    "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"commandForElement\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLButtonElement.disabled": {
     "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"disabled\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -15892,6 +16259,31 @@
     "exposure": ["Window"],
     "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
   },
+  "api.HTMLCanvasElement.contextlost_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.contextrestored_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.webglcontextcreationerror_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextcreationerror\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.webglcontextlost_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextlost\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
+  "api.HTMLCanvasElement.webglcontextrestored_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextrestored\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["webGL1", "webGL2", "webGL1", "webGL2"]
+  },
   "api.HTMLCanvasElement.toBlob": {
     "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"toBlob\" in instance;\n})();\n",
     "exposure": ["Window"],
@@ -16029,6 +16421,14 @@
   },
   "api.HTMLDialogElement.HTMLDialogElement": {
     "code": "bcd.testConstructor('HTMLDialogElement')",
+    "exposure": ["Window"]
+  },
+  "api.HTMLDialogElement.cancel_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"oncancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLDialogElement.close_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"onclose\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLDialogElement.open": {
@@ -16229,6 +16629,58 @@
   },
   "api.HTMLElement.offsetWidth": {
     "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"offsetWidth\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.beforetoggle_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onbeforetoggle\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.change_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.command_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"oncommand\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.drag_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondrag\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragend_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragenter_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragenter\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragexit_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragexit\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragleave_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragleave\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragover_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragover\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.dragstart_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.drop_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondrop\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.error_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLElement.toggle_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ontoggle\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLElement.outerText": {
@@ -16477,6 +16929,18 @@
   },
   "api.HTMLFormElement.noValidate": {
     "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"noValidate\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLFormElement.formdata_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onformdata\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLFormElement.reset_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onreset\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLFormElement.submit_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onsubmit\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLFormElement.rel": {
@@ -17043,8 +17507,24 @@
     "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"name\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLInputElement.cancel_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"oncancel\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLInputElement.invalid_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"oninvalid\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLInputElement.search_event": {
     "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onsearch\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLInputElement.select_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onselect\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLInputElement.selectionchange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLInputElement.pattern": {
@@ -17539,12 +18019,96 @@
     "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"networkState\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLMediaElement.abort_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onabort\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.canplay_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"oncanplay\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.canplaythrough_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"oncanplaythrough\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.durationchange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"ondurationchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.emptied_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onemptied\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLMediaElement.encrypted_event": {
     "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onencrypted\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLMediaElement.ended_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onended\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLMediaElement.error_event": {
     "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.loadeddata_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadeddata\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.loadedmetadata_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadedmetadata\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.loadstart_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.pause_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onpause\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.play_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onplay\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.playing_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onplaying\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.progress_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.ratechange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onratechange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.seeked_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onseeked\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.seeking_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onseeking\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.stalled_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onstalled\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.suspend_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onsuspend\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.timeupdate_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"ontimeupdate\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.volumechange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onvolumechange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLMediaElement.waiting_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onwaiting\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLMediaElement.waitingforkey_event": {
@@ -18399,6 +18963,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"slot\");\n  return !!instance && \"name\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLSlotElement.slotchange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"slot\");\n  return !!instance && \"onslotchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLSourceElement": {
     "code": "(function () {\n  var instance = document.createElement(\"source\");\n  return bcd.testObjectName(instance, \"HTMLSourceElement\");\n})();\n",
     "exposure": ["Window"]
@@ -18851,6 +19419,14 @@
     "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"name\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLTextAreaElement.select_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"onselect\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLTextAreaElement.selectionchange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLTextAreaElement.placeholder": {
     "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"placeholder\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -18971,6 +19547,10 @@
     "code": "(function () {\n  var instance = document.createElement(\"track\");\n  return !!instance && \"label\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.HTMLTrackElement.cuechange_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"track\");\n  return !!instance && \"oncuechange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.HTMLTrackElement.readyState": {
     "code": "(function () {\n  var instance = document.createElement(\"track\");\n  return !!instance && \"readyState\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -19061,6 +19641,10 @@
   },
   "api.HTMLVideoElement.leavepictureinpicture_event": {
     "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onleavepictureinpicture\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.HTMLVideoElement.resize_event": {
+    "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onresize\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.HTMLVideoElement.playsInline": {
@@ -21888,6 +22472,10 @@
     "code": "(function () {\n  var instance;\n  try {\n    instance = new MessageEvent(\"message\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MessageEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"source\" in instance;\n})();\n",
     "exposure": ["Window", "Worker", "AudioWorklet"]
   },
+  "api.MessageEvent.userActivation": {
+    "code": "(function () {\n  var instance;\n  try {\n    instance = new MessageEvent(\"message\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MessageEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"userActivation\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker", "AudioWorklet"]
+  },
   "api.MessagePort": {
     "code": "(function () {\n  if (!(\"MessageChannel\" in self)) {\n    return { result: false, message: \"MessageChannel is not defined\" };\n  }\n  var channel = new MessageChannel();\n  if (!channel) {\n    return { result: false, message: \"channel is falsy\" };\n  }\n  var instance = channel.port1;\n  return !!instance;\n})();\n",
     "exposure": ["Window", "Worker", "AudioWorklet"]
@@ -22253,6 +22841,14 @@
     "code": "\"MLGraphBuilder\" in self && \"cos\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLGraphBuilder.cumulativeSum": {
+    "code": "\"MLGraphBuilder\" in self && \"cumulativeSum\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.dequantizeLinear": {
+    "code": "\"MLGraphBuilder\" in self && \"dequantizeLinear\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraphBuilder.div": {
     "code": "\"MLGraphBuilder\" in self && \"div\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
@@ -22283,6 +22879,14 @@
   },
   "api.MLGraphBuilder.gather": {
     "code": "\"MLGraphBuilder\" in self && \"gather\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.gatherElements": {
+    "code": "\"MLGraphBuilder\" in self && \"gatherElements\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.gatherND": {
+    "code": "\"MLGraphBuilder\" in self && \"gatherND\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.gelu": {
@@ -22357,8 +22961,20 @@
     "code": "\"MLGraphBuilder\" in self && \"log\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLGraphBuilder.logicalAnd": {
+    "code": "\"MLGraphBuilder\" in self && \"logicalAnd\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraphBuilder.logicalNot": {
     "code": "\"MLGraphBuilder\" in self && \"logicalNot\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.logicalOr": {
+    "code": "\"MLGraphBuilder\" in self && \"logicalOr\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.logicalXor": {
+    "code": "\"MLGraphBuilder\" in self && \"logicalXor\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.lstm": {
@@ -22397,6 +23013,10 @@
     "code": "\"MLGraphBuilder\" in self && \"neg\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLGraphBuilder.notEqual": {
+    "code": "\"MLGraphBuilder\" in self && \"notEqual\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraphBuilder.pad": {
     "code": "\"MLGraphBuilder\" in self && \"pad\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
@@ -22407,6 +23027,10 @@
   },
   "api.MLGraphBuilder.prelu": {
     "code": "\"MLGraphBuilder\" in self && \"prelu\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.quantizeLinear": {
+    "code": "\"MLGraphBuilder\" in self && \"quantizeLinear\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.reciprocal": {
@@ -22465,8 +23089,24 @@
     "code": "\"MLGraphBuilder\" in self && \"reshape\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.MLGraphBuilder.reverse": {
+    "code": "\"MLGraphBuilder\" in self && \"reverse\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.scatterElements": {
+    "code": "\"MLGraphBuilder\" in self && \"scatterElements\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.scatterND": {
+    "code": "\"MLGraphBuilder\" in self && \"scatterND\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.MLGraphBuilder.sigmoid": {
     "code": "\"MLGraphBuilder\" in self && \"sigmoid\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.sign": {
+    "code": "\"MLGraphBuilder\" in self && \"sign\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.sin": {
@@ -22507,6 +23147,10 @@
   },
   "api.MLGraphBuilder.tanh": {
     "code": "\"MLGraphBuilder\" in self && \"tanh\" in MLGraphBuilder.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLGraphBuilder.tile": {
+    "code": "\"MLGraphBuilder\" in self && \"tile\" in MLGraphBuilder.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLGraphBuilder.transpose": {
@@ -22768,6 +23412,34 @@
   },
   "api.MouseScrollEvent": {
     "code": "\"MouseScrollEvent\" in self",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.attrChange": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"attrChange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.attrName": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"attrName\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.initMutationEvent": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"initMutationEvent\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.newValue": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"newValue\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.prevValue": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"prevValue\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.MutationEvent.relatedNode": {
+    "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"relatedNode\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.MutationObserver": {
@@ -23471,6 +24143,10 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"presentation\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.privateAttribution": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"privateAttribution\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.product": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"product\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -23885,6 +24561,10 @@
   },
   "api.Node.normalize": {
     "code": "(function () {\n  var instance = document;\n  return !!instance && \"normalize\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Node.selectstart_event": {
+    "code": "(function () {\n  var instance = document;\n  return !!instance && \"onselectstart\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Node.ownerDocument": {
@@ -24975,6 +25655,10 @@
   },
   "api.OffscreenCanvasRenderingContext2D.isPointInStroke": {
     "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"isPointInStroke\" in OffscreenCanvasRenderingContext2D.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.OffscreenCanvasRenderingContext2D.lang": {
+    "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"lang\" in OffscreenCanvasRenderingContext2D.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.OffscreenCanvasRenderingContext2D.letterSpacing": {
@@ -26686,6 +27370,10 @@
     "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"clipboard-write\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.Permissions.permission_compute-pressure": {
+    "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"compute-pressure\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.Permissions.permission_geolocation": {
     "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"geolocation\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -26724,6 +27412,10 @@
   },
   "api.Permissions.permission_push": {
     "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"push\", userVisibleOnly: true })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.Permissions.permission_screen-wake-lock": {
+    "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"screen-wake-lock\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.Permissions.permission_storage-access": {
@@ -27281,6 +27973,58 @@
   "api.PrivateAggregation.enableDebugMode": {
     "code": "\"PrivateAggregation\" in self && \"enableDebugMode\" in PrivateAggregation.prototype",
     "exposure": ["InterestGroupScriptRunnerGlobalScope", "SharedStorageWorklet"]
+  },
+  "api.PrivateAttribution": {
+    "code": "\"PrivateAttribution\" in self",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttribution.aggregationServices": {
+    "code": "\"PrivateAttribution\" in self && \"aggregationServices\" in PrivateAttribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttribution.measureConversion": {
+    "code": "\"PrivateAttribution\" in self && \"measureConversion\" in PrivateAttribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttribution.saveImpression": {
+    "code": "\"PrivateAttribution\" in self && \"saveImpression\" in PrivateAttribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices": {
+    "code": "\"PrivateAttributionAggregationServices\" in self",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.@@iterator": {
+    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"PrivateAttributionAggregationServices\" in self && !!(PrivateAttributionAggregationServices.prototype[Symbol.iterator])",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.entries": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"entries\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.forEach": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"forEach\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.get": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"get\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.has": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"has\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.keys": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"keys\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.size": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"size\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PrivateAttributionAggregationServices.values": {
+    "code": "\"PrivateAttributionAggregationServices\" in self && \"values\" in PrivateAttributionAggregationServices.prototype",
+    "exposure": ["Window"]
   },
   "api.ProcessingInstruction": {
     "code": "(function () {\n  if (!(\"DOMParser\" in self)) {\n    return { result: false, message: \"DOMParser is not defined\" };\n  }\n  var parser = new DOMParser();\n  if (!parser) {\n    return { result: false, message: \"parser is falsy\" };\n  }\n  var doc = parser.parseFromString(\"<foo />\", \"application/xml\");\n  var instance = doc.createProcessingInstruction(\n    \"xml-stylesheet\",\n    'href=\"mycss.css\" type=\"text/css\"'\n  );\n  return !!instance;\n})();\n",
@@ -31590,49 +32334,46 @@
       "RTCIdentityProvider"
     ]
   },
-  "api.Sanitizer": {
-    "code": "\"Sanitizer\" in self",
-    "exposure": ["Window", "Worker"]
-  },
+  "api.Sanitizer": { "code": "\"Sanitizer\" in self", "exposure": ["Window"] },
   "api.Sanitizer.allowAttribute": {
     "code": "\"Sanitizer\" in self && \"allowAttribute\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.allowElement": {
     "code": "\"Sanitizer\" in self && \"allowElement\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.get": {
     "code": "\"Sanitizer\" in self && \"get\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.removeAttribute": {
     "code": "\"Sanitizer\" in self && \"removeAttribute\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.removeElement": {
     "code": "\"Sanitizer\" in self && \"removeElement\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.removeUnsafe": {
     "code": "\"Sanitizer\" in self && \"removeUnsafe\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.replaceElementWithChildren": {
     "code": "\"Sanitizer\" in self && \"replaceElementWithChildren\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.Sanitizer": {
     "code": "bcd.testConstructor('Sanitizer')",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.setComments": {
     "code": "\"Sanitizer\" in self && \"setComments\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Sanitizer.setDataAttributes": {
     "code": "\"Sanitizer\" in self && \"setDataAttributes\" in Sanitizer.prototype",
-    "exposure": ["Window", "Worker"]
+    "exposure": ["Window"]
   },
   "api.Scheduler": {
     "code": "\"Scheduler\" in self",
@@ -32862,6 +33603,56 @@
     "code": "\"SourceBufferList\" in self && \"onremovesourcebuffer\" in SourceBufferList.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.SpeechGrammar": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
+  },
+  "api.SpeechGrammar.SpeechGrammar": {
+    "code": "bcd.testConstructor('SpeechGrammar')",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
+  },
+  "api.SpeechGrammar.src": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"src\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammar.weight": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"weight\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammarList": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
+  },
+  "api.SpeechGrammarList.addFromString": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromString\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammarList.addFromURI": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromURI\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammarList.item": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"item\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammarList.length": {
+    "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"length\" in instance;\n})();\n",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechGrammarList.SpeechGrammarList": {
+    "code": "bcd.testConstructor('SpeechGrammarList')",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
+  },
   "api.SpeechRecognition": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return \"SpeechRecognition\" in self;\n})();\n",
     "exposure": ["Window"],
@@ -32872,15 +33663,25 @@
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
+  "api.SpeechRecognition.availableOnDevice_static": {
+    "code": "\"SpeechRecognition\" in self && \"availableOnDevice\" in SpeechRecognition",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
+  },
   "api.SpeechRecognition.continuous": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"continuous\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
-  "api.SpeechRecognition.installOnDeviceSpeechRecognition": {
-    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"installOnDeviceSpeechRecognition\" in instance;\n})();\n",
+  "api.SpeechRecognition.grammars": {
+    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"grammars\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
+  },
+  "api.SpeechRecognition.installOnDevice_static": {
+    "code": "\"SpeechRecognition\" in self && \"installOnDevice\" in SpeechRecognition",
+    "exposure": ["Window"],
+    "resources": ["speechRecognition"]
   },
   "api.SpeechRecognition.interimResults": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"interimResults\" in instance;\n})();\n",
@@ -32909,11 +33710,6 @@
   },
   "api.SpeechRecognition.audiostart_event": {
     "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudiostart\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition", "speechRecognition"]
-  },
-  "api.SpeechRecognition.onDeviceWebSpeechAvailable": {
-    "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onDeviceWebSpeechAvailable\" in instance;\n})();\n",
     "exposure": ["Window"],
     "resources": ["speechRecognition", "speechRecognition"]
   },
@@ -34154,6 +34950,18 @@
     "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"getStartTime\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.SVGAnimationElement.beginEvent_event": {
+    "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onbeginEvent\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGAnimationElement.endEvent_event": {
+    "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onendEvent\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGAnimationElement.repeatEvent_event": {
+    "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onrepeatEvent\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.SVGAnimationElement.requiredExtensions": {
     "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"requiredExtensions\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -34284,6 +35092,14 @@
   },
   "api.SVGElement.nonce": {
     "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"nonce\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGElement.error_event": {
+    "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGElement.load_event": {
+    "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"onload\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.SVGElement.ownerSVGElement": {
@@ -35687,8 +36503,44 @@
     "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"createSVGPathSegMovetoRel\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.SVGPathElement.getPathData": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathData\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.SVGPathElement.getPathSegAtLength": {
     "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathSegAtLength\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathElement.getPathSegmentAtLength": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathSegmentAtLength\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathElement.getPointAtLength": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPointAtLength\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathElement.getTotalLength": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getTotalLength\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathElement.pathLength": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"pathLength\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathElement.setPathData": {
+    "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"setPathData\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathSegment": {
+    "code": "\"SVGPathSegment\" in self",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathSegment.type": {
+    "code": "\"SVGPathSegment\" in self && \"type\" in SVGPathSegment.prototype",
+    "exposure": ["Window"]
+  },
+  "api.SVGPathSegment.values": {
+    "code": "\"SVGPathSegment\" in self && \"values\" in SVGPathSegment.prototype",
     "exposure": ["Window"]
   },
   "api.SVGPatternElement": {
@@ -43346,6 +44198,10 @@
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"fence\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Window.fetchLater": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"fetchLater\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Window.find": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"find\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -43458,12 +44314,28 @@
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"navigator\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Window.afterprint_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onafterprint\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Window.appinstalled_event": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"onappinstalled\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Window.beforeinstallprompt_event": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeinstallprompt\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.beforeprint_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeprint\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.beforeunload_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeunload\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.blur_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onblur\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Window.devicelight_event": {
@@ -43486,8 +44358,100 @@
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"ondeviceproximity\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Window.error_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.focus_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onfocus\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.gamepadconnected_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"ongamepadconnected\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.gamepaddisconnected_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"ongamepaddisconnected\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.hashchange_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onhashchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.languagechange_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onlanguagechange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.load_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onload\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.message_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onmessage\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.messageerror_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onmessageerror\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.offline_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onoffline\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.online_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"ononline\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Window.orientationchange_event": {
     "code": "(function () {\n  var instance = window;\n  return !!instance && \"onorientationchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.pagehide_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpagehide\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.pagereveal_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpagereveal\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.pageshow_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpageshow\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.pageswap_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpageswap\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.popstate_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpopstate\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.rejectionhandled_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onrejectionhandled\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.resize_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onresize\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.scrollsnapchange_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.scrollsnapchanging_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.storage_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onstorage\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.unhandledrejection_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onunhandledrejection\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.unload_event": {
+    "code": "(function () {\n  var instance = window;\n  return !!instance && \"onunload\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Window.userproximity_event": {
@@ -43572,6 +44536,10 @@
   },
   "api.Window.postMessage.options_delegate_parameter": {
     "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  try {\n    return bcd.testOptionParam(postMessage, null, \"delegate\", \"test\");\n  } catch (e) {\n    if (\n      e.name === \"NotSupportedError\" &&\n      stringIncludes(e.message, \"Delegation of 'test' is not supported.\")\n    ) {\n      return true;\n    }\n    throw e;\n  }\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Window.postMessage.options_includeUserActivation_parameter": {
+    "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  return bcd.testOptionParam(postMessage, null, \"includeUserActivation\", true);\n})();\n",
     "exposure": ["Window"]
   },
   "api.Window.print": {
@@ -43944,6 +44912,10 @@
   },
   "api.WorkerGlobalScope.rejectionhandled_event": {
     "code": "(function () {\n  var instance = self;\n  return !!instance && \"onrejectionhandled\" in instance;\n})();\n",
+    "exposure": ["Worker"]
+  },
+  "api.WorkerGlobalScope.securitypolicyviolation_event": {
+    "code": "(function () {\n  var instance = self;\n  return !!instance && \"onsecuritypolicyviolation\" in instance;\n})();\n",
     "exposure": ["Worker"]
   },
   "api.WorkerGlobalScope.unhandledrejection_event": {
@@ -44642,8 +45614,36 @@
     "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"getResponseHeader\" in instance;\n})();\n",
     "exposure": ["Window", "SharedWorker", "Worker"]
   },
+  "api.XMLHttpRequest.abort_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onabort\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.error_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.load_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onload\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.loadend_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadend\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.loadstart_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.progress_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
   "api.XMLHttpRequest.readystatechange_event": {
     "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onreadystatechange\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequest.timeout_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"ontimeout\" in instance;\n})();\n",
     "exposure": ["Window", "SharedWorker", "Worker"]
   },
   "api.XMLHttpRequest.open": {
@@ -44740,6 +45740,34 @@
   },
   "api.XMLHttpRequestUpload": {
     "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.abort_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onabort\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.error_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onerror\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.load_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onload\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.loadend_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onloadend\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.loadstart_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.progress_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+    "exposure": ["Window", "SharedWorker", "Worker"]
+  },
+  "api.XMLHttpRequestUpload.timeout_event": {
+    "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"ontimeout\" in instance;\n})();\n",
     "exposure": ["Window", "SharedWorker", "Worker"]
   },
   "api.XMLSerializer": {
@@ -48409,6 +49437,14 @@
     "code": "bcd.testCSSProperty(\"column-gap\", \"normal\")",
     "exposure": ["Window"]
   },
+  "css.properties.column-height": {
+    "code": "bcd.testCSSProperty(\"column-height\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-height.auto": {
+    "code": "bcd.testCSSProperty(\"column-height\", \"auto\")",
+    "exposure": ["Window"]
+  },
   "css.properties.column-progression": {
     "code": "bcd.testCSSProperty(\"column-progression\")",
     "exposure": ["Window"]
@@ -48421,16 +49457,16 @@
     "code": "bcd.testCSSProperty(\"column-rule-break\")",
     "exposure": ["Window"]
   },
-  "css.properties.column-rule-break.intersection": {
-    "code": "bcd.testCSSProperty(\"column-rule-break\", \"intersection\")",
+  "css.properties.column-rule-break.none": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.column-rule-break.spanning-item": {
     "code": "bcd.testCSSProperty(\"column-rule-break\", \"spanning-item\")",
     "exposure": ["Window"]
   },
-  "css.properties.column-rule-break.none": {
-    "code": "bcd.testCSSProperty(\"column-rule-break\", \"none\")",
+  "css.properties.column-rule-break.intersection": {
+    "code": "bcd.testCSSProperty(\"column-rule-break\", \"intersection\")",
     "exposure": ["Window"]
   },
   "css.properties.column-rule-color": {
@@ -48587,6 +49623,18 @@
   },
   "css.properties.column-width.fit-content_function": {
     "code": "bcd.testCSSProperty(\"column-width\", \"fit-content()\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-wrap": {
+    "code": "bcd.testCSSProperty(\"column-wrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-wrap.nowrap": {
+    "code": "bcd.testCSSProperty(\"column-wrap\", \"nowrap\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.column-wrap.wrap": {
+    "code": "bcd.testCSSProperty(\"column-wrap\", \"wrap\")",
     "exposure": ["Window"]
   },
   "css.properties.columns": {
@@ -50255,34 +51303,6 @@
   },
   "css.properties.gap.normal": {
     "code": "bcd.testCSSProperty(\"gap\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule": {
-    "code": "bcd.testCSSProperty(\"gap-rule\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-break": {
-    "code": "bcd.testCSSProperty(\"gap-rule-break\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-color": {
-    "code": "bcd.testCSSProperty(\"gap-rule-color\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-outset": {
-    "code": "bcd.testCSSProperty(\"gap-rule-outset\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-paint-order": {
-    "code": "bcd.testCSSProperty(\"gap-rule-paint-order\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-style": {
-    "code": "bcd.testCSSProperty(\"gap-rule-style\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.gap-rule-width": {
-    "code": "bcd.testCSSProperty(\"gap-rule-width\")",
     "exposure": ["Window"]
   },
   "css.properties.glyph-orientation-vertical": {
@@ -53577,16 +54597,16 @@
     "code": "bcd.testCSSProperty(\"row-rule-break\")",
     "exposure": ["Window"]
   },
-  "css.properties.row-rule-break.intersection": {
-    "code": "bcd.testCSSProperty(\"row-rule-break\", \"intersection\")",
+  "css.properties.row-rule-break.none": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.row-rule-break.spanning-item": {
     "code": "bcd.testCSSProperty(\"row-rule-break\", \"spanning-item\")",
     "exposure": ["Window"]
   },
-  "css.properties.row-rule-break.none": {
-    "code": "bcd.testCSSProperty(\"row-rule-break\", \"none\")",
+  "css.properties.row-rule-break.intersection": {
+    "code": "bcd.testCSSProperty(\"row-rule-break\", \"intersection\")",
     "exposure": ["Window"]
   },
   "css.properties.row-rule-color": {
@@ -53671,6 +54691,34 @@
   },
   "css.properties.ruby-position.inter-character": {
     "code": "bcd.testCSSProperty(\"ruby-position\", \"inter-character\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule": {
+    "code": "bcd.testCSSProperty(\"rule\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-break": {
+    "code": "bcd.testCSSProperty(\"rule-break\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-color": {
+    "code": "bcd.testCSSProperty(\"rule-color\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-outset": {
+    "code": "bcd.testCSSProperty(\"rule-outset\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-paint-order": {
+    "code": "bcd.testCSSProperty(\"rule-paint-order\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-style": {
+    "code": "bcd.testCSSProperty(\"rule-style\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.rule-width": {
+    "code": "bcd.testCSSProperty(\"rule-width\")",
     "exposure": ["Window"]
   },
   "css.properties.rx": {
@@ -57094,7 +58142,7 @@
     "exposure": ["Window"]
   },
   "css.types.color.color-mix": {
-    "code": "bcd.testCSSProperty(\"color\", \"color-mix(in lch, plum, pink);\")",
+    "code": "bcd.testCSSProperty(\"color\", \"color-mix(in lch, plum, pink)\")",
     "exposure": ["Window"]
   },
   "css.types.color.currentcolor": {
@@ -57959,6 +59007,10 @@
   },
   "html.elements.dialog.open": {
     "code": "(function() {\n  var instance = document.createElement('dialog');\n  return !!instance && 'open' in instance;\n})()",
+    "exposure": ["Window"]
+  },
+  "html.elements.dialog.closedby": {
+    "code": "(function() {\n  var instance = document.createElement('dialog');\n  return !!instance && 'closedby' in instance;\n})()",
     "exposure": ["Window"]
   },
   "html.elements.dir": {
@@ -60741,6 +61793,14 @@
     "code": "\"Symbol\" in self && \"keyFor\" in Symbol",
     "exposure": ["Window"]
   },
+  "javascript.builtins.Symbol.asyncDispose": {
+    "code": "\"Symbol\" in self && \"asyncDispose\" in Symbol",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Symbol.dispose": {
+    "code": "\"Symbol\" in self && \"dispose\" in Symbol",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Symbol.description": {
     "code": "\"Symbol\" in self && \"description\" in Symbol.prototype",
     "exposure": ["Window"]
@@ -60775,6 +61835,18 @@
   },
   "javascript.builtins.Error.Error.options_cause_parameter": {
     "code": "(function () {\n  var instance = new Error(\"hello world\", { cause: \"for testing\" });\n  var e = new Error(\"foo\", { cause: \"testing\" });\n  return e.cause === \"testing\";\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Error.captureStackTrace": {
+    "code": "\"Error\" in self && \"captureStackTrace\" in Error",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Error.isError": {
+    "code": "\"Error\" in self && \"isError\" in Error",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Error.stackTraceLimit": {
+    "code": "\"Error\" in self && \"stackTraceLimit\" in Error",
     "exposure": ["Window"]
   },
   "javascript.builtins.Error.toString": {
@@ -61163,6 +62235,10 @@
   },
   "javascript.builtins.Math.f16round": {
     "code": "\"Math\" in self && \"f16round\" in Math",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.Math.sumPrecise": {
+    "code": "\"Math\" in self && \"sumPrecise\" in Math",
     "exposure": ["Window"]
   },
   "javascript.builtins.Date": {
@@ -63149,6 +64225,70 @@
     "code": "\"unescape\" in self",
     "exposure": ["Window"]
   },
+  "javascript.builtins.AsyncDisposableStack": {
+    "code": "\"AsyncDisposableStack\" in self",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.AsyncDisposableStack": {
+    "code": "(function () {\n  if (!(\"AsyncDisposableStack\" in self)) {\n    return { result: false, message: \"AsyncDisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"AsyncDisposableStack\", false);\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.adopt": {
+    "code": "\"AsyncDisposableStack\" in self && \"adopt\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.defer": {
+    "code": "\"AsyncDisposableStack\" in self && \"defer\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.disposeAsync": {
+    "code": "\"AsyncDisposableStack\" in self && \"disposeAsync\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.disposed": {
+    "code": "\"AsyncDisposableStack\" in self && \"disposed\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.move": {
+    "code": "\"AsyncDisposableStack\" in self && \"move\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.AsyncDisposableStack.use": {
+    "code": "\"AsyncDisposableStack\" in self && \"use\" in AsyncDisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack": {
+    "code": "\"DisposableStack\" in self",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.DisposableStack": {
+    "code": "(function () {\n  if (!(\"DisposableStack\" in self)) {\n    return { result: false, message: \"DisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"DisposableStack\", false);\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.adopt": {
+    "code": "\"DisposableStack\" in self && \"adopt\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.defer": {
+    "code": "\"DisposableStack\" in self && \"defer\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.dispose": {
+    "code": "\"DisposableStack\" in self && \"dispose\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.disposed": {
+    "code": "\"DisposableStack\" in self && \"disposed\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.move": {
+    "code": "\"DisposableStack\" in self && \"move\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.DisposableStack.use": {
+    "code": "\"DisposableStack\" in self && \"use\" in DisposableStack.prototype",
+    "exposure": ["Window"]
+  },
   "javascript.builtins.Float16Array": {
     "code": "\"Float16Array\" in self",
     "exposure": ["Window"]
@@ -63163,6 +64303,14 @@
   },
   "javascript.builtins.InternalError.InternalError": {
     "code": "(function () {\n  if (!(\"InternalError\" in self)) {\n    return { result: false, message: \"InternalError is not defined\" };\n  }\n  return bcd.testConstructor(\"InternalError\", false);\n})();\n",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.SuppressedError": {
+    "code": "\"SuppressedError\" in self",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.SuppressedError.SuppressedError": {
+    "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  return bcd.testConstructor(\"SuppressedError\", false);\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.Intl": {
