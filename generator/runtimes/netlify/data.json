@@ -1,5 +1,5 @@
 {
-  "__version": "10.12.10",
+  "__version": "10.12.11",
   "results": {
     ".": [
       {
@@ -567,6 +567,22 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.Symbol.asyncDispose",
+        "info": {
+          "code": "\"Symbol\" in self && \"asyncDispose\" in Symbol",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "javascript.builtins.Symbol.dispose",
+        "info": {
+          "code": "\"Symbol\" in self && \"dispose\" in Symbol",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "javascript.builtins.Symbol.description",
         "info": {
           "code": "\"Symbol\" in self && \"description\" in Symbol.prototype",
@@ -635,6 +651,30 @@
         "name": "javascript.builtins.Error.Error.options_cause_parameter",
         "info": {
           "code": "(function () {\n  var instance = new Error(\"hello world\", { cause: \"for testing\" });\n  var e = new Error(\"foo\", { cause: \"testing\" });\n  return e.cause === \"testing\";\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "javascript.builtins.Error.captureStackTrace",
+        "info": {
+          "code": "\"Error\" in self && \"captureStackTrace\" in Error",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "javascript.builtins.Error.isError",
+        "info": {
+          "code": "\"Error\" in self && \"isError\" in Error",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Error.stackTraceLimit",
+        "info": {
+          "code": "\"Error\" in self && \"stackTraceLimit\" in Error",
           "exposure": "Window"
         },
         "result": true
@@ -1419,6 +1459,14 @@
         "name": "javascript.builtins.Math.f16round",
         "info": {
           "code": "\"Math\" in self && \"f16round\" in Math",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Math.sumPrecise",
+        "info": {
+          "code": "\"Math\" in self && \"sumPrecise\" in Math",
           "exposure": "Window"
         },
         "result": false
@@ -5420,6 +5468,136 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.AsyncDisposableStack",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.AsyncDisposableStack",
+        "info": {
+          "code": "(function () {\n  if (!(\"AsyncDisposableStack\" in self)) {\n    return { result: false, message: \"AsyncDisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"AsyncDisposableStack\", false);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "AsyncDisposableStack is not defined"
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.adopt",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"adopt\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.defer",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"defer\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.disposeAsync",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"disposeAsync\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.disposed",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"disposed\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.move",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"move\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.AsyncDisposableStack.use",
+        "info": {
+          "code": "\"AsyncDisposableStack\" in self && \"use\" in AsyncDisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack",
+        "info": {
+          "code": "\"DisposableStack\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.DisposableStack",
+        "info": {
+          "code": "(function () {\n  if (!(\"DisposableStack\" in self)) {\n    return { result: false, message: \"DisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"DisposableStack\", false);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "DisposableStack is not defined"
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.adopt",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"adopt\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.defer",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"defer\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.dispose",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"dispose\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.disposed",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"disposed\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.move",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"move\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.DisposableStack.use",
+        "info": {
+          "code": "\"DisposableStack\" in self && \"use\" in DisposableStack.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.Float16Array",
         "info": {
           "code": "\"Float16Array\" in self",
@@ -5452,6 +5630,23 @@
         },
         "result": false,
         "message": "InternalError is not defined"
+      },
+      {
+        "name": "javascript.builtins.SuppressedError",
+        "info": {
+          "code": "\"SuppressedError\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.SuppressedError.SuppressedError",
+        "info": {
+          "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  return bcd.testConstructor(\"SuppressedError\", false);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SuppressedError is not defined"
       },
       {
         "name": "javascript.builtins.Intl",
@@ -8552,6 +8747,14 @@
         "result": true
       },
       {
+        "name": "api.AbortController.abort.reason_parameter",
+        "info": {
+          "code": "(function () {\n  if (!(\"AbortController\" in self)) {\n    return { result: false, message: \"AbortController is not defined\" };\n  }\n  var controller = new AbortController();\n  if (!(\"abort\" in controller)) {\n    return { result: false, message: \"AbortController.abort is undefined\" };\n  }\n  controller.abort(\"foo bar\");\n  return controller.signal.aborted && controller.signal.reason == \"foo bar\";\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.AbortController.AbortController",
         "info": {
           "code": "bcd.testConstructor('AbortController')",
@@ -9874,14 +10077,6 @@
         "result": false
       },
       {
-        "name": "api.AudioContext.renderCapacity",
-        "info": {
-          "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"renderCapacity\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.AudioContext.resume",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.audioContext;\n  return !!instance && \"resume\" in instance;\n})();\n",
@@ -10718,87 +10913,6 @@
         },
         "result": null,
         "message": "threw ReferenceError: AudioBuffer is not defined"
-      },
-      {
-        "name": "api.AudioRenderCapacity",
-        "info": {
-          "code": "\"AudioRenderCapacity\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacity.update_event",
-        "info": {
-          "code": "\"AudioRenderCapacity\" in self && \"onupdate\" in AudioRenderCapacity.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacity.start",
-        "info": {
-          "code": "\"AudioRenderCapacity\" in self && \"start\" in AudioRenderCapacity.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacity.stop",
-        "info": {
-          "code": "\"AudioRenderCapacity\" in self && \"stop\" in AudioRenderCapacity.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent",
-        "info": {
-          "code": "\"AudioRenderCapacityEvent\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent.AudioRenderCapacityEvent",
-        "info": {
-          "code": "bcd.testConstructor('AudioRenderCapacityEvent')",
-          "exposure": "Window"
-        },
-        "result": false,
-        "message": "threw ReferenceError: AudioRenderCapacityEvent is not defined"
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent.averageLoad",
-        "info": {
-          "code": "\"AudioRenderCapacityEvent\" in self && \"averageLoad\" in AudioRenderCapacityEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent.peakLoad",
-        "info": {
-          "code": "\"AudioRenderCapacityEvent\" in self && \"peakLoad\" in AudioRenderCapacityEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent.timestamp",
-        "info": {
-          "code": "\"AudioRenderCapacityEvent\" in self && \"timestamp\" in AudioRenderCapacityEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.AudioRenderCapacityEvent.underrunRatio",
-        "info": {
-          "code": "\"AudioRenderCapacityEvent\" in self && \"underrunRatio\" in AudioRenderCapacityEvent.prototype",
-          "exposure": "Window"
-        },
-        "result": false
       },
       {
         "name": "api.AudioScheduledSourceNode",
@@ -13914,6 +14028,15 @@
         "message": "Testing CanvasRenderingContext2D in workers is not yet implemented"
       },
       {
+        "name": "api.CanvasRenderingContext2D.lang",
+        "info": {
+          "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"lang\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "Testing CanvasRenderingContext2D in workers is not yet implemented"
+      },
+      {
         "name": "api.CanvasRenderingContext2D.letterSpacing",
         "info": {
           "code": "(function () {\n  if (!(\"document\" in self)) {\n    // XXX Implement worker tests for CanvasRenderingContext2D\n    return {\n      result: null,\n      message:\n        \"Testing CanvasRenderingContext2D in workers is not yet implemented\"\n    };\n  }\n  var canvas = document.createElement(\"canvas\");\n  if (!canvas) {\n    return { result: false, message: \"Could not create canvas element\" };\n  }\n  var instance = canvas.getContext(\"2d\");\n  return !!instance && \"letterSpacing\" in instance;\n})();\n",
@@ -14313,14 +14436,6 @@
         "result": false
       },
       {
-        "name": "api.CaptureController.getZoomLevel",
-        "info": {
-          "code": "\"CaptureController\" in self && \"getZoomLevel\" in CaptureController.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.CaptureController.increaseZoomLevel",
         "info": {
           "code": "\"CaptureController\" in self && \"increaseZoomLevel\" in CaptureController.prototype",
@@ -14356,6 +14471,14 @@
         "name": "api.CaptureController.setFocusBehavior",
         "info": {
           "code": "\"CaptureController\" in self && \"setFocusBehavior\" in CaptureController.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CaptureController.zoomLevel",
+        "info": {
+          "code": "\"CaptureController\" in self && \"zoomLevel\" in CaptureController.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -14677,6 +14800,15 @@
         "result": false
       },
       {
+        "name": "api.Clipboard.read.formats_unsanitized_parameter",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.clipboard;\n  return bcd.testOptionParam(instance, \"read\", \"unsanitized\", [\"text/html\"]);\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "testOptionParam: instance is falsy"
+      },
+      {
         "name": "api.Clipboard.readText",
         "info": {
           "code": "(function () {\n  var instance = navigator.clipboard;\n  return !!instance && \"readText\" in instance;\n})();\n",
@@ -14699,6 +14831,33 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.Clipboard.type_image-png",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"image/png\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: ClipboardItem is not defined"
+      },
+      {
+        "name": "api.Clipboard.type_text-html",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"text/html\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: ClipboardItem is not defined"
+      },
+      {
+        "name": "api.Clipboard.type_text-plain",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"text/plain\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: ClipboardItem is not defined"
       },
       {
         "name": "api.ClipboardEvent",
@@ -14868,6 +15027,39 @@
         "name": "api.CloseWatcher.requestClose",
         "info": {
           "code": "\"CloseWatcher\" in self && \"requestClose\" in CloseWatcher.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CommandEvent",
+        "info": {
+          "code": "\"CommandEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CommandEvent.command",
+        "info": {
+          "code": "\"CommandEvent\" in self && \"command\" in CommandEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CommandEvent.CommandEvent",
+        "info": {
+          "code": "bcd.testConstructor('CommandEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: CommandEvent is not defined"
+      },
+      {
+        "name": "api.CommandEvent.source",
+        "info": {
+          "code": "\"CommandEvent\" in self && \"source\" in CommandEvent.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -15537,7 +15729,7 @@
       {
         "name": "api.CookieStore.delete.partitioned_option",
         "info": {
-          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  return bcd.testOptionParam(cookieStore, \"delete\", \"partitioned\", true, {\n    name: \"one\"\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  return bcd.testOptionParam(cookieStore, \"delete\", \"partitioned\", true, {\n    name: \"test_delete_partitioned\"\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -15546,7 +15738,34 @@
       {
         "name": "api.CookieStore.set.partitioned_option",
         "info": {
-          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"two\", partitioned: true });\n  });\n  return bcd.testOptionParam(cookieStore, \"set\", \"partitioned\", true, {\n    name: \"two\",\n    value: \"bar\"\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_set_partitioned\", partitioned: true });\n  });\n  return bcd.testOptionParam(cookieStore, \"set\", \"partitioned\", true, {\n    name: \"test_set_partitioned\",\n    value: \"bar\"\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.domain_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_domain\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_domain\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_domain\");\n    })\n    .then(function (cookie) {\n      return \"domain\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.expires_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_expires\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_expires\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_expires\");\n    })\n    .then(function (cookie) {\n      return \"expires\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.name_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_name\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_name\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_name\");\n    })\n    .then(function (cookie) {\n      return \"name\" in cookie;\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -15555,7 +15774,70 @@
       {
         "name": "api.CookieStore.get.partitioned_return_property",
         "info": {
-          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"three\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"three\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.get(\"three\");\n    })\n    .then(function (cookie) {\n      return \"partitioned\" in cookie;\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_partitioned\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"test_get_partitioned\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.get(\"test_get_partitioned\");\n    })\n    .then(function (cookie) {\n      return \"partitioned\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.path_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_path\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_path\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_path\");\n    })\n    .then(function (cookie) {\n      return \"path\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.sameSite_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_sameSite\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_sameSite\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_sameSite\");\n    })\n    .then(function (cookie) {\n      return \"sameSite\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.secure_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_secure\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_secure\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_secure\");\n    })\n    .then(function (cookie) {\n      return \"secure\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.get.value_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_get_value\" });\n  });\n  return cookieStore\n    .set({ name: \"test_get_value\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.get(\"test_get_value\");\n    })\n    .then(function (cookie) {\n      return \"value\" in cookie;\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.domain_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_domain\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_domain\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_domain\");\n    })\n    .then(function (cookies) {\n      return \"domain\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.expires_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_expires\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_expires\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_expires\");\n    })\n    .then(function (cookies) {\n      return \"expires\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.name_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_name\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_name\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_name\");\n    })\n    .then(function (cookies) {\n      return \"name\" in cookies[0];\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -15564,7 +15846,43 @@
       {
         "name": "api.CookieStore.getAll.partitioned_return_property",
         "info": {
-          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"four\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"four\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.getAll();\n    })\n    .then(function (cookies) {\n      return \"partitioned\" in cookies[0];\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_partitioned\", partitioned: true });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_partitioned\", value: \"bar\", partitioned: true })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_partitioned\");\n    })\n    .then(function (cookies) {\n      return \"partitioned\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.path_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_path\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_path\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_path\");\n    })\n    .then(function (cookies) {\n      return \"path\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.sameSite_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_sameSite\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_sameSite\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_sameSite\");\n    })\n    .then(function (cookies) {\n      return \"sameSite\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.secure_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_secure\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_secure\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_secure\");\n    })\n    .then(function (cookies) {\n      return \"secure\" in cookies[0];\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "cookieStore is not defined"
+      },
+      {
+        "name": "api.CookieStore.getAll.value_return_property",
+        "info": {
+          "code": "(function () {\n  if (!(\"cookieStore\" in self)) {\n    return { result: false, message: \"cookieStore is not defined\" };\n  }\n  var instance = cookieStore;\n  bcd.addCleanup(function () {\n    cookieStore.delete({ name: \"test_getAll_value\" });\n  });\n  return cookieStore\n    .set({ name: \"test_getAll_value\", value: \"bar\" })\n    .then(function () {\n      return cookieStore.getAll(\"test_getAll_value\");\n    })\n    .then(function (cookies) {\n      return \"value\" in cookies[0];\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -16511,6 +16829,15 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.CSS.supports_static.optional_parens",
+        "info": {
+          "code": "(function () {\n  return CSS.supports(\"display: block\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: CSS is not defined"
       },
       {
         "name": "api.CSS.svb_static",
@@ -18667,6 +18994,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.CSSPageRule.style.type_CSSPageDescriptors",
+        "info": {
+          "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\"@page {margin: 1cm;}\");\n  var instance = stylesheet.cssRules.item(0);\n  return bcd.testObjectName(instance.style, \"CSSPageDescriptors\");\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.CSSParserAtRule",
         "info": {
           "code": "\"CSSParserAtRule\" in self",
@@ -20315,6 +20651,15 @@
         "message": "threw ReferenceError: CSSStyleSheet is not defined"
       },
       {
+        "name": "api.CSSStyleSheet.CSSStyleSheet.options_baseURL_parameter",
+        "info": {
+          "code": "(function () {\n  var instance = reusableInstances.createStyleSheet(\"p {color: red;}\");\n  function construct(options) {\n    new CSSStyleSheet(options);\n  }\n  return bcd.testOptionParam(\n    construct,\n    null,\n    \"baseURL\",\n    \"https://mdn-bcd-collector.gooborg.com\",\n    { media: \"screen\" }\n  );\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.CSSStyleSheet.deleteRule",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.createStyleSheet(\"p {color: red;}\");\n  return !!instance && \"deleteRule\" in instance;\n})();\n",
@@ -21330,6 +21675,14 @@
         "result": false
       },
       {
+        "name": "api.DelegatedInkTrailPresenter.expectedImprovement",
+        "info": {
+          "code": "\"DelegatedInkTrailPresenter\" in self && \"expectedImprovement\" in DelegatedInkTrailPresenter.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.DelegatedInkTrailPresenter.presentationArea",
         "info": {
           "code": "\"DelegatedInkTrailPresenter\" in self && \"presentationArea\" in DelegatedInkTrailPresenter.prototype",
@@ -21951,6 +22304,15 @@
         "name": "api.Document.caretPositionFromPoint",
         "info": {
           "code": "(function () {\n  var instance = document;\n  return !!instance && \"caretPositionFromPoint\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.caretPositionFromPoint.options_parameter",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  function caretPositionFromPoint(options) {\n    document.caretPositionFromPoint(0, 0, options);\n  }\n  return bcd.testOptionParam(caretPositionFromPoint, null, \"shadowRoots\", []);\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -22842,6 +23204,60 @@
         "name": "api.Document.resume_event",
         "info": {
           "code": "(function () {\n  var instance = document;\n  return !!instance && \"onresume\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.scroll_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscroll\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.scrollend_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.scrollsnapchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.scrollsnapchanging_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.securitypolicyviolation_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onsecuritypolicyviolation\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.selectionchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -25882,6 +26298,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Element.attachShadow.options_serializable_parameter",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  } // Only specific elements may have shadows attached -- see\n  // https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to\n  var el = document.createElement(\"main\");\n  return bcd.testOptionParam(el, \"attachShadow\", \"serializable\", true, {\n    mode: \"open\"\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Element.attributes",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"attributes\" in instance;\n})();\n",
@@ -26395,6 +26820,195 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Element.afterscriptexecute_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onafterscriptexecute\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.animationcancel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationcancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.animationend_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.animationiteration_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationiteration\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.animationstart_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onanimationstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.auxclick_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onauxclick\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.beforeinput_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforeinput\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.beforematch_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforematch\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.beforescriptexecute_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforescriptexecute\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.beforexrselect_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onbeforexrselect\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.blur_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onblur\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.click_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onclick\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.compositionend_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.compositionstart_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.compositionupdate_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncompositionupdate\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.contentvisibilityautostatechange_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncontentvisibilityautostatechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.contextmenu_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncontextmenu\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.copy_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncopy\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.cut_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oncut\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.dblclick_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ondblclick\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.focus_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onfocus\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Element.focusin_event",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onfocusin\" in instance;\n})();\n",
@@ -26452,6 +27066,384 @@
         "name": "api.Element.gesturestart_event",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ongesturestart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.gotpointercapture_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ongotpointercapture\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.input_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"oninput\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.keydown_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeydown\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.keypress_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeypress\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.keyup_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onkeyup\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.lostpointercapture_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onlostpointercapture\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mousedown_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousedown\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mouseenter_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseenter\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mouseleave_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseleave\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mousemove_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousemove\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mouseout_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseout\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mouseover_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseover\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mouseup_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmouseup\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.mousewheel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onmousewheel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.paste_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpaste\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointercancel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointercancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerdown_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerdown\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerenter_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerenter\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerleave_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerleave\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointermove_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointermove\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerout_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerout\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerover_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerover\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerrawupdate_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerrawupdate\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.pointerup_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onpointerup\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.scroll_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscroll\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.scrollend_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.scrollsnapchange_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.scrollsnapchanging_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.securitypolicyviolation_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onsecuritypolicyviolation\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.touchcancel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchcancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.touchend_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.touchmove_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchmove\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.touchstart_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontouchstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.transitioncancel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitioncancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.transitionend_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.transitionrun_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionrun\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.transitionstart_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"ontransitionstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.webkitmouseforcechanged_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcechanged\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.webkitmouseforcedown_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcedown\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.webkitmouseforceup_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforceup\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.webkitmouseforcewillbegin_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwebkitmouseforcewillbegin\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.wheel_event",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"onwheel\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -28518,6 +29510,22 @@
         "result": false
       },
       {
+        "name": "api.FetchLaterResult",
+        "info": {
+          "code": "\"FetchLaterResult\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.FetchLaterResult.activated",
+        "info": {
+          "code": "\"FetchLaterResult\" in self && \"activated\" in FetchLaterResult.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.File",
         "info": {
           "code": "\"File\" in self",
@@ -30291,9 +31299,9 @@
         "result": false
       },
       {
-        "name": "api.Gamepad.touchEvents",
+        "name": "api.Gamepad.touches",
         "info": {
-          "code": "\"Gamepad\" in self && \"touchEvents\" in Gamepad.prototype",
+          "code": "\"Gamepad\" in self && \"touches\" in Gamepad.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -30489,46 +31497,6 @@
         "name": "api.GamepadPose.position",
         "info": {
           "code": "\"GamepadPose\" in self && \"position\" in GamepadPose.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.GamepadTouch",
-        "info": {
-          "code": "\"GamepadTouch\" in self",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.GamepadTouch.position",
-        "info": {
-          "code": "\"GamepadTouch\" in self && \"position\" in GamepadTouch.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.GamepadTouch.surfaceDimensions",
-        "info": {
-          "code": "\"GamepadTouch\" in self && \"surfaceDimensions\" in GamepadTouch.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.GamepadTouch.surfaceId",
-        "info": {
-          "code": "\"GamepadTouch\" in self && \"surfaceId\" in GamepadTouch.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.GamepadTouch.touchId",
-        "info": {
-          "code": "\"GamepadTouch\" in self && \"touchId\" in GamepadTouch.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -32590,6 +33558,24 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLButtonElement.command",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"command\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLButtonElement.commandForElement",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"commandForElement\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLButtonElement.disabled",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"button\");\n  return !!instance && \"disabled\" in instance;\n})();\n",
@@ -33004,6 +33990,51 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLCanvasElement.contextlost_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"oncontextlost\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLCanvasElement.contextrestored_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"oncontextrestored\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLCanvasElement.webglcontextcreationerror_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextcreationerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLCanvasElement.webglcontextlost_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextlost\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLCanvasElement.webglcontextrestored_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"onwebglcontextrestored\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLCanvasElement.toBlob",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"canvas\");\n  return !!instance && \"toBlob\" in instance;\n})();\n",
@@ -33290,6 +34321,24 @@
         },
         "result": false,
         "message": "threw ReferenceError: HTMLDialogElement is not defined"
+      },
+      {
+        "name": "api.HTMLDialogElement.cancel_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"oncancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLDialogElement.close_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"dialog\");\n  return !!instance && \"onclose\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.HTMLDialogElement.open",
@@ -33736,6 +34785,123 @@
         "name": "api.HTMLElement.offsetWidth",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"offsetWidth\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.beforetoggle_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onbeforetoggle\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.change_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.command_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"oncommand\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.drag_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondrag\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragend_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragenter_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragenter\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragexit_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragexit\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragleave_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragleave\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragover_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragover\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.dragstart_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondragstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.drop_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ondrop\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.error_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.toggle_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"ontoggle\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -34288,6 +35454,33 @@
         "name": "api.HTMLFormElement.noValidate",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"noValidate\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLFormElement.formdata_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onformdata\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLFormElement.reset_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onreset\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLFormElement.submit_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"form\");\n  return !!instance && \"onsubmit\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -35563,9 +36756,45 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLInputElement.cancel_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"oncancel\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLInputElement.invalid_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"oninvalid\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLInputElement.search_event",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onsearch\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLInputElement.select_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onselect\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLInputElement.selectionchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"input\");\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -36679,6 +37908,51 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLMediaElement.abort_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onabort\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.canplay_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"oncanplay\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.canplaythrough_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"oncanplaythrough\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.durationchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"ondurationchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.emptied_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onemptied\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLMediaElement.encrypted_event",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onencrypted\" in instance;\n})();\n",
@@ -36688,9 +37962,153 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLMediaElement.ended_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onended\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLMediaElement.error_event",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.loadeddata_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadeddata\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.loadedmetadata_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadedmetadata\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.loadstart_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.pause_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onpause\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.play_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onplay\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.playing_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onplaying\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.progress_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.ratechange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onratechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.seeked_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onseeked\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.seeking_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onseeking\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.stalled_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onstalled\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.suspend_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onsuspend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.timeupdate_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"ontimeupdate\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.volumechange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onvolumechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLMediaElement.waiting_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onwaiting\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -38612,6 +40030,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLSlotElement.slotchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"slot\");\n  return !!instance && \"onslotchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLSourceElement",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"source\");\n  return bcd.testObjectName(instance, \"HTMLSourceElement\");\n})();\n",
@@ -39629,6 +41056,24 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLTextAreaElement.select_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"onselect\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLTextAreaElement.selectionchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"onselectionchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLTextAreaElement.placeholder",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"textarea\");\n  return !!instance && \"placeholder\" in instance;\n})();\n",
@@ -39899,6 +41344,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLTrackElement.cuechange_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"track\");\n  return !!instance && \"oncuechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLTrackElement.readyState",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"track\");\n  return !!instance && \"readyState\" in instance;\n})();\n",
@@ -40100,6 +41554,15 @@
         "name": "api.HTMLVideoElement.leavepictureinpicture_event",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onleavepictureinpicture\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLVideoElement.resize_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"video\");\n  return !!instance && \"onresize\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -44894,6 +46357,14 @@
         "result": true
       },
       {
+        "name": "api.MessageEvent.userActivation",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = new MessageEvent(\"message\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"MessageEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"userActivation\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MessagePort",
         "info": {
           "code": "(function () {\n  if (!(\"MessageChannel\" in self)) {\n    return { result: false, message: \"MessageChannel is not defined\" };\n  }\n  var channel = new MessageChannel();\n  if (!channel) {\n    return { result: false, message: \"channel is falsy\" };\n  }\n  var instance = channel.port1;\n  return !!instance;\n})();\n",
@@ -45644,6 +47115,22 @@
         "result": false
       },
       {
+        "name": "api.MLGraphBuilder.cumulativeSum",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"cumulativeSum\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.dequantizeLinear",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"dequantizeLinear\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraphBuilder.div",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"div\" in MLGraphBuilder.prototype",
@@ -45703,6 +47190,22 @@
         "name": "api.MLGraphBuilder.gather",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"gather\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.gatherElements",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"gatherElements\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.gatherND",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"gatherND\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -45852,9 +47355,33 @@
         "result": false
       },
       {
+        "name": "api.MLGraphBuilder.logicalAnd",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"logicalAnd\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraphBuilder.logicalNot",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"logicalNot\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.logicalOr",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"logicalOr\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.logicalXor",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"logicalXor\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -45933,6 +47460,14 @@
         "result": false
       },
       {
+        "name": "api.MLGraphBuilder.notEqual",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"notEqual\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraphBuilder.pad",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"pad\" in MLGraphBuilder.prototype",
@@ -45952,6 +47487,14 @@
         "name": "api.MLGraphBuilder.prelu",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"prelu\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.quantizeLinear",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"quantizeLinear\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46069,9 +47612,41 @@
         "result": false
       },
       {
+        "name": "api.MLGraphBuilder.reverse",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"reverse\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.scatterElements",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"scatterElements\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.scatterND",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"scatterND\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.MLGraphBuilder.sigmoid",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"sigmoid\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.sign",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"sign\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46152,6 +47727,14 @@
         "name": "api.MLGraphBuilder.tanh",
         "info": {
           "code": "\"MLGraphBuilder\" in self && \"tanh\" in MLGraphBuilder.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLGraphBuilder.tile",
+        "info": {
+          "code": "\"MLGraphBuilder\" in self && \"tile\" in MLGraphBuilder.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -46493,6 +48076,69 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.MutationEvent",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.attrChange",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"attrChange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.attrName",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"attrName\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.initMutationEvent",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"initMutationEvent\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.newValue",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"newValue\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.prevValue",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"prevValue\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.MutationEvent.relatedNode",
+        "info": {
+          "code": "(function () {\n  try {\n    var instance = document.createEvent(\"MutationEvent\");\n  } catch (e) {\n    if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n      return { result: false, message: \"Cannot create event\" };\n    }\n    throw e;\n  }\n  return !!instance && \"relatedNode\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
       },
       {
         "name": "api.MutationObserver",
@@ -47936,6 +49582,14 @@
         "result": false
       },
       {
+        "name": "api.Navigator.privateAttribution",
+        "info": {
+          "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"privateAttribution\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Navigator.product",
         "info": {
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"product\" in instance;\n})();\n",
@@ -48791,6 +50445,15 @@
         "name": "api.Node.normalize",
         "info": {
           "code": "(function () {\n  var instance = document;\n  return !!instance && \"normalize\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Node.selectstart_event",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"onselectstart\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -50207,6 +51870,14 @@
         "name": "api.OffscreenCanvasRenderingContext2D.isPointInStroke",
         "info": {
           "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"isPointInStroke\" in OffscreenCanvasRenderingContext2D.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.OffscreenCanvasRenderingContext2D.lang",
+        "info": {
+          "code": "\"OffscreenCanvasRenderingContext2D\" in self && \"lang\" in OffscreenCanvasRenderingContext2D.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -53002,6 +54673,15 @@
         "message": "Permissions.query is not defined"
       },
       {
+        "name": "api.Permissions.permission_compute-pressure",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"compute-pressure\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "Permissions.query is not defined"
+      },
+      {
         "name": "api.Permissions.permission_geolocation",
         "info": {
           "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"geolocation\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
@@ -53086,6 +54766,15 @@
         "name": "api.Permissions.permission_push",
         "info": {
           "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"push\", userVisibleOnly: true })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "Permissions.query is not defined"
+      },
+      {
+        "name": "api.Permissions.permission_screen-wake-lock",
+        "info": {
+          "code": "(function () {\n  var instance = navigator.permissions;\n  if (!(instance && \"query\" in instance)) {\n    return { result: false, message: \"Permissions.query is not defined\" };\n  }\n  return instance\n    .query({ name: \"screen-wake-lock\" })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -54197,6 +55886,110 @@
         "name": "api.PressureRecord.toJSON",
         "info": {
           "code": "\"PressureRecord\" in self && \"toJSON\" in PressureRecord.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttribution",
+        "info": {
+          "code": "\"PrivateAttribution\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttribution.aggregationServices",
+        "info": {
+          "code": "\"PrivateAttribution\" in self && \"aggregationServices\" in PrivateAttribution.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttribution.measureConversion",
+        "info": {
+          "code": "\"PrivateAttribution\" in self && \"measureConversion\" in PrivateAttribution.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttribution.saveImpression",
+        "info": {
+          "code": "\"PrivateAttribution\" in self && \"saveImpression\" in PrivateAttribution.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.@@iterator",
+        "info": {
+          "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"PrivateAttributionAggregationServices\" in self && !!(PrivateAttributionAggregationServices.prototype[Symbol.iterator])",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.entries",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"entries\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.forEach",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"forEach\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.get",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"get\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.has",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"has\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.keys",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"keys\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.size",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"size\" in PrivateAttributionAggregationServices.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PrivateAttributionAggregationServices.values",
+        "info": {
+          "code": "\"PrivateAttributionAggregationServices\" in self && \"values\" in PrivateAttributionAggregationServices.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -63296,6 +65089,96 @@
         "result": false
       },
       {
+        "name": "api.SpeechGrammar",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammar.SpeechGrammar",
+        "info": {
+          "code": "bcd.testConstructor('SpeechGrammar')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SpeechGrammar is not defined"
+      },
+      {
+        "name": "api.SpeechGrammar.src",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"src\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammar.weight",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance && \"weight\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList.addFromString",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromString\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList.addFromURI",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"addFromURI\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList.item",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"item\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList.length",
+        "info": {
+          "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var instance = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  return !!instance && \"length\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "SpeechGrammarList is not defined"
+      },
+      {
+        "name": "api.SpeechGrammarList.SpeechGrammarList",
+        "info": {
+          "code": "bcd.testConstructor('SpeechGrammarList')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SpeechGrammarList is not defined"
+      },
+      {
         "name": "api.SpeechRecognition",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return \"SpeechRecognition\" in self;\n})();\n",
@@ -63312,6 +65195,14 @@
         "result": false
       },
       {
+        "name": "api.SpeechRecognition.availableOnDevice_static",
+        "info": {
+          "code": "\"SpeechRecognition\" in self && \"availableOnDevice\" in SpeechRecognition",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.SpeechRecognition.continuous",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"continuous\" in instance;\n})();\n",
@@ -63320,9 +65211,17 @@
         "result": false
       },
       {
-        "name": "api.SpeechRecognition.installOnDeviceSpeechRecognition",
+        "name": "api.SpeechRecognition.grammars",
         "info": {
-          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"installOnDeviceSpeechRecognition\" in instance;\n})();\n",
+          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"grammars\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SpeechRecognition.installOnDevice_static",
+        "info": {
+          "code": "\"SpeechRecognition\" in self && \"installOnDevice\" in SpeechRecognition",
           "exposure": "Window"
         },
         "result": false
@@ -63371,14 +65270,6 @@
         "name": "api.SpeechRecognition.audiostart_event",
         "info": {
           "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onaudiostart\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
-        "name": "api.SpeechRecognition.onDeviceWebSpeechAvailable",
-        "info": {
-          "code": "(function () {\n  var instance = reusableInstances.speechRecognition;\n  return !!instance && \"onDeviceWebSpeechAvailable\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -65569,6 +67460,33 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.SVGAnimationElement.beginEvent_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onbeginEvent\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGAnimationElement.endEvent_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onendEvent\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGAnimationElement.repeatEvent_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"onrepeatEvent\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.SVGAnimationElement.requiredExtensions",
         "info": {
           "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"animate\"\n  );\n  return !!instance && \"requiredExtensions\" in instance;\n})();\n",
@@ -65860,6 +67778,24 @@
         "name": "api.SVGElement.nonce",
         "info": {
           "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"nonce\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGElement.error_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGElement.load_event",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"title\"\n  );\n  return !!instance && \"onload\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -68980,6 +70916,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.SVGPathElement.getPathData",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathData\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.SVGPathElement.getPathSegAtLength",
         "info": {
           "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathSegAtLength\" in instance;\n})();\n",
@@ -68987,6 +70932,75 @@
         },
         "result": null,
         "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathElement.getPathSegmentAtLength",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPathSegmentAtLength\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathElement.getPointAtLength",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getPointAtLength\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathElement.getTotalLength",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"getTotalLength\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathElement.pathLength",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"pathLength\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathElement.setPathData",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"path\");\n  return !!instance && \"setPathData\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.SVGPathSegment",
+        "info": {
+          "code": "\"SVGPathSegment\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SVGPathSegment.type",
+        "info": {
+          "code": "\"SVGPathSegment\" in self && \"type\" in SVGPathSegment.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SVGPathSegment.values",
+        "info": {
+          "code": "\"SVGPathSegment\" in self && \"values\" in SVGPathSegment.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.SVGPatternElement",
@@ -80053,6 +82067,14 @@
         "result": false
       },
       {
+        "name": "api.Window.fetchLater",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"fetchLater\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Window.find",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"find\" in instance;\n})();\n",
@@ -80269,6 +82291,14 @@
         "result": true
       },
       {
+        "name": "api.Window.afterprint_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onafterprint\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Window.appinstalled_event",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"onappinstalled\" in instance;\n})();\n",
@@ -80280,6 +82310,30 @@
         "name": "api.Window.beforeinstallprompt_event",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeinstallprompt\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.beforeprint_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeprint\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.beforeunload_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onbeforeunload\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.Window.blur_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onblur\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
@@ -80325,12 +82379,196 @@
         "result": false
       },
       {
+        "name": "api.Window.error_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.Window.focus_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onfocus\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.gamepadconnected_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"ongamepadconnected\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.gamepaddisconnected_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"ongamepaddisconnected\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.hashchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onhashchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.languagechange_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onlanguagechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.load_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onload\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.Window.message_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onmessage\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.messageerror_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onmessageerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.offline_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onoffline\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.online_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"ononline\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.Window.orientationchange_event",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"onorientationchange\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.Window.pagehide_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpagehide\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.pagereveal_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpagereveal\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.pageshow_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpageshow\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.pageswap_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpageswap\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.popstate_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onpopstate\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.rejectionhandled_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onrejectionhandled\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.resize_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onresize\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.scrollsnapchange_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onscrollsnapchange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.scrollsnapchanging_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onscrollsnapchanging\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.storage_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onstorage\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.Window.unhandledrejection_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onunhandledrejection\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.Window.unload_event",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"onunload\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
       },
       {
         "name": "api.Window.userproximity_event",
@@ -80496,6 +82734,15 @@
         "name": "api.Window.postMessage.options_delegate_parameter",
         "info": {
           "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  try {\n    return bcd.testOptionParam(postMessage, null, \"delegate\", \"test\");\n  } catch (e) {\n    if (\n      e.name === \"NotSupportedError\" &&\n      stringIncludes(e.message, \"Delegation of 'test' is not supported.\")\n    ) {\n      return true;\n    }\n    throw e;\n  }\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw TypeError: window.postMessage is not a function"
+      },
+      {
+        "name": "api.Window.postMessage.options_includeUserActivation_parameter",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  function postMessage(options) {\n    window.postMessage(\"\", options);\n  }\n  return bcd.testOptionParam(postMessage, null, \"includeUserActivation\", true);\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -81410,9 +83657,72 @@
         "message": "XMLHttpRequest is not defined"
       },
       {
+        "name": "api.XMLHttpRequest.abort_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onabort\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.error_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.load_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onload\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.loadend_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.loadstart_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.progress_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
         "name": "api.XMLHttpRequest.readystatechange_event",
         "info": {
           "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"onreadystatechange\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequest.timeout_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var instance = new XMLHttpRequest();\n  return !!instance && \"ontimeout\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -81629,6 +83939,69 @@
         "name": "api.XMLHttpRequestUpload",
         "info": {
           "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.abort_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onabort\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.error_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onerror\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.load_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onload\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.loadend_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onloadend\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.loadstart_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onloadstart\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.progress_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"onprogress\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "XMLHttpRequest is not defined"
+      },
+      {
+        "name": "api.XMLHttpRequestUpload.timeout_event",
+        "info": {
+          "code": "(function () {\n  if (!(\"XMLHttpRequest\" in self)) {\n    return { result: false, message: \"XMLHttpRequest is not defined\" };\n  }\n  var xhr = new XMLHttpRequest();\n  if (!xhr) {\n    return { result: false, message: \"xhr is falsy\" };\n  }\n  var instance = xhr.upload;\n  return !!instance && \"ontimeout\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": false,
