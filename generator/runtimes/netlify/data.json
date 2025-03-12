@@ -87280,6 +87280,30 @@
         "result": true
       },
       {
+        "name": "api.WritableStreamDefaultController",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.WritableStreamDefaultController.error",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"error\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.WritableStreamDefaultController.signal",
+        "info": {
+          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"signal\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.CryptoKey",
         "info": {
           "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
@@ -87315,30 +87339,6 @@
         "name": "api.CryptoKey.usages",
         "info": {
           "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController.error",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"error\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.WritableStreamDefaultController.signal",
-        "info": {
-          "code": "(function () {\n  if (!(\"WritableStream\" in self)) {\n    return { result: false, message: \"WritableStream is not defined\" };\n  }\n  var promise = new Promise(function (resolve, reject) {\n    new WritableStream({\n      start(controller) {\n        resolve(controller);\n      }\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"signal\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
