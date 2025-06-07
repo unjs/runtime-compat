@@ -38,6 +38,6 @@
   "author": "Matt Kane <m@mk.gg>",
   "license": "CC0-1.0",
   "devDependencies": {
-    "vitest": "^3.0.4"
+    "vitest": "^3.2.2"
   }
 }
