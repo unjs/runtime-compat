@@ -4,7 +4,7 @@ import type { Test, TestResult, Report } from "../../vendor/types.ts";
 import setup from "../../vendor/harness.js";
 
 declare global {
-  // eslint-disable-next-line no-var
+   
   var bcd: {
     addTest: (ident: string, tests: any, exposure: string[]) => void;
     addInstance: (
