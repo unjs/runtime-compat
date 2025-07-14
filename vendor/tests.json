@@ -1,5 +1,5 @@
 {
-  "__version": "10.13.2",
+  "__version": "10.13.4",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -38,7 +38,7 @@
       "type": "instance",
       "callback": true,
       "dependencies": ["audioContext"],
-      "src": "// First, we'll try creating a dummy stream\nvar stream;\n\nif ('MediaStream' in self) {\n  try {\n    var stream = new MediaStream();\n  } catch(e) {\n    // If creating the MediaStream fails, continue\n  }\n}\n\nif (\n  stream &&\n  reusableInstances.audioContext &&\n  'createMediaStreamDestination' in reusableInstances.audioContext &&\n  'captureStream' in HTMLCanvasElement.prototype\n) {\n  // Create the audio noise stream\n  var oscillator = reusableInstances.audioContext.createOscillator();\n  var dst = oscillator.connect(reusableInstances.audioContext.createMediaStreamDestination());\n  oscillator.start();\n  var audioTrack = dst.stream.getAudioTracks()[0];\n  stream.addTrack(audioTrack);\n  bcd.addCleanup(function() {audioTrack.stop()});\n\n  // Create the video noise stream\n  var canvas = document.createElement(\"canvas\");\n  canvas.width = 640;\n  canvas.height = 480;\n  var ctx = canvas.getContext('2d');\n  var videoStream = canvas.captureStream(60);\n  var count = 0;\n  var interval = setInterval(function() {\n    ctx.fillStyle = `rgb(${count%255}, ${count*count%255}, ${count%255})`;\n    count += 1;\n    ctx.fillRect(0, 0, canvas.width, canvas.height);\n    // Add some bouncing boxes in contrast color to add a little more noise.\n    var contrast = count + 128;\n    ctx.fillStyle = `rgb(${contrast%255}, ${contrast*contrast%255}, ${contrast%255})`;\n    var xpos = count % (canvas.width - 20);\n    var ypos = count % (canvas.height - 20);\n    ctx.fillRect(xpos, ypos, xpos + 20, ypos + 20);\n    var xpos2 = (count + canvas.width / 2) % (canvas.width - 20);\n    var ypos2 = (count + canvas.height / 2) % (canvas.height - 20);\n    ctx.fillRect(xpos2, ypos2, xpos2 + 20, ypos2 + 20);\n  }, 50);\n  var videoTrack = videoStream.getVideoTracks()[0];\n  stream.addTrack(videoTrack);\n  bcd.addCleanup(function() {videoTrack.stop()});\n\n  // Return the stream\n  callback(stream);\n  return;\n}\n\n// If we couldn't create a dummy stream, we'll use the camera and mic instead\nif (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {\n  navigator.mediaDevices.getUserMedia({audio: true}).then(callback, fail);\n} else if (navigator.getUserMedia) {\n  navigator.getUserMedia({audio: true}, callback, fail);\n} else if (navigator.mozGetUserMedia) {\n  navigator.mozGetUserMedia({audio: true}, callback, fail);\n} else if (navigator.webkitGetUserMedia) {\n  navigator.webkitGetUserMedia({audio: true}, callback, fail);\n} else {\n  fail('navigator(.mediaDevices).(moz/webkit)getUserMedia is not defined');\n}"
+      "src": "// First, we'll try creating a dummy stream\nvar stream;\n\nif ('MediaStream' in self) {\n  try {\n    var stream = new MediaStream();\n  } catch(e) {\n    // If creating the MediaStream fails, continue\n  }\n}\n\nif (\n  stream &&\n  reusableInstances.audioContext &&\n  'createMediaStreamDestination' in reusableInstances.audioContext &&\n  'captureStream' in HTMLCanvasElement.prototype\n) {\n  // Create the audio noise stream\n  var oscillator = reusableInstances.audioContext.createOscillator();\n  var dst = reusableInstances.audioContext.createMediaStreamDestination()\n  oscillator.connect(dst);\n  oscillator.start();\n  var audioTrack = dst.stream.getAudioTracks()[0];\n  stream.addTrack(audioTrack);\n  bcd.addCleanup(function() {audioTrack.stop()});\n\n  // Create the video noise stream\n  var canvas = document.createElement(\"canvas\");\n  canvas.width = 640;\n  canvas.height = 480;\n  var ctx = canvas.getContext('2d');\n  var videoStream = canvas.captureStream(60);\n  var count = 0;\n  var interval = setInterval(function() {\n    ctx.fillStyle = `rgb(${count%255}, ${count*count%255}, ${count%255})`;\n    count += 1;\n    ctx.fillRect(0, 0, canvas.width, canvas.height);\n    // Add some bouncing boxes in contrast color to add a little more noise.\n    var contrast = count + 128;\n    ctx.fillStyle = `rgb(${contrast%255}, ${contrast*contrast%255}, ${contrast%255})`;\n    var xpos = count % (canvas.width - 20);\n    var ypos = count % (canvas.height - 20);\n    ctx.fillRect(xpos, ypos, xpos + 20, ypos + 20);\n    var xpos2 = (count + canvas.width / 2) % (canvas.width - 20);\n    var ypos2 = (count + canvas.height / 2) % (canvas.height - 20);\n    ctx.fillRect(xpos2, ypos2, xpos2 + 20, ypos2 + 20);\n  }, 50);\n  var videoTrack = videoStream.getVideoTracks()[0];\n  stream.addTrack(videoTrack);\n  bcd.addCleanup(function() {videoTrack.stop()});\n\n  // Return the stream\n  callback(stream);\n  return;\n}\n\n// If we couldn't create a dummy stream, we'll use the camera and mic instead\nif (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {\n  navigator.mediaDevices.getUserMedia({audio: true}).then(callback, fail);\n} else if (navigator.getUserMedia) {\n  navigator.getUserMedia({audio: true}, callback, fail);\n} else if (navigator.mozGetUserMedia) {\n  navigator.mozGetUserMedia({audio: true}, callback, fail);\n} else if (navigator.webkitGetUserMedia) {\n  navigator.webkitGetUserMedia({audio: true}, callback, fail);\n} else {\n  fail('navigator(.mediaDevices).(moz/webkit)getUserMedia is not defined');\n}"
     },
     "offlineAudioContext": {
       "type": "instance",
@@ -795,6 +795,58 @@
   },
   "api.Attr.value": {
     "code": "(function () {\n  var el = document.createElement(\"b\");\n  el.setAttribute(\"data-foo\", \"bar\");\n  var instance;\n  if (\"getAttributeNode\" in el) {\n    instance = el.getAttributeNode(\"data-foo\");\n  } else if (\"attributes\" in el) {\n    instance = el.attributes.item(0);\n  }\n  return !!instance && \"value\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.Attribution": {
+    "code": "\"Attribution\" in self",
+    "exposure": ["Window"]
+  },
+  "api.Attribution.aggregationServices": {
+    "code": "\"Attribution\" in self && \"aggregationServices\" in Attribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.Attribution.measureConversion": {
+    "code": "\"Attribution\" in self && \"measureConversion\" in Attribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.Attribution.saveImpression": {
+    "code": "\"Attribution\" in self && \"saveImpression\" in Attribution.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices": {
+    "code": "\"AttributionAggregationServices\" in self",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.@@iterator": {
+    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"AttributionAggregationServices\" in self && !!(AttributionAggregationServices.prototype[Symbol.iterator])",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.entries": {
+    "code": "\"AttributionAggregationServices\" in self && \"entries\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.forEach": {
+    "code": "\"AttributionAggregationServices\" in self && \"forEach\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.get": {
+    "code": "\"AttributionAggregationServices\" in self && \"get\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.has": {
+    "code": "\"AttributionAggregationServices\" in self && \"has\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.keys": {
+    "code": "\"AttributionAggregationServices\" in self && \"keys\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.size": {
+    "code": "\"AttributionAggregationServices\" in self && \"size\" in AttributionAggregationServices.prototype",
+    "exposure": ["Window"]
+  },
+  "api.AttributionAggregationServices.values": {
+    "code": "\"AttributionAggregationServices\" in self && \"values\" in AttributionAggregationServices.prototype",
     "exposure": ["Window"]
   },
   "api.AudioBuffer": {
@@ -5001,30 +5053,6 @@
       "RTCIdentityProvider"
     ]
   },
-  "api.CrashReportBody": {
-    "code": "\"CrashReportBody\" in self",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.CrashReportBody.is_top_level": {
-    "code": "\"CrashReportBody\" in self && \"is_top_level\" in CrashReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.CrashReportBody.page_visibility": {
-    "code": "\"CrashReportBody\" in self && \"page_visibility\" in CrashReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.CrashReportBody.reason": {
-    "code": "\"CrashReportBody\" in self && \"reason\" in CrashReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.CrashReportBody.stack": {
-    "code": "\"CrashReportBody\" in self && \"stack\" in CrashReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.CrashReportBody.toJSON": {
-    "code": "\"CrashReportBody\" in self && \"toJSON\" in CrashReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
   "api.CreateMonitor": {
     "code": "\"CreateMonitor\" in self",
     "exposure": ["Window"]
@@ -5151,71 +5179,6 @@
     "code": "(function () {\n  var promise = reusableInstances.cryptoKey;\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"usages\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"],
     "resources": ["cryptoKey", "cryptoKey"]
-  },
-  "api.CSPViolationReportBody": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.blockedURL": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"blockedURL\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.columnNumber": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.disposition": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"disposition\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.documentURL": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"documentURL\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.effectiveDirective": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"effectiveDirective\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.lineNumber": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.originalPolicy": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"originalPolicy\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.referrer": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"referrer\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.sample": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sample\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.sourceFile": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.statusCode": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"statusCode\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
-  },
-  "api.CSPViolationReportBody.toJSON": {
-    "code": "(function () {\n  var instance = reusableInstances.cspViolationReportBody;\n  return !!instance && \"toJSON\" in instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["cspViolationReportBody", "cspViolationReportBody"]
   },
   "api.CSS": { "code": "\"CSS\" in self", "exposure": ["Window"] },
   "api.CSS.animationWorklet_static": {
@@ -8302,38 +8265,6 @@
     "code": "\"DelegatedInkTrailPresenter\" in self && \"updateInkTrailStartPoint\" in DelegatedInkTrailPresenter.prototype",
     "exposure": ["Window"]
   },
-  "api.DeprecationReportBody": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.anticipatedRemoval": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"anticipatedRemoval\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.columnNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.id": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"id\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.lineNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.message": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"message\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.sourceFile": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.DeprecationReportBody.toJSON": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/DeprecationReportBody#examples\n  return {\n    result: null,\n    message: \"Testing DeprecationReportBody is not yet implemented\"\n  };\n  return null;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
   "api.DeviceChangeEvent": {
     "code": "\"DeviceChangeEvent\" in self",
     "exposure": ["Window"]
@@ -8484,6 +8415,10 @@
   },
   "api.DigitalCredential.protocol": {
     "code": "\"DigitalCredential\" in self && \"protocol\" in DigitalCredential.prototype",
+    "exposure": ["Window"]
+  },
+  "api.DigitalCredential.userAgentAllowsProtocol_static": {
+    "code": "\"DigitalCredential\" in self && \"userAgentAllowsProtocol\" in DigitalCredential",
     "exposure": ["Window"]
   },
   "api.DigitalGoodsService": {
@@ -14305,6 +14240,10 @@
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"info\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.GPUAdapter.isFallbackAdapter": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"isFallbackAdapter\" in instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.GPUAdapter.limits": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var promise = gpu.requestAdapter();\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"limits\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -20112,6 +20051,22 @@
     "code": "\"IdentityCredential\" in self && \"token\" in IdentityCredential.prototype",
     "exposure": ["Window"]
   },
+  "api.IdentityCredentialError": {
+    "code": "\"IdentityCredentialError\" in self",
+    "exposure": ["Window"]
+  },
+  "api.IdentityCredentialError.error": {
+    "code": "\"IdentityCredentialError\" in self && \"error\" in IdentityCredentialError.prototype",
+    "exposure": ["Window"]
+  },
+  "api.IdentityCredentialError.IdentityCredentialError": {
+    "code": "bcd.testConstructor('IdentityCredentialError')",
+    "exposure": ["Window"]
+  },
+  "api.IdentityCredentialError.url": {
+    "code": "\"IdentityCredentialError\" in self && \"url\" in IdentityCredentialError.prototype",
+    "exposure": ["Window"]
+  },
   "api.IdentityProvider": {
     "code": "\"IdentityProvider\" in self",
     "exposure": ["Window"]
@@ -20514,30 +20469,6 @@
       "RTCIdentityProvider"
     ]
   },
-  "api.IntegrityPolicyViolationReportBody": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self",
-    "exposure": ["Window"]
-  },
-  "api.IntegrityPolicyViolationReportBody.blockedURL": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self && \"blockedURL\" in IntegrityPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
-  "api.IntegrityPolicyViolationReportBody.destination": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self && \"destination\" in IntegrityPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
-  "api.IntegrityPolicyViolationReportBody.documentURL": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self && \"documentURL\" in IntegrityPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
-  "api.IntegrityPolicyViolationReportBody.reportOnly": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self && \"reportOnly\" in IntegrityPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
-  "api.IntegrityPolicyViolationReportBody.toJSON": {
-    "code": "\"IntegrityPolicyViolationReportBody\" in self && \"toJSON\" in IntegrityPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
   "api.InterestGroupBiddingAndScoringScriptRunnerGlobalScope": {
     "code": "\"InterestGroupBiddingAndScoringScriptRunnerGlobalScope\" in self",
     "exposure": ["InterestGroupBiddingAndScoringScriptRunnerGlobalScope"]
@@ -20689,34 +20620,6 @@
   "api.IntersectionObserverEntry.time": {
     "code": "\"IntersectionObserverEntry\" in self && \"time\" in IntersectionObserverEntry.prototype",
     "exposure": ["Window"]
-  },
-  "api.InterventionReportBody": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.columnNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.id": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance && \"id\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.lineNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.message": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance && \"message\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.sourceFile": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.InterventionReportBody.toJSON": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/InterventionReportBody#examples\n  return {\n    result: null,\n    message: \"Testing InterventionReportBody is not yet implemented\"\n  };\n  return null;\n})();\n",
-    "exposure": ["Window", "Worker"]
   },
   "api.IntrinsicSizes": {
     "code": "\"IntrinsicSizes\" in self",
@@ -20966,6 +20869,10 @@
   },
   "api.LargestContentfulPaint.presentationTime": {
     "code": "\"LargestContentfulPaint\" in self && \"presentationTime\" in LargestContentfulPaint.prototype",
+    "exposure": ["Window"]
+  },
+  "api.LargestContentfulPaint.renderTime": {
+    "code": "\"LargestContentfulPaint\" in self && \"renderTime\" in LargestContentfulPaint.prototype",
     "exposure": ["Window"]
   },
   "api.LargestContentfulPaint.size": {
@@ -24027,6 +23934,10 @@
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"appVersion\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
+  "api.Navigator.attribution": {
+    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"attribution\" in instance;\n})();\n",
+    "exposure": ["Window"]
+  },
   "api.Navigator.audioSession": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"audioSession\" in instance;\n})();\n",
     "exposure": ["Window"]
@@ -24261,10 +24172,6 @@
   },
   "api.Navigator.presentation": {
     "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"presentation\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.Navigator.privateAttribution": {
-    "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"privateAttribution\" in instance;\n})();\n",
     "exposure": ["Window"]
   },
   "api.Navigator.product": {
@@ -27125,6 +27032,10 @@
     "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"connectStart\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
   },
+  "api.PerformanceResourceTiming.contentEncoding": {
+    "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"contentEncoding\" in instance;\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
   "api.PerformanceResourceTiming.contentType": {
     "code": "(function () {\n  var instance = performance.getEntriesByType(\"resource\")[0];\n  return !!instance && \"contentType\" in instance;\n})();\n",
     "exposure": ["Window", "Worker"]
@@ -27543,42 +27454,6 @@
     "code": "\"PermissionsPolicy\" in self && \"getAllowlistForFeature\" in PermissionsPolicy.prototype",
     "exposure": ["Window"]
   },
-  "api.PermissionsPolicyViolationReportBody": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.allowAttribute": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"allowAttribute\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.columnNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"columnNumber\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.disposition": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"disposition\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.featureId": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"featureId\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.lineNumber": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"lineNumber\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.sourceFile": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"sourceFile\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.srcAttribute": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/PermissionsPolicyViolationReportBody#examples\n  return {\n    result: null,\n    message:\n      \"Testing PermissionsPolicyViolationReportBody is not yet implemented\"\n  };\n  return !!instance && \"srcAttribute\" in instance;\n})();\n",
-    "exposure": ["Window"]
-  },
-  "api.PermissionsPolicyViolationReportBody.toJSON": {
-    "code": "\"PermissionsPolicyViolationReportBody\" in self && \"toJSON\" in PermissionsPolicyViolationReportBody.prototype",
-    "exposure": ["Window"]
-  },
   "api.PermissionStatus": {
     "code": "\"PermissionStatus\" in self",
     "exposure": ["Window", "Worker"]
@@ -27741,6 +27616,22 @@
   },
   "api.PointerEvent.width": {
     "code": "\"PointerEvent\" in self && \"width\" in PointerEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PointerTimeline": {
+    "code": "\"PointerTimeline\" in self",
+    "exposure": ["Window"]
+  },
+  "api.PointerTimeline.axis": {
+    "code": "\"PointerTimeline\" in self && \"axis\" in PointerTimeline.prototype",
+    "exposure": ["Window"]
+  },
+  "api.PointerTimeline.PointerTimeline": {
+    "code": "bcd.testConstructor('PointerTimeline')",
+    "exposure": ["Window"]
+  },
+  "api.PointerTimeline.source": {
+    "code": "\"PointerTimeline\" in self && \"source\" in PointerTimeline.prototype",
     "exposure": ["Window"]
   },
   "api.PopStateEvent": {
@@ -28066,58 +27957,6 @@
   "api.PrivateAggregation.enableDebugMode": {
     "code": "\"PrivateAggregation\" in self && \"enableDebugMode\" in PrivateAggregation.prototype",
     "exposure": ["InterestGroupScriptRunnerGlobalScope", "SharedStorageWorklet"]
-  },
-  "api.PrivateAttribution": {
-    "code": "\"PrivateAttribution\" in self",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttribution.aggregationServices": {
-    "code": "\"PrivateAttribution\" in self && \"aggregationServices\" in PrivateAttribution.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttribution.measureConversion": {
-    "code": "\"PrivateAttribution\" in self && \"measureConversion\" in PrivateAttribution.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttribution.saveImpression": {
-    "code": "\"PrivateAttribution\" in self && \"saveImpression\" in PrivateAttribution.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices": {
-    "code": "\"PrivateAttributionAggregationServices\" in self",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.@@iterator": {
-    "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"PrivateAttributionAggregationServices\" in self && !!(PrivateAttributionAggregationServices.prototype[Symbol.iterator])",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.entries": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"entries\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.forEach": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"forEach\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.get": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"get\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.has": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"has\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.keys": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"keys\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.size": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"size\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
-  },
-  "api.PrivateAttributionAggregationServices.values": {
-    "code": "\"PrivateAttributionAggregationServices\" in self && \"values\" in PrivateAttributionAggregationServices.prototype",
-    "exposure": ["Window"]
   },
   "api.ProcessingInstruction": {
     "code": "(function () {\n  if (!(\"DOMParser\" in self)) {\n    return { result: false, message: \"DOMParser is not defined\" };\n  }\n  var parser = new DOMParser();\n  if (!parser) {\n    return { result: false, message: \"parser is falsy\" };\n  }\n  var doc = parser.parseFromString(\"<foo />\", \"application/xml\");\n  var instance = doc.createProcessingInstruction(\n    \"xml-stylesheet\",\n    'href=\"mycss.css\" type=\"text/css\"'\n  );\n  return !!instance;\n})();\n",
@@ -29486,34 +29325,6 @@
   "api.RemotePlayback.watchAvailability": {
     "code": "\"RemotePlayback\" in self && \"watchAvailability\" in RemotePlayback.prototype",
     "exposure": ["Window"]
-  },
-  "api.Report": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/Report#examples\n  return { result: null, message: \"Testing Report is not yet implemented\" };\n  return !!instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.Report.body": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/Report#examples\n  return { result: null, message: \"Testing Report is not yet implemented\" };\n  return !!instance && \"body\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.Report.toJSON": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/Report#examples\n  return { result: null, message: \"Testing Report is not yet implemented\" };\n  return null;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.Report.type": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/Report#examples\n  return { result: null, message: \"Testing Report is not yet implemented\" };\n  return !!instance && \"type\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.Report.url": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/Report#examples\n  return { result: null, message: \"Testing Report is not yet implemented\" };\n  return !!instance && \"url\" in instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ReportBody": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/ReportBody#examples\n  return { result: null, message: \"Testing ReportBody is not yet implemented\" };\n  return !!instance;\n})();\n",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ReportBody.toJSON": {
-    "code": "(function () {\n  // XXX Obtaining an instance of this interface is much like triggering an event.\n  // See http://developer.mozilla.org/docs/Web/API/ReportBody#examples\n  return { result: null, message: \"Testing ReportBody is not yet implemented\" };\n  return null;\n})();\n",
-    "exposure": ["Window", "Worker"]
   },
   "api.ReportingObserver": {
     "code": "\"ReportingObserver\" in self",
@@ -32734,34 +32545,6 @@
     "code": "\"ScreenOrientation\" in self && \"unlock\" in ScreenOrientation.prototype",
     "exposure": ["Window"]
   },
-  "api.ScriptingPolicyReportBody": {
-    "code": "\"ScriptingPolicyReportBody\" in self",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.colno": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"colno\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.lineno": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"lineno\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.toJSON": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"toJSON\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.violationSample": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"violationSample\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.violationType": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"violationType\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
-  "api.ScriptingPolicyReportBody.violationURL": {
-    "code": "\"ScriptingPolicyReportBody\" in self && \"violationURL\" in ScriptingPolicyReportBody.prototype",
-    "exposure": ["Window", "Worker"]
-  },
   "api.ScriptProcessorNode": {
     "code": "(function () {\n  if (!reusableInstances.audioContext) {\n    return { result: false, message: \"Audio context is not available\" };\n  }\n  if (!(\"createScriptProcessor\" in reusableInstances.audioContext)) {\n    return {\n      result: false,\n      message: \"audioContext.createScriptProcessor is not defined\"\n    };\n  }\n  var instance = reusableInstances.audioContext.createScriptProcessor();\n  return !!instance;\n})();\n",
     "exposure": ["Window"],
@@ -33792,11 +33575,6 @@
   },
   "api.SpeechGrammar": {
     "code": "(function () {\n  if (!(\"SpeechGrammarList\" in self || \"webkitSpeechGrammarList\" in self)) {\n    return { result: false, message: \"SpeechGrammarList is not defined\" };\n  }\n  var grammar =\n    \"#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;\";\n  var sglist = new (SpeechGrammarList || webkitSpeechGrammarList)();\n  speechRecognitionList.addFromString(grammar, 1);\n  if (!sglist) {\n    return { result: false, message: \"sglist is falsy\" };\n  }\n  var instance = sglist[0];\n  return !!instance;\n})();\n",
-    "exposure": ["Window"],
-    "resources": ["speechRecognition"]
-  },
-  "api.SpeechGrammar.SpeechGrammar": {
-    "code": "bcd.testConstructor('SpeechGrammar')",
     "exposure": ["Window"],
     "resources": ["speechRecognition"]
   },
@@ -38725,6 +38503,10 @@
   },
   "api.ToggleEvent.oldState": {
     "code": "\"ToggleEvent\" in self && \"oldState\" in ToggleEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ToggleEvent.source": {
+    "code": "\"ToggleEvent\" in self && \"source\" in ToggleEvent.prototype",
     "exposure": ["Window"]
   },
   "api.ToggleEvent.ToggleEvent": {
@@ -44212,6 +43994,10 @@
     "code": "\"WebTransportDatagramDuplexStream\" in self && \"readable\" in WebTransportDatagramDuplexStream.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.WebTransportDatagramDuplexStream.writable": {
+    "code": "\"WebTransportDatagramDuplexStream\" in self && \"writable\" in WebTransportDatagramDuplexStream.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.WebTransportDatagramsWritable": {
     "code": "\"WebTransportDatagramsWritable\" in self",
     "exposure": ["Window", "Worker"]
@@ -47802,110 +47588,6 @@
     "code": "bcd.testCSSProperty(\"accent-color\", \"auto\")",
     "exposure": ["Window"]
   },
-  "css.properties.accent-color.none": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.transparent": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"transparent\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.currentcolor": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"currentcolor\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ActiveBorder": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ActiveBorder\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ActiveCaption": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ActiveCaption\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.AppWorkspace": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"AppWorkspace\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.Background": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"Background\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ButtonHighlight": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ButtonHighlight\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ButtonShadow": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ButtonShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.CaptionText": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"CaptionText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.InactiveBorder": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"InactiveBorder\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.InactiveCaption": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"InactiveCaption\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.InactiveCaptionText": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"InactiveCaptionText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.InfoBackground": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"InfoBackground\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.InfoText": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"InfoText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.Menu": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"Menu\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.MenuText": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"MenuText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.Scrollbar": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"Scrollbar\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ThreeDDarkShadow": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ThreeDDarkShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ThreeDFace": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ThreeDFace\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ThreeDHighlight": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ThreeDHighlight\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ThreeDLightShadow": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ThreeDLightShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.ThreeDShadow": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"ThreeDShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.Window": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"Window\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.WindowFrame": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"WindowFrame\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.accent-color.WindowText": {
-    "code": "bcd.testCSSProperty(\"accent-color\", \"WindowText\")",
-    "exposure": ["Window"]
-  },
   "css.properties.align-content": {
     "code": "bcd.testCSSProperty(\"align-content\")",
     "exposure": ["Window"]
@@ -48114,6 +47796,14 @@
     "code": "bcd.testCSSProperty(\"animation-range\")",
     "exposure": ["Window"]
   },
+  "css.properties.animation-range-center": {
+    "code": "bcd.testCSSProperty(\"animation-range-center\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.animation-range-center.normal": {
+    "code": "bcd.testCSSProperty(\"animation-range-center\", \"normal\")",
+    "exposure": ["Window"]
+  },
   "css.properties.animation-range-end": {
     "code": "bcd.testCSSProperty(\"animation-range-end\")",
     "exposure": ["Window"]
@@ -48232,6 +47922,10 @@
   },
   "css.properties.appearance.auto": {
     "code": "bcd.testCSSProperty(\"appearance\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.appearance.base-select": {
+    "code": "bcd.testCSSProperty(\"appearance\", \"base-select\")",
     "exposure": ["Window"]
   },
   "css.properties.appearance.searchfield": {
@@ -48356,6 +48050,10 @@
   },
   "css.properties.background-clip.text": {
     "code": "bcd.testCSSProperty(\"background-clip\", \"text\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-clip.border-area": {
+    "code": "bcd.testCSSProperty(\"background-clip\", \"border-area\")",
     "exposure": ["Window"]
   },
   "css.properties.background-color": {
@@ -48662,12 +48360,20 @@
     "code": "bcd.testCSSProperty(\"block-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.block-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"block-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.block-size.max-content": {
     "code": "bcd.testCSSProperty(\"block-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.block-size.min-content": {
     "code": "bcd.testCSSProperty(\"block-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.block-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"block-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.block-step": {
@@ -49224,6 +48930,14 @@
   },
   "css.properties.bottom.auto": {
     "code": "bcd.testCSSProperty(\"bottom\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.bottom.anchor": {
+    "code": "bcd.testCSSProperty(\"bottom\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.bottom.anchor-size": {
+    "code": "bcd.testCSSProperty(\"bottom\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.box-align": {
@@ -49834,110 +49548,6 @@
     "code": "bcd.testCSSProperty(\"column-rule-color\")",
     "exposure": ["Window"]
   },
-  "css.properties.column-rule-color.none": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.transparent": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"transparent\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.currentcolor": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"currentcolor\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ActiveBorder": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ActiveBorder\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ActiveCaption": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ActiveCaption\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.AppWorkspace": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"AppWorkspace\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.Background": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"Background\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ButtonHighlight": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ButtonHighlight\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ButtonShadow": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ButtonShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.CaptionText": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"CaptionText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.InactiveBorder": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"InactiveBorder\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.InactiveCaption": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"InactiveCaption\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.InactiveCaptionText": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"InactiveCaptionText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.InfoBackground": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"InfoBackground\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.InfoText": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"InfoText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.Menu": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"Menu\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.MenuText": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"MenuText\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.Scrollbar": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"Scrollbar\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ThreeDDarkShadow": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ThreeDDarkShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ThreeDFace": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ThreeDFace\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ThreeDHighlight": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ThreeDHighlight\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ThreeDLightShadow": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ThreeDLightShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.ThreeDShadow": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"ThreeDShadow\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.Window": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"Window\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.WindowFrame": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"WindowFrame\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.column-rule-color.WindowText": {
-    "code": "bcd.testCSSProperty(\"column-rule-color\", \"WindowText\")",
-    "exposure": ["Window"]
-  },
   "css.properties.column-rule-outset": {
     "code": "bcd.testCSSProperty(\"column-rule-outset\")",
     "exposure": ["Window"]
@@ -50186,8 +49796,8 @@
     "code": "bcd.testCSSProperty(\"continue\")",
     "exposure": ["Window"]
   },
-  "css.properties.continue.-webkit-discard": {
-    "code": "bcd.testCSSProperty(\"continue\", \"-webkit-discard\")",
+  "css.properties.continue.-webkit-legacy": {
+    "code": "bcd.testCSSProperty(\"continue\", \"-webkit-legacy\")",
     "exposure": ["Window"]
   },
   "css.properties.continue.auto": {
@@ -50196,6 +49806,10 @@
   },
   "css.properties.continue.discard": {
     "code": "bcd.testCSSProperty(\"continue\", \"discard\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.continue.collapse": {
+    "code": "bcd.testCSSProperty(\"continue\", \"collapse\")",
     "exposure": ["Window"]
   },
   "css.properties.continue.overflow": {
@@ -51074,6 +50688,22 @@
     "code": "bcd.testCSSProperty(\"font-family\", \"system-ui\")",
     "exposure": ["Window"]
   },
+  "css.properties.font-family.ui-monospace": {
+    "code": "bcd.testCSSProperty(\"font-family\", \"ui-monospace\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.font-family.ui-rounded": {
+    "code": "bcd.testCSSProperty(\"font-family\", \"ui-rounded\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.font-family.ui-sans-serif": {
+    "code": "bcd.testCSSProperty(\"font-family\", \"ui-sans-serif\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.font-family.ui-serif": {
+    "code": "bcd.testCSSProperty(\"font-family\", \"ui-serif\")",
+    "exposure": ["Window"]
+  },
   "css.properties.font-feature-settings": {
     "code": "bcd.testCSSProperty(\"font-feature-settings\")",
     "exposure": ["Window"]
@@ -51618,6 +51248,10 @@
     "code": "bcd.testCSSProperty(\"font-width\", \"ultra-expanded\")",
     "exposure": ["Window"]
   },
+  "css.properties.font-width.percentage": {
+    "code": "bcd.testCSSProperty(\"font-width\", \"50%\")",
+    "exposure": ["Window"]
+  },
   "css.properties.footnote-display": {
     "code": "bcd.testCSSProperty(\"footnote-display\")",
     "exposure": ["Window"]
@@ -51902,6 +51536,10 @@
     "code": "bcd.testCSSProperty(\"height\", \"any\")",
     "exposure": ["Window"]
   },
+  "css.properties.height.anchor-size": {
+    "code": "bcd.testCSSProperty(\"height\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.hyphenate-character": {
     "code": "bcd.testCSSProperty(\"hyphenate-character\")",
     "exposure": ["Window"]
@@ -52098,12 +51736,20 @@
     "code": "bcd.testCSSProperty(\"inline-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.inline-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inline-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.inline-size.max-content": {
     "code": "bcd.testCSSProperty(\"inline-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.inline-size.min-content": {
     "code": "bcd.testCSSProperty(\"inline-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inline-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"inline-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.inline-sizing": {
@@ -52138,12 +51784,28 @@
     "code": "bcd.testCSSProperty(\"inset\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.inset.anchor": {
+    "code": "bcd.testCSSProperty(\"inset\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.inset-block": {
     "code": "bcd.testCSSProperty(\"inset-block\")",
     "exposure": ["Window"]
   },
   "css.properties.inset-block.auto": {
     "code": "bcd.testCSSProperty(\"inset-block\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-block.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-block\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-block.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-block\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.inset-block-end": {
@@ -52154,12 +51816,28 @@
     "code": "bcd.testCSSProperty(\"inset-block-end\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.inset-block-end.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-block-end\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-block-end.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-block-end\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.inset-block-start": {
     "code": "bcd.testCSSProperty(\"inset-block-start\")",
     "exposure": ["Window"]
   },
   "css.properties.inset-block-start.auto": {
     "code": "bcd.testCSSProperty(\"inset-block-start\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-block-start.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-block-start\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-block-start.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-block-start\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.inset-inline": {
@@ -52170,6 +51848,14 @@
     "code": "bcd.testCSSProperty(\"inset-inline\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.inset-inline.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-inline\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-inline.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-inline\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.inset-inline-end": {
     "code": "bcd.testCSSProperty(\"inset-inline-end\")",
     "exposure": ["Window"]
@@ -52178,12 +51864,28 @@
     "code": "bcd.testCSSProperty(\"inset-inline-end\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.inset-inline-end.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-inline-end\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-inline-end.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-inline-end\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.inset-inline-start": {
     "code": "bcd.testCSSProperty(\"inset-inline-start\")",
     "exposure": ["Window"]
   },
   "css.properties.inset-inline-start.auto": {
     "code": "bcd.testCSSProperty(\"inset-inline-start\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-inline-start.anchor": {
+    "code": "bcd.testCSSProperty(\"inset-inline-start\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.inset-inline-start.anchor-size": {
+    "code": "bcd.testCSSProperty(\"inset-inline-start\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.interactivity": {
@@ -52438,6 +52140,14 @@
     "code": "bcd.testCSSProperty(\"left\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.left.anchor": {
+    "code": "bcd.testCSSProperty(\"left\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.left.anchor-size": {
+    "code": "bcd.testCSSProperty(\"left\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.letter-spacing": {
     "code": "bcd.testCSSProperty(\"letter-spacing\")",
     "exposure": ["Window"]
@@ -52480,6 +52190,10 @@
   },
   "css.properties.line-clamp.none": {
     "code": "bcd.testCSSProperty(\"line-clamp\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.line-clamp.-webkit-legacy": {
+    "code": "bcd.testCSSProperty(\"line-clamp\", \"-webkit-legacy\")",
     "exposure": ["Window"]
   },
   "css.properties.line-fit-edge": {
@@ -52994,6 +52708,10 @@
     "code": "bcd.testCSSProperty(\"margin\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin.auto": {
     "code": "bcd.testCSSProperty(\"margin\", \"auto\")",
     "exposure": ["Window"]
@@ -53002,16 +52720,32 @@
     "code": "bcd.testCSSProperty(\"margin-block\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-block.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-block\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-block-end": {
     "code": "bcd.testCSSProperty(\"margin-block-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.margin-block-end.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-block-end\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-block-start": {
     "code": "bcd.testCSSProperty(\"margin-block-start\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-block-start.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-block-start\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-bottom": {
     "code": "bcd.testCSSProperty(\"margin-bottom\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.margin-bottom.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-bottom\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-bottom.auto": {
@@ -53038,16 +52772,32 @@
     "code": "bcd.testCSSProperty(\"margin-inline\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-inline.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-inline\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-inline-end": {
     "code": "bcd.testCSSProperty(\"margin-inline-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.margin-inline-end.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-inline-end\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-inline-start": {
     "code": "bcd.testCSSProperty(\"margin-inline-start\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-inline-start.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-inline-start\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-left": {
     "code": "bcd.testCSSProperty(\"margin-left\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.margin-left.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-left\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-left.auto": {
@@ -53058,12 +52808,20 @@
     "code": "bcd.testCSSProperty(\"margin-right\")",
     "exposure": ["Window"]
   },
+  "css.properties.margin-right.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-right\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.margin-right.auto": {
     "code": "bcd.testCSSProperty(\"margin-right\", \"auto\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-top": {
     "code": "bcd.testCSSProperty(\"margin-top\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.margin-top.anchor-size": {
+    "code": "bcd.testCSSProperty(\"margin-top\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.margin-top.auto": {
@@ -53354,12 +53112,20 @@
     "code": "bcd.testCSSProperty(\"max-block-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-block-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"max-block-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-block-size.max-content": {
     "code": "bcd.testCSSProperty(\"max-block-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.max-block-size.min-content": {
     "code": "bcd.testCSSProperty(\"max-block-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-block-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"max-block-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.max-height": {
@@ -53402,6 +53168,10 @@
     "code": "bcd.testCSSProperty(\"max-height\", \"any\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-height.anchor-size": {
+    "code": "bcd.testCSSProperty(\"max-height\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-inline-size": {
     "code": "bcd.testCSSProperty(\"max-inline-size\")",
     "exposure": ["Window"]
@@ -53410,12 +53180,20 @@
     "code": "bcd.testCSSProperty(\"max-inline-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-inline-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"max-inline-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-inline-size.max-content": {
     "code": "bcd.testCSSProperty(\"max-inline-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.max-inline-size.min-content": {
     "code": "bcd.testCSSProperty(\"max-inline-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.max-inline-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"max-inline-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.max-lines": {
@@ -53466,6 +53244,10 @@
     "code": "bcd.testCSSProperty(\"max-width\", \"any\")",
     "exposure": ["Window"]
   },
+  "css.properties.max-width.anchor-size": {
+    "code": "bcd.testCSSProperty(\"max-width\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.max-zoom": {
     "code": "bcd.testCSSProperty(\"max-zoom\")",
     "exposure": ["Window"]
@@ -53478,12 +53260,20 @@
     "code": "bcd.testCSSProperty(\"min-block-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.min-block-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"min-block-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.min-block-size.max-content": {
     "code": "bcd.testCSSProperty(\"min-block-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.min-block-size.min-content": {
     "code": "bcd.testCSSProperty(\"min-block-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-block-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"min-block-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.min-height": {
@@ -53526,6 +53316,10 @@
     "code": "bcd.testCSSProperty(\"min-height\", \"any\")",
     "exposure": ["Window"]
   },
+  "css.properties.min-height.anchor-size": {
+    "code": "bcd.testCSSProperty(\"min-height\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.min-inline-size": {
     "code": "bcd.testCSSProperty(\"min-inline-size\")",
     "exposure": ["Window"]
@@ -53534,12 +53328,20 @@
     "code": "bcd.testCSSProperty(\"min-inline-size\", \"fit-content(10px)\")",
     "exposure": ["Window"]
   },
+  "css.properties.min-inline-size.anchor-size": {
+    "code": "bcd.testCSSProperty(\"min-inline-size\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.min-inline-size.max-content": {
     "code": "bcd.testCSSProperty(\"min-inline-size\", \"max-content\")",
     "exposure": ["Window"]
   },
   "css.properties.min-inline-size.min-content": {
     "code": "bcd.testCSSProperty(\"min-inline-size\", \"min-content\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-inline-size.fit-content": {
+    "code": "bcd.testCSSProperty(\"min-inline-size\", \"fit-content\")",
     "exposure": ["Window"]
   },
   "css.properties.min-intrinsic-sizing": {
@@ -53596,6 +53398,10 @@
   },
   "css.properties.min-width.any": {
     "code": "bcd.testCSSProperty(\"min-width\", \"any\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.min-width.anchor-size": {
+    "code": "bcd.testCSSProperty(\"min-width\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.min-zoom": {
@@ -54510,12 +54316,60 @@
     "code": "bcd.testCSSProperty(\"place-items\")",
     "exposure": ["Window"]
   },
+  "css.properties.place-items.anchor-center": {
+    "code": "bcd.testCSSProperty(\"place-items\", \"anchor-center\")",
+    "exposure": ["Window"]
+  },
   "css.properties.place-self": {
     "code": "bcd.testCSSProperty(\"place-self\")",
     "exposure": ["Window"]
   },
+  "css.properties.place-self.anchor-center": {
+    "code": "bcd.testCSSProperty(\"place-self\", \"anchor-center\")",
+    "exposure": ["Window"]
+  },
   "css.properties.pointer-events": {
     "code": "bcd.testCSSProperty(\"pointer-events\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.block": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.inline": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"inline\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.x": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"x\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.y": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"y\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.self": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"self\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.nearest": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"nearest\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-axis.root": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-axis\", \"root\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.pointer-timeline-name": {
+    "code": "bcd.testCSSProperty(\"pointer-timeline-name\")",
     "exposure": ["Window"]
   },
   "css.properties.position": {
@@ -54774,6 +54628,10 @@
     "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-start\")",
     "exposure": ["Window"]
   },
+  "css.properties.position-try-fallbacks.position-area": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"left center\")",
+    "exposure": ["Window"]
+  },
   "css.properties.position-try-order": {
     "code": "bcd.testCSSProperty(\"position-try-order\")",
     "exposure": ["Window"]
@@ -54968,6 +54826,14 @@
   },
   "css.properties.right.auto": {
     "code": "bcd.testCSSProperty(\"right\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.right.anchor": {
+    "code": "bcd.testCSSProperty(\"right\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.right.anchor-size": {
+    "code": "bcd.testCSSProperty(\"right\", \"anchor-size(100px)\")",
     "exposure": ["Window"]
   },
   "css.properties.rotate": {
@@ -56334,6 +56200,10 @@
     "code": "bcd.testCSSProperty(\"text-emphasis-position\", \"over left\")",
     "exposure": ["Window"]
   },
+  "css.properties.text-emphasis-position.auto": {
+    "code": "bcd.testCSSProperty(\"text-emphasis-position\", \"auto\")",
+    "exposure": ["Window"]
+  },
   "css.properties.text-emphasis-skip": {
     "code": "bcd.testCSSProperty(\"text-emphasis-skip\")",
     "exposure": ["Window"]
@@ -56798,6 +56668,14 @@
     "code": "bcd.testCSSProperty(\"top\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.top.anchor": {
+    "code": "bcd.testCSSProperty(\"top\", \"anchor(bottom)\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.top.anchor-size": {
+    "code": "bcd.testCSSProperty(\"top\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.touch-action": {
     "code": "bcd.testCSSProperty(\"touch-action\")",
     "exposure": ["Window"]
@@ -56936,6 +56814,10 @@
   },
   "css.properties.transition": {
     "code": "bcd.testCSSProperty(\"transition\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.transition.transition-behavior": {
+    "code": "bcd.testCSSProperty(\"transition\", \"all 1s ease-out allow-discrete\")",
     "exposure": ["Window"]
   },
   "css.properties.transition-behavior": {
@@ -57542,6 +57424,10 @@
     "code": "bcd.testCSSProperty(\"width\", \"any\")",
     "exposure": ["Window"]
   },
+  "css.properties.width.anchor-size": {
+    "code": "bcd.testCSSProperty(\"width\", \"anchor-size(100px)\")",
+    "exposure": ["Window"]
+  },
   "css.properties.width.fill": {
     "code": "bcd.testCSSProperty(\"width\", \"fill\")",
     "exposure": ["Window"]
@@ -58048,6 +57934,10 @@
   },
   "css.selectors.active-view-transition-type": {
     "code": "bcd.testCSSSelector(\":active-view-transition-type()\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.view-transition-group-children": {
+    "code": "bcd.testCSSSelector(\"::view-transition-group-children()\")",
     "exposure": ["Window"]
   },
   "css.selectors.view-transition": {
@@ -58980,6 +58870,14 @@
   },
   "css.types.shape.rect": {
     "code": "bcd.testCSSProperty(\"clip\", \"rect(10px, 20px, 20px, 10px)\")",
+    "exposure": ["Window"]
+  },
+  "css.types.sibling-count": {
+    "code": "bcd.testCSSProperty(\"width\", \"calc(100px * sibling-count())\")",
+    "exposure": ["Window"]
+  },
+  "css.types.sibling-index": {
+    "code": "bcd.testCSSProperty(\"width\", \"calc(100px * sibling-index())\")",
     "exposure": ["Window"]
   },
   "css.types.sign": {
@@ -64346,12 +64244,12 @@
     "code": "(function () {\n  if (!(\"FinalizationRegistry\" in self)) {\n    return { result: false, message: \"FinalizationRegistry is not defined\" };\n  }\n  return bcd.testConstructor(\"FinalizationRegistry\", false);\n})();\n",
     "exposure": ["Window"]
   },
-  "javascript.builtins.FinalizationRegistry.FinalizationRegistry.symbol_as_target": {
-    "code": "(function () {\n  try {\n    new FinalizationRegistry(() => {}).register(Symbol());\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
-    "exposure": ["Window"]
-  },
   "javascript.builtins.FinalizationRegistry.register": {
     "code": "\"FinalizationRegistry\" in self && \"register\" in FinalizationRegistry.prototype",
+    "exposure": ["Window"]
+  },
+  "javascript.builtins.FinalizationRegistry.register.symbol_as_target": {
+    "code": "(function () {\n  try {\n    new FinalizationRegistry(() => {}).register(Symbol());\n    return true;\n  } catch (e) {\n    return { result: false, message: e.message };\n  }\n})();\n",
     "exposure": ["Window"]
   },
   "javascript.builtins.FinalizationRegistry.unregister": {
