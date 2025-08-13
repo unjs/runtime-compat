@@ -35,7 +35,7 @@ export function runTests(
   const resourcesNeeded = new Set<string>();
 
   const allTests = [
-    ...testCases.getTests("javascript.builtins"),
+    ...testCases.getTests("javascript"),
     ...testCases.getTests("api", "Window", ignoreApis),
     ...testCases.getTests("webassembly", "Window"),
   ];
