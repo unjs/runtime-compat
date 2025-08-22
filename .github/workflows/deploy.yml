@@ -17,7 +17,7 @@ jobs:
       - run: pnpm install
       - run: pnpm run --filter website build --preset github_pages
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./apps/website/.output/public
   deploy:
