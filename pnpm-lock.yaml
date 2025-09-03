@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@mdn/browser-compat-data':
-        specifier: ^6.0.21
-        version: 6.0.21
+        specifier: ^7.1.2
+        version: 7.1.2
       '@types/node':
         specifier: ^22.15.30
         version: 22.15.30
@@ -1569,8 +1569,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@mdn/browser-compat-data@6.0.21':
-    resolution: {integrity: sha512-7cD8A8ZlreQs1XJfK9kpJQ3oWIdWkY+9DvQPSSjuy/qsmDfGywQ/eGpDijR3/rSZTjzO+J/LdRBd4TUXyKKDQA==}
+  '@mdn/browser-compat-data@7.1.2':
+    resolution: {integrity: sha512-K+xSG9k1zLwrFdGDxeOQTX85FxqmLQSoH5nwgq/6tm8P8cAD4cAq/D1OaZQIWZjwZ9lxWmswHbcdvfGSvdSCzA==}
 
   '@napi-rs/lzma-android-arm-eabi@1.3.1':
     resolution: {integrity: sha512-mtGOg8jXlc+pTBI86cqohfndS9UmOAkk9d5CChKMb8btVks70yhUN1e7YYS3QFbmoxbPs2Ee+wmuH1Khdc7B2w==}
@@ -9650,7 +9650,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@mdn/browser-compat-data@6.0.21': {}
+  '@mdn/browser-compat-data@7.1.2': {}
 
   '@napi-rs/lzma-android-arm-eabi@1.3.1':
     optional: true
