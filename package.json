@@ -13,7 +13,7 @@
     "website": "pnpm run --filter \"website\" dev"
   },
   "devDependencies": {
-    "@mdn/browser-compat-data": "^6.0.21",
+    "@mdn/browser-compat-data": "^7.1.2",
     "@types/node": "^22.15.30",
     "automd": "^0.4.0",
     "eslint": "^9.28.0",
