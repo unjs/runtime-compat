@@ -3,7 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src",
   css: ["~/assets/main.css"],
-
+  dir: {
+    public: "src/public",
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
