@@ -1,5 +1,5 @@
 {
-  "__version": "10.14.1",
+  "__version": "10.16.1",
   "results": {
     ".": [
       {
@@ -669,7 +669,7 @@
           "code": "\"Error\" in self && \"isError\" in Error",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Error.stackTraceLimit",
@@ -1461,7 +1461,7 @@
           "code": "\"Math\" in self && \"f16round\" in Math",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Math.sumPrecise",
@@ -2385,7 +2385,7 @@
           "code": "\"RegExp\" in self && \"escape\" in RegExp",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.RegExp.input",
@@ -3857,6 +3857,22 @@
         "result": true
       },
       {
+        "name": "javascript.builtins.Map.getOrInsert",
+        "info": {
+          "code": "\"Map\" in self && \"getOrInsert\" in Map.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.Map.getOrInsertComputed",
+        "info": {
+          "code": "\"Map\" in self && \"getOrInsertComputed\" in Map.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "javascript.builtins.Set",
         "info": {
           "code": "\"Set\" in self",
@@ -4106,6 +4122,22 @@
           "exposure": "Window"
         },
         "result": true
+      },
+      {
+        "name": "javascript.builtins.WeakMap.getOrInsert",
+        "info": {
+          "code": "\"WeakMap\" in self && \"getOrInsert\" in WeakMap.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "javascript.builtins.WeakMap.getOrInsertComputed",
+        "info": {
+          "code": "\"WeakMap\" in self && \"getOrInsertComputed\" in WeakMap.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "javascript.builtins.WeakSet",
@@ -4566,7 +4598,7 @@
           "code": "\"DataView\" in self && \"getFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DataView.setFloat16",
@@ -4574,7 +4606,7 @@
           "code": "\"DataView\" in self && \"setFloat16\" in DataView.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Atomics",
@@ -4694,7 +4726,7 @@
           "code": "\"Atomics\" in self && \"pause\" in Atomics",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.JSON",
@@ -4921,7 +4953,7 @@
           "code": "(function () {\n  var array = [1, 2, 3];\n  if (!(\"values\" in array)) {\n    return { result: false, message: \"Array.prototype.values is not defined\" };\n  }\n  var instance = array.values();\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"dispose\" in Symbol &&\n    !!instance[Symbol.dispose]\n  );\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncIterator",
@@ -4954,7 +4986,7 @@
           "code": "(function () {\n  var func;\n  var instance;\n  try {\n    func = async function* () {\n      yield true;\n    };\n\n    instance = func();\n  } catch (e) {\n    if (e instanceof TypeError) {\n      return { result: false, message: e.message };\n    }\n    throw e;\n  }\n  return (\n    !!instance &&\n    \"Symbol\" in self &&\n    \"asyncDispose\" in Symbol &&\n    !!instance[Symbol.asyncDispose]\n  );\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Promise",
@@ -5043,7 +5075,7 @@
           "code": "\"Promise\" in self && \"try\" in Promise",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Promise.catch",
@@ -5508,7 +5540,7 @@
           "code": "\"AsyncDisposableStack\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.AsyncDisposableStack",
@@ -5516,8 +5548,8 @@
           "code": "(function () {\n  if (!(\"AsyncDisposableStack\" in self)) {\n    return { result: false, message: \"AsyncDisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"AsyncDisposableStack\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "AsyncDisposableStack is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.adopt",
@@ -5525,7 +5557,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"adopt\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.defer",
@@ -5533,7 +5565,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"defer\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.disposeAsync",
@@ -5541,7 +5573,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"disposeAsync\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.disposed",
@@ -5549,7 +5581,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"disposed\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.move",
@@ -5557,7 +5589,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"move\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.use",
@@ -5565,7 +5597,7 @@
           "code": "\"AsyncDisposableStack\" in self && \"use\" in AsyncDisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.AsyncDisposableStack.@@asyncDispose",
@@ -5573,7 +5605,7 @@
           "code": "\"Symbol\" in self && \"asyncDispose\" in Symbol && \"AsyncDisposableStack\" in self && !!(AsyncDisposableStack.prototype[Symbol.asyncDispose])",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack",
@@ -5581,7 +5613,7 @@
           "code": "\"DisposableStack\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.DisposableStack",
@@ -5589,8 +5621,8 @@
           "code": "(function () {\n  if (!(\"DisposableStack\" in self)) {\n    return { result: false, message: \"DisposableStack is not defined\" };\n  }\n  return bcd.testConstructor(\"DisposableStack\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "DisposableStack is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.DisposableStack.adopt",
@@ -5598,7 +5630,7 @@
           "code": "\"DisposableStack\" in self && \"adopt\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.defer",
@@ -5606,7 +5638,7 @@
           "code": "\"DisposableStack\" in self && \"defer\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.dispose",
@@ -5614,7 +5646,7 @@
           "code": "\"DisposableStack\" in self && \"dispose\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.disposed",
@@ -5622,7 +5654,7 @@
           "code": "\"DisposableStack\" in self && \"disposed\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.move",
@@ -5630,7 +5662,7 @@
           "code": "\"DisposableStack\" in self && \"move\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.use",
@@ -5638,7 +5670,7 @@
           "code": "\"DisposableStack\" in self && \"use\" in DisposableStack.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.DisposableStack.@@dispose",
@@ -5646,7 +5678,7 @@
           "code": "\"Symbol\" in self && \"dispose\" in Symbol && \"DisposableStack\" in self && !!(DisposableStack.prototype[Symbol.dispose])",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Float16Array",
@@ -5654,7 +5686,7 @@
           "code": "\"Float16Array\" in self",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Float16Array.Float16Array",
@@ -5662,8 +5694,8 @@
           "code": "(function () {\n  if (!(\"Float16Array\" in self)) {\n    return { result: false, message: \"Float16Array is not defined\" };\n  }\n  return bcd.testConstructor(\"Float16Array\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "Float16Array is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.InternalError",
@@ -5685,10 +5717,10 @@
       {
         "name": "javascript.builtins.SuppressedError",
         "info": {
-          "code": "\"SuppressedError\" in self",
+          "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  var instance = new SuppressedError(\n    new Error(\"New error\"),\n    new Error(\"Original error\"),\n    \"Hello\"\n  );\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.SuppressedError.SuppressedError",
@@ -5696,24 +5728,24 @@
           "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  return bcd.testConstructor(\"SuppressedError\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "SuppressedError is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.SuppressedError.error",
         "info": {
-          "code": "\"SuppressedError\" in self && \"error\" in SuppressedError.prototype",
+          "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  var instance = new SuppressedError(\n    new Error(\"New error\"),\n    new Error(\"Original error\"),\n    \"Hello\"\n  );\n  return !!instance && \"error\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.SuppressedError.suppressed",
         "info": {
-          "code": "\"SuppressedError\" in self && \"suppressed\" in SuppressedError.prototype",
+          "code": "(function () {\n  if (!(\"SuppressedError\" in self)) {\n    return { result: false, message: \"SuppressedError is not defined\" };\n  }\n  var instance = new SuppressedError(\n    new Error(\"New error\"),\n    new Error(\"Original error\"),\n    \"Hello\"\n  );\n  return !!instance && \"suppressed\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl",
@@ -6052,7 +6084,7 @@
           "code": "\"Intl\" in self && \"DurationFormat\" in Intl",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.DurationFormat.DurationFormat",
@@ -6060,8 +6092,8 @@
           "code": "(function () {\n  if (!(\"Intl\" in self)) {\n    return { result: false, message: \"Intl is not defined\" };\n  }\n  if (!(\"DurationFormat\" in Intl)) {\n    return { result: false, message: \"Intl.DurationFormat is not defined\" };\n  }\n  return bcd.testConstructor(\"Intl.DurationFormat\", false);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "Intl.DurationFormat is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "javascript.builtins.Intl.DurationFormat.supportedLocalesOf",
@@ -6069,7 +6101,7 @@
           "code": "\"Intl\" in self && \"DurationFormat\" in Intl && \"supportedLocalesOf\" in Intl.DurationFormat",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.DurationFormat.format",
@@ -6077,7 +6109,7 @@
           "code": "\"Intl\" in self && \"DurationFormat\" in Intl && \"format\" in Intl.DurationFormat.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.DurationFormat.formatToParts",
@@ -6085,7 +6117,7 @@
           "code": "\"Intl\" in self && \"DurationFormat\" in Intl && \"formatToParts\" in Intl.DurationFormat.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.DurationFormat.resolvedOptions",
@@ -6093,7 +6125,7 @@
           "code": "\"Intl\" in self && \"DurationFormat\" in Intl && \"resolvedOptions\" in Intl.DurationFormat.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.ListFormat",
@@ -6199,7 +6231,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getCalendars\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getCollations",
@@ -6207,7 +6239,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getCollations\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getHourCycles",
@@ -6215,7 +6247,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getHourCycles\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getNumberingSystems",
@@ -6223,7 +6255,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getNumberingSystems\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getTextInfo",
@@ -6231,7 +6263,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getTextInfo\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getTimeZones",
@@ -6239,7 +6271,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getTimeZones\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.getWeekInfo",
@@ -6247,7 +6279,7 @@
           "code": "\"Intl\" in self && \"Locale\" in Intl && \"getWeekInfo\" in Intl.Locale.prototype",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "javascript.builtins.Intl.Locale.hourCycle",
@@ -14668,8 +14700,7 @@
           "code": "(function () {\n  var instance;\n  try {\n    instance = new CloseEvent(\"close\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CloseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": true
       },
       {
         "name": "api.CloseEvent.CloseEvent",
@@ -14677,8 +14708,8 @@
           "code": "bcd.testConstructor('CloseEvent')",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "threw ReferenceError: CloseEvent is not defined"
+        "result": true,
+        "message": "threw TypeError: CloseEvent constructor: 1 argument required, but 0 found."
       },
       {
         "name": "api.CloseEvent.code",
@@ -14686,8 +14717,7 @@
           "code": "(function () {\n  var instance;\n  try {\n    instance = new CloseEvent(\"close\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CloseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"code\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": true
       },
       {
         "name": "api.CloseEvent.reason",
@@ -14695,8 +14725,7 @@
           "code": "(function () {\n  var instance;\n  try {\n    instance = new CloseEvent(\"close\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CloseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"reason\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": true
       },
       {
         "name": "api.CloseEvent.wasClean",
@@ -14704,8 +14733,7 @@
           "code": "(function () {\n  var instance;\n  try {\n    instance = new CloseEvent(\"close\");\n  } catch (e) {\n    try {\n      instance = document.createEvent(\"CloseEvent\");\n    } catch (e) {\n      if (e.name === \"NotSupportedError\" || e.name === \"NOT_SUPPORTED_ERR\") {\n        return { result: false, message: \"Cannot create event\" };\n      }\n      throw e;\n    }\n  }\n  return !!instance && \"wasClean\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
+        "result": true
       },
       {
         "name": "api.CloseWatcher",
@@ -20320,6 +20348,22 @@
         "result": false
       },
       {
+        "name": "api.CSSSupportsConditionRule",
+        "info": {
+          "code": "\"CSSSupportsConditionRule\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.CSSSupportsConditionRule.name",
+        "info": {
+          "code": "\"CSSSupportsConditionRule\" in self && \"name\" in CSSSupportsConditionRule.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.CSSSupportsRule",
         "info": {
           "code": "(function () {\n  var stylesheet = reusableInstances.createStyleSheet(\n    \"@supports (display: grid) {div {display: grid;}}\"\n  );\n  var instance = stylesheet.cssRules.item(0);\n  return !!instance;\n})();\n",
@@ -21712,6 +21756,15 @@
         "name": "api.Document.activeElement",
         "info": {
           "code": "(function () {\n  var instance = document;\n  return !!instance && \"activeElement\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Document.activeViewTransition",
+        "info": {
+          "code": "(function () {\n  var instance = document;\n  return !!instance && \"activeViewTransition\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -25037,6 +25090,15 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.Element.activeViewTransition",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"activeViewTransition\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.Element.after",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"after\" in instance;\n})();\n",
@@ -26624,6 +26686,15 @@
         "name": "api.Element.spatialNavigationSearch",
         "info": {
           "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"spatialNavigationSearch\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.Element.startViewTransition",
+        "info": {
+          "code": "(function () {\n  var instance;\n  try {\n    instance = document.createElementNS(\"\", \"el\");\n  } catch (e) {\n    instance = document.createElement(\"b\");\n  }\n  return !!instance && \"startViewTransition\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -35277,6 +35348,24 @@
         "message": "threw ReferenceError: document is not defined"
       },
       {
+        "name": "api.HTMLElement.headingOffset",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"headingOffset\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
+        "name": "api.HTMLElement.headingReset",
+        "info": {
+          "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"headingReset\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: document is not defined"
+      },
+      {
         "name": "api.HTMLElement.hidden",
         "info": {
           "code": "(function () {\n  var instance = document.createElement(\"b\");\n  return !!instance && \"hidden\" in instance;\n})();\n",
@@ -43188,7 +43277,7 @@
       {
         "name": "api.InputDeviceInfo",
         "info": {
-          "code": "(function () {\n  var mediaDevices = navigator.mediaDevices;\n  if (!mediaDevices) {\n    return { result: false, message: \"mediaDevices is falsy\" };\n  }\n  var promise = navigator.mediaDevices\n    .enumerateDevices()\n    .then(function (devices) {\n      for (var i = 0; i < devices.length; i++) {\n        if (\n          devices[i].kind == \"audioinput\" ||\n          devices[i].kind == \"videoinput\"\n        ) {\n          return devices[i];\n        }\n      }\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "code": "(function () {\n  var mediaDevices = navigator.mediaDevices;\n  if (!mediaDevices) {\n    return { result: false, message: \"mediaDevices is falsy\" };\n  }\n  var promise = navigator.mediaDevices\n    .enumerateDevices()\n    .then(function (devices) {\n      for (var i = 0; i < devices.length; i++) {\n        if (\n          devices[i].kind == \"audioinput\" ||\n          devices[i].kind == \"videoinput\"\n        ) {\n          return devices[i];\n        }\n      }\n    });\n  promise.then(function (inst) {\n    if (!(\"getCapabilities\" in inst)) {\n      return {\n        result: false,\n        message:\n          \"Instance is only parent type MediaDeviceInfo, not InputDeviceInfo\"\n      };\n    }\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -43197,7 +43286,7 @@
       {
         "name": "api.InputDeviceInfo.getCapabilities",
         "info": {
-          "code": "(function () {\n  var mediaDevices = navigator.mediaDevices;\n  if (!mediaDevices) {\n    return { result: false, message: \"mediaDevices is falsy\" };\n  }\n  var promise = navigator.mediaDevices\n    .enumerateDevices()\n    .then(function (devices) {\n      for (var i = 0; i < devices.length; i++) {\n        if (\n          devices[i].kind == \"audioinput\" ||\n          devices[i].kind == \"videoinput\"\n        ) {\n          return devices[i];\n        }\n      }\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getCapabilities\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  var mediaDevices = navigator.mediaDevices;\n  if (!mediaDevices) {\n    return { result: false, message: \"mediaDevices is falsy\" };\n  }\n  var promise = navigator.mediaDevices\n    .enumerateDevices()\n    .then(function (devices) {\n      for (var i = 0; i < devices.length; i++) {\n        if (\n          devices[i].kind == \"audioinput\" ||\n          devices[i].kind == \"videoinput\"\n        ) {\n          return devices[i];\n        }\n      }\n    });\n  promise.then(function (inst) {\n    if (!(\"getCapabilities\" in inst)) {\n      return {\n        result: false,\n        message:\n          \"Instance is only parent type MediaDeviceInfo, not InputDeviceInfo\"\n      };\n    }\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getCapabilities\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -49366,7 +49455,7 @@
           "code": "(function () {\n  var instance = navigator;\n  return !!instance && \"locks\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false
+        "result": true
       },
       {
         "name": "api.Navigator.login",
@@ -53278,6 +53367,14 @@
         "name": "api.PerformanceEventTiming.target",
         "info": {
           "code": "\"PerformanceEventTiming\" in self && \"target\" in PerformanceEventTiming.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.PerformanceEventTiming.targetSelector",
+        "info": {
+          "code": "\"PerformanceEventTiming\" in self && \"targetSelector\" in PerformanceEventTiming.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -59014,14 +59111,6 @@
         "result": false
       },
       {
-        "name": "api.RTCRtpSender.generateKeyFrame",
-        "info": {
-          "code": "\"RTCRtpSender\" in self && \"generateKeyFrame\" in RTCRtpSender.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "api.RTCRtpSender.getCapabilities_static",
         "info": {
           "code": "\"RTCRtpSender\" in self && \"getCapabilities\" in RTCRtpSender",
@@ -63214,17 +63303,91 @@
         "result": false
       },
       {
-        "name": "api.SFrameTransform",
+        "name": "api.SFrameDecrypterStream",
         "info": {
-          "code": "\"SFrameTransform\" in self",
+          "code": "\"SFrameDecrypterStream\" in self",
           "exposure": "Window"
         },
         "result": false
       },
       {
-        "name": "api.SFrameTransform.readable",
+        "name": "api.SFrameDecrypterStream.readable",
         "info": {
-          "code": "\"SFrameTransform\" in self && \"readable\" in SFrameTransform.prototype",
+          "code": "\"SFrameDecrypterStream\" in self && \"readable\" in SFrameDecrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameDecrypterStream.setEncryptionKey",
+        "info": {
+          "code": "\"SFrameDecrypterStream\" in self && \"setEncryptionKey\" in SFrameDecrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameDecrypterStream.SFrameDecrypterStream",
+        "info": {
+          "code": "bcd.testConstructor('SFrameDecrypterStream')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SFrameDecrypterStream is not defined"
+      },
+      {
+        "name": "api.SFrameDecrypterStream.writable",
+        "info": {
+          "code": "\"SFrameDecrypterStream\" in self && \"writable\" in SFrameDecrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameEncrypterStream",
+        "info": {
+          "code": "\"SFrameEncrypterStream\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameEncrypterStream.readable",
+        "info": {
+          "code": "\"SFrameEncrypterStream\" in self && \"readable\" in SFrameEncrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameEncrypterStream.setEncryptionKey",
+        "info": {
+          "code": "\"SFrameEncrypterStream\" in self && \"setEncryptionKey\" in SFrameEncrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameEncrypterStream.SFrameEncrypterStream",
+        "info": {
+          "code": "bcd.testConstructor('SFrameEncrypterStream')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: SFrameEncrypterStream is not defined"
+      },
+      {
+        "name": "api.SFrameEncrypterStream.writable",
+        "info": {
+          "code": "\"SFrameEncrypterStream\" in self && \"writable\" in SFrameEncrypterStream.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.SFrameTransform",
+        "info": {
+          "code": "\"SFrameTransform\" in self",
           "exposure": "Window"
         },
         "result": false
@@ -63245,14 +63408,6 @@
         },
         "result": false,
         "message": "threw ReferenceError: SFrameTransform is not defined"
-      },
-      {
-        "name": "api.SFrameTransform.writable",
-        "info": {
-          "code": "\"SFrameTransform\" in self && \"writable\" in SFrameTransform.prototype",
-          "exposure": "Window"
-        },
-        "result": false
       },
       {
         "name": "api.SFrameTransformErrorEvent",
@@ -65520,6 +65675,22 @@
         "result": true
       },
       {
+        "name": "api.SubtleCrypto.decapsulateBits",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"decapsulateBits\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.decapsulateKey",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"decapsulateKey\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.SubtleCrypto.decrypt",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"decrypt\" in instance;\n})();\n",
@@ -65552,6 +65723,22 @@
         "result": true
       },
       {
+        "name": "api.SubtleCrypto.encapsulateBits",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"encapsulateBits\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.encapsulateKey",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"encapsulateKey\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.SubtleCrypto.encrypt",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"encrypt\" in instance;\n})();\n",
@@ -65576,6 +65763,14 @@
         "result": true
       },
       {
+        "name": "api.SubtleCrypto.getPublicKey",
+        "info": {
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"getPublicKey\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.SubtleCrypto.importKey",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"importKey\" in instance;\n})();\n",
@@ -65587,6 +65782,14 @@
         "name": "api.SubtleCrypto.sign",
         "info": {
           "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return !!instance && \"sign\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.SubtleCrypto.supports_static",
+        "info": {
+          "code": "\"SubtleCrypto\" in self && \"supports\" in SubtleCrypto",
           "exposure": "Window"
         },
         "result": true
@@ -65892,15 +66095,6 @@
         "name": "api.SVGAElement.target",
         "info": {
           "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"a\");\n  return !!instance && \"target\" in instance;\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
-      },
-      {
-        "name": "api.SVGAElement.text",
-        "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"a\");\n  return !!instance && \"text\" in instance;\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -66594,15 +66788,6 @@
         "name": "api.SVGDescElement",
         "info": {
           "code": "(function () {\n  var instance = document.createElementNS(\"http://www.w3.org/2000/svg\", \"desc\");\n  return bcd.testObjectName(instance, \"SVGDescElement\");\n})();\n",
-          "exposure": "Window"
-        },
-        "result": null,
-        "message": "threw ReferenceError: document is not defined"
-      },
-      {
-        "name": "api.SVGDiscardElement",
-        "info": {
-          "code": "(function () {\n  var instance = document.createElementNS(\n    \"http://www.w3.org/2000/svg\",\n    \"discard\"\n  );\n  return bcd.testObjectName(instance, \"SVGDiscardElement\");\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -73478,8 +73663,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.exec",
@@ -73487,8 +73671,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"exec\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.hash",
@@ -73496,8 +73679,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"hash\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.hasRegExpGroups",
@@ -73505,8 +73687,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"hasRegExpGroups\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.hostname",
@@ -73514,8 +73695,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"hostname\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.password",
@@ -73523,8 +73703,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"password\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.pathname",
@@ -73532,8 +73711,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"pathname\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.port",
@@ -73541,8 +73719,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"port\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.protocol",
@@ -73550,8 +73727,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"protocol\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.search",
@@ -73559,8 +73735,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"search\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.test",
@@ -73568,8 +73743,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"test\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.URLPattern",
@@ -73577,8 +73751,8 @@
           "code": "bcd.testConstructor('URLPattern')",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "threw ReferenceError: URLPattern is not defined"
+        "result": true,
+        "message": "Constructor passed with no errors"
       },
       {
         "name": "api.URLPattern.URLPattern.ignoreCase_option",
@@ -73586,8 +73760,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  function constructor(options) {\n    new URLPattern(\"https://mdn-bcd-collector.gooborg.com/tests/*\", options);\n  }\n  return bcd.testOptionParam(constructor, null, \"ignoreCase\", true);\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLPattern.username",
@@ -73595,8 +73768,7 @@
           "code": "(function () {\n  if (!(\"URLPattern\" in self)) {\n    return { result: false, message: \"URLPattern is not defined\" };\n  }\n  var instance = new URLPattern(\n    \"https://mdn-bcd-collector.gooborg.com/tests/*\"\n  );\n  return !!instance && \"username\" in instance;\n})();\n",
           "exposure": "Window"
         },
-        "result": false,
-        "message": "URLPattern is not defined"
+        "result": true
       },
       {
         "name": "api.URLSearchParams",
@@ -75278,6 +75450,14 @@
         "result": false
       },
       {
+        "name": "api.ViewTransition.transitionRoot",
+        "info": {
+          "code": "\"ViewTransition\" in self && \"transitionRoot\" in ViewTransition.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.ViewTransition.types",
         "info": {
           "code": "\"ViewTransition\" in self && \"types\" in ViewTransition.prototype",
@@ -75289,6 +75469,14 @@
         "name": "api.ViewTransition.updateCallbackDone",
         "info": {
           "code": "\"ViewTransition\" in self && \"updateCallbackDone\" in ViewTransition.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ViewTransition.waitUntil",
+        "info": {
+          "code": "\"ViewTransition\" in self && \"waitUntil\" in ViewTransition.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -81175,6 +81363,15 @@
         "message": "threw ReferenceError: window is not defined"
       },
       {
+        "name": "api.Window.pushManager",
+        "info": {
+          "code": "(function () {\n  var instance = window;\n  return !!instance && \"pushManager\" in instance;\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: window is not defined"
+      },
+      {
         "name": "api.Window.queryLocalFonts",
         "info": {
           "code": "(function () {\n  var instance = window;\n  return !!instance && \"queryLocalFonts\" in instance;\n})();\n",
@@ -82694,6 +82891,86 @@
         "result": false
       },
       {
+        "name": "api.XRBody",
+        "info": {
+          "code": "\"XRBody\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.@@iterator",
+        "info": {
+          "code": "\"Symbol\" in self && \"iterator\" in Symbol && \"XRBody\" in self && !!(XRBody.prototype[Symbol.iterator])",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.entries",
+        "info": {
+          "code": "\"XRBody\" in self && \"entries\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.forEach",
+        "info": {
+          "code": "\"XRBody\" in self && \"forEach\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.get",
+        "info": {
+          "code": "\"XRBody\" in self && \"get\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.keys",
+        "info": {
+          "code": "\"XRBody\" in self && \"keys\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.size",
+        "info": {
+          "code": "\"XRBody\" in self && \"size\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBody.values",
+        "info": {
+          "code": "\"XRBody\" in self && \"values\" in XRBody.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBodySpace",
+        "info": {
+          "code": "\"XRBodySpace\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRBodySpace.jointName",
+        "info": {
+          "code": "\"XRBodySpace\" in self && \"jointName\" in XRBodySpace.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.XRBoundedReferenceSpace",
         "info": {
           "code": "\"XRBoundedReferenceSpace\" in self",
@@ -83017,6 +83294,14 @@
         "name": "api.XRFrame",
         "info": {
           "code": "\"XRFrame\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRFrame.body",
+        "info": {
+          "code": "\"XRFrame\" in self && \"body\" in XRFrame.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -84566,6 +84851,14 @@
         "result": false
       },
       {
+        "name": "api.XRView.index",
+        "info": {
+          "code": "\"XRView\" in self && \"index\" in XRView.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.XRView.isFirstPersonObserver",
         "info": {
           "code": "\"XRView\" in self && \"isFirstPersonObserver\" in XRView.prototype",
@@ -84660,6 +84953,63 @@
           "exposure": "Window"
         },
         "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.eye",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self && \"eye\" in XRVisibilityMaskChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.index",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self && \"index\" in XRVisibilityMaskChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.indices",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self && \"indices\" in XRVisibilityMaskChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.session",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self && \"session\" in XRVisibilityMaskChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.vertices",
+        "info": {
+          "code": "\"XRVisibilityMaskChangeEvent\" in self && \"vertices\" in XRVisibilityMaskChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.XRVisibilityMaskChangeEvent.XRVisibilityMaskChangeEvent",
+        "info": {
+          "code": "bcd.testConstructor('XRVisibilityMaskChangeEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: XRVisibilityMaskChangeEvent is not defined"
       },
       {
         "name": "api.XRWebGLBinding",
@@ -85289,23 +85639,6 @@
         "result": false
       },
       {
-        "name": "webassembly.api.CompileError",
-        "info": {
-          "code": "\"WebAssembly\" in self && \"CompileError\" in WebAssembly",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "webassembly.api.CompileError.CompileError",
-        "info": {
-          "code": "bcd.testConstructor('WebAssembly.CompileError')",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "Constructor passed with no errors"
-      },
-      {
         "name": "webassembly.api.Exception",
         "info": {
           "code": "\"WebAssembly\" in self && \"Exception\" in WebAssembly",
@@ -85405,23 +85738,6 @@
         "message": "threw TypeError: WebAssembly.Instance(): Argument 0 must be a WebAssembly.Module"
       },
       {
-        "name": "webassembly.api.LinkError",
-        "info": {
-          "code": "\"WebAssembly\" in self && \"LinkError\" in WebAssembly",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "webassembly.api.LinkError.LinkError",
-        "info": {
-          "code": "bcd.testConstructor('WebAssembly.LinkError')",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "Constructor passed with no errors"
-      },
-      {
         "name": "webassembly.api.Memory",
         "info": {
           "code": "\"WebAssembly\" in self && \"Memory\" in WebAssembly",
@@ -85512,23 +85828,6 @@
         "message": "threw TypeError: WebAssembly.Module(): Argument 0 must be a buffer source"
       },
       {
-        "name": "webassembly.api.RuntimeError",
-        "info": {
-          "code": "\"WebAssembly\" in self && \"RuntimeError\" in WebAssembly",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "webassembly.api.RuntimeError.RuntimeError",
-        "info": {
-          "code": "bcd.testConstructor('WebAssembly.RuntimeError')",
-          "exposure": "Window"
-        },
-        "result": true,
-        "message": "Constructor passed with no errors"
-      },
-      {
         "name": "webassembly.api.Table",
         "info": {
           "code": "\"WebAssembly\" in self && \"Table\" in WebAssembly",
@@ -85595,14 +85894,6 @@
         "message": "threw TypeError: WebAssembly.Tag(): Argument 0 must be a tag type"
       },
       {
-        "name": "webassembly.api.Tag.type",
-        "info": {
-          "code": "\"WebAssembly\" in self && \"Tag\" in WebAssembly && \"type\" in WebAssembly.Tag.prototype",
-          "exposure": "Window"
-        },
-        "result": false
-      },
-      {
         "name": "webassembly.api",
         "info": {
           "code": "\"WebAssembly\" in self",
@@ -85638,6 +85929,14 @@
         "name": "webassembly.api.instantiateStreaming_static",
         "info": {
           "code": "\"WebAssembly\" in self && \"instantiateStreaming\" in WebAssembly",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "webassembly.api.JSTag_static",
+        "info": {
+          "code": "\"WebAssembly\" in self && \"JSTag\" in WebAssembly",
           "exposure": "Window"
         },
         "result": true
@@ -85723,17 +86022,17 @@
         "result": false
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
         "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256\n        },\n        true,\n        [\"encrypt\", \"decrypt\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
       },
       {
-        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_aes",
+        "name": "api.SubtleCrypto.deriveKey.derivedKeyAlgorithm_option_hkdf",
         "info": {
-          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"AES-GCM\",\n          length: 256\n        },\n        true,\n        [\"encrypt\", \"decrypt\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
+          "code": "(function () {\n  if (!(\"crypto\" in self)) {\n    return { result: false, message: \"crypto is not defined\" };\n  }\n  var instance = crypto.subtle || crypto.webkitSubtle;\n  return instance\n    .generateKey(\n      {\n        name: \"ECDH\",\n        namedCurve: \"P-384\"\n      },\n      true,\n      [\"deriveKey\"]\n    )\n    .then(function (keys) {\n      return instance.deriveKey(\n        {\n          name: \"ECDH\",\n          public: keys.publicKey\n        },\n        keys.privateKey,\n        {\n          name: \"HKDF\",\n          hash: \"SHA-256\",\n          salt: new Uint8Array(),\n          info: new Uint8Array()\n        },\n        false,\n        [\"deriveKey\"]\n      );\n    })\n    .then(function () {\n      return true;\n    })\n    .catch(function (e) {\n      return { result: false, message: e.message };\n    });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85771,14 +86070,6 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.ReadableStream.getReader",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
@@ -85787,9 +86078,17 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.tee",
+        "name": "api.ReadableStream.cancel",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.locked",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85811,9 +86110,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStream.locked",
+        "name": "api.ReadableStream.tee",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"tee\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85822,6 +86121,14 @@
         "name": "api.ReadableStream.values",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85838,14 +86145,6 @@
         "name": "api.ReadableStreamDefaultReader.closed",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -85877,5 +86176,5 @@
     ]
   },
   "extensions": [],
-  "userAgent": "!! node/22.19.0"
+  "userAgent": "!! node/24.11.1"
 }
