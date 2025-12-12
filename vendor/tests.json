@@ -1,5 +1,5 @@
 {
-  "__version": "10.16.1",
+  "__version": "10.16.2",
   "__resources": {
     "audio-blip": {
       "type": "audio",
@@ -3617,6 +3617,22 @@
   },
   "api.Clipboard.type_text-plain": {
     "code": "(function () {\n  var instance = navigator.clipboard;\n  return ClipboardItem.supports(\"text/plain\");\n})();\n",
+    "exposure": ["Window"]
+  },
+  "api.ClipboardChangeEvent": {
+    "code": "\"ClipboardChangeEvent\" in self",
+    "exposure": ["Window"]
+  },
+  "api.ClipboardChangeEvent.changeId": {
+    "code": "\"ClipboardChangeEvent\" in self && \"changeId\" in ClipboardChangeEvent.prototype",
+    "exposure": ["Window"]
+  },
+  "api.ClipboardChangeEvent.ClipboardChangeEvent": {
+    "code": "bcd.testConstructor('ClipboardChangeEvent')",
+    "exposure": ["Window"]
+  },
+  "api.ClipboardChangeEvent.types": {
+    "code": "\"ClipboardChangeEvent\" in self && \"types\" in ClipboardChangeEvent.prototype",
     "exposure": ["Window"]
   },
   "api.ClipboardEvent": {
@@ -14292,8 +14308,24 @@
     "code": "\"GPUSupportedLimits\" in self && \"maxStorageBufferBindingSize\" in GPUSupportedLimits.prototype",
     "exposure": ["Window", "Worker"]
   },
+  "api.GPUSupportedLimits.maxStorageBuffersInFragmentStage": {
+    "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInFragmentStage\" in GPUSupportedLimits.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUSupportedLimits.maxStorageBuffersInVertexStage": {
+    "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInVertexStage\" in GPUSupportedLimits.prototype",
+    "exposure": ["Window", "Worker"]
+  },
   "api.GPUSupportedLimits.maxStorageBuffersPerShaderStage": {
     "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersPerShaderStage\" in GPUSupportedLimits.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUSupportedLimits.maxStorageTexturesInFragmentStage": {
+    "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInFragmentStage\" in GPUSupportedLimits.prototype",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUSupportedLimits.maxStorageTexturesInVertexStage": {
+    "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInVertexStage\" in GPUSupportedLimits.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUSupportedLimits.maxStorageTexturesPerShaderStage": {
@@ -14382,6 +14414,10 @@
   },
   "api.GPUTexture.sampleCount": {
     "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"sampleCount\" in instance;\n  });\n})();\n",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.GPUTexture.textureBindingViewDimension": {
+    "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"textureBindingViewDimension\" in instance;\n  });\n})();\n",
     "exposure": ["Window", "Worker"]
   },
   "api.GPUTexture.usage": {
@@ -21503,6 +21539,10 @@
   },
   "api.MLContext": {
     "code": "\"MLContext\" in self",
+    "exposure": ["Window", "Worker"]
+  },
+  "api.MLContext.accelerated": {
+    "code": "\"MLContext\" in self && \"accelerated\" in MLContext.prototype",
     "exposure": ["Window", "Worker"]
   },
   "api.MLContext.createConstantTensor": {
@@ -45583,10 +45623,6 @@
     "code": "bcd.testCSSProperty(\"align-items\", \"anchor-center\")",
     "exposure": ["Window"]
   },
-  "css.properties.align-items.dialog": {
-    "code": "bcd.testCSSProperty(\"align-items\", \"dialog\")",
-    "exposure": ["Window"]
-  },
   "css.properties.align-self": {
     "code": "bcd.testCSSProperty(\"align-self\")",
     "exposure": ["Window"]
@@ -45655,10 +45691,6 @@
     "code": "bcd.testCSSProperty(\"align-self\", \"anchor-center\")",
     "exposure": ["Window"]
   },
-  "css.properties.align-self.dialog": {
-    "code": "bcd.testCSSProperty(\"align-self\", \"dialog\")",
-    "exposure": ["Window"]
-  },
   "css.properties.alignment-baseline": {
     "code": "bcd.testCSSProperty(\"alignment-baseline\")",
     "exposure": ["Window"]
@@ -45705,6 +45737,10 @@
   },
   "css.properties.all": {
     "code": "bcd.testCSSProperty(\"all\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.all.revert-rule": {
+    "code": "bcd.testCSSProperty(\"all\", \"revert-rule\")",
     "exposure": ["Window"]
   },
   "css.properties.alt": {
@@ -46007,124 +46043,8 @@
     "code": "bcd.testCSSProperty(\"animation-trigger\")",
     "exposure": ["Window"]
   },
-  "css.properties.animation-trigger.once": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"once\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger.repeat": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"repeat\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger.alternate": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"alternate\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger.state": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"state\")",
-    "exposure": ["Window"]
-  },
   "css.properties.animation-trigger.none": {
     "code": "bcd.testCSSProperty(\"animation-trigger\", \"none\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger.auto": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-behavior": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-behavior\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-behavior.once": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-behavior\", \"once\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-behavior.repeat": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-behavior\", \"repeat\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-behavior.alternate": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-behavior\", \"alternate\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-behavior.state": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-behavior\", \"state\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range.auto": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-end": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-end.auto": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-end.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-end\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-start": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-start.auto": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-exit-range-start.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-exit-range-start\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range-end": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range-end\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range-end.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range-end\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range-start": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range-start\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-range-start.normal": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-range-start\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-timeline": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-timeline\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-timeline.auto": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-timeline\", \"auto\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.animation-trigger-timeline.none": {
-    "code": "bcd.testCSSProperty(\"animation-trigger-timeline\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.appearance": {
@@ -46307,6 +46227,14 @@
     "code": "bcd.testCSSProperty(\"background\", \"repeat-y\")",
     "exposure": ["Window"]
   },
+  "css.properties.background.repeat-block": {
+    "code": "bcd.testCSSProperty(\"background\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"background\", \"repeat-inline\")",
+    "exposure": ["Window"]
+  },
   "css.properties.background.repeat": {
     "code": "bcd.testCSSProperty(\"background\", \"repeat\")",
     "exposure": ["Window"]
@@ -46345,6 +46273,14 @@
   },
   "css.properties.background.border-box": {
     "code": "bcd.testCSSProperty(\"background\", \"border-box\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background.border-area": {
+    "code": "bcd.testCSSProperty(\"background\", \"border-area\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background.text": {
+    "code": "bcd.testCSSProperty(\"background\", \"text\")",
     "exposure": ["Window"]
   },
   "css.properties.background.transparent": {
@@ -46647,6 +46583,14 @@
     "code": "bcd.testCSSProperty(\"background-repeat\", \"repeat-y\")",
     "exposure": ["Window"]
   },
+  "css.properties.background-repeat.repeat-block": {
+    "code": "bcd.testCSSProperty(\"background-repeat\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-repeat.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"background-repeat\", \"repeat-inline\")",
+    "exposure": ["Window"]
+  },
   "css.properties.background-repeat.repeat": {
     "code": "bcd.testCSSProperty(\"background-repeat\", \"repeat\")",
     "exposure": ["Window"]
@@ -46855,6 +46799,14 @@
     "code": "bcd.testCSSProperty(\"background-tbd\", \"repeat-y\")",
     "exposure": ["Window"]
   },
+  "css.properties.background-tbd.repeat-block": {
+    "code": "bcd.testCSSProperty(\"background-tbd\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-tbd.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"background-tbd\", \"repeat-inline\")",
+    "exposure": ["Window"]
+  },
   "css.properties.background-tbd.repeat": {
     "code": "bcd.testCSSProperty(\"background-tbd\", \"repeat\")",
     "exposure": ["Window"]
@@ -46893,6 +46845,14 @@
   },
   "css.properties.background-tbd.border-box": {
     "code": "bcd.testCSSProperty(\"background-tbd\", \"border-box\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-tbd.border-area": {
+    "code": "bcd.testCSSProperty(\"background-tbd\", \"border-area\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.background-tbd.text": {
+    "code": "bcd.testCSSProperty(\"background-tbd\", \"text\")",
     "exposure": ["Window"]
   },
   "css.properties.baseline-shift": {
@@ -47267,6 +47227,14 @@
     "code": "bcd.testCSSProperty(\"border-block\", \"currentColor\")",
     "exposure": ["Window"]
   },
+  "css.properties.border-block-clip": {
+    "code": "bcd.testCSSProperty(\"border-block-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-block-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-block-clip\", \"none\")",
+    "exposure": ["Window"]
+  },
   "css.properties.border-block-color": {
     "code": "bcd.testCSSProperty(\"border-block-color\")",
     "exposure": ["Window"]
@@ -47341,6 +47309,14 @@
   },
   "css.properties.border-block-end.currentColor": {
     "code": "bcd.testCSSProperty(\"border-block-end\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-block-end-clip": {
+    "code": "bcd.testCSSProperty(\"border-block-end-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-block-end-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-block-end-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-block-end-color": {
@@ -47481,6 +47457,14 @@
   },
   "css.properties.border-block-start.currentColor": {
     "code": "bcd.testCSSProperty(\"border-block-start\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-block-start-clip": {
+    "code": "bcd.testCSSProperty(\"border-block-start-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-block-start-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-block-start-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-block-start-color": {
@@ -47683,6 +47667,14 @@
     "code": "bcd.testCSSProperty(\"border-bottom\", \"currentColor\")",
     "exposure": ["Window"]
   },
+  "css.properties.border-bottom-clip": {
+    "code": "bcd.testCSSProperty(\"border-bottom-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-bottom-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-bottom-clip\", \"none\")",
+    "exposure": ["Window"]
+  },
   "css.properties.border-bottom-color": {
     "code": "bcd.testCSSProperty(\"border-bottom-color\")",
     "exposure": ["Window"]
@@ -47803,40 +47795,8 @@
     "code": "bcd.testCSSProperty(\"border-clip\")",
     "exposure": ["Window"]
   },
-  "css.properties.border-clip.normal": {
-    "code": "bcd.testCSSProperty(\"border-clip\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-bottom": {
-    "code": "bcd.testCSSProperty(\"border-clip-bottom\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-bottom.normal": {
-    "code": "bcd.testCSSProperty(\"border-clip-bottom\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-left": {
-    "code": "bcd.testCSSProperty(\"border-clip-left\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-left.normal": {
-    "code": "bcd.testCSSProperty(\"border-clip-left\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-right": {
-    "code": "bcd.testCSSProperty(\"border-clip-right\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-right.normal": {
-    "code": "bcd.testCSSProperty(\"border-clip-right\", \"normal\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-top": {
-    "code": "bcd.testCSSProperty(\"border-clip-top\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.border-clip-top.normal": {
-    "code": "bcd.testCSSProperty(\"border-clip-top\", \"normal\")",
+  "css.properties.border-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-collapse": {
@@ -48023,6 +47983,14 @@
     "code": "bcd.testCSSProperty(\"border-inline\", \"currentColor\")",
     "exposure": ["Window"]
   },
+  "css.properties.border-inline-clip": {
+    "code": "bcd.testCSSProperty(\"border-inline-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-inline-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-inline-clip\", \"none\")",
+    "exposure": ["Window"]
+  },
   "css.properties.border-inline-color": {
     "code": "bcd.testCSSProperty(\"border-inline-color\")",
     "exposure": ["Window"]
@@ -48097,6 +48065,14 @@
   },
   "css.properties.border-inline-end.currentColor": {
     "code": "bcd.testCSSProperty(\"border-inline-end\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-inline-end-clip": {
+    "code": "bcd.testCSSProperty(\"border-inline-end-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-inline-end-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-inline-end-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-inline-end-color": {
@@ -48237,6 +48213,14 @@
   },
   "css.properties.border-inline-start.currentColor": {
     "code": "bcd.testCSSProperty(\"border-inline-start\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-inline-start-clip": {
+    "code": "bcd.testCSSProperty(\"border-inline-start-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-inline-start-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-inline-start-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-inline-start-color": {
@@ -48439,6 +48423,14 @@
     "code": "bcd.testCSSProperty(\"border-left\", \"currentColor\")",
     "exposure": ["Window"]
   },
+  "css.properties.border-left-clip": {
+    "code": "bcd.testCSSProperty(\"border-left-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-left-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-left-clip\", \"none\")",
+    "exposure": ["Window"]
+  },
   "css.properties.border-left-color": {
     "code": "bcd.testCSSProperty(\"border-left-color\")",
     "exposure": ["Window"]
@@ -48625,6 +48617,14 @@
   },
   "css.properties.border-right.currentColor": {
     "code": "bcd.testCSSProperty(\"border-right\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-right-clip": {
+    "code": "bcd.testCSSProperty(\"border-right-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-right-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-right-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-right-color": {
@@ -48861,6 +48861,14 @@
   },
   "css.properties.border-top.currentColor": {
     "code": "bcd.testCSSProperty(\"border-top\", \"currentColor\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-top-clip": {
+    "code": "bcd.testCSSProperty(\"border-top-clip\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.border-top-clip.none": {
+    "code": "bcd.testCSSProperty(\"border-top-clip\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.border-top-color": {
@@ -49947,6 +49955,10 @@
     "code": "bcd.testCSSProperty(\"contain-intrinsic-block-size\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.contain-intrinsic-block-size.from-element": {
+    "code": "bcd.testCSSProperty(\"contain-intrinsic-block-size\", \"from-element\")",
+    "exposure": ["Window"]
+  },
   "css.properties.contain-intrinsic-block-size.none": {
     "code": "bcd.testCSSProperty(\"contain-intrinsic-block-size\", \"none\")",
     "exposure": ["Window"]
@@ -49957,6 +49969,10 @@
   },
   "css.properties.contain-intrinsic-height.auto": {
     "code": "bcd.testCSSProperty(\"contain-intrinsic-height\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.contain-intrinsic-height.from-element": {
+    "code": "bcd.testCSSProperty(\"contain-intrinsic-height\", \"from-element\")",
     "exposure": ["Window"]
   },
   "css.properties.contain-intrinsic-height.none": {
@@ -49971,6 +49987,10 @@
     "code": "bcd.testCSSProperty(\"contain-intrinsic-inline-size\", \"auto\")",
     "exposure": ["Window"]
   },
+  "css.properties.contain-intrinsic-inline-size.from-element": {
+    "code": "bcd.testCSSProperty(\"contain-intrinsic-inline-size\", \"from-element\")",
+    "exposure": ["Window"]
+  },
   "css.properties.contain-intrinsic-inline-size.none": {
     "code": "bcd.testCSSProperty(\"contain-intrinsic-inline-size\", \"none\")",
     "exposure": ["Window"]
@@ -49981,6 +50001,10 @@
   },
   "css.properties.contain-intrinsic-size.auto": {
     "code": "bcd.testCSSProperty(\"contain-intrinsic-size\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.contain-intrinsic-size.from-element": {
+    "code": "bcd.testCSSProperty(\"contain-intrinsic-size\", \"from-element\")",
     "exposure": ["Window"]
   },
   "css.properties.contain-intrinsic-size.none": {
@@ -49997,6 +50021,10 @@
   },
   "css.properties.contain-intrinsic-width.auto": {
     "code": "bcd.testCSSProperty(\"contain-intrinsic-width\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.contain-intrinsic-width.from-element": {
+    "code": "bcd.testCSSProperty(\"contain-intrinsic-width\", \"from-element\")",
     "exposure": ["Window"]
   },
   "css.properties.contain-intrinsic-width.none": {
@@ -51575,6 +51603,62 @@
     "code": "bcd.testCSSProperty(\"empty-cells\", \"hide\")",
     "exposure": ["Window"]
   },
+  "css.properties.event-trigger": {
+    "code": "bcd.testCSSProperty(\"event-trigger\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger.none": {
+    "code": "bcd.testCSSProperty(\"event-trigger\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger.activate": {
+    "code": "bcd.testCSSProperty(\"event-trigger\", \"activate\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger.click": {
+    "code": "bcd.testCSSProperty(\"event-trigger\", \"click\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger.touch": {
+    "code": "bcd.testCSSProperty(\"event-trigger\", \"touch\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger.dblclick": {
+    "code": "bcd.testCSSProperty(\"event-trigger\", \"dblclick\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-name": {
+    "code": "bcd.testCSSProperty(\"event-trigger-name\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-name.none": {
+    "code": "bcd.testCSSProperty(\"event-trigger-name\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source.none": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source.activate": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\", \"activate\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source.click": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\", \"click\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source.touch": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\", \"touch\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.event-trigger-source.dblclick": {
+    "code": "bcd.testCSSProperty(\"event-trigger-source\", \"dblclick\")",
+    "exposure": ["Window"]
+  },
   "css.properties.field-sizing": {
     "code": "bcd.testCSSProperty(\"field-sizing\")",
     "exposure": ["Window"]
@@ -51745,6 +51829,14 @@
   },
   "css.properties.fill-repeat.repeat-y": {
     "code": "bcd.testCSSProperty(\"fill-repeat\", \"repeat-y\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.fill-repeat.repeat-block": {
+    "code": "bcd.testCSSProperty(\"fill-repeat\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.fill-repeat.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"fill-repeat\", \"repeat-inline\")",
     "exposure": ["Window"]
   },
   "css.properties.fill-repeat.repeat": {
@@ -54275,10 +54367,6 @@
     "code": "bcd.testCSSProperty(\"justify-items\", \"anchor-center\")",
     "exposure": ["Window"]
   },
-  "css.properties.justify-items.dialog": {
-    "code": "bcd.testCSSProperty(\"justify-items\", \"dialog\")",
-    "exposure": ["Window"]
-  },
   "css.properties.justify-self": {
     "code": "bcd.testCSSProperty(\"justify-self\")",
     "exposure": ["Window"]
@@ -54353,10 +54441,6 @@
   },
   "css.properties.justify-self.anchor-center": {
     "code": "bcd.testCSSProperty(\"justify-self\", \"anchor-center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.justify-self.dialog": {
-    "code": "bcd.testCSSProperty(\"justify-self\", \"dialog\")",
     "exposure": ["Window"]
   },
   "css.properties.layout-grid": {
@@ -55295,6 +55379,14 @@
     "code": "bcd.testCSSProperty(\"mask\", \"repeat-y\")",
     "exposure": ["Window"]
   },
+  "css.properties.mask.repeat-block": {
+    "code": "bcd.testCSSProperty(\"mask\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.mask.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"mask\", \"repeat-inline\")",
+    "exposure": ["Window"]
+  },
   "css.properties.mask.repeat": {
     "code": "bcd.testCSSProperty(\"mask\", \"repeat\")",
     "exposure": ["Window"]
@@ -55693,6 +55785,14 @@
   },
   "css.properties.mask-repeat.repeat-y": {
     "code": "bcd.testCSSProperty(\"mask-repeat\", \"repeat-y\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.mask-repeat.repeat-block": {
+    "code": "bcd.testCSSProperty(\"mask-repeat\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.mask-repeat.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"mask-repeat\", \"repeat-inline\")",
     "exposure": ["Window"]
   },
   "css.properties.mask-repeat.repeat": {
@@ -57735,10 +57835,6 @@
     "code": "bcd.testCSSProperty(\"place-items\", \"anchor-center\")",
     "exposure": ["Window"]
   },
-  "css.properties.place-items.dialog": {
-    "code": "bcd.testCSSProperty(\"place-items\", \"dialog\")",
-    "exposure": ["Window"]
-  },
   "css.properties.place-items.left": {
     "code": "bcd.testCSSProperty(\"place-items\", \"left\")",
     "exposure": ["Window"]
@@ -57817,10 +57913,6 @@
   },
   "css.properties.place-self.anchor-center": {
     "code": "bcd.testCSSProperty(\"place-self\", \"anchor-center\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.place-self.dialog": {
-    "code": "bcd.testCSSProperty(\"place-self\", \"dialog\")",
     "exposure": ["Window"]
   },
   "css.properties.place-self.left": {
@@ -58211,6 +58303,14 @@
     "code": "bcd.testCSSProperty(\"position-try\", \"flip-start\")",
     "exposure": ["Window"]
   },
+  "css.properties.position-try.flip-x": {
+    "code": "bcd.testCSSProperty(\"position-try\", \"flip-x\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-try.flip-y": {
+    "code": "bcd.testCSSProperty(\"position-try\", \"flip-y\")",
+    "exposure": ["Window"]
+  },
   "css.properties.position-try.left": {
     "code": "bcd.testCSSProperty(\"position-try\", \"left\")",
     "exposure": ["Window"]
@@ -58429,6 +58529,14 @@
   },
   "css.properties.position-try-fallbacks.flip-start": {
     "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-try-fallbacks.flip-x": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-x\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.position-try-fallbacks.flip-y": {
+    "code": "bcd.testCSSProperty(\"position-try-fallbacks\", \"flip-y\")",
     "exposure": ["Window"]
   },
   "css.properties.position-try-fallbacks.left": {
@@ -60299,6 +60407,14 @@
     "code": "bcd.testCSSProperty(\"stroke-repeat\", \"repeat-y\")",
     "exposure": ["Window"]
   },
+  "css.properties.stroke-repeat.repeat-block": {
+    "code": "bcd.testCSSProperty(\"stroke-repeat\", \"repeat-block\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.stroke-repeat.repeat-inline": {
+    "code": "bcd.testCSSProperty(\"stroke-repeat\", \"repeat-inline\")",
+    "exposure": ["Window"]
+  },
   "css.properties.stroke-repeat.repeat": {
     "code": "bcd.testCSSProperty(\"stroke-repeat\", \"repeat\")",
     "exposure": ["Window"]
@@ -60723,6 +60839,14 @@
     "code": "bcd.testCSSProperty(\"text-decoration-color\", \"currentColor\")",
     "exposure": ["Window"]
   },
+  "css.properties.text-decoration-inset": {
+    "code": "bcd.testCSSProperty(\"text-decoration-inset\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.text-decoration-inset.auto": {
+    "code": "bcd.testCSSProperty(\"text-decoration-inset\", \"auto\")",
+    "exposure": ["Window"]
+  },
   "css.properties.text-decoration-line": {
     "code": "bcd.testCSSProperty(\"text-decoration-line\")",
     "exposure": ["Window"]
@@ -60881,14 +61005,6 @@
   },
   "css.properties.text-decoration-thickness.percentage": {
     "code": "bcd.testCSSProperty(\"text-decoration-thickness\", \"50%\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-decoration-trim": {
-    "code": "bcd.testCSSProperty(\"text-decoration-trim\")",
-    "exposure": ["Window"]
-  },
-  "css.properties.text-decoration-trim.auto": {
-    "code": "bcd.testCSSProperty(\"text-decoration-trim\", \"auto\")",
     "exposure": ["Window"]
   },
   "css.properties.text-decoration-width": {
@@ -61513,6 +61629,102 @@
   },
   "css.properties.timeline-scope.all": {
     "code": "bcd.testCSSProperty(\"timeline-scope\", \"all\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger.none": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger.auto": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range.auto": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-end": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-end.auto": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-end\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-end.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-end\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-start": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-start.auto": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-start\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-exit-range-start.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-exit-range-start\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-name": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-name\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-name.none": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-name\", \"none\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range-end": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range-end\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range-end.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range-end\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range-start": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range-start\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-range-start.normal": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-range-start\", \"normal\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-source": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-source\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-source.auto": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-source\", \"auto\")",
+    "exposure": ["Window"]
+  },
+  "css.properties.timeline-trigger-source.none": {
+    "code": "bcd.testCSSProperty(\"timeline-trigger-source\", \"none\")",
     "exposure": ["Window"]
   },
   "css.properties.top": {
@@ -63009,6 +63221,10 @@
   },
   "css.selectors.link": {
     "code": "bcd.testCSSSelector(\":link\")",
+    "exposure": ["Window"]
+  },
+  "css.selectors.link-to": {
+    "code": "bcd.testCSSSelector(\":link-to()\")",
     "exposure": ["Window"]
   },
   "css.selectors.local-link": {
