@@ -1,5 +1,5 @@
 {
-  "__version": "10.16.1",
+  "__version": "10.16.2",
   "results": {
     ".": [
       {
@@ -14691,6 +14691,39 @@
         },
         "result": null,
         "message": "threw ReferenceError: navigator is not defined"
+      },
+      {
+        "name": "api.ClipboardChangeEvent",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ClipboardChangeEvent.changeId",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self && \"changeId\" in ClipboardChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ClipboardChangeEvent.ClipboardChangeEvent",
+        "info": {
+          "code": "bcd.testConstructor('ClipboardChangeEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: ClipboardChangeEvent is not defined"
+      },
+      {
+        "name": "api.ClipboardChangeEvent.types",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self && \"types\" in ClipboardChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.ClipboardEvent",
@@ -32505,9 +32538,41 @@
         "result": false
       },
       {
+        "name": "api.GPUSupportedLimits.maxStorageBuffersInFragmentStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInFragmentStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageBuffersInVertexStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInVertexStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.GPUSupportedLimits.maxStorageBuffersPerShaderStage",
         "info": {
           "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersPerShaderStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageTexturesInFragmentStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInFragmentStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageTexturesInVertexStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInVertexStage\" in GPUSupportedLimits.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -32693,6 +32758,15 @@
         "name": "api.GPUTexture.sampleCount",
         "info": {
           "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"sampleCount\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": null,
+        "message": "threw ReferenceError: navigator is not defined"
+      },
+      {
+        "name": "api.GPUTexture.textureBindingViewDimension",
+        "info": {
+          "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"textureBindingViewDimension\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": null,
@@ -47040,6 +47114,14 @@
         "name": "api.MLContext",
         "info": {
           "code": "\"MLContext\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.accelerated",
+        "info": {
+          "code": "\"MLContext\" in self && \"accelerated\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false

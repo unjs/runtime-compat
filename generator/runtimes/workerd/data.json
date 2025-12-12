@@ -1,5 +1,5 @@
 {
-  "__version": "10.16.1",
+  "__version": "10.16.2",
   "results": {
     ".": [
       {
@@ -14615,6 +14615,39 @@
         },
         "result": null,
         "message": "threw ReferenceError: ClipboardItem is not defined"
+      },
+      {
+        "name": "api.ClipboardChangeEvent",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ClipboardChangeEvent.changeId",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self && \"changeId\" in ClipboardChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.ClipboardChangeEvent.ClipboardChangeEvent",
+        "info": {
+          "code": "bcd.testConstructor('ClipboardChangeEvent')",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "threw ReferenceError: ClipboardChangeEvent is not defined"
+      },
+      {
+        "name": "api.ClipboardChangeEvent.types",
+        "info": {
+          "code": "\"ClipboardChangeEvent\" in self && \"types\" in ClipboardChangeEvent.prototype",
+          "exposure": "Window"
+        },
+        "result": false
       },
       {
         "name": "api.ClipboardEvent",
@@ -32361,9 +32394,41 @@
         "result": false
       },
       {
+        "name": "api.GPUSupportedLimits.maxStorageBuffersInFragmentStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInFragmentStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageBuffersInVertexStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersInVertexStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
         "name": "api.GPUSupportedLimits.maxStorageBuffersPerShaderStage",
         "info": {
           "code": "\"GPUSupportedLimits\" in self && \"maxStorageBuffersPerShaderStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageTexturesInFragmentStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInFragmentStage\" in GPUSupportedLimits.prototype",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.GPUSupportedLimits.maxStorageTexturesInVertexStage",
+        "info": {
+          "code": "\"GPUSupportedLimits\" in self && \"maxStorageTexturesInVertexStage\" in GPUSupportedLimits.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -32549,6 +32614,15 @@
         "name": "api.GPUTexture.sampleCount",
         "info": {
           "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"sampleCount\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": false,
+        "message": "gpu is falsy"
+      },
+      {
+        "name": "api.GPUTexture.textureBindingViewDimension",
+        "info": {
+          "code": "(function () {\n  var gpu = navigator.gpu;\n  if (!gpu) {\n    return { result: false, message: \"gpu is falsy\" };\n  }\n  var adapter = gpu.requestAdapter();\n  if (!adapter) {\n    return { result: false, message: \"adapter is falsy\" };\n  }\n  var device = adapter.then(function (a) {\n    var device = a.requestDevice();\n    bcd.addCleanup(function () {\n      if (\"destroy\" in device) {\n        device.destroy();\n      }\n    });\n    return device;\n  });\n  if (!device) {\n    return { result: false, message: \"device is falsy\" };\n  }\n  if (!(\"GPUTextureUsage\" in self)) {\n    return { result: false, message: \"GPUTextureUsage is not defined\" };\n  }\n  var promise = device.then(function (d) {\n    return d.createTexture({\n      size: [512, 512, 1],\n      format: \"rgba8unorm\",\n      usage:\n        GPUTextureUsage.TEXTURE_BINDING |\n        GPUTextureUsage.COPY_DST |\n        GPUTextureUsage.RENDER_ATTACHMENT\n    });\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"textureBindingViewDimension\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": false,
@@ -46891,6 +46965,14 @@
         "name": "api.MLContext",
         "info": {
           "code": "\"MLContext\" in self",
+          "exposure": "Window"
+        },
+        "result": false
+      },
+      {
+        "name": "api.MLContext.accelerated",
+        "info": {
+          "code": "\"MLContext\" in self && \"accelerated\" in MLContext.prototype",
           "exposure": "Window"
         },
         "result": false
@@ -86064,6 +86146,38 @@
         "result": true
       },
       {
+        "name": "api.ReadableStream",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.locked",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStream.pipeThrough",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
         "name": "api.ReadableStream.@@asyncIterator",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return (\n      !!instance &&\n      \"Symbol\" in self &&\n      \"asyncIterator\" in Symbol &&\n      !!instance[Symbol.asyncIterator]\n    );\n  });\n})();\n",
@@ -86080,25 +86194,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.closed",
+        "name": "api.ReadableStreamDefaultReader.releaseLock",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.cancel",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86112,17 +86210,9 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader",
+        "name": "api.ReadableStreamDefaultReader.closed",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.locked",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"locked\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"closed\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86136,22 +86226,6 @@
         "result": true
       },
       {
-        "name": "api.Response.Response.accept_readablestream",
-        "info": {
-          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var rsPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!rsPromise) {\n    return { result: false, message: \"rsPromise is falsy\" };\n  }\n  return rsPromise.then(function (readableStream) {\n    try {\n      new Response(readableStream);\n      return true;\n    } catch (e) {\n      return { result: false, message: e.message };\n    }\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStream.pipeThrough",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"pipeThrough\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
         "name": "api.ReadableStream.values",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"values\" in instance;\n  });\n})();\n",
@@ -86160,9 +86234,25 @@
         "result": true
       },
       {
-        "name": "api.ReadableStreamDefaultReader.releaseLock",
+        "name": "api.ReadableStreamDefaultReader.read",
         "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"releaseLock\" in instance;\n  });\n})();\n",
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.ReadableStreamDefaultReader.cancel",
+        "info": {
+          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"cancel\" in instance;\n  });\n})();\n",
+          "exposure": "Window"
+        },
+        "result": true
+      },
+      {
+        "name": "api.Response.Response.accept_readablestream",
+        "info": {
+          "code": "(function () {\n  if (!(\"Response\" in self)) {\n    return { result: false, message: \"Response is not defined\" };\n  }\n  var instance = new Response(\"\");\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var rsPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!rsPromise) {\n    return { result: false, message: \"rsPromise is falsy\" };\n  }\n  return rsPromise.then(function (readableStream) {\n    try {\n      new Response(readableStream);\n      return true;\n    } catch (e) {\n      return { result: false, message: e.message };\n    }\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
@@ -86171,14 +86261,6 @@
         "name": "api.ReadableStream.getReader",
         "info": {
           "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var promise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"getReader\" in instance;\n  });\n})();\n",
-          "exposure": "Window"
-        },
-        "result": true
-      },
-      {
-        "name": "api.ReadableStreamDefaultReader.read",
-        "info": {
-          "code": "(function () {\n  if (!(\"fetch\" in self)) {\n    return { result: false, message: \"fetch is not defined\" };\n  }\n  var streamPromise = fetch(\"/favicon/favicon.ico\")\n    .then(function (response) {\n      return response.body;\n    })\n    .catch(function () {\n      // Browsers need a relative path for CORS, but JS runtimes need an absolute path to reference\n      return fetch(\n        \"https://mdn-bcd-collector.gooborg.com/favicon/favicon.ico\"\n      ).then(function (response) {\n        return response.body;\n      });\n    });\n  if (!streamPromise) {\n    return { result: false, message: \"streamPromise is falsy\" };\n  }\n  var promise = streamPromise.then(function (stream) {\n    return stream.getReader();\n  });\n  if (!promise) {\n    return { result: false, message: \"Promise variable is falsy\" };\n  }\n  return promise.then(function (instance) {\n    return !!instance && \"read\" in instance;\n  });\n})();\n",
           "exposure": "Window"
         },
         "result": true
