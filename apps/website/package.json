@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nuxt/devtools": "latest",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.1.0",
     "runtime-compat-data": "workspace:^"
   },
   "devDependencies": {
