@@ -37,6 +37,16 @@
     <div class="flex flex-col gap-8 max-w-full">
       <APIRow v-for="[name, data] in Object.entries(computedData.data)" :key="name" :name="name" :data="data" />
     </div>
+    <div class="flex gap-1 overflow-x-scroll scrollbar-none linked-scroll border-t border-slate-200 dark:border-slate-800 pt-2" @scroll.passive="changeScroll">
+      <div v-for="runtime in runtimes" :key="runtime"
+        class="min-w-[124px] flex items-center justify-center py-1" :class="{
+          'opacity-10': !selectedRuntimes.includes(runtime),
+        }">
+        <span class="text-sm font-mono text-slate-500 dark:text-slate-400">
+          {{ computedData.runtimeSupport[runtime] }}/{{ computedData.totalRows }}
+        </span>
+      </div>
+    </div>
   </div>
   <footer class="flex items-center gap-8 pb-16 justify-center bg-white dark:bg-black">
     <p class="text-md text-slate-600 dark:text-slate-300">
@@ -67,8 +77,10 @@ const winterCGAPIs = ['AbortController', 'AbortSignal', 'Blob', 'ByteLengthQueui
 const computedData = computed(() => {
   const data: Record<string, Identifier | CompatStatement> = {}
   const winterCGCoverage: Record<string, number> = Object.fromEntries(runtimes.map(runtime => [runtime, 0]))
+  const runtimeSupport: Record<string, number> = Object.fromEntries(runtimes.map(runtime => [runtime, 0]))
   let winterCGCount = 0;
   let totalCount = 0;
+  let totalRows = 0;
   for (const [api, apiData] of Object.entries({ ...runtimeCompatData.api, WebAssembly: runtimeCompatData.webassembly.api })) {
     const isWinterCGApi = winterCGAPIs.includes(api)
 
@@ -83,11 +95,19 @@ const computedData = computed(() => {
           }
         })
       }
+
+      for (const [, subData] of Object.entries(apiData)) {
+        totalRows++
+        const support = (subData as any).support ?? (subData as any).__compat?.support ?? {}
+        for (const [runtime, value] of Object.entries(support) as [string, any][]) {
+          if (value.version_added) runtimeSupport[runtime]++
+        }
+      }
     }
 
     totalCount++
   }
 
-  return { data, winterCGCount, totalCount, winterCGCoverage }
+  return { data, winterCGCount, totalCount, winterCGCoverage, runtimeSupport, totalRows }
 })
 </script>
