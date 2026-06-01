@@ -14,8 +14,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "unbuild": "^3.5.0",
-    "typescript": "^5.8.3"
+    "unbuild": "3.5.0",
+    "typescript": "5.8.3"
   },
   "unbuild": {
     "entries": [
